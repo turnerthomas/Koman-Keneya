@@ -1,141 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koman Keneya</title>
-    <style>
-        /* Reset default browser spacing */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koman Keneya — Escuela De Medicina Tradicional</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra:   #A8522A;
+    --rust:    #7A3520;
+    --warm:    #4A2C1A;
+    --tan:     #D4A574;
+    --sand:    #EDD9B8;
+    --linen:   #F8F0E3;
+    --stone:   #C9B99A;
+    --leaf:    #4D6741;
+    --fern:    #7A9E6E;
+    --smoke:   #9A8878;
+    --white:   #FEFCF8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--linen); color: var(--warm); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-        body {
-            font-family: 'Georgia', serif; /* A classic, intentional serif font */
-            color: #ffffff;
-            background-color: #0b140d; /* Deep forest fallback color */
-            line-height: 1.8;
-        }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    padding: 1.2rem 3.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(248,240,227,0.94); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(168,82,42,0.12);
+  }
+  .nav-brand { display: flex; flex-direction: column; }
+  .nav-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--rust); letter-spacing: 0.03em; text-decoration: none; }
+  .nav-tagline { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--smoke); margin-top: 0.15rem; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.78rem; color: var(--warm); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--terra); }
+  .lang-btns { display: flex; gap: 0.3rem; }
+  .lb { background: none; border: 1px solid var(--stone); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--warm); cursor: pointer; transition: all 0.2s; border-radius: 2px; }
+  .lb.on, .lb:hover { background: var(--terra); border-color: var(--terra); color: white; }
 
-        /* Fullscreen Hero Background Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            /* Replace this URL with your own photo later */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
-                              url('KomanKeneyaCenter.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Creates a smooth scrolling parallax effect */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+  /* ── HERO ── */
+  .hero { padding-top: 72px; display: grid; grid-template-columns: 1.1fr 1fr; min-height: calc(100vh - 72px); }
+  .hero-left { position: relative; overflow: hidden; }
+  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: 70vh; }
+  .hero-left-badge {
+    position: absolute; bottom: 2.5rem; left: 2.5rem;
+    background: var(--rust); color: var(--sand);
+    padding: 1.2rem 1.5rem; max-width: 260px;
+    font-family: 'DM Serif Display', serif; font-size: 0.95rem; line-height: 1.5; font-style: italic;
+  }
+  .hero-right { background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 5rem 4.5rem; }
+  .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terra); margin-bottom: 2rem; }
+  .hero-right h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.8rem, 5vw, 4.8rem); color: var(--rust); line-height: 1.05; }
+  .hero-right h1 em { font-style: italic; display: block; color: var(--terra); }
+  .hero-sub { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--smoke); margin-top: 1rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--stone); }
+  .hero-body { font-size: 0.95rem; line-height: 1.9; color: #6B5040; max-width: 440px; margin-bottom: 2.5rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem; background: var(--terra); color: white; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; transition: background 0.3s; }
+  .hero-cta:hover { background: var(--rust); }
+  .hero-cta::after { content: '→'; font-size: 1rem; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--stone); }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--terra); display: block; }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); margin-top: 0.2rem; display: block; }
 
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+  /* ── SECTION LABELS ── */
+  .slabel { font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terra); display: flex; align-items: center; gap: 0.8rem; }
+  .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--terra); }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-style: italic;
-            letter-spacing: 2px;
-            color: #d4e2d4;
-        }
+  /* ── VISION SPLIT ── */
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--sand); }
+  .vs-img { position: relative; overflow: hidden; }
+  .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; }
+  .vs-img:hover img { transform: scale(1.04); }
+  .vs-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .vs-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--rust); line-height: 1.2; margin: 1.2rem 0 2rem; }
+  .vs-text h2 em { font-style: italic; color: var(--terra); }
+  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: #5A3C28; }
+  .vs-text p + p { margin-top: 1.2rem; }
+  .vs-pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--terra); color: var(--terra); border-radius: 100px; }
 
-        /* Content Overlay Cards (Floating text look) */
-        .content-section {
-            position: relative;
-            max-width: 800px;
-            margin: -60px auto 80px auto; /* Pulls the content up slightly over the background */
-            background: rgba(17, 29, 19, 0.85); /* Translucent jungle green */
-            backdrop-filter: blur(10px); /* Soft glass effect */
-            padding: 50px;
-            border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+  /* ── HEALER FEATURE ── */
+  .healer-feature { background: var(--rust); color: var(--sand); }
+  .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
+  .hf-img { overflow: hidden; }
+  .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; }
+  .hf-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .hf-text .slabel { color: var(--tan); }
+  .hf-text .slabel::after { background: var(--tan); }
+  .hf-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--sand); line-height: 1.15; }
+  .hf-text h2 em { font-style: italic; color: var(--tan); }
+  .hf-text p { font-size: 0.92rem; line-height: 1.95; color: rgba(212,165,116,0.85); }
+  .hf-text p + p { margin-top: 1.3rem; }
+  .hf-name-block { margin-top: 2.5rem; padding: 1.5rem; background: rgba(0,0,0,0.2); border-left: 3px solid var(--tan); }
+  .hf-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-style: italic; color: var(--sand); }
+  .hf-name-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tan); margin-top: 0.4rem; }
+  .plant-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .pp { font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.35rem 0.9rem; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); color: var(--tan); border-radius: 2px; }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            color: #c3dfc3;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            border-bottom: 1px solid rgba(195, 223, 195, 0.2);
-            padding-bottom: 10px;
-        }
+  /* ── PHOTO WALL ── */
+  .photo-wall { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 320px 320px; }
+  .pw-item { overflow: hidden; }
+  .pw-item:first-child { grid-row: 1 / 3; }
+  .pw-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .pw-item:hover img { transform: scale(1.05); }
 
-        p {
-            margin-bottom: 25px;
-            color: #e2ebe2;
-            font-size: 1.1rem;
-        }
+  /* ── OFFERINGS ── */
+  .offerings { background: var(--white); padding: 7rem 3.5rem; }
+  .off-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .off-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--rust); margin-top: 1rem; line-height: 1.15; }
+  .off-header h2 em { font-style: italic; color: var(--terra); }
+  .off-header p { font-size: 0.92rem; line-height: 1.9; color: #6B5040; }
+  .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .off-item { background: var(--linen); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: background 0.3s; border-bottom: 2px solid transparent; }
+  .off-item:hover { background: var(--sand); border-bottom-color: var(--terra); }
+  .off-num { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--stone); line-height: 1; flex-shrink: 0; }
+  .off-content {}
+  .off-en { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--rust); margin-bottom: 0.25rem; }
+  .off-es { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; }
+  .off-desc { font-size: 0.85rem; line-height: 1.8; color: #6B5040; }
 
-        .highlight-list {
-            list-style: none;
-            margin-top: 20px;
-        }
+  /* ── PHOTO ROW ── */
+  .photo-row { display: grid; grid-template-columns: repeat(3, 1fr); height: 300px; }
+  .photo-row-item { overflow: hidden; }
+  .photo-row-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+  .photo-row-item:hover img { transform: scale(1.05); }
 
-        .highlight-list li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-        }
+  /* ── CONTACT ── */
+  .contact-section { background: var(--linen); }
+  .contact-section-inner { display: grid; grid-template-columns: 1fr 1fr; }
+  .cs-img { position: relative; overflow: hidden; }
+  .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 500px; }
+  .cs-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(74,44,26,0.7)); display: flex; align-items: flex-end; padding: 3rem; }
+  .cs-img-text h3 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-style: italic; color: var(--sand); }
+  .cs-img-text p { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tan); margin-top: 0.5rem; }
+  .cs-form { background: var(--white); padding: 5rem 4rem; display: flex; flex-direction: column; gap: 0; }
+  .cs-form-header { margin-bottom: 3rem; }
+  .cs-form-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 2.5vw, 2.5rem); color: var(--rust); margin-top: 1rem; }
+  .cs-form-header h2 em { font-style: italic; color: var(--terra); }
+  form { display: flex; flex-direction: column; gap: 1.4rem; }
+  .fg { display: flex; flex-direction: column; gap: 0.45rem; }
+  .fl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terra); }
+  .fi, .fsel, .fta {
+    background: var(--linen); border: none; border-bottom: 1.5px solid var(--stone);
+    padding: 0.8rem 0.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--warm); outline: none; transition: border-color 0.2s; width: 100%;
+    -webkit-appearance: none;
+  }
+  .fi:focus, .fsel:focus, .fta:focus { border-bottom-color: var(--terra); }
+  .fta { resize: vertical; min-height: 100px; }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .fsel option { background: var(--white); }
+  .fsub { padding: 1rem 2.5rem; background: var(--terra); color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; align-self: flex-start; margin-top: 0.5rem; }
+  .fsub:hover { background: var(--rust); }
 
-        /* Elegant custom bullet point */
-        .highlight-list li::before {
-            content: "•";
-            color: #8fae8f;
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
+  /* ── FOOTER ── */
+  footer { background: var(--warm); padding: 4rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; }
+  .foot-brand .fn { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--sand); }
+  .foot-brand .fs2 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,165,116,0.7); margin-top: 0.3rem; }
+  .foot-brand p { font-size: 0.82rem; line-height: 1.8; color: rgba(212,165,116,0.65); margin-top: 1.2rem; max-width: 240px; }
+  .foot-col h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tan); margin-bottom: 1.2rem; }
+  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .foot-col li { font-size: 0.82rem; color: rgba(212,165,116,0.7); }
+  .foot-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(212,165,116,0.2); padding-top: 2rem; font-size: 0.72rem; color: rgba(212,165,116,0.5); letter-spacing: 0.08em; }
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            color: #617561;
-            letter-spacing: 1px;
-        }
-    </style>
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left img { min-height: 55vw; }
+    .hero-right { padding: 3.5rem 1.5rem; }
+    .vision-split, .healer-feature-inner, .contact-section-inner { grid-template-columns: 1fr; }
+    .off-header { grid-template-columns: 1fr; gap: 2rem; }
+    .off-grid { grid-template-columns: 1fr; }
+    .photo-wall { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 220px); }
+    .pw-item:first-child { grid-row: auto; }
+    .photo-row { grid-template-columns: 1fr 1fr; height: auto; }
+    .photo-row-item { height: 220px; }
+    footer { grid-template-columns: 1fr; }
+    .frow { grid-template-columns: 1fr; }
+    .cs-form { padding: 3.5rem 1.5rem; }
+    .offerings { padding: 5rem 1.5rem; }
+    .vs-text { padding: 4rem 2rem; }
+    .hf-text { padding: 4rem 2rem; }
+  }
+</style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1 class="hero-title">Koman Keneya</h1>
-        <p class="hero-subtitle">Escuela De Medicina Tradicional</p>
-    </header>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand" style="text-decoration:none;">
+    <span class="nav-name">Koman Keneya</span>
+    <span class="nav-tagline">Escuela De Medicina Tradicional</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#vision" data-en="Vision" data-es="Visión">Vision</a></li>
+    <li><a href="#healer" data-en="The Healer" data-es="El Curandero">The Healer</a></li>
+    <li><a href="#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
+    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+  </ul>
+  <div class="lang-btns">
+    <button class="lb on" onclick="setLang('en')">EN</button>
+    <button class="lb" onclick="setLang('es')">ES</button>
+  </div>
+</nav>
 
-    <main class="content-section">
-        <h2>The Path of the Dieta</h2>
-        <p>Welcome to a sacred journey of transformation. Following the rich traditions of the Amazon, we focus our work on the master plants and trees to reveal inner wisdom, clear deep-rooted fears, and align you with your soul's path.</p>
-        
-        <h2>Our Healing Space</h2>
-        <p>Our traditional wood cabins (tambos) offer a rustic, natural environment where your deep inner work can take place in safety and complete immersion with nature.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <img src="overhead tambos 2.jpg" alt="Koman Keneya from above">
+    <div class="hero-left-badge" data-en=""The plants are the teachers. We are just the bridge."" data-es=""Las plantas son los maestros. Nosotros solo somos el puente."">"The plants are the teachers. We are just the bridge."</div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-eyebrow" data-en="Pucallpa · Peruvian Amazon" data-es="Pucallpa · Amazonía Peruana">Pucallpa · Peruvian Amazon</p>
+    <h1>Koman <em>Keneya</em></h1>
+    <p class="hero-sub">Escuela De Medicina Tradicional</p>
+    <p class="hero-body" data-en="A living school rooted in the Shipibo tradition of the Amazon. We offer authentic plant dieta, ceremonial healing, and deep immersion in ancestral knowledge — guided by a master healer of the lineage." data-es="Una escuela viva enraizada en la tradición Shipibo de la Amazonía. Ofrecemos auténtica dieta de plantas, sanación ceremonial y una profunda inmersión en el conocimiento ancestral, guiada por un maestro curandero del linaje.">A living school rooted in the Shipibo tradition of the Amazon. We offer authentic plant dieta, ceremonial healing, and deep immersion in ancestral knowledge — guided by a master healer of the lineage.</p>
+    <a href="#contact" class="hero-cta" data-en="Begin Your Journey" data-es="Comienza Tu Viaje">Begin Your Journey</a>
+    <div class="hero-stats">
+      <div><span class="stat-num">30+</span><span class="stat-label" data-en="Years of Practice" data-es="Años de Práctica">Years of Practice</span></div>
+      <div><span class="stat-num">6</span><span class="stat-label" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</span></div>
+      <div><span class="stat-num">∞</span><span class="stat-label" data-en="Ancient Lineage" data-es="Linaje Ancestral">Ancient Lineage</span></div>
+    </div>
+  </div>
+</section>
 
-        <ul class="highlight-list">
-            <li>Authentic Ayahuasca Ceremonies with Master Healers</li>
-            <li>Traditional Plant & Tree Dietas tailored to your spirit</li>
-            <li>Eco-conscious accommodations in ancestral lands</li>
-            <li>Dedicated space holders for integration and processing</li>
-        </ul>
-    </main>
+<!-- VISION -->
+<section class="vision-split" id="vision">
+  <div class="vs-img">
+    <img src="maloca.jpg" alt="Ceremony space — Maloca">
+  </div>
+  <div class="vs-text">
+    <span class="slabel" data-en="Our Vision" data-es="Nuestra Visión">Our Vision</span>
+    <h2 data-en="Saving Our Planet Through the <em>Power of Plants</em>" data-es="Salvando Nuestro Planeta a Través del <em>Poder de las Plantas</em>">Saving Our Planet Through the <em>Power of Plants</em></h2>
+    <p data-en="The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors." data-es="La visión de Koman Keneya es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina. Estamos perdiendo cada vez más la cultura de nuestros ancestros.">The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors.</p>
+    <p data-en="The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition." data-es="La escuela busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con las comunidades, invitando a personas interesadas de todo el mundo a experimentar oportunidades reales de sanación dentro de la tradición Shipibo.">The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition.</p>
+    <div class="vs-pill-row">
+      <span class="vs-pill" data-en="Plant Dieta" data-es="Dieta de Plantas">Plant Dieta</span>
+      <span class="vs-pill" data-en="Healing Ceremonies" data-es="Ceremonias de Sanación">Healing Ceremonies</span>
+      <span class="vs-pill" data-en="Traditional Knowledge" data-es="Conocimiento Tradicional">Traditional Knowledge</span>
+      <span class="vs-pill" data-en="Cultural Immersion" data-es="Inmersión Cultural">Cultural Immersion</span>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Your Center Name. Dedicated to the Healing of All Beings.</p>
-    </footer>
+<!-- HEALER -->
+<section id="healer">
+  <div class="healer-feature">
+    <div class="healer-feature-inner">
+      <div class="hf-img">
+        <img src="Americo.jpg" alt="Maestro Americo López Sanchez">
+      </div>
+      <div class="hf-text">
+        <span class="slabel" data-en="The Maestro" data-es="El Maestro">The Maestro</span>
+        <h2 data-en="A Healer Born Under the <em>Shihuahuaco</em> Tree" data-es="Un Curandero Nacido Bajo el Árbol <em>Shihuahuaco</em>">A Healer Born Under the <em>Shihuahuaco</em> Tree</h2>
+        <p data-en="Maestro Americo López Sanchez was literally born under a Shihuahuaco tree, near the rubber plantation where his parents labored. From this extraordinary beginning, he was guided by his father, the prominent healer José López Rengifo (Sani Meni), to follow the path of medicine." data-es="El Maestro Americo López Sanchez nació literalmente bajo un árbol Shihuahuaco, cerca de la plantación de caucho donde trabajaban sus padres. Desde este extraordinario comienzo, fue guiado por su padre, el prominente curandero José López Rengifo (Sani Meni), a seguir el camino de la medicina.">Maestro Americo López Sanchez was literally born under a Shihuahuaco tree, near the rubber plantation where his parents labored. From this extraordinary beginning, he was guided by his father, the prominent healer José López Rengifo (Sani Meni), to follow the path of medicine.</p>
+        <p data-en="He began his formal training at 15, started with Ayahuasca at 19, and after years of rigorous isolation with Master Plants, emerged as a fully trained curandero. Today, he teaches with the same depth and dedication he received — passing the lineage forward." data-es="Comenzó su formación formal a los 15 años, comenzó con la Ayahuasca a los 19 y, después de años de riguroso aislamiento con Plantas Maestras, emergió como curandero completamente formado. Hoy enseña con la misma profundidad y dedicación que recibió, transmitiendo el linaje hacia adelante.">He began his formal training at 15, started with Ayahuasca at 19, and after years of rigorous isolation with Master Plants, emerged as a fully trained curandero. Today, he teaches with the same depth and dedication he received — passing the lineage forward.</p>
+        <div class="hf-name-block">
+          <div class="hf-name">Pekon Nima</div>
+          <div class="hf-name-sub" data-en=""The many colors of nature" — his Shipibo name" data-es=""Los muchos colores de la naturaleza" — su nombre Shipibo">"The many colors of nature" — his Shipibo name</div>
+        </div>
+        <div class="plant-pills">
+          <span class="pp">Noya Rao</span>
+          <span class="pp">Shihuahuaco</span>
+          <span class="pp">Manchinga</span>
+          <span class="pp">Bobinsana</span>
+          <span class="pp">Chiric Sanango</span>
+          <span class="pp">Marusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- PHOTO WALL -->
+<div class="photo-wall">
+  <div class="pw-item"><img src="overhead tambos 3.jpg" alt="Grounds overview"></div>
+  <div class="pw-item"><img src="single tambo.jpg" alt="Single tambo hut"></div>
+  <div class="pw-item"><img src="bed.jpg" alt="Tambo interior bed"></div>
+</div>
+
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="off-header">
+    <div>
+      <span class="slabel" data-en="The Experience" data-es="La Experiencia">The Experience</span>
+      <h2 data-en="What Your <em>Retreat</em> Includes" data-es="Qué Incluye Tu <em>Retiro</em>">What Your <em>Retreat</em> Includes</h2>
+    </div>
+    <p data-en="Every stay at Koman Keneya is a full immersion — combining ceremony, rest, nourishment, and cultural transmission into one coherent, tradition-guided experience." data-es="Cada estadía en Koman Keneya es una inmersión completa, combinando ceremonia, descanso, nutrición y transmisión cultural en una experiencia coherente guiada por la tradición.">Every stay at Koman Keneya is a full immersion — combining ceremony, rest, nourishment, and cultural transmission into one coherent, tradition-guided experience.</p>
+  </div>
+  <div class="off-grid">
+    <div class="off-item">
+      <div class="off-num">01</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Plant Ceremonies" data-es="Ceremonias de Plantas">Plant Ceremonies</div>
+        <div class="off-es" data-en="Ayahuasca & Master Plants" data-es="Ayahuasca y Plantas Maestras">Ayahuasca &amp; Master Plants</div>
+        <p class="off-desc" data-en="Healing ceremonies with sacred icaros in a traditional maloca, guided by Maestro Americo. Ayahuasca and other master plant ceremonies available." data-es="Ceremonias de sanación con icaros sagrados en una maloca tradicional, guiadas por el Maestro Americo. Disponibles ceremonias de Ayahuasca y otras plantas maestras.">Healing ceremonies with sacred icaros in a traditional maloca, guided by Maestro Americo.</p>
+      </div>
+    </div>
+    <div class="off-item">
+      <div class="off-num">02</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Private Tambo Lodging" data-es="Alojamiento en Tambo Privado">Private Tambo Lodging</div>
+        <div class="off-es" data-en="Rest & Integration" data-es="Descanso e Integración">Rest &amp; Integration</div>
+        <p class="off-desc" data-en="Your own handcrafted wooden tambo with hammock porch, comfortable bedding, and views of the Amazonian landscape. Space to rest and integrate." data-es="Tu propio tambo de madera artesanal con porche de hamaca, ropa de cama cómoda y vistas al paisaje amazónico. Espacio para descansar e integrar.">Your own handcrafted wooden tambo with hammock porch, comfortable bedding, and views of the Amazonian landscape.</p>
+      </div>
+    </div>
+    <div class="off-item">
+      <div class="off-num">03</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Medicinal Baths & Saunas" data-es="Baños y Saunas Medicinales">Medicinal Baths &amp; Saunas</div>
+        <div class="off-es" data-en="Purification Rituals" data-es="Rituales de Purificación">Purification Rituals</div>
+        <p class="off-desc" data-en="Traditional Shipibo purification through saunas, aromatic plant baths, and emetics — preparing the body and spirit for deeper healing." data-es="Purificación tradicional Shipibo a través de saunas, baños de plantas aromáticas y eméticos, preparando el cuerpo y el espíritu para una sanación más profunda.">Traditional Shipibo purification through saunas, aromatic plant baths, and emetics — preparing the body and spirit for deeper healing.</p>
+      </div>
+    </div>
+    <div class="off-item">
+      <div class="off-num">04</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Traditional Cuisine" data-es="Cocina Tradicional">Traditional Cuisine</div>
+        <div class="off-es" data-en="Dieta-Aligned Meals" data-es="Comidas Alineadas a la Dieta">Dieta-Aligned Meals</div>
+        <p class="off-desc" data-en="All meals prepared by our resident chef following traditional dieta guidelines — simple, clean food that supports your healing and plant work." data-es="Todas las comidas preparadas por nuestro chef residente siguiendo las pautas tradicionales de la dieta: alimentos simples y limpios que apoyan tu sanación y trabajo con plantas.">All meals prepared by our resident chef following traditional dieta guidelines — simple, clean food that supports your healing and plant work.</p>
+      </div>
+    </div>
+    <div class="off-item">
+      <div class="off-num">05</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Forest Plant Walks" data-es="Caminatas de Plantas en el Bosque">Forest Plant Walks</div>
+        <div class="off-es" data-en="Living Classroom" data-es="Aula Viva">Living Classroom</div>
+        <p class="off-desc" data-en="Walk into the Amazon with the Maestro to learn plant identification, traditional uses, and the deep stories encoded in the forest." data-es="Camina hacia la Amazonía con el Maestro para aprender identificación de plantas, usos tradicionales y las profundas historias codificadas en el bosque.">Walk into the Amazon with the Maestro to learn plant identification, traditional uses, and the deep stories encoded in the forest.</p>
+      </div>
+    </div>
+    <div class="off-item">
+      <div class="off-num">06</div>
+      <div class="off-content">
+        <div class="off-en" data-en="Shipibo Arts & Culture" data-es="Artes y Cultura Shipibo">Shipibo Arts &amp; Culture</div>
+        <div class="off-es" data-en="Embroidery, Song & Dance" data-es="Bordado, Canto y Danza">Embroidery, Song &amp; Dance</div>
+        <p class="off-desc" data-en="Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games." data-es="Aprende el lenguaje visual Shipibo a través del bordado tradicional con diseños geométricos, canciones ancestrales, danzas culturales y juegos.">Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO ROW -->
+<div class="photo-row">
+  <div class="photo-row-item"><img src="vine tree.jpg" alt="Flowering vine tree"></div>
+  <div class="photo-row-item"><img src="hammock.jpg" alt="Tambo hammock porch"></div>
+  <div class="photo-row-item"><img src="kitchen.jpg" alt="Chef and dining space"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-section-inner">
+    <div class="cs-img">
+      <img src="americo 2.jpg" alt="Maestro Americo in traditional dress">
+      <div class="cs-img-overlay">
+        <div class="cs-img-text">
+          <h3 data-en="The Path Begins Here" data-es="El Camino Comienza Aquí">The Path Begins Here</h3>
+          <p data-en="Koman Keneya · Pucallpa, Peru" data-es="Koman Keneya · Pucallpa, Perú">Koman Keneya · Pucallpa, Peru</p>
+        </div>
+      </div>
+    </div>
+    <div class="cs-form">
+      <div class="cs-form-header">
+        <span class="slabel" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</span>
+        <h2 data-en="Start Your <em>Journey</em>" data-es="Inicia Tu <em>Viaje</em>">Start Your <em>Journey</em></h2>
+        <p style="margin-top:1rem; font-size:0.88rem; line-height:1.85; color:#6B5040;" data-en="We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch." data-es="Damos la bienvenida a huéspedes de todos los orígenes que se acercan a este trabajo con sinceridad y respeto. Rellena el formulario a continuación y nos pondremos en contacto.">We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch.</p>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <div class="frow">
+          <div class="fg"><label class="fl" data-en="First Name" data-es="Nombre">First Name</label><input class="fi" type="text" required></div>
+          <div class="fg"><label class="fl" data-en="Last Name" data-es="Apellido">Last Name</label><input class="fi" type="text" required></div>
+        </div>
+        <div class="fg"><label class="fl" data-en="Email Address" data-es="Correo Electrónico">Email Address</label><input class="fi" type="email" required></div>
+        <div class="fg"><label class="fl" data-en="Country" data-es="País">Country</label><input class="fi" type="text"></div>
+        <div class="fg">
+          <label class="fl" data-en="I am interested in" data-es="Me interesa">I am interested in</label>
+          <select class="fsel">
+            <option data-en="Plant Dieta (7 days)" data-es="Dieta de Plantas (7 días)">Plant Dieta (7 days)</option>
+            <option data-en="Plant Dieta (14 days)" data-es="Dieta de Plantas (14 días)">Plant Dieta (14 days)</option>
+            <option data-en="Ayahuasca Retreat" data-es="Retiro de Ayahuasca">Ayahuasca Retreat</option>
+            <option data-en="General Inquiry" data-es="Consulta General">General Inquiry</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl" data-en="Your Message" data-es="Tu Mensaje">Your Message</label><textarea class="fta"></textarea></div>
+        <button type="submit" class="fsub" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
+      </form>
+      <p id="succ" style="display:none; margin-top:1.5rem; color:var(--leaf); font-size:0.9rem;" data-en="Thank you — we'll be in touch soon." data-es="Gracias, nos pondremos en contacto pronto.">Thank you — we'll be in touch soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">
+    <div class="fn">Koman Keneya</div>
+    <div class="fs2">Escuela De Medicina Tradicional</div>
+    <p data-en="Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom." data-es="Arraigada en la tradición Shipibo de la Amazonía peruana. Sanación a través de la sabiduría ancestral de las plantas.">Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom.</p>
+  </div>
+  <div class="foot-col">
+    <h4 data-en="The Center" data-es="El Centro">The Center</h4>
+    <ul>
+      <li data-en="Our Vision" data-es="Nuestra Visión">Our Vision</li>
+      <li data-en="The Maestro" data-es="El Maestro">The Maestro</li>
+      <li data-en="Retreat Offerings" data-es="Ofrendas del Retiro">Retreat Offerings</li>
+      <li data-en="Photo Gallery" data-es="Galería de Fotos">Photo Gallery</li>
+    </ul>
+  </div>
+  <div class="foot-col">
+    <h4 data-en="Visit" data-es="Visitar">Visit</h4>
+    <ul>
+      <li>Pucallpa, Ucayali, Peru</li>
+      <li>Roaboya Nativa Community</li>
+      <li data-en="Contact Us" data-es="Contáctanos">Contact Us</li>
+    </ul>
+  </div>
+  <div class="foot-bottom" data-en="© 2025 Koman Keneya — Escuela De Medicina Tradicional. All rights reserved." data-es="© 2025 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2025 Koman Keneya — Escuela De Medicina Tradicional. All rights reserved.</div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    document.querySelector(`.lb[onclick="setLang('${lang}')"]`).classList.add('on');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const txt = el.getAttribute(`data-${lang}`);
+      if (!txt) return;
+      if ((el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') && txt.includes('<em>')) { el.innerHTML = txt; }
+      else { el.textContent = txt; }
+    });
+    document.querySelectorAll('option[data-en]').forEach(o => { o.textContent = o.getAttribute(`data-${lang}`) || o.textContent; });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('succ').style.display = 'block';
+  }
+
+  // Scroll reveal
+  const items = document.querySelectorAll('.off-item, .vs-text, .hf-text, .hero-right');
+  items.forEach(el => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+  });
+  const reveal = () => items.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+      el.style.opacity = '1'; el.style.transform = 'none';
+    }
+  });
+  window.addEventListener('scroll', reveal);
+  reveal();
+</script>
 </body>
 </html>
