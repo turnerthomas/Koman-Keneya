@@ -4,166 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Koman Keneya — Escuela De Medicina Tradicional</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Replaced DM Serif Display with Montserrat for the bold, geometric look in the photo -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --terra:   #A8522A;
-    --rust:    #7A3520;
-    --warm:    #4A2C1A;
-    --tan:     #D4A574;
-    --sand:    #EDD9B8;
-    --linen:   #F8F0E3;
-    --stone:   #C9B99A;
-    --leaf:    #4D6741;
-    --fern:    #7A9E6E;
-    --smoke:   #9A8878;
-    --white:   #FEFCF8;
+    /* Updated Dark Theme / Neon Colors extracted from the Shipibo image */
+    --neon-blue:   #3E8EDE;
+    --neon-cyan:   #38C7CC;
+    --neon-orange: #E58654;
+    
+    --bg-dark:     #050505;
+    --black:       #000000;
+    --glass-dark:  rgba(0, 0, 0, 0.75);
+    --glass-light: rgba(20, 20, 20, 0.85);
+    
+    --text-main:   #FFFFFF;
+    --text-muted:  #A0AAB2;
+    --border-dark: rgba(255, 255, 255, 0.1);
   }
+  
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--linen); color: var(--warm); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+  
+  body { 
+    background-color: var(--bg-dark); 
+    /* IMPORTANT: Add the file path to your Shipibo pattern image here */
+    background-image: url('Photos/shipibo-pattern.jpg'); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: var(--text-main); 
+    font-family: 'DM Sans', sans-serif; 
+    font-weight: 300; 
+    overflow-x: hidden; 
+  }
+
+  /* Typography Overrides to match the image */
+  h1, h2, h3, .nav-name, .hf-name, .stat-num, .off-num, .fn {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Remove italics to match the modern geometric style of the photo */
+  em { font-style: normal; }
 
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     padding: 1.2rem 3.5rem;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(248,240,227,0.94); backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(168,82,42,0.12);
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-dark);
   }
   .nav-brand { display: flex; flex-direction: column; }
-  .nav-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--rust); letter-spacing: 0.03em; text-decoration: none; }
-  .nav-tagline { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--smoke); margin-top: 0.15rem; }
+  .nav-name { font-size: 1.35rem; color: var(--text-main); text-decoration: none; }
+  .nav-tagline { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.15rem; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.78rem; color: var(--warm); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--terra); }
+  .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500;}
+  .nav-links a:hover { color: var(--neon-cyan); }
   .lang-btns { display: flex; gap: 0.3rem; }
-  .lb { background: none; border: 1px solid var(--stone); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--warm); cursor: pointer; transition: all 0.2s; border-radius: 2px; }
-  .lb.on, .lb:hover { background: var(--terra); border-color: var(--terra); color: white; }
+  .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+  .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: var(--black); font-weight: bold; }
 
   /* ── HERO ── */
   .hero { padding-top: 72px; display: grid; grid-template-columns: 1.1fr 1fr; min-height: calc(100vh - 72px); }
   .hero-left { position: relative; overflow: hidden; }
-  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: 70vh; }
+  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: 70vh; opacity: 0.8; }
   .hero-left-badge {
     position: absolute; bottom: 2.5rem; left: 2.5rem;
-    background: var(--rust); color: var(--sand);
+    background: var(--black); color: var(--text-main);
     padding: 1.2rem 1.5rem; max-width: 260px;
-    font-family: 'DM Serif Display', serif; font-size: 0.95rem; line-height: 1.5; font-style: italic;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan);
   }
-  .hero-right { background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 5rem 4.5rem; }
-  .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terra); margin-bottom: 2rem; }
-  .hero-right h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.8rem, 5vw, 4.8rem); color: var(--rust); line-height: 1.05; }
-  .hero-right h1 em { font-style: italic; display: block; color: var(--terra); }
-  .hero-sub { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--smoke); margin-top: 1rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--stone); }
-  .hero-body { font-size: 0.95rem; line-height: 1.9; color: #6B5040; max-width: 440px; margin-bottom: 2.5rem; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem; background: var(--terra); color: white; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; transition: background 0.3s; }
-  .hero-cta:hover { background: var(--rust); }
+  .hero-right { background: var(--glass-dark); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; padding: 5rem 4.5rem; }
+  .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 2rem; font-weight: 500;}
+  
+  /* The black rounded box effect from your image */
+  .hero-right h1 { 
+    font-size: clamp(2.8rem, 5vw, 4.8rem); 
+    color: var(--text-main); 
+    line-height: 0.95;
+    background: var(--black);
+    padding: 2rem 2.5rem;
+    border-radius: 32px;
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .hero-right h1 em { display: block; color: var(--text-main); }
+  
+  .hero-sub { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-top: 2rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border-dark); }
+  .hero-body { font-size: 0.95rem; line-height: 1.9; color: var(--text-muted); max-width: 440px; margin-bottom: 2.5rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2rem; background: var(--neon-blue); color: var(--black); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: bold; transition: all 0.3s; border-radius: 50px; }
+  .hero-cta:hover { background: var(--neon-cyan); box-shadow: 0 0 15px rgba(56, 199, 204, 0.4); }
   .hero-cta::after { content: '→'; font-size: 1rem; }
-  .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--stone); }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--terra); display: block; }
-  .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); margin-top: 0.2rem; display: block; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border-dark); }
+  .stat-num { font-size: 2rem; color: var(--neon-cyan); display: block; }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; display: block; }
 
   /* ── SECTION LABELS ── */
-  .slabel { font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--terra); display: flex; align-items: center; gap: 0.8rem; }
-  .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--terra); }
+  .slabel { font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-orange); display: flex; align-items: center; gap: 0.8rem; font-weight: bold; }
+  .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
-  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--sand); }
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: var(--glass-light); backdrop-filter: blur(8px); }
   .vs-img { position: relative; overflow: hidden; }
-  .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; }
+  .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 0.85; }
   .vs-img:hover img { transform: scale(1.04); }
   .vs-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
-  .vs-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--rust); line-height: 1.2; margin: 1.2rem 0 2rem; }
-  .vs-text h2 em { font-style: italic; color: var(--terra); }
-  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: #5A3C28; }
+  .vs-text h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--text-main); line-height: 1.1; margin: 1.2rem 0 2rem; }
+  .vs-text h2 em { color: var(--neon-cyan); }
+  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: var(--text-muted); }
   .vs-text p + p { margin-top: 1.2rem; }
   .vs-pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--terra); color: var(--terra); border-radius: 100px; }
+  .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--border-dark); color: var(--text-main); border-radius: 100px; }
 
   /* ── HEALER FEATURE ── */
-  .healer-feature { background: var(--rust); color: var(--sand); }
+  .healer-feature { background: var(--black); color: var(--text-main); }
   .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .hf-img { overflow: hidden; }
-  .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; }
+  .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 0.85;}
   .hf-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
-  .hf-text .slabel { color: var(--tan); }
-  .hf-text .slabel::after { background: var(--tan); }
-  .hf-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--sand); line-height: 1.15; }
-  .hf-text h2 em { font-style: italic; color: var(--tan); }
-  .hf-text p { font-size: 0.92rem; line-height: 1.95; color: rgba(212,165,116,0.85); }
+  .hf-text .slabel { color: var(--neon-blue); }
+  .hf-text .slabel::after { background: var(--neon-blue); }
+  .hf-text h2 { font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--text-main); line-height: 1.1; }
+  .hf-text h2 em { color: var(--neon-orange); }
+  .hf-text p { font-size: 0.92rem; line-height: 1.95; color: var(--text-muted); }
   .hf-text p + p { margin-top: 1.3rem; }
-  .hf-name-block { margin-top: 2.5rem; padding: 1.5rem; background: rgba(0,0,0,0.2); border-left: 3px solid var(--tan); }
-  .hf-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-style: italic; color: var(--sand); }
-  .hf-name-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tan); margin-top: 0.4rem; }
+  .hf-name-block { margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,0.05); border-left: 3px solid var(--neon-cyan); }
+  .hf-name { font-size: 1.4rem; color: var(--text-main); }
+  .hf-name-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-cyan); margin-top: 0.4rem; }
   .plant-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .pp { font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.35rem 0.9rem; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); color: var(--tan); border-radius: 2px; }
+  .pp { font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.35rem 0.9rem; background: rgba(62, 142, 222, 0.1); border: 1px solid rgba(62, 142, 222, 0.3); color: var(--neon-blue); border-radius: 4px; }
 
   /* ── PHOTO WALL ── */
   .photo-wall { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 320px 320px; }
-  .pw-item { overflow: hidden; }
+  .pw-item { overflow: hidden; background: var(--black); }
   .pw-item:first-child { grid-row: 1 / 3; }
-  .pw-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-  .pw-item:hover img { transform: scale(1.05); }
+  .pw-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; opacity: 0.8; }
+  .pw-item:hover img { transform: scale(1.05); opacity: 1; }
 
   /* ── OFFERINGS ── */
-  .offerings { background: var(--white); padding: 7rem 3.5rem; }
+  .offerings { background: var(--glass-dark); backdrop-filter: blur(10px); padding: 7rem 3.5rem; }
   .off-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
-  .off-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--rust); margin-top: 1rem; line-height: 1.15; }
-  .off-header h2 em { font-style: italic; color: var(--terra); }
-  .off-header p { font-size: 0.92rem; line-height: 1.9; color: #6B5040; }
+  .off-header h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text-main); margin-top: 1rem; line-height: 1.1; }
+  .off-header h2 em { color: var(--neon-cyan); }
+  .off-header p { font-size: 0.92rem; line-height: 1.9; color: var(--text-muted); }
   .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-  .off-item { background: var(--linen); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: background 0.3s; border-bottom: 2px solid transparent; }
-  .off-item:hover { background: var(--sand); border-bottom-color: var(--terra); }
-  .off-num { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--stone); line-height: 1; flex-shrink: 0; }
+  .off-item { background: rgba(0,0,0,0.6); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: all 0.3s; border-bottom: 2px solid transparent; }
+  .off-item:hover { background: var(--black); border-bottom-color: var(--neon-blue); }
+  .off-num { font-size: 2.5rem; color: #333; line-height: 1; flex-shrink: 0; }
   .off-content {}
-  .off-en { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--rust); margin-bottom: 0.25rem; }
-  .off-es { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; }
-  .off-desc { font-size: 0.85rem; line-height: 1.8; color: #6B5040; }
+  .off-en { font-size: 1.15rem; color: var(--text-main); margin-bottom: 0.25rem; }
+  .off-es { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-orange); margin-bottom: 0.8rem; font-weight: bold;}
+  .off-desc { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); }
 
   /* ── PHOTO ROW ── */
   .photo-row { display: grid; grid-template-columns: repeat(3, 1fr); height: 300px; }
-  .photo-row-item { overflow: hidden; }
-  .photo-row-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
-  .photo-row-item:hover img { transform: scale(1.05); }
+  .photo-row-item { overflow: hidden; background: var(--black); }
+  .photo-row-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; opacity: 0.8; }
+  .photo-row-item:hover img { transform: scale(1.05); opacity: 1; }
 
   /* ── CONTACT ── */
-  .contact-section { background: var(--linen); }
+  .contact-section { background: var(--black); }
   .contact-section-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .cs-img { position: relative; overflow: hidden; }
-  .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 500px; }
-  .cs-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(74,44,26,0.7)); display: flex; align-items: flex-end; padding: 3rem; }
-  .cs-img-text h3 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-style: italic; color: var(--sand); }
-  .cs-img-text p { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tan); margin-top: 0.5rem; }
-  .cs-form { background: var(--white); padding: 5rem 4rem; display: flex; flex-direction: column; gap: 0; }
+  .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 500px; opacity: 0.85;}
+  .cs-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.9)); display: flex; align-items: flex-end; padding: 3rem; }
+  .cs-img-text h3 { font-size: 1.8rem; color: var(--text-main); }
+  .cs-img-text p { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-cyan); margin-top: 0.5rem; }
+  .cs-form { background: var(--glass-light); backdrop-filter: blur(10px); padding: 5rem 4rem; display: flex; flex-direction: column; gap: 0; }
   .cs-form-header { margin-bottom: 3rem; }
-  .cs-form-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 2.5vw, 2.5rem); color: var(--rust); margin-top: 1rem; }
-  .cs-form-header h2 em { font-style: italic; color: var(--terra); }
+  .cs-form-header h2 { font-size: clamp(1.8rem, 2.5vw, 2.5rem); color: var(--text-main); margin-top: 1rem; }
+  .cs-form-header h2 em { color: var(--neon-blue); }
   form { display: flex; flex-direction: column; gap: 1.4rem; }
   .fg { display: flex; flex-direction: column; gap: 0.45rem; }
-  .fl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--terra); }
+  .fl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--neon-blue); font-weight: bold;}
   .fi, .fsel, .fta {
-    background: var(--linen); border: none; border-bottom: 1.5px solid var(--stone);
-    padding: 0.8rem 0.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    color: var(--warm); outline: none; transition: border-color 0.2s; width: 100%;
-    -webkit-appearance: none;
+    background: rgba(255,255,255,0.03); border: none; border-bottom: 1.5px solid var(--border-dark);
+    padding: 0.8rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--text-main); outline: none; transition: border-color 0.2s; width: 100%;
+    -webkit-appearance: none; border-radius: 4px 4px 0 0;
   }
-  .fi:focus, .fsel:focus, .fta:focus { border-bottom-color: var(--terra); }
+  .fi:focus, .fsel:focus, .fta:focus { border-bottom-color: var(--neon-cyan); background: rgba(255,255,255,0.06); }
   .fta { resize: vertical; min-height: 100px; }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .fsel option { background: var(--white); }
-  .fsub { padding: 1rem 2.5rem; background: var(--terra); color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; align-self: flex-start; margin-top: 0.5rem; }
-  .fsub:hover { background: var(--rust); }
+  .fsel option { background: var(--black); color: var(--text-main); }
+  .fsub { padding: 1rem 2.5rem; background: var(--neon-blue); color: var(--black); border: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: bold; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; align-self: flex-start; margin-top: 0.5rem; border-radius: 50px; }
+  .fsub:hover { background: var(--neon-cyan); }
 
   /* ── FOOTER ── */
-  footer { background: var(--warm); padding: 4rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; }
-  .foot-brand .fn { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--sand); }
-  .foot-brand .fs2 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(212,165,116,0.7); margin-top: 0.3rem; }
-  .foot-brand p { font-size: 0.82rem; line-height: 1.8; color: rgba(212,165,116,0.65); margin-top: 1.2rem; max-width: 240px; }
-  .foot-col h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tan); margin-bottom: 1.2rem; }
+  footer { background: var(--black); padding: 4rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; border-top: 1px solid #111; }
+  .foot-brand .fn { font-size: 1.8rem; color: var(--text-main); }
+  .foot-brand .fs2 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+  .foot-brand p { font-size: 0.82rem; line-height: 1.8; color: var(--text-muted); margin-top: 1.2rem; max-width: 240px; }
+  .foot-col h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1.2rem; font-family: 'Montserrat', sans-serif; font-weight: bold;}
   .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .foot-col li { font-size: 0.82rem; color: rgba(212,165,116,0.7); }
-  .foot-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(212,165,116,0.2); padding-top: 2rem; font-size: 0.72rem; color: rgba(212,165,116,0.5); letter-spacing: 0.08em; }
+  .foot-col li { font-size: 0.82rem; color: var(--text-muted); }
+  .foot-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border-dark); padding-top: 2rem; font-size: 0.72rem; color: #666; letter-spacing: 0.08em; }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -211,7 +251,8 @@
 <section class="hero">
   <div class="hero-left">
     <img src="Photos/overhead tambos 2.jpg" alt="Koman Keneya from above">
-    <div class="hero-left-badge" data-en=""The plants are the teachers. We are just the bridge."" data-es=""Las plantas son los maestros. Nosotros solo somos el puente."">"The plants are the teachers. We are just the bridge."</div>
+    <!-- Fixed double quotes issue here -->
+    <div class="hero-left-badge" data-en="&quot;The plants are the teachers. We are just the bridge.&quot;" data-es="&quot;Las plantas son los maestros. Nosotros solo somos el puente.&quot;">"The plants are the teachers. We are just the bridge."</div>
   </div>
   <div class="hero-right">
     <p class="hero-eyebrow" data-en="Pucallpa · Peruvian Amazon" data-es="Pucallpa · Amazonía Peruana">Pucallpa · Peruvian Amazon</p>
@@ -260,7 +301,8 @@
         <p data-en="He began his formal training at 15, started with Ayahuasca at 19, and after years of rigorous isolation with Master Plants, emerged as a fully trained curandero. Today, he teaches with the same depth and dedication he received — passing the lineage forward." data-es="Comenzó su formación formal a los 15 años, comenzó con la Ayahuasca a los 19 y, después de años de riguroso aislamiento con Plantas Maestras, emergió como curandero completamente formado. Hoy enseña con la misma profundidad y dedicación que recibió, transmitiendo el linaje hacia adelante.">He began his formal training at 15, started with Ayahuasca at 19, and after years of rigorous isolation with Master Plants, emerged as a fully trained curandero. Today, he teaches with the same depth and dedication he received — passing the lineage forward.</p>
         <div class="hf-name-block">
           <div class="hf-name">Pekon Nima</div>
-          <div class="hf-name-sub" data-en=""The many colors of nature" — his Shipibo name" data-es=""Los muchos colores de la naturaleza" — su nombre Shipibo">"The many colors of nature" — his Shipibo name</div>
+          <!-- Fixed double quotes issue here -->
+          <div class="hf-name-sub" data-en="&quot;The many colors of nature&quot; — his Shipibo name" data-es="&quot;Los muchos colores de la naturaleza&quot; — su nombre Shipibo">"The many colors of nature" — his Shipibo name</div>
         </div>
         <div class="plant-pills">
           <span class="pp">Noya Rao</span>
@@ -366,7 +408,7 @@
       <div class="cs-form-header">
         <span class="slabel" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</span>
         <h2 data-en="Start Your <em>Journey</em>" data-es="Inicia Tu <em>Viaje</em>">Start Your <em>Journey</em></h2>
-        <p style="margin-top:1rem; font-size:0.88rem; line-height:1.85; color:#6B5040;" data-en="We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch." data-es="Damos la bienvenida a huéspedes de todos los orígenes que se acercan a este trabajo con sinceridad y respeto. Rellena el formulario a continuación y nos pondremos en contacto.">We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch.</p>
+        <p style="margin-top:1rem; font-size:0.88rem; line-height:1.85; color:#A0AAB2;" data-en="We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch." data-es="Damos la bienvenida a huéspedes de todos los orígenes que se acercan a este trabajo con sinceridad y respeto. Rellena el formulario a continuación y nos pondremos en contacto.">We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch.</p>
       </div>
       <form onsubmit="handleSubmit(event)">
         <div class="frow">
@@ -387,7 +429,7 @@
         <div class="fg"><label class="fl" data-en="Your Message" data-es="Tu Mensaje">Your Message</label><textarea class="fta"></textarea></div>
         <button type="submit" class="fsub" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
       </form>
-      <p id="succ" style="display:none; margin-top:1.5rem; color:var(--leaf); font-size:0.9rem;" data-en="Thank you — we'll be in touch soon." data-es="Gracias, nos pondremos en contacto pronto.">Thank you — we'll be in touch soon.</p>
+      <p id="succ" style="display:none; margin-top:1.5rem; color:var(--neon-cyan); font-size:0.9rem; font-weight: bold;" data-en="Thank you — we'll be in touch soon." data-es="Gracias, nos pondremos en contacto pronto.">Thank you — we'll be in touch soon.</p>
     </div>
   </div>
 </section>
