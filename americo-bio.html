@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Americo's Full Bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark: #050505;
+      --text-main: #FFFFFF;
+      --text-muted: #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
+    }
+    header, main, footer { position: relative; z-index: 1; }
+    header { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border-dark); }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; letter-spacing: -0.02em; text-transform: uppercase; font-weight: 900; color: var(--text-main); text-decoration: none; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.2rem; font-weight: 700; }
+    header .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    header a.button-link { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--neon-cyan); text-decoration: none; }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    main { padding: 4rem 3rem; max-width: 100%; margin: 0 auto; }
+
+    /* Full-width bio layout */
+    .bio-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 28px;
+      padding: 3.5rem;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.2);
+    }
+
+    .bio-title-row {
+      margin-bottom: 2.5rem;
+    }
+    .bio-label { display: inline-flex; align-items: center; letter-spacing: 0.26em; text-transform: uppercase; font-size: 0.72rem; color: var(--neon-cyan); margin-bottom: 0.8rem; font-weight: 700; }
+    .bio-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 3vw, 3rem); text-transform: uppercase; letter-spacing: -0.03em; }
+    .bio-title em { color: var(--neon-orange); font-style: normal; }
+
+    /* Photo floated left, text wrapping around it */
+    .bio-photo-float {
+      float: left;
+      width: clamp(280px, 30%, 420px);
+      margin: 0 3rem 2rem 0;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    }
+    .bio-photo-float img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .bio-photo-float:hover img { transform: scale(1.02); }
+
+    .bio-content { overflow: visible; }
+    .bio-content::after { content: ''; display: table; clear: both; }
+
+    .bio-content p { font-size: 1rem; line-height: 1.95; color: var(--text-muted); margin-bottom: 1.35rem; }
+    .bio-content p span.highlight { color: var(--text-main); font-weight: 700; }
+
+    .bio-content h2 { font-family: 'Montserrat', sans-serif; font-size: 1.45rem; margin: 2.5rem 0 1rem; letter-spacing: -0.02em; color: var(--text-main); clear: none; }
+
+    .bio-content ul { margin: 1rem 0 1.35rem; padding-left: 1.4rem; list-style: none; }
+    .bio-content li { position: relative; margin-bottom: 1rem; padding-left: 1.9rem; color: var(--text-muted); line-height: 1.8; }
+    .bio-content li::before { content: '❖'; position: absolute; left: 0; color: var(--neon-orange); }
+
+    .bio-button {
+      display: inline-flex; text-decoration: none; align-items: center; justify-content: center;
+      gap: 0.6rem; margin-top: 2rem; padding: 1rem 1.8rem; background: var(--neon-orange);
+      color: #000; border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .bio-button::after { content: '→'; font-size: 1rem; }
+    .bio-button:hover { background: #f6b388; transform: translateY(-1px); }
+
+    footer { padding: 2rem 3rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
+
+    @media (max-width: 900px) {
+      header, main, footer { padding: 1.5rem; }
+      .bio-wrapper { padding: 2rem; }
+      .bio-photo-float { float: none; width: 100%; margin: 0 0 2rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+  <header>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+    <div class="header-right">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="index.html#healer" class="button-link" data-en="Return Home" data-es="Regresar al Inicio">Return Home</a>
+    </div>
+  </header>
+  <main>
+    <div class="bio-wrapper">
+      <div class="bio-title-row">
+        <span class="bio-label" data-en="Maestro Profile" data-es="Perfil del Maestro">Maestro Profile</span>
+        <h1 class="bio-title">Americo López Sanchez — <em data-en="Full Biography" data-es="Biografía Completa">Full Biography</em></h1>
+      </div>
+
+      <div class="bio-content">
+        <!-- Photo floated left so text wraps around it -->
+        <div class="bio-photo-float">
+          <img src="Photos/Americo 3.jpeg" alt="Maestro Americo López Sanchez">
+        </div>
+
+        <p data-en="Americo López Sanchez was born in the Roaboya Nativa community near Pucallpa, Peru. His earliest memories were shaped by life beneath a giant <span class='highlight'>Shihuahuaco</span> tree, where his parents worked and where the songs of the jungle became part of his foundation."
+           data-es="Americo López Sanchez nació en la comunidad nativa de Roaboya, cerca de Pucallpa, Perú. Sus primeros recuerdos fueron moldeados por la vida bajo un gran árbol <span class='highlight'>Shihuahuaco</span>, donde trabajaban sus padres y donde los cantos de la selva se convirtieron en parte de su cimiento.">
+          Americo López Sanchez was born in the Roaboya Nativa community near Pucallpa, Peru. His earliest memories were shaped by life beneath a giant <span class="highlight">Shihuahuaco</span> tree, where his parents worked and where the songs of the jungle became part of his foundation.
+        </p>
+
+        <p data-en="From childhood, Americo was guided by his father, the respected curandero José López Rengifo (known as Sani Meni). Under his father's care, Americo entered the path of traditional medicine with curiosity, discipline, and deep respect."
+           data-es="Desde su infancia, Americo fue guiado por su padre, el respetado curandero José López Rengifo (conocido como Sani Meni). Bajo el cuidado de su padre, Americo entró en el camino de la medicina tradicional con curiosidad, disciplina y profundo respeto.">
+          From childhood, Americo was guided by his father, the respected curandero José López Rengifo (known as Sani Meni). Under his father's care, Americo entered the path of traditional medicine with curiosity, discipline, and deep respect.
+        </p>
+
+        <p data-en="At age 15, he began formal training in the Shipibo healing tradition. His early years were marked by long periods of isolated plant diets, learning to listen to the spirit of the forest, and receiving the energetic lineages carried by sacred icaros."
+           data-es="A los 15 años comenzó su formación formal en la tradición curativa Shipibo. Sus primeros años estuvieron marcados por largos períodos de dietas de plantas en aislamiento, aprendiendo a escuchar el espíritu del bosque y recibiendo los linajes energéticos transmitidos por los sagrados icaros.">
+          At age 15, he began formal training in the Shipibo healing tradition. His early years were marked by long periods of isolated plant diets, learning to listen to the spirit of the forest, and receiving the energetic lineages carried by sacred icaros.
+        </p>
+
+        <h2 data-en="Formation and Healing Practice" data-es="Formación y Práctica Curativa">Formation and Healing Practice</h2>
+
+        <p data-en="Americo completed his first Ayahuasca ceremonies at 19. He then spent many seasons in rigorous training with Master Plants, attending to both his own transformation and the needs of those who came for healing."
+           data-es="Americo completó sus primeras ceremonias de Ayahuasca a los 19 años. Luego pasó muchas temporadas en riguroso entrenamiento con Plantas Maestras, atendiendo tanto su propia transformación como las necesidades de quienes llegaban en busca de sanación.">
+          Americo completed his first Ayahuasca ceremonies at 19. He then spent many seasons in rigorous training with Master Plants, attending to both his own transformation and the needs of those who came for healing.
+        </p>
+
+        <p data-en="His apprenticeship combined direct experience, ancestral ritual, and the oral teachings of his elders. He learned the medicinal properties of plants like <span class='highlight'>Noya Rao</span>, <span class='highlight'>Shihuahuaco</span>, <span class='highlight'>Manchinga</span>, <span class='highlight'>Bobinsana</span>, <span class='highlight'>Chiric Sanango</span>, and <span class='highlight'>Marusa</span>."
+           data-es="Su aprendizaje combinó la experiencia directa, el ritual ancestral y las enseñanzas orales de sus mayores. Aprendió las propiedades medicinales de plantas como <span class='highlight'>Noya Rao</span>, <span class='highlight'>Shihuahuaco</span>, <span class='highlight'>Manchinga</span>, <span class='highlight'>Bobinsana</span>, <span class='highlight'>Chiric Sanango</span> y <span class='highlight'>Marusa</span>.">
+          His apprenticeship combined direct experience, ancestral ritual, and the oral teachings of his elders. He learned the medicinal properties of plants like <span class="highlight">Noya Rao</span>, <span class="highlight">Shihuahuaco</span>, <span class="highlight">Manchinga</span>, <span class="highlight">Bobinsana</span>, <span class="highlight">Chiric Sanango</span>, and <span class="highlight">Marusa</span>.
+        </p>
+
+        <h2 data-en="Community and Education" data-es="Comunidad y Educación">Community and Education</h2>
+
+        <p data-en="Americo is also a former school teacher who blends education and healing. He works with local youth to preserve Shipibo culture, passing down traditional knowledge of plants, songs, and ceremonial medicines."
+           data-es="Americo también es un ex maestro de escuela que combina la educación y la sanación. Trabaja con jóvenes locales para preservar la cultura Shipibo, transmitiendo el conocimiento tradicional de plantas, cantos y medicinas ceremoniales.">
+          Americo is also a former school teacher who blends education and healing. He works with local youth to preserve Shipibo culture, passing down traditional knowledge of plants, songs, and ceremonial medicines.
+        </p>
+
+        <p data-en="His mission is to revive ancestral education through living experience: guiding students into the forest, teaching plant identification, and sharing the stories encoded in the jungle."
+           data-es="Su misión es revivir la educación ancestral a través de la experiencia viva: guiar a los estudiantes al bosque, enseñar la identificación de plantas y compartir las historias codificadas en la selva.">
+          His mission is to revive ancestral education through living experience: guiding students into the forest, teaching plant identification, and sharing the stories encoded in the jungle.
+        </p>
+
+        <h2 data-en="Healing Philosophy" data-es="Filosofía de Sanación">Healing Philosophy</h2>
+
+        <ul>
+          <li data-en="Healing begins with listening carefully to the plant and the person." data-es="La sanación comienza escuchando atentamente a la planta y a la persona.">Healing begins with listening carefully to the plant and the person.</li>
+          <li data-en="Plant dietas are a path to wisdom, resilience, and spiritual insight." data-es="Las dietas de plantas son un camino hacia la sabiduría, la resiliencia y el discernimiento espiritual.">Plant dietas are a path to wisdom, resilience, and spiritual insight.</li>
+          <li data-en="Sacred songs (icaros) are essential for protection, cleansing, and therapeutic intention." data-es="Los cantos sagrados (icaros) son esenciales para la protección, la limpieza y la intención terapéutica.">Sacred songs (icaros) are essential for protection, cleansing, and therapeutic intention.</li>
+          <li data-en="True medicine combines ceremony, community, and daily care." data-es="La verdadera medicina combina ceremonia, comunidad y cuidado diario.">True medicine combines ceremony, community, and daily care.</li>
+          <li data-en="Americo believes in bridging ancestral knowledge with the needs of modern seekers." data-es="Americo cree en tender un puente entre el conocimiento ancestral y las necesidades de los buscadores modernos.">Americo believes in bridging ancestral knowledge with the needs of modern seekers.</li>
+        </ul>
+
+        <p data-en="Today, Americo offers healing grounded in compassion, tradition, and deep respect for the jungle. His work is for those who are searching for a genuine cure, a sense of direction, or a return to their own natural balance."
+           data-es="Hoy, Americo ofrece sanación basada en la compasión, la tradición y el profundo respeto por la selva. Su trabajo es para quienes buscan una cura genuina, un sentido de dirección o un regreso a su propio equilibrio natural.">
+          Today, Americo offers healing grounded in compassion, tradition, and deep respect for the jungle. His work is for those who are searching for a genuine cure, a sense of direction, or a return to their own natural balance.
+        </p>
+
+        <a href="index.html#healer" class="bio-button" data-en="Back to Americo's Profile" data-es="Volver al Perfil de Americo">Back to Americo's Profile</a>
+      </div>
+    </div>
+  </main>
+  <footer data-en="Designed for Koman Keneya — A full biography page for Maestro Americo." data-es="Diseñado para Koman Keneya — Página de biografía completa del Maestro Americo.">Designed for Koman Keneya — A full biography page for Maestro Americo.</footer>
+
+<script>
+  function setLang(lang) {
+    sessionStorage.setItem('kk-lang', lang);
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+    if (btn) btn.classList.add('on');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      var txt = el.getAttribute('data-' + lang);
+      if (!txt) return;
+      // Allow innerHTML for elements that contain span highlights
+      if (txt.includes('<span')) {
+        el.innerHTML = txt;
+      } else if ((el.tagName === 'H1' || el.tagName === 'H2') && txt.includes('<em')) {
+        el.innerHTML = txt;
+      } else {
+        el.textContent = txt;
+      }
+    });
+  }
+  (function() {
+    var lang = sessionStorage.getItem('kk-lang') || 'en';
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>

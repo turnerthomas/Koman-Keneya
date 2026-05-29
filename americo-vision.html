@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Americo's Full Vision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark: #050505;
+      --text-main: #FFFFFF;
+      --text-muted: #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    /* Subtle Shipibo pattern overlay (low opacity for readability) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.14; /* adjust for more/less visibility */
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ensure page content sits above the pattern */
+    header, main, footer { position: relative; z-index: 1; }
+    a { color: var(--neon-cyan); text-decoration: none; }
+    header { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border-dark); }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+    header a { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+    main { padding: 4rem 3rem; max-width: 900px; margin: 0 auto; }
+    main h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--text-main); }
+    main p { font-size: 1rem; line-height: 1.9; color: var(--neon-cyan); margin-bottom: 1rem; }
+    main p.check-item { position: relative; padding-left: 1.8rem; }
+    main p.check-item::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--neon-orange); }
+    main h3 { font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-main); }
+    .vision-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.5rem; }
+    ul { margin-top: 1rem; padding-left: 1.2rem; list-style: none; }
+    li { margin-bottom: 0.75rem; line-height: 1.8; padding-left: 1.8rem; position: relative; color: var(--neon-cyan); }
+    li::before { content: '❖'; position: absolute; left: 0; color: var(--neon-orange); }
+    .note { margin-top: 1.5rem; color: #B0D8E0; }
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid rgba(255,255,255,0.1); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: #3E8EDE; border-color: #3E8EDE; color: #000; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <!-- lang detection from index -->
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+  <header>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="index.html" data-en="Return Home" data-es="Regresar al Inicio">Return Home</a>
+    </div>
+  </header>
+  <main>
+    <div class="vision-card">
+      <h2 data-en="Maestro Americo's Vision" data-es="La Visión del Maestro Americo">Maestro Americo's Vision</h2>
+      <p class="check-item" data-en='The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.' data-es='La visión de la escuela "Koman Keneya" es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina.'>The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p>
+      <p class="check-item" data-en="The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines." data-es="La idea de la escuela surge de una preocupación actual: estamos perdiendo cada vez más la cultura de nuestros ancestros. Nuestros adolescentes y jóvenes en las comunidades ya no conocen las diferentes plantas medicinales utilizadas para tratar diversas enfermedades; solo tienen la idea de comprar medicamentos farmacéuticos.">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p>
+      <p class="check-item" data-en="The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive." data-es="El propósito de la escuela es salvar nuestro planeta Tierra reflejando claramente el valor de las plantas y manteniendo así nuestra cultura viva.">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p>
+      <p class="check-item" data-en="It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities." data-es="Busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con sus comunidades.">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p>
+      <p class="check-item" data-en="The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo." data-es="El objetivo de la escuela es invitar y preparar a adolescentes y jóvenes interesados, y crear oportunidades reales para quienes más las necesitan, tanto Shipibo como no Shipibo.">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p>
+      <h3 data-en="TRADITIONAL SCHOOLING OFFERS THE FOLLOWING BENEFITS:" data-es="LA ESCUELA TRADICIONAL OFRECE LOS SIGUIENTES BENEFICIOS:">TRADITIONAL SCHOOLING OFFERS THE FOLLOWING BENEFITS:</h3>
+      <ul>
+        <li data-en="Knowledge of medicinal plants and their benefits." data-es="Conocimiento de plantas medicinales y sus beneficios.">Knowledge of medicinal plants and their benefits.</li>
+        <li data-en="Medicinal plant diet to acquire knowledge and wisdom for healing." data-es="Dieta de plantas medicinales para adquirir conocimiento y sabiduría para la sanación.">Medicinal plant diet to acquire knowledge and wisdom for healing.</li>
+        <li data-en="Saunas with medicinal plants (bark, leaves)." data-es="Saunas con plantas medicinales (corteza, hojas).">Saunas with medicinal plants (bark, leaves).</li>
+        <li data-en="Baths with aromatic jungle plants." data-es="Baños con plantas aromáticas de la selva.">Baths with aromatic jungle plants.</li>
+        <li data-en="Emetics with leaves and bark of medicinal plants." data-es="Eméticos con hojas y corteza de plantas medicinales.">Emetics with leaves and bark of medicinal plants.</li>
+        <li data-en="Practice in preparing medicinal plants for the treatment and healing of various illnesses." data-es="Práctica en la preparación de plantas medicinales para el tratamiento y la sanación de diversas enfermedades.">Practice in preparing medicinal plants for the treatment and healing of various illnesses.</li>
+        <li data-en="Teaching icaros (songs) for the energetic cleansing and protection of the body." data-es="Enseñanza de icaros (cantos) para la limpieza energética y la protección del cuerpo.">Teaching icaros (songs) for the energetic cleansing and protection of the body.</li>
+        <li data-en="Practice of embroidery with Shipibo designs." data-es="Práctica de bordado con diseños Shipibo.">Practice of embroidery with Shipibo designs.</li>
+        <li data-en="Lodging and meals." data-es="Alojamiento y comidas.">Lodging and meals.</li>
+        <li data-en="Ancestral games. Dances, cultural songs." data-es="Juegos ancestrales. Danzas, canciones culturales.">Ancestral games. Dances, cultural songs.</li>
+      </ul>
+    </div>
+  </main>
+  <footer>Designed for Koman Keneya</footer>
+<script>
+  function setLang(lang) {
+    sessionStorage.setItem('kk-lang', lang);
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+    if (btn) btn.classList.add('on');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      var txt = el.getAttribute('data-' + lang);
+      if (!txt) return;
+      el.textContent = txt;
+    });
+  }
+  // Apply saved language on load
+  (function() {
+    var lang = sessionStorage.getItem('kk-lang') || 'en';
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>
