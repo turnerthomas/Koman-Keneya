@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Americo's Full Vision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark: #050505;
+      --text-main: #FFFFFF;
+      --text-muted: #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    /* Subtle Shipibo pattern overlay (low opacity for readability) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.14; /* adjust for more/less visibility */
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ensure page content sits above the pattern */
+    header, main, footer { position: relative; z-index: 1; }
+    a { color: var(--neon-cyan); text-decoration: none; }
+    header { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border-dark); }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+    header a { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+    main { padding: 4rem 3rem; max-width: 900px; margin: 0 auto; }
+    main h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--text-main); }
+    main p { font-size: 1rem; line-height: 1.9; color: var(--neon-cyan); margin-bottom: 1rem; }
+    main p.check-item { position: relative; padding-left: 1.8rem; }
+    main p.check-item::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--neon-orange); }
+    main h3 { font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-main); }
+    .vision-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.5rem; }
+    ul { margin-top: 1rem; padding-left: 1.2rem; list-style: none; }
+    li { margin-bottom: 0.75rem; line-height: 1.8; padding-left: 1.8rem; position: relative; color: var(--neon-cyan); }
+    li::before { content: '❖'; position: absolute; left: 0; color: var(--neon-orange); }
+    .note { margin-top: 1.5rem; color: #B0D8E0; }
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="shipibo.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline">School of Traditional Medicine</span>
+    </a>
+    <a href="shipibo.html">Return Home</a>
+  </header>
+  <main>
+    <div class="vision-card">
+      <h2>Maestro Americo's Vision</h2>
+      <p class="check-item">The vision of the "Koman Kenya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p>
+      <p class="check-item">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p>
+      <p class="check-item">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p>
+      <p class="check-item">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p>
+      <p class="check-item">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p>
+      <h3>TRADITIONAL SCHOOLING OFFERS THE FOLLOWING BENEFITS:</h3>
+      <ul>
+        <li>Knowledge of medicinal plants and their benefits.</li>
+        <li>Medicinal plant diet to acquire knowledge and wisdom for healing.</li>
+        <li>Saunas with medicinal plants (bark, leaves).</li>
+        <li>Baths with aromatic jungle plants.</li>
+        <li>Emetics with leaves and bark of medicinal plants.</li>
+        <li>Practice in preparing medicinal plants for the treatment and healing of various illnesses.</li>
+        <li>Teaching icaros (songs) for the energetic cleansing and protection of the body.</li>
+        <li>Practice of embroidery with Shipibo designs.</li>
+        <li>Lodging and meals.</li>
+        <li>Ancestral games. Dances, cultural songs.</li>
+      </ul>
+    </div>
+  </main>
+  <footer>Designed for Koman Keneya — Full vision details will appear above.</footer>
+</body>
+</html>

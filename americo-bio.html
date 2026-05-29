@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Americo's Full Bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark: #050505;
+      --text-main: #FFFFFF;
+      --text-muted: #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
+    }
+    header, main, footer { position: relative; z-index: 1; }
+    header { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border-dark); }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; letter-spacing: -0.02em; text-transform: uppercase; font-weight: 900; color: var(--text-main); text-decoration: none; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.2rem; font-weight: 700; }
+    header a.button-link { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--neon-cyan); text-decoration: none; }
+    main { padding: 4rem 3rem; max-width: 1180px; margin: 0 auto; }
+    .bio-title { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: -0.03em; }
+    .bio-title em { color: var(--neon-orange); font-style: normal; }
+    .bio-hero { display: grid; grid-template-columns: minmax(380px, 1fr) minmax(420px, 1.2fr); gap: 3rem; align-items: start; }
+    .bio-image { overflow: hidden; border-radius: 28px; box-shadow: 0 30px 90px rgba(0,0,0,0.25); min-height: 560px; }
+    .bio-image img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 560px; transition: transform 0.6s ease; }
+    .bio-image:hover img { transform: scale(1.02); }
+    .bio-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; padding: 3rem; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 30px 90px rgba(0,0,0,0.2); max-width: 760px; }
+    .bio-card p { font-size: 1rem; line-height: 1.95; color: var(--text-muted); margin-bottom: 1.35rem; max-width: 760px; }
+    .bio-card p span.highlight { color: var(--text-main); font-weight: 700; }
+    .bio-label { display: inline-flex; align-items: center; letter-spacing: 0.26em; text-transform: uppercase; font-size: 0.72rem; color: var(--neon-cyan); margin-bottom: 1rem; font-weight: 700; }
+    .bio-card h2 { font-family: 'Montserrat', sans-serif; font-size: 1.55rem; margin: 2.5rem 0 1rem; letter-spacing: -0.02em; color: var(--text-main); }
+    .bio-card ul { margin-top: 1rem; padding-left: 1.4rem; list-style: none; }
+    .bio-card li { position: relative; margin-bottom: 1rem; padding-left: 1.9rem; color: var(--text-muted); line-height: 1.8; }
+    .bio-card li::before { content: '❖'; position: absolute; left: 0; color: var(--neon-orange); }
+    .bio-button { display: inline-flex; text-decoration: none; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 2rem; padding: 1rem 1.8rem; background: var(--neon-orange); color: var(--black); border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: transform 0.2s ease, background 0.2s ease; }
+    .bio-button::after { content: '→'; font-size: 1rem; }
+    .bio-button:hover { background: #f6b388; transform: translateY(-1px); }
+    footer { padding: 2rem 3rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
+    @media (max-width: 1200px) { .bio-hero { grid-template-columns: 1fr; } .bio-image { min-height: 420px; } }
+    @media (max-width: 900px) { header, main, footer { padding: 1.5rem; } .bio-card { padding: 2rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="shipibo.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline">School of Traditional Medicine</span>
+    </a>
+    <a href="shipibo.html" class="button-link">Return Home</a>
+  </header>
+  <main>
+    <div class="bio-hero">
+      <div class="bio-image">
+        <img src="Photos/Americo 3.jpeg" alt="Maestro Americo López Sanchez">
+      </div>
+      <div class="bio-card">
+        <span class="bio-label">Maestro Profile</span>
+        <h1 class="bio-title">Americo López Sanchez — <em>Full Biography</em></h1>
+        <p>Americo López Sanchez was born in the Roaboya Nativa community near Pucallpa, Peru. His earliest memories were shaped by life beneath a giant <span class="highlight">Shihuahuaco</span> tree, where his parents worked and where the songs of the jungle became part of his foundation.</p>
+        <p>From childhood, Americo was guided by his father, the respected curandero José López Rengifo (known as Sani Meni). Under his father's care, Americo entered the path of traditional medicine with curiosity, discipline, and deep respect.</p>
+        <p>At age 15, he began formal training in the Shipibo healing tradition. His early years were marked by long periods of isolated plant diets, learning to listen to the spirit of the forest, and receiving the energetic lineages carried by sacred icaros.</p>
+        <h2>Formation and Healing Practice</h2>
+        <p>Americo completed his first Ayahuasca ceremonies at 19. He then spent many seasons in rigorous training with Master Plants, attending to both his own transformation and the needs of those who came for healing.</p>
+        <p>His apprenticeship combined direct experience, ancestral ritual, and the oral teachings of his elders. He learned the medicinal properties of plants like <span class="highlight">Noya Rao</span>, <span class="highlight">Shihuahuaco</span>, <span class="highlight">Manchinga</span>, <span class="highlight">Bobinsana</span>, <span class="highlight">Chiric Sanango</span>, and <span class="highlight">Marusa</span>.</p>
+        <h2>Community and Education</h2>
+        <p>Americo is also a former school teacher who blends education and healing. He works with local youth to preserve Shipibo culture, passing down traditional knowledge of plants, songs, and ceremonial medicines.</p>
+        <p>His mission is to revive ancestral education through living experience: guiding students into the forest, teaching plant identification, and sharing the stories encoded in the jungle.</p>
+        <h2>Healing Philosophy</h2>
+        <ul>
+          <li>Healing begins with listening carefully to the plant and the person.</li>
+          <li>Plant dietas are a path to wisdom, resilience, and spiritual insight.</li>
+          <li>Sacred songs (icaros) are essential for protection, cleansing, and therapeutic intention.</li>
+          <li>True medicine combines ceremony, community, and daily care.</li>
+          <li>Americo believes in bridging ancestral knowledge with the needs of modern seekers.</li>
+        </ul>
+        <p>Today, Americo offers healing grounded in compassion, tradition, and deep respect for the jungle. His work is for those who are searching for a genuine cure, a sense of direction, or a return to their own natural balance.</p>
+        <a href="shipibo.html#healer" class="bio-button">Back to Americo's Profile</a>
+      </div>
+    </div>
+  </main>
+  <footer>Designed for Koman Keneya — A full biography page for Maestro Americo.</footer>
+</body>
+</html>
