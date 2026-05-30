@@ -73,14 +73,14 @@
   /* ── HERO ── */
   .hero { padding-top: 72px; display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 72px); }
   .hero-left { position: relative; overflow: hidden; }
-  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: calc(100vh - 72px); opacity: 0.9; }
+  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: calc(100vh - 72px); opacity: 1; }
   .hero-left-badge {
     position: absolute; bottom: 2.5rem; left: 2.5rem;
     background: var(--black); color: var(--text-main);
     padding: 1.2rem 1.5rem; max-width: 260px;
     font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan);
   }
-  .hero-right { background: url('../Photos/shipibo-pattern.png'); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
+  .hero-right { background: url('Photos/shipibo-pattern.png'); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
   .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 2rem; font-weight: 800; letter-spacing: 0.35em; }
   
   /* The black rounded box effect from your image */
@@ -132,18 +132,19 @@
   .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
-  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(20, 20, 20, 0.45); backdrop-filter: blur(4px); }
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(20, 20, 20, 0.15); backdrop-filter: blur(0px); }
   .vs-img { position: relative; overflow: hidden; }
-  .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 0.85; }
+  .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 1; }
   .vs-img:hover img { transform: scale(1.04); }
-  .vs-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .vs-text { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .vs-text-inner { background: rgba(5, 5, 5, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
   .vs-text h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--text-main); line-height: 1.1; margin: 1.2rem 0 2rem; }
   .vs-text h2 em { color: var(--neon-cyan); }
-  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: var(--text-muted); }
+  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: #d0dde5; }
   .vs-text p + p { margin-top: 1.2rem; }
   .vs-pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--border-dark); color: var(--text-main); border-radius: 100px; }
-  .vs-cta { display: inline-flex; align-self: flex-start; align-items: center; gap: 0.5rem; margin-top: 4.5rem; padding: 0.55rem 0.9rem; background: var(--neon-cyan); color: var(--black); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-radius: 999px; transition: transform 0.2s, background 0.2s; white-space: nowrap; width: fit-content; }
+  .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main); border-radius: 100px; background: rgba(255,255,255,0.06); }
+  .vs-cta { display: inline-flex; align-self: flex-start; align-items: center; gap: 0.5rem; margin-top: 2.5rem; padding: 0.55rem 0.9rem; background: var(--neon-cyan); color: var(--black); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-radius: 999px; transition: transform 0.2s, background 0.2s; white-space: nowrap; width: fit-content; }
   .vs-cta:hover { background: var(--neon-blue); transform: translateY(-1px); }
   .vs-cta::after { content: '→'; font-size: 1rem; }
 
@@ -297,8 +298,8 @@
     <span class="nav-tagline">School of Traditional Medicine</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#vision" data-en="Vision" data-es="Visión">Vision</a></li>
-    <li><a href="#healer" data-en="The Healer" data-es="El Curandero">The Healer</a></li>
+    <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+    <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
     <li><a href="#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
     <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
   </ul>
@@ -327,17 +328,19 @@
 <!-- VISION -->
 <section class="vision-split" id="vision">
   <div class="vs-text">
-    <span class="slabel" data-en="Vision" data-es="Visión">Vision</span>
-    <h2 data-en="Saving Our Planet Through the <em>Power of Plants</em>" data-es="Salvando Nuestro Planeta a Través del <em>Poder de las Plantas</em>">Saving Our Planet Through the <em>Power of Plants</em></h2>
-    <p data-en="The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors." data-es="La visión de Koman Keneya es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina. Estamos perdiendo cada vez más la cultura de nuestros ancestros.">The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors.</p>
-    <p data-en="The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition." data-es="La escuela busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con las comunidades, invitando a personas interesadas de todo el mundo a experimentar oportunidades reales de sanación dentro de la tradición Shipibo.">The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition.</p>
-    <div class="vs-pill-row">
-      <span class="vs-pill" data-en="Plant Dieta" data-es="Dieta de Plantas">Plant Dieta</span>
-      <span class="vs-pill" data-en="Healing Ceremonies" data-es="Ceremonias de Sanación">Healing Ceremonies</span>
-      <span class="vs-pill" data-en="Traditional Knowledge" data-es="Conocimiento Tradicional">Traditional Knowledge</span>
-      <span class="vs-pill" data-en="Cultural Immersion" data-es="Inmersión Cultural">Cultural Immersion</span>
+    <div class="vs-text-inner">
+      <span class="slabel" data-en="Vision" data-es="Visión">Vision</span>
+      <h2 data-en="Saving Our Planet Through the <em>Power of Plants</em>" data-es="Salvando Nuestro Planeta a Través del <em>Poder de las Plantas</em>">Saving Our Planet Through the <em>Power of Plants</em></h2>
+      <p data-en="The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors." data-es="La visión de Koman Keneya es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina. Estamos perdiendo cada vez más la cultura de nuestros ancestros.">The vision of Koman Keneya is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine. We are increasingly losing the culture of our ancestors.</p>
+      <p data-en="The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition." data-es="La escuela busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con las comunidades, invitando a personas interesadas de todo el mundo a experimentar oportunidades reales de sanación dentro de la tradición Shipibo.">The school seeks to foster innovation, strengthen the global presence of plants, and better connect with communities — inviting interested people from around the world to experience real healing opportunities within the Shipibo tradition.</p>
+      <div class="vs-pill-row">
+        <span class="vs-pill" data-en="Plant Dieta" data-es="Dieta de Plantas">Plant Dieta</span>
+        <span class="vs-pill" data-en="Healing Ceremonies" data-es="Ceremonias de Sanación">Healing Ceremonies</span>
+        <span class="vs-pill" data-en="Traditional Knowledge" data-es="Conocimiento Tradicional">Traditional Knowledge</span>
+        <span class="vs-pill" data-en="Cultural Immersion" data-es="Inmersión Cultural">Cultural Immersion</span>
+      </div>
+      <a class="vs-cta" href="americo-vision.html" data-en="Read Americo's Full Vision" data-es="Leer la Visión Completa de Americo">Read Americo's Full Vision</a>
     </div>
-    <a class="vs-cta" href="americo-vision.html" data-en="Read Americo's Full Vision" data-es="Leer la Visión Completa de Americo">Read Americo's Full Vision</a>
   </div>
   <div class="vs-img">
     <img src="Photos/tree.jpg" alt="Tree image">
@@ -375,12 +378,6 @@
     </div>
   </div>
 </section>
-
-<!-- PHOTO WALL -->
-<div class="photo-wall">
-  <div class="pw-item"><img src="Photos/overhead tambos 3.jpg" alt="Grounds overview"></div>
-  <div class="pw-item"><img src="Photos/maloca.jpg" alt="Traditional maloca interior"></div>
-</div>
 
 <!-- OFFERINGS -->
 <section class="offerings" id="offerings">
@@ -442,12 +439,6 @@
     </div>
   </div>
 </section>
-
-<!-- PHOTO ROW -->
-<div class="photo-row">
-  <div class="photo-row-item"><img src="Photos/hammock.jpg" alt="Tambo hammock porch"></div>
-  <div class="photo-row-item kitchen"><img src="Photos/kitchen.jpg" alt="Chef and dining space"></div>
-</div>
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
