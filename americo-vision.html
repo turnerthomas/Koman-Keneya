@@ -18,16 +18,17 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
 
-    /* Subtle Shipibo pattern overlay (low opacity for readability) */
+    /* Shipibo pattern 2 — inverted to white linework on dark */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url('Photos/shipibo-pattern.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.14; /* adjust for more/less visibility */
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
       pointer-events: none;
       z-index: 0;
     }
