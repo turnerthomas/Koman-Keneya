@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery · Koman Keneya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark:     #050505;
+      --text-main:   #FFFFFF;
+      --text-muted:  #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    /* Same shipibo-pattern2 background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; letter-spacing: -0.02em; text-transform: uppercase; font-weight: 900; color: var(--text-main); text-decoration: none; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.2rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover { color: var(--neon-cyan); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 1100px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(5, 8, 15, 0.82);
+      border: 1px solid rgba(56, 199, 204, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    .scroll-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .scroll-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    .scroll-intro {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 0.5rem;
+    }
+
+    /* ── GRID ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(56,199,204,0.15);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.03);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, opacity 0.3s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); opacity: 0.85; }
+
+    /* Hover overlay */
+    .gallery-item::after {
+      content: '⊕';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--neon-cyan);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: rgba(5,8,15,0.35);
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Caption below image */
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.5rem 0.75rem;
+      background: linear-gradient(to top, rgba(5,8,15,0.85), transparent);
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      transform: translateY(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(2, 4, 10, 0.96);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.active { display: flex; }
+
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 88vw;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-img-wrap img {
+      max-width: 88vw;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid rgba(56,199,204,0.2);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      display: block;
+    }
+
+    .lightbox-caption {
+      margin-top: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    .lightbox-counter {
+      margin-top: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Nav arrows */
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(5,8,15,0.7);
+      border: 1px solid rgba(56,199,204,0.25);
+      color: var(--neon-cyan);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 1001;
+      user-select: none;
+    }
+    .lb-arrow:hover { background: rgba(56,199,204,0.15); border-color: var(--neon-cyan); }
+    .lb-arrow.prev { left: 1.5rem; }
+    .lb-arrow.next { right: 1.5rem; }
+
+    /* Close button */
+    .lb-close {
+      position: fixed;
+      top: 1.2rem; right: 1.5rem;
+      background: rgba(5,8,15,0.7);
+      border: 1px solid rgba(229,134,84,0.3);
+      color: var(--neon-orange);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lb-close:hover { background: rgba(229,134,84,0.15); }
+
+    /* Dot indicators */
+    .lb-dots {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 300px;
+    }
+    .lb-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lb-dot.active { background: var(--neon-cyan); }
+
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 760px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 2rem 1.2rem; }
+      .scroll-outer { padding: 2rem 1.5rem; }
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.6rem; }
+      .lb-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+
+  <nav>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="index.html#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div class="lang-btns">
+      <button class="lb on" onclick="setLang('en')">EN</button>
+      <button class="lb" onclick="setLang('es')">ES</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
+
+      <div class="scroll-eyebrow" data-en="Koman Keneya · Roaboya Nativa, Peru" data-es="Koman Keneya · Roaboya Nativa, Perú">Koman Keneya · Roaboya Nativa, Peru</div>
+      <h1 class="scroll-title" data-en="Photo Gallery" data-es="Galería de Fotos">Photo Gallery</h1>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <p class="scroll-intro" data-en="A window into life at the center — the plants, the ceremonies, the people, and the jungle that holds it all." data-es="Una ventana a la vida en el centro — las plantas, las ceremonias, las personas y la selva que lo sostiene todo.">A window into life at the center — the plants, the ceremonies, the people, and the jungle that holds it all.</p>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- =====================================================
+           GALLERY IMAGES
+           To add a new photo:
+             1. Drop the image file into your Gallery/ folder
+             2. Copy any line below and change the filename and caption
+           ===================================================== -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <div class="gallery-item" data-caption="The Center" onclick="openLightbox(0)">
+          <img src="Gallery/photo1.jpg" alt="The Center">
+          <div class="gallery-caption">The Center</div>
+        </div>
+
+        <div class="gallery-item" data-caption="Medicinal Plants" onclick="openLightbox(1)">
+          <img src="Gallery/photo2.jpg" alt="Medicinal Plants">
+          <div class="gallery-caption">Medicinal Plants</div>
+        </div>
+
+        <div class="gallery-item" data-caption="The Jungle" onclick="openLightbox(2)">
+          <img src="Gallery/photo3.jpg" alt="The Jungle">
+          <div class="gallery-caption">The Jungle</div>
+        </div>
+
+        <div class="gallery-item" data-caption="Ceremony Space" onclick="openLightbox(3)">
+          <img src="Gallery/photo4.jpg" alt="Ceremony Space">
+          <div class="gallery-caption">Ceremony Space</div>
+        </div>
+
+        <div class="gallery-item" data-caption="Community" onclick="openLightbox(4)">
+          <img src="Gallery/photo5.jpg" alt="Community">
+          <div class="gallery-caption">Community</div>
+        </div>
+
+        <div class="gallery-item" data-caption="Sacred Garden" onclick="openLightbox(5)">
+          <img src="Gallery/photo6.jpg" alt="Sacred Garden">
+          <div class="gallery-caption">Sacred Garden</div>
+        </div>
+
+        <!-- ADD MORE PHOTOS HERE following the same pattern -->
+
+      </div>
+
+      <div class="scroll-divider" style="margin-top:2.5rem;">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>Designed for Koman Keneya</footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-close" onclick="closeLightbox()">✕</div>
+    <div class="lb-arrow prev" onclick="shiftPhoto(-1)">&#8592;</div>
+    <div class="lb-arrow next" onclick="shiftPhoto(1)">&#8594;</div>
+    <div class="lightbox-img-wrap">
+      <img id="lbImg" src="" alt="">
+    </div>
+    <div class="lightbox-caption" id="lbCaption"></div>
+    <div class="lightbox-counter" id="lbCounter"></div>
+    <div class="lb-dots" id="lbDots"></div>
+  </div>
+
+  <script>
+    // ── Language switcher ──
+    function setLang(lang) {
+      sessionStorage.setItem('kk-lang', lang);
+      document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+      var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+      if (btn) btn.classList.add('on');
+      document.querySelectorAll('[data-en]').forEach(el => {
+        var txt = el.getAttribute('data-' + lang);
+        if (!txt) return;
+        el.textContent = txt;
+      });
+    }
+    (function() {
+      var lang = sessionStorage.getItem('kk-lang') || 'en';
+      setLang(lang);
+    })();
+
+    // ── Lightbox ──
+    var currentIndex = 0;
+    var items = [];
+
+    function buildItems() {
+      items = [];
+      document.querySelectorAll('.gallery-item').forEach(function(el) {
+        var img = el.querySelector('img');
+        items.push({
+          src: img ? img.src : '',
+          caption: el.getAttribute('data-caption') || ''
+        });
+      });
+    }
+
+    function buildDots() {
+      var dots = document.getElementById('lbDots');
+      dots.innerHTML = '';
+      items.forEach(function(_, i) {
+        var d = document.createElement('div');
+        d.className = 'lb-dot' + (i === currentIndex ? ' active' : '');
+        d.onclick = function() { goTo(i); };
+        dots.appendChild(d);
+      });
+    }
+
+    function goTo(index) {
+      currentIndex = (index + items.length) % items.length;
+      document.getElementById('lbImg').src = items[currentIndex].src;
+      document.getElementById('lbCaption').textContent = items[currentIndex].caption;
+      document.getElementById('lbCounter').textContent = (currentIndex + 1) + ' / ' + items.length;
+      document.querySelectorAll('.lb-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function openLightbox(index) {
+      buildItems();
+      currentIndex = index;
+      buildDots();
+      goTo(currentIndex);
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function shiftPhoto(dir) { goTo(currentIndex + dir); }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'ArrowRight') shiftPhoto(1);
+      if (e.key === 'ArrowLeft')  shiftPhoto(-1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // Click outside image to close
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+  </script>
+</body>
+</html>
