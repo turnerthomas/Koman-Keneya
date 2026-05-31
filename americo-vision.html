@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Americo's Full Vision</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon-blue:   #3E8EDE;
       --neon-cyan:   #38C7CC;
       --neon-orange: #E58654;
-      --bg-dark: #050505;
-      --text-main: #FFFFFF;
-      --text-muted: #A0AAB2;
+      --bg-dark:     #050505;
+      --text-main:   #FFFFFF;
+      --text-muted:  #A0AAB2;
       --border-dark: rgba(255,255,255,0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
 
-    /* Shipibo pattern 2 — inverted to white linework on dark */
     body::before {
       content: '';
       position: fixed;
@@ -33,51 +33,158 @@
       z-index: 0;
     }
 
-    /* Ensure page content sits above the pattern */
     nav, main, footer { position: relative; z-index: 1; }
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; left: 0; right: 0; z-index: 200;
-    padding: 1.2rem 3.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-dark);
-  }
-  .nav-brand { display: flex; flex-direction: column; }
-  .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
-  .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
-  .nav-links a:hover { color: var(--neon-cyan); }
-  .lang-btns { display: flex; gap: 0.3rem; }
-  .lb { background: none; border: 1px solid rgba(255,255,255,0.1); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
-  .lb.on, .lb:hover { background: #3E8EDE; border-color: #3E8EDE; color: #000; font-weight: bold; }
-    main h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--text-main); }
-    main p { font-size: 1rem; line-height: 1.9; color: var(--neon-cyan); margin-bottom: 1rem; }
-    main p.check-item { position: relative; padding-left: 1.8rem; }
-    main p.check-item::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--neon-orange); }
-    main h3 { font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-main); }
-    .vision-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.5rem; }
-    ul { margin-top: 1rem; padding-left: 1.2rem; list-style: none; }
-    li { margin-bottom: 0.75rem; line-height: 1.8; padding-left: 1.8rem; position: relative; color: var(--neon-cyan); }
-    li::before { content: '❖'; position: absolute; left: 0; color: var(--neon-orange); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links li { margin-bottom: 0; padding-left: 0; }
     .nav-links li::before { content: none; }
-    .note { margin-top: 1.5rem; color: #B0D8E0; }
-    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover { color: var(--neon-cyan); }
     .lang-btns { display: flex; gap: 0.3rem; }
-    main { padding: 4rem 3rem; max-width: 900px; margin: 0 auto; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 860px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(5, 8, 15, 0.82);
+      border: 1px solid rgba(56, 199, 204, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Eyebrow */
+    .scroll-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Title */
+    .scroll-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dividers */
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* Body paragraphs */
+    .scroll-p {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    /* Check items */
+    .scroll-check {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .scroll-check::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-orange);
+      font-size: 0.7rem;
+    }
+
+    /* Section subheading */
+    .scroll-subheading {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* List items */
+    ul.scroll-list { list-style: none; padding: 0; margin: 0; }
+    ul.scroll-list li {
+      font-family: 'IM Fell English', serif;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.6rem;
+    }
+    ul.scroll-list li::before {
+      content: '❖';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-cyan);
+      font-size: 0.6rem;
+    }
+
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 2.5rem 1.5rem; }
+      .scroll-outer { padding: 2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
-  <!-- lang detection from index -->
   <script>
     (function(){
       var saved = sessionStorage.getItem('kk-lang') || 'en';
       document.documentElement.setAttribute('data-lang', saved);
     })();
   </script>
+
   <nav>
     <a href="index.html" class="nav-brand" style="text-decoration:none;">
       <span class="nav-name">Koman Keneya</span>
@@ -87,6 +194,7 @@
       <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
       <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
       <li><a href="index.html#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
       <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     </ul>
     <div class="lang-btns">
@@ -94,16 +202,64 @@
       <button class="lb" onclick="setLang('es')">ES</button>
     </div>
   </nav>
+
   <main>
-    <div class="vision-card">
-      <h2 data-en="Maestro Americo's Vision" data-es="La Visión del Maestro Americo">Maestro Americo's Vision</h2>
-      <p class="check-item" data-en='The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.' data-es='La visión de la escuela "Koman Keneya" es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina.'>The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p>
-      <p class="check-item" data-en="The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines." data-es="La idea de la escuela surge de una preocupación actual: estamos perdiendo cada vez más la cultura de nuestros ancestros. Nuestros adolescentes y jóvenes en las comunidades ya no conocen las diferentes plantas medicinales utilizadas para tratar diversas enfermedades; solo tienen la idea de comprar medicamentos farmacéuticos.">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p>
-      <p class="check-item" data-en="The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive." data-es="El propósito de la escuela es salvar nuestro planeta Tierra reflejando claramente el valor de las plantas y manteniendo así nuestra cultura viva.">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p>
-      <p class="check-item" data-en="It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities." data-es="Busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con sus comunidades.">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p>
-      <p class="check-item" data-en="The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo." data-es="El objetivo de la escuela es invitar y preparar a adolescentes y jóvenes interesados, y crear oportunidades reales para quienes más las necesitan, tanto Shipibo como no Shipibo.">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p>
-      <h3 data-en="TRADITIONAL SCHOOLING OFFERS THE FOLLOWING BENEFITS:" data-es="LA ESCUELA TRADICIONAL OFRECE LOS SIGUIENTES BENEFICIOS:">TRADITIONAL SCHOOLING OFFERS THE FOLLOWING BENEFITS:</h3>
-      <ul>
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+
+      <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
+      <h1 class="scroll-title" data-en="Maestro Americo's Vision" data-es="La Visión del Maestro Americo">Maestro Americo's Vision</h1>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <p class="scroll-check" data-en='The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.' data-es='La visión de la escuela "Koman Keneya" es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina.'>The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p>
+
+      <p class="scroll-check" data-en="The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines." data-es="La idea de la escuela surge de una preocupación actual: estamos perdiendo cada vez más la cultura de nuestros ancestros. Nuestros adolescentes y jóvenes en las comunidades ya no conocen las diferentes plantas medicinales utilizadas para tratar diversas enfermedades; solo tienen la idea de comprar medicamentos farmacéuticos.">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p>
+
+      <p class="scroll-check" data-en="The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive." data-es="El propósito de la escuela es salvar nuestro planeta Tierra reflejando claramente el valor de las plantas y manteniendo así nuestra cultura viva.">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p>
+
+      <p class="scroll-check" data-en="It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities." data-es="Busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con sus comunidades.">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p>
+
+      <p class="scroll-check" data-en="The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo." data-es="El objetivo de la escuela es invitar y preparar a adolescentes y jóvenes interesados, y crear oportunidades reales para quienes más las necesitan, tanto Shipibo como no Shipibo.">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" data-en="Traditional Schooling Offers the Following Benefits" data-es="La Escuela Tradicional Ofrece los Siguientes Beneficios">Traditional Schooling Offers the Following Benefits</div>
+
+      <ul class="scroll-list">
         <li data-en="Knowledge of medicinal plants and their benefits." data-es="Conocimiento de plantas medicinales y sus beneficios.">Knowledge of medicinal plants and their benefits.</li>
         <li data-en="Medicinal plant diet to acquire knowledge and wisdom for healing." data-es="Dieta de plantas medicinales para adquirir conocimiento y sabiduría para la sanación.">Medicinal plant diet to acquire knowledge and wisdom for healing.</li>
         <li data-en="Saunas with medicinal plants (bark, leaves)." data-es="Saunas con plantas medicinales (corteza, hojas).">Saunas with medicinal plants (bark, leaves).</li>
@@ -115,26 +271,34 @@
         <li data-en="Lodging and meals." data-es="Alojamiento y comidas.">Lodging and meals.</li>
         <li data-en="Ancestral games. Dances, cultural songs." data-es="Juegos ancestrales. Danzas, canciones culturales.">Ancestral games. Dances, cultural songs.</li>
       </ul>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
     </div>
   </main>
+
   <footer>Designed for Koman Keneya</footer>
-<script>
-  function setLang(lang) {
-    sessionStorage.setItem('kk-lang', lang);
-    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
-    var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
-    if (btn) btn.classList.add('on');
-    document.querySelectorAll('[data-en]').forEach(el => {
-      var txt = el.getAttribute('data-' + lang);
-      if (!txt) return;
-      el.textContent = txt;
-    });
-  }
-  // Apply saved language on load
-  (function() {
-    var lang = sessionStorage.getItem('kk-lang') || 'en';
-    setLang(lang);
-  })();
-</script>
+
+  <script>
+    function setLang(lang) {
+      sessionStorage.setItem('kk-lang', lang);
+      document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+      var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+      if (btn) btn.classList.add('on');
+      document.querySelectorAll('[data-en]').forEach(el => {
+        var txt = el.getAttribute('data-' + lang);
+        if (!txt) return;
+        el.textContent = txt;
+      });
+    }
+    (function() {
+      var lang = sessionStorage.getItem('kk-lang') || 'en';
+      setLang(lang);
+    })();
+  </script>
 </body>
 </html>
