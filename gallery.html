@@ -19,7 +19,6 @@
     html { scroll-behavior: smooth; }
     body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
 
-    /* Same shipibo-pattern2 background */
     body::before {
       content: '';
       position: fixed;
@@ -36,7 +35,6 @@
 
     nav, main, footer { position: relative; z-index: 1; }
 
-    /* ── NAV ── */
     nav {
       position: sticky; top: 0; left: 0; right: 0; z-index: 200;
       padding: 1.2rem 3.5rem;
@@ -57,10 +55,8 @@
     .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
     .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
 
-    /* ── MAIN ── */
     main { padding: 4rem 3rem; max-width: 1100px; margin: 0 auto; }
 
-    /* ── SCROLL CARD ── */
     .scroll-outer {
       position: relative;
       background: rgba(5, 8, 15, 0.82);
@@ -69,7 +65,6 @@
       padding: 3rem 3.5rem;
     }
 
-    /* Corner ornaments */
     .scroll-corner { position: absolute; width: 28px; height: 28px; }
     .scroll-corner.tl { top: 10px; left: 10px; }
     .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
@@ -138,8 +133,6 @@
       transition: transform 0.5s ease, opacity 0.3s ease;
     }
     .gallery-item:hover img { transform: scale(1.06); opacity: 0.85; }
-
-    /* Hover overlay */
     .gallery-item::after {
       content: '⊕';
       position: absolute;
@@ -154,23 +147,6 @@
       background: rgba(5,8,15,0.35);
     }
     .gallery-item:hover::after { opacity: 1; }
-
-    /* Caption below image */
-    .gallery-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 0.5rem 0.75rem;
-      background: linear-gradient(to top, rgba(5,8,15,0.85), transparent);
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      transform: translateY(4px);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
 
     /* ── LIGHTBOX ── */
     .lightbox {
@@ -187,16 +163,15 @@
     .lightbox.active { display: flex; }
 
     .lightbox-img-wrap {
-      position: relative;
       max-width: 88vw;
-      max-height: 80vh;
+      max-height: 82vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .lightbox-img-wrap img {
       max-width: 88vw;
-      max-height: 78vh;
+      max-height: 82vh;
       object-fit: contain;
       border-radius: 10px;
       border: 1px solid rgba(56,199,204,0.2);
@@ -204,26 +179,14 @@
       display: block;
     }
 
-    .lightbox-caption {
-      margin-top: 1.2rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--neon-cyan);
-      text-align: center;
-      min-height: 1.2em;
-    }
-
     .lightbox-counter {
-      margin-top: 0.4rem;
+      margin-top: 0.9rem;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.7rem;
       color: var(--text-muted);
       letter-spacing: 0.1em;
     }
 
-    /* Nav arrows */
     .lb-arrow {
       position: fixed;
       top: 50%;
@@ -244,7 +207,6 @@
     .lb-arrow.prev { left: 1.5rem; }
     .lb-arrow.next { right: 1.5rem; }
 
-    /* Close button */
     .lb-close {
       position: fixed;
       top: 1.2rem; right: 1.5rem;
@@ -261,14 +223,13 @@
     }
     .lb-close:hover { background: rgba(229,134,84,0.15); }
 
-    /* Dot indicators */
     .lb-dots {
       display: flex;
       gap: 0.4rem;
       margin-top: 0.9rem;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 300px;
+      max-width: 400px;
     }
     .lb-dot {
       width: 6px; height: 6px;
@@ -320,7 +281,6 @@
   <main>
     <div class="scroll-outer">
 
-      <!-- Corner ornaments -->
       <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
       <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
       <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none"><path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/><circle cx="2" cy="2" r="2.5" fill="#E58654"/><path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/><path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/></svg>
@@ -347,41 +307,48 @@
            GALLERY IMAGES
            To add a new photo:
              1. Drop the image file into your Gallery/ folder
-             2. Copy any line below and change the filename and caption
+             2. Copy any item block below, paste it before the closing div,
+                update the filename, and increment the onclick index number
            ===================================================== -->
       <div class="gallery-grid" id="galleryGrid">
 
-        <div class="gallery-item" data-caption="The Center" onclick="openLightbox(0)">
-          <img src="Gallery/photo1.jpg" alt="The Center">
-          <div class="gallery-caption">The Center</div>
-        </div>
+        <!-- Aerial / establishing shots first — sets the scene -->
+        <div class="gallery-item" onclick="openLightbox(0)"><img src="Gallery/overhead tambos 4.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="Gallery/overhead tambos 3.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="Gallery/overhead tambos 2.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="Gallery/overhead tambos.jpg" alt=""></div>
 
-        <div class="gallery-item" data-caption="Medicinal Plants" onclick="openLightbox(1)">
-          <img src="Gallery/photo2.jpg" alt="Medicinal Plants">
-          <div class="gallery-caption">Medicinal Plants</div>
-        </div>
+        <!-- The jungle and nature -->
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="Gallery/tree.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="Gallery/tree 2.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(6)"><img src="Gallery/vine tree.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(7)"><img src="Gallery/bobinsana.jpg" alt=""></div>
 
-        <div class="gallery-item" data-caption="The Jungle" onclick="openLightbox(2)">
-          <img src="Gallery/photo3.jpg" alt="The Jungle">
-          <div class="gallery-caption">The Jungle</div>
-        </div>
+        <!-- The structures up close -->
+        <div class="gallery-item" onclick="openLightbox(8)"><img src="Gallery/tambo huts.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(9)"><img src="Gallery/tambo huts 2.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(10)"><img src="Gallery/single tambo.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(11)"><img src="Gallery/maloca.jpg" alt=""></div>
 
-        <div class="gallery-item" data-caption="Ceremony Space" onclick="openLightbox(3)">
-          <img src="Gallery/photo4.jpg" alt="Ceremony Space">
-          <div class="gallery-caption">Ceremony Space</div>
-        </div>
+        <!-- Living spaces -->
+        <div class="gallery-item" onclick="openLightbox(12)"><img src="Gallery/hammock.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(13)"><img src="Gallery/bed.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(14)"><img src="Gallery/bed 2.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(15)"><img src="Gallery/bed 3.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(16)"><img src="Gallery/bathroom.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(17)"><img src="Gallery/guest.jpg" alt=""></div>
 
-        <div class="gallery-item" data-caption="Community" onclick="openLightbox(4)">
-          <img src="Gallery/photo5.jpg" alt="Community">
-          <div class="gallery-caption">Community</div>
-        </div>
+        <!-- Communal & dining -->
+        <div class="gallery-item" onclick="openLightbox(18)"><img src="Gallery/dining.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(19)"><img src="Gallery/kitchen.jpg" alt=""></div>
 
-        <div class="gallery-item" data-caption="Sacred Garden" onclick="openLightbox(5)">
-          <img src="Gallery/photo6.jpg" alt="Sacred Garden">
-          <div class="gallery-caption">Sacred Garden</div>
-        </div>
+        <!-- People -->
+        <div class="gallery-item" onclick="openLightbox(20)"><img src="Gallery/family.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(21)"><img src="Gallery/student.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(22)"><img src="Gallery/student 2.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(23)"><img src="Gallery/turner.jpg" alt=""></div>
 
-        <!-- ADD MORE PHOTOS HERE following the same pattern -->
+        <!-- ADD MORE PHOTOS HERE — copy a block above, update filename and increment the index -->
 
       </div>
 
@@ -404,13 +371,11 @@
     <div class="lightbox-img-wrap">
       <img id="lbImg" src="" alt="">
     </div>
-    <div class="lightbox-caption" id="lbCaption"></div>
     <div class="lightbox-counter" id="lbCounter"></div>
     <div class="lb-dots" id="lbDots"></div>
   </div>
 
   <script>
-    // ── Language switcher ──
     function setLang(lang) {
       sessionStorage.setItem('kk-lang', lang);
       document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
@@ -427,18 +392,13 @@
       setLang(lang);
     })();
 
-    // ── Lightbox ──
     var currentIndex = 0;
     var items = [];
 
     function buildItems() {
       items = [];
-      document.querySelectorAll('.gallery-item').forEach(function(el) {
-        var img = el.querySelector('img');
-        items.push({
-          src: img ? img.src : '',
-          caption: el.getAttribute('data-caption') || ''
-        });
+      document.querySelectorAll('.gallery-item img').forEach(function(img) {
+        items.push({ src: img.src });
       });
     }
 
@@ -456,7 +416,6 @@
     function goTo(index) {
       currentIndex = (index + items.length) % items.length;
       document.getElementById('lbImg').src = items[currentIndex].src;
-      document.getElementById('lbCaption').textContent = items[currentIndex].caption;
       document.getElementById('lbCounter').textContent = (currentIndex + 1) + ' / ' + items.length;
       document.querySelectorAll('.lb-dot').forEach(function(d, i) {
         d.classList.toggle('active', i === currentIndex);
@@ -479,7 +438,6 @@
 
     function shiftPhoto(dir) { goTo(currentIndex + dir); }
 
-    // Keyboard navigation
     document.addEventListener('keydown', function(e) {
       if (!document.getElementById('lightbox').classList.contains('active')) return;
       if (e.key === 'ArrowRight') shiftPhoto(1);
@@ -487,7 +445,6 @@
       if (e.key === 'Escape')     closeLightbox();
     });
 
-    // Click outside image to close
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this) closeLightbox();
     });
