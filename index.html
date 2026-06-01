@@ -32,7 +32,7 @@
     /* IMPORTANT: Add the file path to your Shipibo pattern image here */
     background-image: url('Photos/shipibo-pattern.png'); 
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-position: center;
     color: var(--text-main); 
     font-family: 'DM Sans', sans-serif; 
@@ -149,11 +149,12 @@
   .vs-cta::after { content: '→'; font-size: 1rem; }
 
   /* ── HEALER FEATURE ── */
-  .healer-feature { background: var(--black); color: var(--text-main); }
+  .healer-feature { background: rgba(5, 5, 5, 0.15); color: var(--text-main); }
   .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .hf-img { overflow: hidden; }
-  .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 0.85;}
-  .hf-text { padding: 6rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 1; }
+  .hf-text { padding: 5rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .hf-text-inner { background: rgba(5, 5, 5, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
   .hf-text .slabel { color: var(--neon-blue); }
   .hf-text .slabel::after { background: var(--neon-blue); }
   .hf-text h2 { font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--text-main); line-height: 1.1; }
@@ -240,53 +241,75 @@
   .foot-col li { font-size: 0.82rem; color: var(--text-muted); }
   .foot-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border-dark); padding-top: 2rem; font-size: 0.72rem; color: #666; letter-spacing: 0.08em; }
 
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left img { min-height: 55vw; }
-    .hero-right { padding: 3.5rem 1.5rem; }
-    .vision-split, .healer-feature-inner, .contact-section-inner { grid-template-columns: 1fr; }
-    .off-header { grid-template-columns: 1fr; gap: 2rem; }
-    .off-grid { grid-template-columns: 1fr; }
-    .photo-wall { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 220px); }
-    .pw-item:first-child { grid-row: auto; }
-    .photo-row { grid-template-columns: 1fr 1fr; height: auto; }
-    .photo-row-item { height: 220px; }
-    footer { grid-template-columns: 1fr; }
-    .frow { grid-template-columns: 1fr; }
-    .cs-form { padding: 3.5rem 1.5rem; }
-    .offerings { padding: 5rem 1.5rem; }
-    .vs-text { padding: 4rem 2rem; }
-    .hf-text { padding: 4rem 2rem; }
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; z-index: 250;
+    background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
   }
-  .pattern_1 
-            /* Sets the background image */ 
-            background-image: url('Photos/overhead tambos 4.jpg'); 
-            
-            /* Centers the image and scales it nicely */
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; color: #fff;
+    text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+  .mobile-nav a:hover { color: #38C7CC; }
 
-            /* Gives the section breathing room (Top/Bottom, Left/Right) */
-            padding: 80px 40px; 
-            
-            /* Aligns the text inside the section */
-            text-align: center; 
-            
-            /* Ensures white text stands out if using a dark overlay/image */
-            color: #ffffff; 
-            
-            /* Optional: rounds the corners of your section */
-            border-radius: 8px; 
-            
-            /* Optional: limits the width so it doesn't stretch infinitely */
-            max-width: 800px;
-            margin: 20px auto; 
-        }
+  @media (max-width: 900px) {
+    /* Nav */
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
 
-        }
+    /* Hero: stack vertically, image on top */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left img { min-height: 60vw; }
+    .hero-left-badge { display: none; }
+    .hero-right { padding: 2.5rem 1.2rem; }
+    .hero-right h1 { font-size: clamp(2rem, 8vw, 3rem); padding: 1.2rem 1.5rem; }
+    .hero-sub { white-space: normal; font-size: 0.7rem; }
+    .hero-body { font-size: 0.88rem; }
+
+    /* Vision section: image hidden on mobile, text full width */
+    .vision-split { grid-template-columns: 1fr; }
+    .vs-img { display: none; }
+    .vs-text { padding: 3rem 1.2rem; }
+    .vs-text-inner { padding: 2rem 1.5rem; }
+
+    /* Healer/Maestro: stack, image on top */
+    .healer-feature-inner { grid-template-columns: 1fr; }
+    .hf-img img { min-height: 70vw; max-height: 340px; }
+    .hf-text { padding: 2.5rem 1.2rem; }
+    .hf-text-inner { padding: 2rem 1.5rem; }
+    .hf-text h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+    .plant-pills-title { font-size: 1.1rem; }
+
+    /* Offerings */
+    .offerings { padding: 4rem 1.2rem; }
+    .off-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .off-grid { grid-template-columns: 1fr; }
+    .off-item { padding: 1.8rem 1.2rem; }
+
+    /* Photo wall */
+    .photo-wall { grid-template-columns: 1fr; grid-template-rows: auto; gap: 0.75rem; margin: 2rem 0; }
+    .pw-item { min-height: 260px; }
+
+    /* Photo row */
+    .photo-row { grid-template-columns: 1fr; height: auto; gap: 0.75rem; margin: 1.5rem 0; }
+    .photo-row-item { min-height: 220px; height: 220px; }
+
+    /* Contact form */
+    .contact-section-inner { grid-template-columns: 1fr; }
+    .cs-img { display: none; }
+    .cs-form { padding: 3rem 1.2rem; }
+    .frow { grid-template-columns: 1fr; }
+
+    /* Footer */
+    footer { grid-template-columns: 1fr !important; padding: 3rem 1.2rem 2rem; gap: 0; }
+    footer > div:nth-child(2) { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; margin-top: 2rem; }
+  }
 </style>
 </head>
 <body>
@@ -304,11 +327,29 @@
     <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
     <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
   </ul>
-  <div class="lang-btns">
-    <button class="lb on" onclick="setLang('en')">EN</button>
-    <button class="lb" onclick="setLang('es')">ES</button>
+  <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="lang-btns">
+      <button class="lb on" onclick="setLang('en')">EN</button>
+      <button class="lb" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="#offerings" onclick="toggleMenu()" data-en="Offerings" data-es="Ofrendas">Offerings</a>
+  <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+  <a href="#contact" onclick="toggleMenu()" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-btns" style="margin-top:1rem;">
+    <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+    <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -356,6 +397,7 @@
         <img src="Photos/americo 2.jpg" alt="Maestro Americo López Sanchez">
       </div>
       <div class="hf-text">
+        <div class="hf-text-inner">
         <span class="slabel" data-en="The Maestro" data-es="El Maestro">The Maestro</span>
         <h2 data-en="A Healer Born Under the <em>Shihuahuaco</em> Tree" data-es="Un Curandero Nacido Bajo el Árbol <em>Shihuahuaco</em>">A Healer Born Under the <em>Shihuahuaco</em> Tree</h2>
         <p data-en="Originally from the Roaboya Nativa community near Pucallpa, Peru, Americo López Sanchez is a dedicated Shipibo curandero (healer) whose traditional name translates to “the many colors of nature.” Inspired by the lineage of his father, a prominent healer, Americo overcame a challenging childhood to pursue his calling. His formal training began at age 15, leading to years of rigorous, isolated diets with Master Plants, Ayahuasca ceremonies, and deep spiritual trials. Today, he channels this profound resilience into helping those who are suffering, lost, or seeking a genuine cure." data-es="El Maestro Americo López Sanchez nació literalmente bajo un árbol Shihuahuaco, cerca de la plantación de caucho donde trabajaban sus padres. Desde este extraordinario comienzo, fue guiado por su padre, el prominente curandero José López Rengifo (Sani Meni), a seguir el camino de la medicina.">Originally from the Roaboya Nativa community near Pucallpa, Peru, Americo López Sanchez is a dedicated Shipibo curandero (healer) whose traditional name translates to “the many colors of nature.” Inspired by the lineage of his father, a prominent healer, Americo overcame a challenging childhood to pursue his calling. His formal training began at age 15, leading to years of rigorous, isolated diets with Master Plants, Ayahuasca ceremonies, and deep spiritual trials. Today, he channels this profound resilience into helping those who are suffering, lost, or seeking a genuine cure.</p>
@@ -484,52 +526,45 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer style="background:#000; padding:4rem 3.5rem 2rem; display:grid; grid-template-columns:1fr 1.6fr; gap:2rem; align-items:center; border-top:1px solid #111;">
   <div class="foot-brand">
     <div class="fn">Koman Keneya</div>
     <div class="fs2">School of Traditional Medicine</div>
     <p data-en="Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom." data-es="Arraigada en la tradición Shipibo de la Amazonía peruana. Sanación a través de la sabiduría ancestral de las plantas.">Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom.</p>
   </div>
-  <div class="foot-col">
-    <h4 data-en="The Center" data-es="El Centro">The Center</h4>
-    <ul>
-      <li data-en="Our Vision" data-es="Nuestra Visión">Our Vision</li>
-      <li data-en="The Maestro" data-es="El Maestro">The Maestro</li>
-      <li data-en="Retreat Offerings" data-es="Ofrendas del Retiro">Retreat Offerings</li>
-    </ul>
-  </div>
-  <div class="foot-col">
-    <h4 data-en="Visit" data-es="Visitar">Visit</h4>
-    <ul>
-      <li>Pucallpa, Ucayali, Peru</li>
-      <li>Roaboya Nativa Community</li>
-      <li data-en="Contact Us" data-es="Contáctanos">Contact Us</li>
-    </ul>
-  </div>
-  <div class="foot-bottom">
-    <div style="display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:1.2rem; flex-wrap:wrap;">
+  <div style="border-left:1px solid rgba(255,255,255,0.07); padding-left:3rem; display:flex; flex-direction:column; align-items:center; gap:1.2rem;">
+    <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+    <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
       <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
-         style="display:inline-flex; align-items:center; gap:0.5rem; color:#A0AAB2; text-decoration:none; font-size:0.82rem; letter-spacing:0.08em; transition:color 0.2s;"
-         onmouseover="this.style.color='#38C7CC'" onmouseout="this.style.color='#A0AAB2'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
+         style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; background:rgba(255,255,255,0.05);"
+         onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+         onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         @koman_keneya_center
       </a>
       <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
-         style="display:inline-flex; align-items:center; gap:0.5rem; color:#A0AAB2; text-decoration:none; font-size:0.82rem; letter-spacing:0.08em; transition:color 0.2s;"
-         onmouseover="this.style.color='#38C7CC'" onmouseout="this.style.color='#A0AAB2'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-        </svg>
+         style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; background:rgba(255,255,255,0.05);"
+         onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+         onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         +51 993 186 086
       </a>
     </div>
+  </div>
+  <div style="grid-column:1/-1; border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; text-align:center; font-size:0.72rem; color:#555; letter-spacing:0.08em;">
     <span data-en="© 2025 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2025 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2025 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
   </div>
 </footer>
 
 <script>
+  function toggleMenu() {
+    var h = document.getElementById('hamburger');
+    var m = document.getElementById('mobileNav');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+
   function setLang(lang) {
     sessionStorage.setItem('kk-lang', lang);
     document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
