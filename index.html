@@ -290,9 +290,10 @@
     .hero-sub { white-space: normal; font-size: 0.7rem; }
     .hero-body { font-size: 0.88rem; }
 
-    /* Vision section: image hidden on mobile, text full width */
+    /* Vision section: image as banner on mobile, text full width */
     .vision-split { grid-template-columns: 1fr; }
-    .vs-img { display: none; }
+    .vs-img { display: block; min-height: 240px; max-height: 300px; order: -1; }
+    .vs-img img { min-height: 240px; max-height: 300px; object-position: center 30%; }
     .vs-text { padding: 3rem 1.2rem; }
     .vs-text-inner { padding: 2rem 1.5rem; }
 
@@ -320,7 +321,16 @@
 
     /* Contact form */
     .contact-section-inner { grid-template-columns: 1fr; }
-    .cs-img { display: none; }
+    .cs-img { 
+      display: block;
+      min-height: 260px;
+      max-height: 340px;
+    }
+    .cs-img img { 
+      min-height: 260px;
+      max-height: 340px;
+      object-position: center 15%;
+    }
     .cs-form { padding: 3rem 1.2rem; }
     .frow { grid-template-columns: 1fr; }
 
@@ -381,7 +391,6 @@
     <p class="hero-sub">School of Traditional Medicine</p>
     <p class="hero-body" data-en="A living school rooted in the Shipibo tradition of the Amazon. We offer authentic plant dieta, ceremonial healing, and deep immersion in ancestral knowledge — guided by a master healer of the lineage." data-es="Una escuela viva enraizada en la tradición Shipibo de la Amazonía. Ofrecemos auténtica dieta de plantas, sanación ceremonial y una profunda inmersión en el conocimiento ancestral, guiada por un maestro curandero del linaje.">A living school rooted in the Shipibo tradition of the Amazon. We offer authentic plant dieta, ceremonial healing, and deep immersion in ancestral knowledge — guided by a master healer of the lineage.</p>
     <a href="#contact" class="hero-cta" data-en="Begin Your Journey" data-es="Comienza Tu Viaje">Begin Your Journey</a>
-</div>
   </div>
 </section>
 
@@ -437,7 +446,8 @@
         <a href="americo-bio.html" target="_blank" class="bio-button" data-en="Read Americo's Full Bio" data-es="Leer la Biografía Completa de Americo">Read Americo's Full Bio</a>
       </div>
     </div>
-  </div>
+    </div><!-- /.healer-feature-inner -->
+  </div><!-- /.healer-feature -->
 </section>
 
 <!-- OFFERINGS -->
@@ -525,13 +535,11 @@
           <div class="fg"><label class="fl" data-en="Last Name" data-es="Apellido">Last Name</label><input class="fi" type="text" required></div>
         </div>
         <div class="fg"><label class="fl" data-en="Email Address" data-es="Correo Electrónico">Email Address</label><input class="fi" type="email" required></div>
-        <div class="fg"><label class="fl" data-en="Country" data-es="País">Country</label><input class="fi" type="text"></div>
         <div class="fg">
           <label class="fl" data-en="I am interested in" data-es="Me interesa">I am interested in</label>
           <select class="fsel">
-            <option data-en="Plant Dieta (7 days)" data-es="Dieta de Plantas (7 días)">Plant Dieta (7 days)</option>
-            <option data-en="Plant Dieta (14 days)" data-es="Dieta de Plantas (14 días)">Plant Dieta (14 days)</option>
-            <option data-en="Ayahuasca Retreat" data-es="Retiro de Ayahuasca">Ayahuasca Retreat</option>
+            <option data-en="Plant Dieta (15 days)" data-es="Dieta de Plantas (15 días)">Plant Dieta (15 days)</option>
+            <option data-en="Ayahuasca Retreat (7 days)" data-es="Retiro de Ayahuasca (7 días)">Ayahuasca Retreat (7 days)</option>
             <option data-en="General Inquiry" data-es="Consulta General">General Inquiry</option>
           </select>
         </div>
