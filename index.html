@@ -52,6 +52,52 @@
     filter: saturate(2.2) contrast(1.15) brightness(0.85);
   }
 
+  /* ── PATTERN BRIGHTNESS SPOTLIGHTS ──
+     Each key section gets a ::before pseudo-element that punches through
+     the dark overlay with a radial gradient, making the Shipibo pattern
+     visible and vivid in those areas. z-index: 0 sits above the fixed
+     body::before pattern but below all content (z-index: 1+). */
+  .hero,
+  .vision-split,
+  .healer-feature {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero::before,
+  .vision-split::before,
+  .healer-feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    /* A bright radial spotlight that fades out at the edges —
+       the centre is mostly transparent so the pattern shines through,
+       while the very edges stay darker for a smooth transition */
+    background: radial-gradient(
+      ellipse 85% 80% at 50% 50%,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(0, 0, 0, 0.0)  100%
+    );
+    mix-blend-mode: screen;
+  }
+
+  /* The right panel of the hero has its own dark overlay inline — lighten it */
+  .hero-right {
+    background: rgba(0, 0, 0, 0.52) !important;
+  }
+
+  /* Vision and Healer section backdrops — pull them lighter so pattern shows */
+  .vision-split {
+    background: rgba(5, 5, 5, 0.55) !important;
+  }
+
+  .healer-feature {
+    background: rgba(5, 5, 5, 0.55) !important;
+  }
+
   @media (max-width: 900px) {
     body::before {
       background-size: 280px auto;
@@ -98,7 +144,7 @@
     padding: 1.2rem 1.5rem; max-width: 260px;
     font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan);
   }
-  .hero-right { background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(0px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
+  .hero-right { background: rgba(0, 0, 0, 0.52); backdrop-filter: blur(0px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
   .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 2rem; font-weight: 800; letter-spacing: 0.35em; }
   
   /* The black rounded box effect from your image */
@@ -150,7 +196,7 @@
   .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
-  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(5, 5, 5, 0.82); backdrop-filter: blur(0px); }
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(5, 5, 5, 0.55); backdrop-filter: blur(0px); }
   .vs-img { position: relative; overflow: hidden; }
   .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 1; }
   .vs-img:hover img { transform: scale(1.04); }
@@ -167,7 +213,7 @@
   .vs-cta::after { content: '→'; font-size: 1rem; }
 
   /* ── HEALER FEATURE ── */
-  .healer-feature { background: rgba(5, 5, 5, 0.82); color: var(--text-main); }
+  .healer-feature { background: rgba(5, 5, 5, 0.55); color: var(--text-main); }
   .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .hf-img { overflow: hidden; }
   .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 1; }
@@ -578,7 +624,7 @@
     </div>
   </div>
   <div style="grid-column:1/-1; border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; text-align:center; font-size:0.72rem; color:#555; letter-spacing:0.08em;">
-    <span data-en="© 2025 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2025 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2025 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
+    <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
   </div>
 </footer>
 
