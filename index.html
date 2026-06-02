@@ -28,16 +28,34 @@
   html { scroll-behavior: smooth; }
   
   body { 
-    background-color: var(--bg-dark); 
-    /* IMPORTANT: Add the file path to your Shipibo pattern image here */
-    background-image: url('Photos/shipibo-pattern.png'); 
-    background-size: cover;
-    background-attachment: scroll;
-    background-position: center;
+    background-color: var(--bg-dark);
+    position: relative;
     color: var(--text-main); 
     font-family: 'DM Sans', sans-serif; 
     font-weight: 300; 
     overflow-x: hidden; 
+  }
+
+  /* Pseudo-element lets us apply CSS filters to the background image
+     without affecting any of the text or UI elements layered on top */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--bg-dark);
+    background-image: url('Photos/shipibo-pattern.png');
+    background-size: 420px auto;
+    background-position: top left;
+    background-repeat: repeat;
+    /* Boost saturation and contrast so the pattern colors really sing */
+    filter: saturate(2.2) contrast(1.15) brightness(0.85);
+  }
+
+  @media (max-width: 900px) {
+    body::before {
+      background-size: 280px auto;
+    }
   }
 
   /* Typography Overrides to match the image */
@@ -80,7 +98,7 @@
     padding: 1.2rem 1.5rem; max-width: 260px;
     font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan);
   }
-  .hero-right { background: url('Photos/shipibo-pattern.png'); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
+  .hero-right { background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(0px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
   .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 2rem; font-weight: 800; letter-spacing: 0.35em; }
   
   /* The black rounded box effect from your image */
@@ -132,7 +150,7 @@
   .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
-  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(20, 20, 20, 0.15); backdrop-filter: blur(0px); }
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(5, 5, 5, 0.82); backdrop-filter: blur(0px); }
   .vs-img { position: relative; overflow: hidden; }
   .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 1; }
   .vs-img:hover img { transform: scale(1.04); }
@@ -149,7 +167,7 @@
   .vs-cta::after { content: '→'; font-size: 1rem; }
 
   /* ── HEALER FEATURE ── */
-  .healer-feature { background: rgba(5, 5, 5, 0.15); color: var(--text-main); }
+  .healer-feature { background: rgba(5, 5, 5, 0.82); color: var(--text-main); }
   .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .hf-img { overflow: hidden; }
   .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 1; }
@@ -180,7 +198,7 @@
   .pw-item:hover img { transform: scale(1.04); opacity: 1; }
 
   /* ── OFFERINGS ── */
-  .offerings { background: var(--glass-dark); backdrop-filter: blur(10px); padding: 7rem 3.5rem; }
+  .offerings { background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(0px); padding: 7rem 3.5rem; }
   .off-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
   .off-header h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text-main); margin-top: 1rem; line-height: 1.1; }
   .off-header h2 em { color: var(--neon-cyan); }
