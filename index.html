@@ -296,13 +296,7 @@
   .fsub:hover { background: var(--neon-cyan); }
 
   /* ── FOOTER ── */
-  footer { background: var(--black); padding: 4rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; border-top: 1px solid #111; }
-  .foot-brand .fn { font-size: 1.8rem; color: var(--text-main); }
-  .foot-brand .fs2 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
-  .foot-brand p { font-size: 0.82rem; line-height: 1.8; color: var(--text-muted); margin-top: 1.2rem; max-width: 240px; }
-  .foot-col h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1.2rem; font-family: 'Montserrat', sans-serif; font-weight: bold;}
-  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .foot-col li { font-size: 0.82rem; color: var(--text-muted); }
+  footer { background: var(--black); border-top: 1px solid #111; }
   .foot-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border-dark); padding-top: 2rem; font-size: 0.72rem; color: #666; letter-spacing: 0.08em; }
 
   /* ── HAMBURGER ── */
@@ -394,13 +388,14 @@
     <span class="nav-name">Koman Keneya</span>
     <span class="nav-tagline">School of Traditional Medicine</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
-    <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
-    <li><a href="#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
-    <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
-    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-  </ul>
+      <ul class="nav-links">
+      <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
   <div style="display:flex;align-items:center;gap:0.8rem;">
     <div class="lang-btns">
       <button class="lb on" onclick="setLang('en')">EN</button>
@@ -414,8 +409,10 @@
 
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
   <a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a>
   <a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
   <a href="#offerings" onclick="toggleMenu()" data-en="Offerings" data-es="Ofrendas">Offerings</a>
   <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
   <a href="#contact" onclick="toggleMenu()" data-en="Contact" data-es="Contacto">Contact</a>
@@ -424,6 +421,7 @@
     <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
   </div>
 </div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -552,6 +550,7 @@
         <div class="off-en" data-en="Shipibo Arts & Culture" data-es="Artes y Cultura Shipibo">Shipibo Arts &amp; Culture</div>
         <div class="off-es" data-en="Embroidery, Song & Dance" data-es="Bordado, Canto y Danza">Embroidery, Song &amp; Dance</div>
         <p class="off-desc" data-en="Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games." data-es="Aprende el lenguaje visual Shipibo a través del bordado tradicional con diseños geométricos, canciones ancestrales, danzas culturales y juegos.">Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games.</p>
+        <a href="teachings.html" style="display:inline-block;margin-top:0.9rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--neon-cyan);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(56,199,204,0.3);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--neon-cyan)'" data-en="Discover the sacred language of Kene →" data-es="Descubre el lenguaje sagrado del Kene →">Discover the sacred language of Kene →</a>
       </div>
     </div>
   </div>
@@ -598,35 +597,32 @@
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#000; padding:4rem 3.5rem 2rem; display:grid; grid-template-columns:1fr 1.6fr; gap:2rem; align-items:center; border-top:1px solid #111;">
-  <div class="foot-brand">
-    <div class="fn">Koman Keneya</div>
-    <div class="fs2">School of Traditional Medicine</div>
-    <p data-en="Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom." data-es="Arraigada en la tradición Shipibo de la Amazonía peruana. Sanación a través de la sabiduría ancestral de las plantas.">Rooted in the Shipibo tradition of the Peruvian Amazon. Healing through ancestral plant wisdom.</p>
-  </div>
-  <div style="border-left:1px solid rgba(255,255,255,0.07); padding-left:3rem; display:flex; flex-direction:column; align-items:center; gap:1.2rem;">
-    <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
-    <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
-      <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
-         style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; background:rgba(255,255,255,0.05);"
-         onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
-         onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        @koman_keneya_center
-      </a>
-      <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
-         style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; background:rgba(255,255,255,0.05);"
-         onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
-         onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        +51 993 186 086
-      </a>
+<footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-size:1.8rem; color:#fff; text-transform:uppercase; font-weight:900; letter-spacing:-0.02em;">Koman Keneya</div>
+    <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:#A0AAB2; margin-top:0.3rem; font-family:'DM Sans',sans-serif; font-weight:500;" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @koman_keneya_center
+        </a>
+        <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          +51 993 186 086
+        </a>
+      </div>
     </div>
-  </div>
-  <div style="grid-column:1/-1; border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem; text-align:center; font-size:0.72rem; color:#555; letter-spacing:0.08em;">
-    <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
-  </div>
-</footer>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
 
 <script>
   function toggleMenu() {
