@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teachings — Koman Keneya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --neon-purple: #B66BFF;
+      --bg-dark:     #050505;
+      --text-main:   #FFFFFF;
+      --text-muted:  #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover, .nav-links a.active { color: var(--neon-cyan); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    /* ── HAMBURGER / MOBILE NAV ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 250;
+      background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
+      text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+    .mobile-nav a:hover { color: #38C7CC; }
+    .mobile-nav .lang-btns { margin-top: 1rem; }
+    @media (max-width: 900px) { .hamburger { display: flex; } .nav-links { display: none; } nav { padding: 1rem 1.5rem; } }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 900px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(5, 8, 15, 0.82);
+      border: 1px solid rgba(56, 199, 204, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Eyebrow */
+    .scroll-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Title */
+    .scroll-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dividers */
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* Section subheading */
+    .scroll-subheading {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-align: center;
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    /* Body paragraphs */
+    .scroll-p {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    /* Check items */
+    .scroll-check {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .scroll-check::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-orange);
+      font-size: 0.7rem;
+    }
+
+    /* List items */
+    ul.scroll-list { list-style: none; padding: 0; margin: 0; }
+    ul.scroll-list li {
+      font-family: 'IM Fell English', serif;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.6rem;
+    }
+    ul.scroll-list li::before {
+      content: '❖';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-cyan);
+      font-size: 0.6rem;
+    }
+
+    /* ── KENE GALLERY ── */
+    .kene-gallery {
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto auto auto;
+      gap: 6px;
+    }
+
+    /* Each cell is a styled frame */
+    .kg-item {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+      border: 1px solid rgba(56, 199, 204, 0.2);
+      background: #000;
+    }
+
+    /* Highlighted / featured cells */
+    .kg-item.featured {
+      border-color: rgba(229, 134, 84, 0.6);
+    }
+
+    .kg-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease, opacity 0.4s ease;
+      opacity: 0.92;
+    }
+    .kg-item:hover img {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+
+    /* Specific span overrides for a mosaic layout */
+    /* Row 1: 3 equal columns */
+    .kg-item:nth-child(1) { grid-column: 1; grid-row: 1; aspect-ratio: 3/4; }
+    .kg-item:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; aspect-ratio: auto; }
+    .kg-item:nth-child(3) { grid-column: 3; grid-row: 1; aspect-ratio: 3/4; }
+    /* Row 2 */
+    .kg-item:nth-child(4) { grid-column: 1; grid-row: 2; aspect-ratio: 3/4; }
+    /* kg-item:nth-child(2) spans row 1-2 already */
+    .kg-item:nth-child(5) { grid-column: 3; grid-row: 2; aspect-ratio: 3/4; }
+    /* Row 3 */
+    .kg-item:nth-child(6) { grid-column: 1 / span 2; grid-row: 3; aspect-ratio: 16/9; }
+    .kg-item:nth-child(7) { grid-column: 3; grid-row: 3; aspect-ratio: 3/4; }
+    /* Row 4 */
+    .kg-item:nth-child(8) { grid-column: 1; grid-row: 4; aspect-ratio: 3/4; }
+    .kg-item:nth-child(9) { grid-column: 2; grid-row: 4; aspect-ratio: 3/4; }
+    .kg-item:nth-child(10) { grid-column: 3; grid-row: 4; aspect-ratio: 3/4; }
+
+    /* Subtle glow on hover */
+    .kg-item:hover {
+      border-color: rgba(56, 199, 204, 0.55);
+      box-shadow: 0 0 18px rgba(56, 199, 204, 0.12);
+    }
+
+    /* ── MAESTRO PREPARATION PHOTO ── */
+    .maestro-photo-wrap {
+      margin: 2.5rem 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .maestro-photo-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(229, 134, 84, 0.5);
+      box-shadow: 0 0 40px rgba(229, 134, 84, 0.12);
+    }
+    .maestro-photo-frame img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 14px;
+      transition: transform 0.6s ease;
+    }
+    .maestro-photo-frame:hover img { transform: scale(1.03); }
+    .maestro-photo-caption {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neon-orange);
+      text-align: center;
+      margin-top: 0.65rem;
+      opacity: 0.8;
+    }
+    .maestro-photo-text { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    /* ── PLANTS OF POWER PILLS ── */
+    .plants-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.8rem 0 0.5rem;
+      justify-content: center;
+    }
+    .plant-pill {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.38rem 1rem;
+      border: 1px solid rgba(182, 107, 255, 0.35);
+      color: var(--neon-purple);
+      border-radius: 100px;
+      background: rgba(182, 107, 255, 0.06);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    /* ── ICAROS QUOTE BLOCK ── */
+    .icaro-quote {
+      margin: 1.5rem 0;
+      padding: 1.5rem 2rem;
+      border-left: 3px solid var(--neon-cyan);
+      background: rgba(56, 199, 204, 0.04);
+      border-radius: 0 10px 10px 0;
+    }
+    .icaro-quote p {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #c8d8e2;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: #000; padding: 4rem 3.5rem 2rem; text-align: center; border-top: 1px solid #111; position: relative; z-index: 1; }
+    .foot-brand-name { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--text-main); text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .foot-brand-sub { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+
+    @media (max-width: 700px) {
+      main { padding: 2.5rem 1.2rem; }
+      .scroll-outer { padding: 2rem 1.4rem; }
+      .kene-gallery { grid-template-columns: repeat(2, 1fr); }
+      .kg-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+      .kg-item:nth-child(6) { grid-column: 1; grid-row: 4; aspect-ratio: 3/4; }
+      .kg-item:nth-child(8), .kg-item:nth-child(9), .kg-item:nth-child(10) { grid-column: auto; grid-row: auto; }
+      .maestro-photo-wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+        <ul class="nav-links">
+      <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" class="active" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="index.html#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+  <a href="index.html#offerings" data-en="Offerings" data-es="Ofrendas">Offerings</a>
+  <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-btns" style="margin-top:1rem;">
+    <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+    <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
+
+  <main>
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+
+      <!-- Page header -->
+      <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
+      <h1 class="scroll-title" data-en="Teachings of the Shipibo Tradition" data-es="Enseñanzas de la Tradición Shipibo">Teachings of the Shipibo Tradition</h1>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION I: KENE
+      ════════════════════════════════════════════════ -->
+      <div class="scroll-subheading" data-en="I. Kene — The Living Design" data-es="I. Kene — El Diseño Vivo">I. Kene — The Living Design</div>
+
+      <p class="scroll-p" data-en="The patterns of the Shipibo people — the Kene — carry a profound cultural and spiritual significance. They represent the worldview of our people, our connection with the natural and spiritual world, our identity, our medicine, our protection, and the world of love." data-es="Los patrones del pueblo Shipibo — el Kene — tienen un profundo significado cultural y espiritual. Representan la cosmovisión de nuestro pueblo, nuestra conexión con el mundo natural y espiritual, nuestra identidad, nuestra medicina, nuestra protección, y el mundo del amor.">The patterns of the Shipibo people — the Kene — carry a profound cultural and spiritual significance. They represent the worldview of our people, our connection with the natural and spiritual world, our identity, our medicine, our protection, and the world of love.</p>
+
+      <p class="scroll-p" data-en="They are inspired by nature: rivers, plants, animals, the stars, the teachings of the ancestors, and the visions received through sacred plants such as ayahuasca and chacuruna." data-es="Están inspirados en la naturaleza: ríos, plantas, animales, las estrellas, las enseñanzas de los ancestros y las visiones alcanzadas a través de plantas sagradas como la ayahuasca y la chacuruna.">They are inspired by nature: rivers, plants, animals, the stars, the teachings of the ancestors, and the visions received through sacred plants such as ayahuasca and chacuruna.</p>
+
+      <p class="scroll-p" data-en="The designs are an ongoing dialogue with the spirits of the plants and the powers of the rainforest — transmitting knowledge and wisdom from one world to another. Each design tells a story, a memory, and a vision of the future, connecting past and present." data-es="Los diseños son un diálogo continuo con los espíritus de las plantas y los poderes de la selva tropical — transmitiendo conocimiento y sabiduría de un mundo a otro. Cada diseño cuenta una historia, un recuerdo y una visión del futuro, conectando el pasado con el presente.">The designs are an ongoing dialogue with the spirits of the plants and the powers of the rainforest — transmitting knowledge and wisdom from one world to another. Each design tells a story, a memory, and a vision of the future, connecting past and present.</p>
+
+      <!-- KENE PHOTO GALLERY -->
+      <div class="kene-gallery">
+        <div class="kg-item featured">
+          <img src="Photos/kene 1.jfif" alt="Shipibo Kene pattern 1">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 2.jpeg" alt="Shipibo Kene pattern 2">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 3.jpeg" alt="Shipibo Kene pattern 3">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 4.jpeg" alt="Shipibo Kene pattern 4">
+        </div>
+        <div class="kg-item featured">
+          <img src="Photos/kene 5.jpeg" alt="Shipibo Kene pattern 5">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 6.jpeg" alt="Shipibo Kene pattern 6">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 7.jpeg" alt="Shipibo Kene pattern 7">
+        </div>
+        <div class="kg-item featured">
+          <img src="Photos/kene 8.jpeg" alt="Shipibo Kene pattern 8">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 9.jpeg" alt="Shipibo Kene pattern 9">
+        </div>
+        <div class="kg-item">
+          <img src="Photos/kene 10.jpeg" alt="Shipibo Kene pattern 10">
+        </div>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION II: AYAHUASCA & CEREMONY
+      ════════════════════════════════════════════════ -->
+      <div class="scroll-subheading" data-en="II. Ayahuasca — The Master Medicine" data-es="II. Ayahuasca — La Medicina Maestra">II. Ayahuasca — The Master Medicine</div>
+
+      <!-- Photo + intro text side by side -->
+      <div class="maestro-photo-wrap">
+        <div>
+          <div class="maestro-photo-frame">
+            <img src="Photos/Americo prepare.jpeg" alt="Maestro Americo preparing ayahuasca medicine">
+          </div>
+          <p class="maestro-photo-caption" data-en="The Maestro prepares the medicine" data-es="El Maestro prepara la medicina">The Maestro prepares the medicine</p>
+        </div>
+        <div class="maestro-photo-text">
+          <p class="scroll-p" style="margin-bottom:0;" data-en="Ayahuasca is a traditional medicine — ancient, sacred, and very powerful. Honored and respected, it has been used for many years by the healers of the indigenous peoples of the Amazon. Ayahuasca and chacuruna are master medicinal plants: the ones that open your mind, guide you, protect you, and nourish you with knowledge." data-es="La ayahuasca es una medicina tradicional — antigua, sagrada y muy poderosa. Honrada y respetada, ha sido utilizada durante muchos años por los sanadores de los pueblos indígenas de la Amazonía. La ayahuasca y la chacuruna son plantas medicinales maestras: las que abren tu mente, te guían, te protegen y te nutren con conocimiento.">Ayahuasca is a traditional medicine — ancient, sacred, and very powerful. Honored and respected, it has been used for many years by the healers of the indigenous peoples of the Amazon. Ayahuasca and chacuruna are master medicinal plants: the ones that open your mind, guide you, protect you, and nourish you with knowledge.</p>
+          <p class="scroll-p" style="margin-bottom:0;" data-en="They make you feel, smell, see, touch, and hear. When ayahuasca is combined with chacuruna, it becomes a true healing plant — medicine for body, mind, and spirit." data-es="Te hacen sentir, oler, ver, tocar y escuchar. Cuando la ayahuasca se combina con la chacuruna, se convierte en una verdadera planta curativa — medicina para el cuerpo, la mente y el espíritu.">They make you feel, smell, see, touch, and hear. When ayahuasca is combined with chacuruna, it becomes a true healing plant — medicine for body, mind, and spirit.</p>
+        </div>
+      </div>
+
+      <p class="scroll-p" data-en="Some plants are divine. They possess a rank, a status, a power. They play an important role in diagnosis, healing, and the balanced functioning of society. The healer is the one who knows and recognizes the qualities, properties, functions, and needs of each of these sacred beings." data-es="Algunas plantas son divinas. Poseen un rango, un estatus, un poder. Juegan un papel importante en el diagnóstico, la sanación y el funcionamiento equilibrado de la sociedad. El sanador es quien conoce y reconoce las cualidades, propiedades, funciones y necesidades de cada uno de estos seres sagrados.">Some plants are divine. They possess a rank, a status, a power. They play an important role in diagnosis, healing, and the balanced functioning of society. The healer is the one who knows and recognizes the qualities, properties, functions, and needs of each of these sacred beings.</p>
+
+      <div class="scroll-subheading" style="font-size:0.75rem; margin-top:1.8rem;" data-en="Plants of God and Power" data-es="Plantas de Dios y Poder">Plants of God and Power</div>
+
+      <div class="plants-pills">
+        <span class="plant-pill" data-en="Ayahuasca" data-es="Ayahuasca">Ayahuasca</span>
+        <span class="plant-pill" data-en="Chacuruna" data-es="Chacuruna">Chacuruna</span>
+        <span class="plant-pill" data-en="The Mushroom" data-es="El Hongo">The Mushroom</span>
+        <span class="plant-pill" data-en="San Pedro" data-es="San Pedro">San Pedro</span>
+        <span class="plant-pill" data-en="Floripondio (Toe)" data-es="Floripondio (Toe)">Floripondio (Toe)</span>
+        <span class="plant-pill" data-en="Marijuana" data-es="Marihuana">Marijuana</span>
+        <span class="plant-pill" data-en="Coca Leaf" data-es="Hoja de Coca">Coca Leaf</span>
+        <span class="plant-pill" data-en="Tobacco" data-es="Tabaco">Tobacco</span>
+        <span class="plant-pill" data-en="Iboga" data-es="Iboga">Iboga</span>
+      </div>
+
+      <div class="scroll-divider" style="margin-top:2rem;">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" style="font-size:0.75rem;" data-en="The Ayahuasca Ceremony" data-es="La Ceremonia de Ayahuasca">The Ayahuasca Ceremony</div>
+
+      <p class="scroll-p" data-en="The Shipibo ayahuasca ceremony improves personal and collective well-being, and the long-term quality of life. Before the medicine is given, we offer speeches to the plants — asking for their permission, their authorization, and their medicinal power. Afterward, we offer a gift: mapacho (tobacco), coins, or a piece of cloth." data-es="La ceremonia Shipibo de ayahuasca mejora el bienestar personal y colectivo, y la calidad de vida a largo plazo. Antes de que se administre la medicina, ofrecemos palabras a las plantas — pidiendo su permiso, su autorización y su poder medicinal. Después, ofrecemos un regalo: mapacho (tabaco), monedas o un trozo de tela.">The Shipibo ayahuasca ceremony improves personal and collective well-being, and the long-term quality of life. Before the medicine is given, we offer speeches to the plants — asking for their permission, their authorization, and their medicinal power. Afterward, we offer a gift: mapacho (tobacco), coins, or a piece of cloth.</p>
+
+      <p class="scroll-p" data-en="The ceremony is a space of meeting together, of feeling together, of finding the harmony of being together. It is a purification — where each person is cleansed for healing, connecting with society, with nature, and with the visions of the medicine." data-es="La ceremonia es un espacio de encuentro, de sentir juntos, de encontrar la armonía del estar juntos. Es una purificación — donde cada persona es limpiada para su sanación, conectando con la sociedad, con la naturaleza y con las visiones de la medicina.">The ceremony is a space of meeting together, of feeling together, of finding the harmony of being together. It is a purification — where each person is cleansed for healing, connecting with society, with nature, and with the visions of the medicine.</p>
+
+      <div class="scroll-subheading" style="font-size:0.75rem; margin-top:1.8rem;" data-en="A Healer's Mission" data-es="La Misión del Sanador">A Healer's Mission</div>
+
+      <ul class="scroll-list">
+        <li data-en="To heal the various illnesses a person may have." data-es="Sanar las diversas enfermedades que una persona pueda tener.">To heal the various illnesses a person may have.</li>
+        <li data-en="To cleanse negative energies from the physical, mental, psychic, and spiritual aspects of a person." data-es="Limpiar las energías negativas de los aspectos físicos, mentales, psíquicos y espirituales de una persona.">To cleanse negative energies from the physical, mental, psychic, and spiritual aspects of a person.</li>
+        <li data-en="To organize a person's thoughts and positive energy." data-es="Organizar los pensamientos y la energía positiva de una persona.">To organize a person's thoughts and positive energy.</li>
+        <li data-en="To open a new path to the future." data-es="Abrir un nuevo camino hacia el futuro.">To open a new path to the future.</li>
+        <li data-en="To open a new world filled with love, peace, tranquility, and happiness." data-es="Abrir un nuevo mundo lleno de amor, paz, tranquilidad y felicidad.">To open a new world filled with love, peace, tranquility, and happiness.</li>
+        <li data-en="To connect with the spiritual world of ayahuasca medicine and other medicinal plants." data-es="Conectar con el mundo espiritual de la medicina de la ayahuasca y otras plantas medicinales.">To connect with the spiritual world of ayahuasca medicine and other medicinal plants.</li>
+        <li data-en="To diagnose and heal with the spirits of plants and other natural elements." data-es="Diagnosticar y sanar con los espíritus de las plantas y otros elementos naturales.">To diagnose and heal with the spirits of plants and other natural elements.</li>
+      </ul>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION III: THE PATH TO BECOME A HEALER
+      ════════════════════════════════════════════════ -->
+      <div class="scroll-subheading" data-en="III. The Path to Become a Healer" data-es="III. El Camino para Convertirse en Sanador">III. The Path to Become a Healer</div>
+
+      <p class="scroll-p" data-en="The process to become a healer consists of drinking the juice of medicinal plants — their leaves, bark, and seeds — and fasting for three or four days. Afterward, one must faithfully follow the post-diet prescribed by the master, whether for three months, six months, or a full year." data-es="El proceso para convertirse en sanador consiste en beber el jugo de plantas medicinales — sus hojas, corteza y semillas — y ayunar durante tres o cuatro días. Después, se debe seguir fielmente la post-dieta prescrita por el maestro, ya sea por tres meses, seis meses o un año completo.">The process to become a healer consists of drinking the juice of medicinal plants — their leaves, bark, and seeds — and fasting for three or four days. Afterward, one must faithfully follow the post-diet prescribed by the master, whether for three months, six months, or a full year.</p>
+
+      <p class="scroll-p" data-en="During this training with medicinal plants, we sharpen our senses to the point of perceiving sounds, seeing, hearing, smelling, and feeling things that other people cannot. The plants themselves become teachers." data-es="Durante este entrenamiento con plantas medicinales, agudizamos nuestros sentidos hasta el punto de percibir sonidos, ver, oír, oler y sentir cosas que otras personas no pueden. Las plantas mismas se convierten en maestras.">During this training with medicinal plants, we sharpen our senses to the point of perceiving sounds, seeing, hearing, smelling, and feeling things that other people cannot. The plants themselves become teachers.</p>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION IV: ICAROS
+      ════════════════════════════════════════════════ -->
+      <div class="scroll-subheading" data-en="IV. Icaros — Songs of Healing" data-es="IV. Icaros — Cantos de Sanación">IV. Icaros — Songs of Healing</div>
+
+      <div class="icaro-quote">
+        <p data-en="The icaros, with their magical and medicinal songs, embody the powers of plant spirits. These songs accompany the ceremony, channeling the energy of the medicine into the participant's body. Through song, we invoke the plants that heal." data-es="Los icaros, con sus canciones mágicas y medicinales, encarnan los poderes de los espíritus de las plantas. Estas canciones acompañan la ceremonia, canalizando la energía de la medicina hacia el cuerpo del participante. A través del canto, invocamos las plantas que sanan.">The icaros, with their magical and medicinal songs, embody the powers of plant spirits. These songs accompany the ceremony, channeling the energy of the medicine into the participant's body. Through song, we invoke the plants that heal.</p>
+      </div>
+
+      <p class="scroll-p" data-en="These are not just any songs. They are obtained through a retreat where the plants themselves — prepared with their essence — grant the power of song to heal. Through this magical chanting, the healer works with several kinds of songs during ceremony:" data-es="No son canciones cualquiera. Se obtienen a través de un retiro donde las plantas mismas — preparadas con su esencia — otorgan el poder del canto para sanar. A través de este canto mágico, el sanador trabaja con varios tipos de canciones durante la ceremonia:">These are not just any songs. They are obtained through a retreat where the plants themselves — prepared with their essence — grant the power of song to heal. Through this magical chanting, the healer works with several kinds of songs during ceremony:</p>
+
+      <ul class="scroll-list">
+        <li data-en="Songs for cleansing and protecting the ceremonial space." data-es="Canciones para limpiar y proteger el espacio ceremonial.">Songs for cleansing and protecting the ceremonial space.</li>
+        <li data-en="Energetic cleansing songs." data-es="Canciones de limpieza energética.">Energetic cleansing songs.</li>
+        <li data-en="Songs for invoking healing plants." data-es="Canciones para invocar plantas curativas.">Songs for invoking healing plants.</li>
+        <li data-en="Healing songs — songs of light for the body, mind, psyche, and spirit." data-es="Canciones de sanación — canciones de luz para el cuerpo, la mente, la psique y el espíritu.">Healing songs — songs of light for the body, mind, psyche, and spirit.</li>
+        <li data-en="The closing song of the ceremony, to channel and protect the energy body of each participant." data-es="La canción de cierre de la ceremonia, para canalizar y proteger el cuerpo energético de cada participante.">The closing song of the ceremony, to channel and protect the energy body of each participant.</li>
+      </ul>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+    </div><!-- /.scroll-outer -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-size:1.8rem; color:#fff; text-transform:uppercase; font-weight:900; letter-spacing:-0.02em;">Koman Keneya</div>
+    <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:#A0AAB2; margin-top:0.3rem; font-family:'DM Sans',sans-serif; font-weight:500;" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @koman_keneya_center
+        </a>
+        <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          +51 993 186 086
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var h = document.getElementById('hamburger');
+      var m = document.getElementById('mobileNav');
+      h.classList.toggle('open');
+      m.classList.toggle('open');
+      document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+    }
+
+    function setLang(lang) {
+      sessionStorage.setItem('kk-lang', lang);
+      document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+      var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+      if (btn) btn.classList.add('on');
+      document.querySelectorAll('[data-en]').forEach(el => {
+        var txt = el.getAttribute('data-' + lang);
+        if (!txt) return;
+        el.textContent = txt;
+      });
+    }
+    (function() {
+      var lang = sessionStorage.getItem('kk-lang') || 'en';
+      setLang(lang);
+    })();
+
+    // Scroll reveal
+    const items = document.querySelectorAll('.scroll-outer, .kg-item, .maestro-photo-frame, .icaro-quote');
+    items.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+    });
+    const reveal = () => items.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+    window.addEventListener('scroll', reveal);
+    reveal();
+  </script>
+</body>
+</html>
