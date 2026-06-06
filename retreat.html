@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retreats — Koman Keneya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark:     #050505;
+      --text-main:   #FFFFFF;
+      --text-muted:  #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; overflow-x: hidden; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; text-decoration: none; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover, .nav-links a.active { color: var(--neon-cyan); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    /* ── HAMBURGER / MOBILE NAV ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 250;
+      background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
+      text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+    .mobile-nav a:hover { color: #38C7CC; }
+    .mobile-nav .lang-btns { margin-top: 1rem; }
+    @media (max-width: 900px) { .hamburger { display: flex; } .nav-links { display: none; } nav { padding: 1rem 1.5rem; } }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      position: relative;
+    }
+    .page-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin-bottom: 1rem;
+    }
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .page-title span { color: var(--neon-orange); }
+    .page-intro {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 1rem;
+      font-style: italic;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 2rem auto;
+      max-width: 860px;
+      padding: 0 2rem;
+    }
+    .divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.35); }
+    .divider-glyph { color: var(--neon-orange); font-size: 0.8rem; flex-shrink: 0; }
+
+    /* ── MAIN ── */
+    main { padding: 0 2rem 5rem; max-width: 1060px; margin: 0 auto; }
+
+    /* ── RETREAT CARDS GRID ── */
+    .retreat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 820px) {
+      .retreat-grid { grid-template-columns: 1fr; }
+    }
+
+    .retreat-card {
+      position: relative;
+      background: rgba(5, 8, 15, 0.85);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 199, 204, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .retreat-card:hover {
+      border-color: rgba(56, 199, 204, 0.5);
+      box-shadow: 0 0 40px rgba(56, 199, 204, 0.08);
+    }
+
+    /* Corner ornaments on cards */
+    .card-corner { position: absolute; width: 24px; height: 24px; }
+    .card-corner.tl { top: 8px; left: 8px; }
+    .card-corner.tr { top: 8px; right: 8px; transform: scaleX(-1); }
+    .card-corner.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+    .card-corner.br { bottom: 8px; right: 8px; transform: scale(-1,-1); }
+
+    /* Card photo slot */
+    .card-photo {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.75) saturate(0.9);
+    }
+    .card-photo-placeholder {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, rgba(62,142,222,0.15) 0%, rgba(56,199,204,0.08) 50%, rgba(229,134,84,0.12) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-photo-placeholder svg { opacity: 0.25; }
+
+    /* Photo overlay gradient */
+    .card-photo-wrap { position: relative; }
+    .card-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(5,8,15,0.9));
+    }
+
+    /* Option badge */
+    .card-option-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      z-index: 2;
+    }
+    .badge-one { background: rgba(62,142,222,0.25); border: 1px solid rgba(62,142,222,0.5); color: var(--neon-blue); }
+    .badge-two { background: rgba(229,134,84,0.2); border: 1px solid rgba(229,134,84,0.45); color: var(--neon-orange); }
+
+    /* Card body */
+    .card-body { padding: 1.8rem 2rem 2rem; flex: 1; display: flex; flex-direction: column; }
+
+    .card-duration {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin-bottom: 0.5rem;
+    }
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+    .card-subtitle {
+      font-family: 'IM Fell English', serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Feature list */
+    .card-features { list-style: none; padding: 0; margin: 0 0 1.8rem; flex: 1; }
+    .card-features li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      padding: 0.55rem 0 0.55rem 1.8rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      line-height: 1.4;
+    }
+    .card-features li:last-child { border-bottom: none; }
+    .card-features li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      font-size: 0.55rem;
+    }
+    .card-one .card-features li::before { color: var(--neon-blue); }
+    .card-two .card-features li::before { color: var(--neon-orange); }
+
+    /* Included tags row */
+    .card-included {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .incl-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+    .card-one .incl-tag { background: rgba(62,142,222,0.12); border: 1px solid rgba(62,142,222,0.25); color: #6aadeb; }
+    .card-two .incl-tag { background: rgba(229,134,84,0.1); border: 1px solid rgba(229,134,84,0.25); color: #eba07a; }
+
+    /* Price block */
+    .card-price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .price-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .price-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .card-one .price-amount { color: var(--neon-blue); }
+    .card-two .price-amount { color: var(--neon-orange); }
+    .price-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* CTA button */
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .card-one .card-cta { background: var(--neon-blue); color: #000; }
+    .card-one .card-cta:hover { background: var(--neon-cyan); box-shadow: 0 0 18px rgba(56,199,204,0.35); }
+    .card-two .card-cta { background: var(--neon-orange); color: #000; }
+    .card-two .card-cta:hover { background: #f0a070; box-shadow: 0 0 18px rgba(229,134,84,0.35); }
+
+    /* ── WHAT TO EXPECT SCROLL ── */
+    .expect-outer {
+      position: relative;
+      background: rgba(5, 8, 15, 0.82);
+      border: 1px solid rgba(229,134,84,0.2);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+      margin-top: 3.5rem;
+    }
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    .expect-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-orange);
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+    .expect-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .expect-intro {
+      font-family: 'IM Fell English', serif;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      font-style: italic;
+    }
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 700px) { .expect-grid { grid-template-columns: 1fr; } }
+    .expect-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .expect-icon { font-size: 1.4rem; margin-bottom: 0.8rem; display: block; }
+    .expect-item-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .expect-item-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── CALL TO ACTION BAND ── */
+    .cta-band {
+      text-align: center;
+      padding: 4rem 2rem;
+      margin-top: 3rem;
+      border: 1px solid rgba(56,199,204,0.15);
+      border-radius: 20px;
+      background: rgba(56,199,204,0.03);
+      position: relative;
+    }
+    .cta-band-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin-bottom: 1rem;
+    }
+    .cta-band-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .cta-band-body {
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-style: italic;
+    }
+    .cta-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.1rem 2.5rem;
+      background: var(--neon-cyan);
+      color: #000;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    .cta-email-link:hover { background: #fff; box-shadow: 0 0 25px rgba(56,199,204,0.4); }
+    .cta-email-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 1.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 700px) {
+      .expect-outer { padding: 2rem 1.5rem; }
+      .card-body { padding: 1.4rem 1.4rem 1.6rem; }
+    }
+    @media (max-width: 600px) {
+      main { padding: 0 1rem 4rem; }
+      .page-hero { padding: 3.5rem 1rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="retreat.html" class="active" data-en="Retreat" data-es="Retiro">Retreat</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+    <a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a>
+    <a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+    <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+    <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
+    <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+    <a href="index.html#contact" onclick="toggleMenu()" data-en="Contact" data-es="Contacto">Contact</a>
+    <div class="lang-btns" style="margin-top:1rem;">
+      <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+      <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-eyebrow" data-en="Koman Keneya · Pucallpa, Peru" data-es="Koman Keneya · Pucallpa, Perú">Koman Keneya · Pucallpa, Peru</div>
+    <h1 class="page-title" data-en="Guided by Tradition: Immersive <span>Ancestral Healing</span>" data-es="Guiado por la Tradición: Sanación <span>Ancestral</span> Inmersiva">Guided by Tradition: Immersive <span>Ancestral Healing</span></h1>
+    <p class="page-intro" data-en="Two immersive retreats. Both led by Maestro Americo and rooted in living Shipibo tradition." data-es="Dos retiros inmersivos. Ambos liderados por el Maestro Americo y arraigados en la tradición viva Shipibo.">Two immersive retreats. Both led by Maestro Americo and rooted in living Shipibo tradition.</p>
+  </div>
+
+  <main>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-glyph">❖</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- RETREAT CARDS -->
+    <div class="retreat-grid">
+
+      <!-- CARD 1: 7 Day Retreat -->
+      <div class="retreat-card card-one">
+
+        <!-- Corner ornaments -->
+        <svg class="card-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+        </svg>
+        <svg class="card-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+        </svg>
+        <svg class="card-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+        </svg>
+        <svg class="card-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+        </svg>
+
+        <!-- Photo -->
+        <div class="card-photo-wrap">
+          <img src="Photos/retreat_photo_1.JPG" class="card-photo" alt="7-Day Retreat at Koman Keneya">
+          <span class="card-option-badge badge-one" data-en="Option 01" data-es="Opción 01">Option 01</span>
+        </div>
+
+        <div class="card-body">
+          <div class="card-duration" data-en="7 Days · 6 Nights" data-es="7 Días · 6 Noches">7 Days · 6 Nights</div>
+          <h2 class="card-title" data-en="The 7-Day Retreat" data-es="El Retiro de 7 Días">The 7-Day Retreat</h2>
+          <p class="card-subtitle" data-en="Ceremony, purification, and the living wisdom of the plants." data-es="Ceremonia, purificación y la sabiduría viva de las plantas.">Ceremony, purification, and the living wisdom of the plants.</p>
+
+          <ul class="card-features">
+            <li data-en="3 Medicine Ceremonies guided by Maestro Americo" data-es="3 Ceremonias de Medicina guiadas por el Maestro Americo">3 Medicine Ceremonies guided by Maestro Americo</li>
+            <li data-en="Daily Sauna with medicinal plants" data-es="Sauna diaria con plantas medicinales">Daily Sauna with medicinal plants</li>
+            <li data-en="Vomitivo — traditional deep cleanse" data-es="Vomitivo — limpieza profunda tradicional">Vomitivo — traditional deep cleanse</li>
+            <li data-en="3 Flower Baths for energetic purification" data-es="3 Baños de Flores para la purificación energética">3 Flower Baths for energetic purification</li>
+            <li data-en="Small group focus — intimate & personal" data-es="Enfoque en grupo pequeño — íntimo y personal">Small group focus — intimate &amp; personal</li>
+          </ul>
+
+          <div class="card-included">
+            <span class="incl-tag" data-en="Food" data-es="Alimentación">Food</span>
+            <span class="incl-tag" data-en="Accommodations" data-es="Alojamiento">Accommodations</span>
+            <span class="incl-tag" data-en="Transport from Airport" data-es="Transporte desde el Aeropuerto">Transport from Airport</span>
+          </div>
+
+          <div class="card-price-row">
+            <div>
+              <div class="price-amount">$1,500</div>
+              <div class="price-note" data-en="Per person · All-inclusive" data-es="Por persona · Todo incluido">Per person · All-inclusive</div>
+            </div>
+            <a href="mailto:komankeneya@gmail.com?subject=7-Day%20Retreat%20Inquiry&body=Hello%2C%20I%20am%20interested%20in%20the%207-Day%20Retreat.%20Please%20send%20me%20more%20information." class="card-cta" data-en="Inquire Now →" data-es="Consultar Ahora →">Inquire Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: 15 Day Dieta -->
+      <div class="retreat-card card-two">
+
+        <!-- Corner ornaments -->
+        <svg class="card-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        </svg>
+        <svg class="card-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        </svg>
+        <svg class="card-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        </svg>
+        <svg class="card-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        </svg>
+
+        <!-- Photo -->
+        <div class="card-photo-wrap">
+          <img src="Photos/retreat_photo_2.JPG" class="card-photo" alt="15-Day Dieta at Koman Keneya">
+          <span class="card-option-badge badge-two" data-en="Option 02 · Deep Immersion" data-es="Opción 02 · Inmersión Profunda">Option 02 · Deep Immersion</span>
+        </div>
+
+        <div class="card-body">
+          <div class="card-duration" data-en="15 Days · 14 Nights" data-es="15 Días · 14 Noches">15 Days · 14 Nights</div>
+          <h2 class="card-title" data-en="The 15-Day Dieta" data-es="La Dieta de 15 Días">The 15-Day Dieta</h2>
+          <p class="card-subtitle" data-en="A profound commitment to the plants. Fasting, learning, and ceremony woven together into a transformative rite of passage." data-es="Un compromiso profundo con las plantas. Ayuno, aprendizaje y ceremonia tejidos en un transformador rito de paso.">A profound commitment to the plants. Fasting, learning, and ceremony woven together into a transformative rite of passage.</p>
+
+          <ul class="card-features">
+            <li data-en="4 Medicine Ceremonies guided by Maestro Americo" data-es="4 Ceremonias de Medicina guiadas por el Maestro Americo">4 Medicine Ceremonies guided by Maestro Americo</li>
+            <li data-en="Daily Sauna with medicinal plants" data-es="Sauna diaria con plantas medicinales">Daily Sauna with medicinal plants</li>
+            <li data-en="Vomitivo — traditional deep cleanse" data-es="Vomitivo — limpieza profunda tradicional">Vomitivo — traditional deep cleanse</li>
+            <li data-en="4 Flower Baths for energetic purification" data-es="4 Baños de Flores para la purificación energética">4 Flower Baths for energetic purification</li>
+            <li data-en="4 Days of Fasting — deep plant communion" data-es="4 Días de Ayuno — comunión profunda con las plantas">4 Days of Fasting — deep plant communion</li>
+            <li data-en="Learning about the Dieta and post-diet integration" data-es="Aprendizaje sobre la Dieta y la integración post-dieta">Learning about the Dieta and post-diet integration</li>
+            <li data-en="Icaros, keywords &amp; plant spirit connection" data-es="Icaros, palabras clave y conexión con los espíritus de las plantas">Icaros, keywords &amp; plant spirit connection</li>
+            <li data-en="Small group focus — intimate &amp; personal" data-es="Enfoque en grupo pequeño — íntimo y personal">Small group focus — intimate &amp; personal</li>
+          </ul>
+
+          <div class="card-included">
+            <span class="incl-tag" data-en="Food" data-es="Alimentación">Food</span>
+            <span class="incl-tag" data-en="Accommodations" data-es="Alojamiento">Accommodations</span>
+            <span class="incl-tag" data-en="Transport from Airport" data-es="Transporte desde el Aeropuerto">Transport from Airport</span>
+          </div>
+
+          <div class="card-price-row">
+            <div>
+              <div class="price-amount">$2,500</div>
+              <div class="price-note" data-en="Per person · All-inclusive" data-es="Por persona · Todo incluido">Per person · All-inclusive</div>
+            </div>
+            <a href="mailto:komankeneya@gmail.com?subject=15-Day%20Dieta%20Inquiry&body=Hello%2C%20I%20am%20interested%20in%20the%2015-Day%20Dieta.%20Please%20send%20me%20more%20information." class="card-cta" data-en="Inquire Now →" data-es="Consultar Ahora →">Inquire Now →</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.retreat-grid -->
+
+    <!-- WHAT TO EXPECT -->
+    <div class="expect-outer">
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+      </svg>
+
+      <div class="expect-eyebrow" data-en="Before You Arrive" data-es="Antes de Llegar">Before You Arrive</div>
+      <h2 class="expect-title" data-en="What to Know About Your Retreat" data-es="Lo Que Debes Saber Sobre Tu Retiro">What to Know About Your Retreat</h2>
+      <p class="expect-intro" data-en="Every retreat at Koman Keneya is a full immersion into Shipibo tradition — held in the living Amazon with care, ceremony, and ancestral wisdom." data-es="Cada retiro en Koman Keneya es una inmersión completa en la tradición Shipibo, llevada a cabo en la Amazonía viva con cuidado, ceremonia y sabiduría ancestral.">Every retreat at Koman Keneya is a full immersion into Shipibo tradition — held in the living Amazon with care, ceremony, and ancestral wisdom.</p>
+
+      <div class="divider" style="padding:0; margin: 0.5rem 0 1.8rem;">
+        <div class="divider-line"></div>
+        <span class="divider-glyph">✦</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="expect-grid">
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Dieta Preparation" data-es="Preparación de la Dieta">Dieta Preparation</div>
+          <p class="expect-item-text" data-en="You will receive guidelines to begin your dieta before arrival — a clean diet that opens the body to the plants." data-es="Recibirás pautas para comenzar tu dieta antes de llegar, una alimentación limpia que abre el cuerpo a las plantas.">You will receive guidelines to begin your dieta before arrival — a clean diet that opens the body to the plants.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Private Tambo" data-es="Tambo Privado">Private Tambo</div>
+          <p class="expect-item-text" data-en="Your own handcrafted wooden tambo with hammock porch and views of the Amazonian landscape. A space to rest and integrate." data-es="Tu propio tambo de madera artesanal con porche de hamaca y vistas al paisaje amazónico. Un espacio para descansar e integrar.">Your own handcrafted wooden tambo with hammock porch and views of the Amazonian landscape. A space to rest and integrate.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Ceremony Space" data-es="Espacio de Ceremonia">Ceremony Space</div>
+          <p class="expect-item-text" data-en="Ceremonies are held in a traditional maloca, guided by Maestro Americo with sacred icaros and the medicine of the forest." data-es="Las ceremonias se llevan a cabo en una maloca tradicional, guiadas por el Maestro Americo con icaros sagrados y la medicina del bosque.">Ceremonies are held in a traditional maloca, guided by Maestro Americo with sacred icaros and the medicine of the forest.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Traditional Cuisine" data-es="Cocina Tradicional">Traditional Cuisine</div>
+          <p class="expect-item-text" data-en="All meals follow traditional dieta guidelines — simple, clean, and prepared to support your healing and plant work." data-es="Todas las comidas siguen las pautas tradicionales de la dieta: simples, limpias y preparadas para apoyar tu sanación y trabajo con plantas.">All meals follow traditional dieta guidelines — simple, clean, and prepared to support your healing and plant work.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Getting There" data-es="Cómo Llegar">Getting There</div>
+          <p class="expect-item-text" data-en="Fly into Pucallpa, Peru. Airport transport to and from the center is included in both retreat packages." data-es="Vuela a Pucallpa, Perú. El transporte al aeropuerto y desde el centro está incluido en ambos paquetes de retiro.">Fly into Pucallpa, Peru. Airport transport to and from the center is included in both retreat packages.</p>
+        </div>
+        <div class="expect-item">
+          <div class="expect-item-title" data-en="Small Group" data-es="Grupo Pequeño">Small Group</div>
+          <p class="expect-item-text" data-en="Both retreats are intentionally kept small so that Maestro Americo can offer close guidance and personal attention to each participant." data-es="Ambos retiros se mantienen intencionalmente pequeños para que el Maestro Americo pueda ofrecer una guía cercana y atención personal a cada participante.">Both retreats are intentionally kept small so that Maestro Americo can offer close guidance and personal attention to each participant.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BAND -->
+    <div class="cta-band">
+      <h2 class="cta-band-title" data-en="Ready to Begin?" data-es="¿Listo para Comenzar?">Ready to Begin?</h2>
+      <p class="cta-band-body" data-en="Reach out by email to inquire about availability, ask any questions, and take the first step toward your retreat with Maestro Americo." data-es="Escríbenos por correo electrónico para consultar disponibilidad, hacer preguntas y dar el primer paso hacia tu retiro con el Maestro Americo.">Reach out by email to inquire about availability, ask any questions, and take the first step toward your retreat with Maestro Americo.</p>
+      <a href="mailto:komankeneya@gmail.com?subject=Retreat%20Inquiry&body=Hello%2C%20I%20would%20like%20to%20learn%20more%20about%20the%20retreat%20options%20at%20Koman%20Keneya." class="cta-email-link" data-en="✉  Send Us an Email" data-es="✉  Envíanos un Correo">✉&nbsp; Send Us an Email</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER (matches site template) -->
+  <footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-size:1.8rem; color:#fff; text-transform:uppercase; font-weight:900; letter-spacing:-0.02em;">Koman Keneya</div>
+    <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:#A0AAB2; margin-top:0.3rem; font-family:'DM Sans',sans-serif; font-weight:500;" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @koman_keneya_center
+        </a>
+        <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          +51 993 186 086
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var h = document.getElementById('hamburger');
+      var m = document.getElementById('mobileNav');
+      h.classList.toggle('open');
+      m.classList.toggle('open');
+      document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+    }
+
+    function setLang(lang) {
+      sessionStorage.setItem('kk-lang', lang);
+      document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+      var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+      if (btn) btn.classList.add('on');
+      document.querySelectorAll('[data-en]').forEach(el => {
+        var txt = el.getAttribute('data-' + lang);
+        if (!txt) return;
+        // handle innerHTML for elements with <span> tags
+        if (txt.includes('<')) { el.innerHTML = txt; } else { el.textContent = txt; }
+      });
+    }
+    (function() {
+      var lang = sessionStorage.getItem('kk-lang') || 'en';
+      setLang(lang);
+    })();
+  </script>
+
+</body>
+</html>
