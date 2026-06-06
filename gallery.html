@@ -131,7 +131,12 @@
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease, opacity 0.3s ease;
+      will-change: transform;
+      /* Fade in as each image loads */
+      opacity: 0;
+      animation: imgFadeIn 0.4s ease forwards;
     }
+    @keyframes imgFadeIn { to { opacity: 1; } }
     .gallery-item:hover img { transform: scale(1.06); opacity: 0.85; }
     .gallery-item::after {
       content: '⊕';
@@ -353,64 +358,65 @@
       <div class="gallery-grid" id="galleryGrid">
 
         <!-- Aerial / establishing shots first — sets the scene -->
-        <div class="gallery-item" onclick="openLightbox(0)"><img src="Gallery/overhead tambos 4.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(1)"><img src="Gallery/overhead tambos 3.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(2)"><img src="Gallery/overhead tambos 2.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(3)"><img src="Gallery/overhead tambos.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(0)"><img src="Gallery/overhead tambos 4.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="Gallery/overhead tambos 3.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="Gallery/overhead tambos 2.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="Gallery/overhead tambos.jpg" loading="lazy" alt=""></div>
 
         <!-- The jungle and nature -->
-        <div class="gallery-item" onclick="openLightbox(4)"><img src="Gallery/tree.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(5)"><img src="Gallery/tree 2.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(6)"><img src="Gallery/vine tree.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(7)"><img src="Gallery/fuzzy tree 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(8)"><img src="Gallery/young tree 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(9)"><img src="Gallery/nature landscape 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(10)"><img src="Gallery/setting sun nature 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(11)"><img src="Gallery/setting sun nature 2 2025.JPG" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="Gallery/tree.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="Gallery/tree 2.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(6)"><img src="Gallery/vine tree.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(7)"><img src="Gallery/fuzzy tree 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(8)"><img src="Gallery/young tree 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(9)"><img src="Gallery/nature landscape 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(10)"><img src="Gallery/setting sun nature 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(11)"><img src="Gallery/setting sun nature 2 2025.JPG" loading="lazy" alt=""></div>
 
         <!-- Plants & medicine -->
-        <div class="gallery-item" onclick="openLightbox(12)"><img src="Gallery/bobinsana.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(13)"><img src="Gallery/bobinsana 2025 2.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(14)"><img src="Gallery/bobinsana 2025 3.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(15)"><img src="Gallery/bobinsana 2025 5.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(16)"><img src="Gallery/moon plant 2025.JPG" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(12)"><img src="Gallery/bobinsana.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(13)"><img src="Gallery/bobinsana 2025 2.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(14)"><img src="Gallery/bobinsana 2025 3.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(15)"><img src="Gallery/bobinsana 2025 5.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(16)"><img src="Gallery/moon plant 2025.JPG" loading="lazy" alt=""></div>
 
         <!-- The structures up close -->
-        <div class="gallery-item" onclick="openLightbox(17)"><img src="Gallery/tambo huts.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(18)"><img src="Gallery/tambo huts 2.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(19)"><img src="Gallery/single tambo.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(20)"><img src="Gallery/Tambo hut 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(21)"><img src="Gallery/Hut and landscape 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(22)"><img src="Gallery/hut setting sun 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(23)"><img src="Gallery/water tower 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(24)"><img src="Gallery/maloca.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(17)"><img src="Gallery/tambo huts.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(18)"><img src="Gallery/tambo huts 2.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(19)"><img src="Gallery/single tambo.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(20)"><img src="Gallery/Tambo hut 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(21)"><img src="Gallery/Hut and landscape 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(22)"><img src="Gallery/hut setting sun 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(23)"><img src="Gallery/water tower 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(24)"><img src="Gallery/maloca.jpg" loading="lazy" alt=""></div>
 
         <!-- Wildlife — the owls -->
-        <div class="gallery-item" onclick="openLightbox(25)"><img src="Gallery/Hut owl 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(26)"><img src="Gallery/hut owl 2 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(27)"><img src="Gallery/two owl hut 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(28)"><img src="Gallery/owl closeup hut 2025.JPG" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(29)"><img src="Gallery/owl flight 2025.JPG" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(25)"><img src="Gallery/Hut owl 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(26)"><img src="Gallery/hut owl 2 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(27)"><img src="Gallery/two owl hut 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(28)"><img src="Gallery/owl closeup hut 2025.JPG" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(29)"><img src="Gallery/owl flight 2025.JPG" loading="lazy" alt=""></div>
 
         <!-- Living spaces -->
-        <div class="gallery-item" onclick="openLightbox(30)"><img src="Gallery/hammock.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(31)"><img src="Gallery/bed.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(32)"><img src="Gallery/bed 2.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(33)"><img src="Gallery/bed 3.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(34)"><img src="Gallery/bathroom.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(35)"><img src="Gallery/guest.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(30)"><img src="Gallery/hammock.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(31)"><img src="Gallery/bed.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(32)"><img src="Gallery/bed 2.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(33)"><img src="Gallery/bed 3.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(34)"><img src="Gallery/bathroom.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(35)"><img src="Gallery/guest.jpg" loading="lazy" alt=""></div>
 
         <!-- Communal & dining -->
-        <div class="gallery-item" onclick="openLightbox(36)"><img src="Gallery/dining.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(37)"><img src="Gallery/kitchen.jpg" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(36)"><img src="Gallery/dining.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(37)"><img src="Gallery/kitchen.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(38)"><img src="Gallery/food.jpeg" loading="lazy" alt=""></div>
 
         <!-- People -->
-        <div class="gallery-item" onclick="openLightbox(38)"><img src="Gallery/family.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(39)"><img src="Gallery/Americo Canoe 2025.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(40)"><img src="Gallery/student.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(41)"><img src="Gallery/student 2.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(42)"><img src="Gallery/turner.jpg" alt=""></div>
-        <div class="gallery-item" onclick="openLightbox(43)"><img src="Gallery/turner hut 2025.JPG" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(39)"><img src="Gallery/family.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(40)"><img src="Gallery/Americo Canoe 2025.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(41)"><img src="Gallery/student.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(42)"><img src="Gallery/student 2.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(43)"><img src="Gallery/turner.jpg" loading="lazy" alt=""></div>
+        <div class="gallery-item" onclick="openLightbox(44)"><img src="Gallery/turner hut 2025.JPG" loading="lazy" alt=""></div>
 
         <!-- ADD MORE PHOTOS HERE — copy a block above, update filename and increment the index -->
 
