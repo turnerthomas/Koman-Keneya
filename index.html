@@ -248,6 +248,8 @@
   .off-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
   .off-header h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text-main); margin-top: 1rem; line-height: 1.1; }
   .off-header h2 em { color: var(--neon-cyan); }
+  .retreat-link { color: var(--neon-cyan); text-decoration: none; border-bottom: 2px solid rgba(56,199,204,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+  .retreat-link:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
   .off-header p { font-size: 0.92rem; line-height: 1.9; color: var(--text-muted); }
   .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .off-item { background: rgba(0,0,0,0.6); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: all 0.3s; border-bottom: 2px solid transparent; }
@@ -499,7 +501,7 @@
   <div class="off-header">
     <div>
       <span class="slabel" data-en="The Experience" data-es="La Experiencia">The Experience</span>
-      <h2 data-en="What Your <em>Retreat</em> Includes" data-es="Qué Incluye Tu <em>Retiro</em>">What Your <em>Retreat</em> Includes</h2>
+      <h2 data-en="What Your <em><a href='retreat.html' class='retreat-link'>Retreat</a></em> Includes" data-es="Qué Incluye Tu <em><a href='retreat.html' class='retreat-link'>Retiro</a></em>">What Your <em><a href="retreat.html" class="retreat-link">Retreat</a></em> Includes</h2>
     </div>
     <p data-en="Every stay at Koman Keneya is a full immersion — combining ceremony, rest, nourishment, and cultural transmission into one coherent, tradition-guided experience." data-es="Cada estadía en Koman Keneya es una inmersión completa, combinando ceremonia, descanso, nutrición y transmisión cultural en una experiencia coherente guiada por la tradición.">Every stay at Koman Keneya is a full immersion — combining ceremony, rest, nourishment, and cultural transmission into one coherent, tradition-guided experience.</p>
   </div>
