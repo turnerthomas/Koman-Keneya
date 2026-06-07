@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Koman Keneya — School of Traditional Medicine</title>
 <!-- Replaced DM Serif Display with Montserrat for the bold, geometric look in the photo -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
     /* Updated Dark Theme / Neon Colors extracted from the Shipibo image */
@@ -184,7 +184,7 @@
     /* 5. Keep the bottom border, but make sure it sits nicely below */
     border-bottom: 1px solid var(--border-dark);
   }
-  .hero-body { font-size: 0.98rem; line-height: 1.95; color: var(--text-main); max-width: 540px; margin-bottom: 2.5rem; background-color: rgba(0, 0, 0, 0.45); font-weight: 600; padding: 0.5rem 0.7rem; border-radius: 6px; }
+  .hero-body { font-family: 'IM Fell English', serif; font-size: 0.98rem; line-height: 1.95; color: var(--text-main); max-width: 540px; margin-bottom: 2.5rem; background-color: rgba(0, 0, 0, 0.45); font-weight: 600; padding: 0.5rem 0.7rem; border-radius: 6px; }
   .hero-cta { display: inline-flex; width: fit-content; align-items: center; gap: 1rem; padding: 1rem 2rem; background: var(--neon-blue); color: var(--black); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: bold; transition: all 0.3s; border-radius: 50px; }
   .hero-cta:hover { background: var(--neon-cyan); box-shadow: 0 0 15px rgba(56, 199, 204, 0.4); }
   .hero-cta::after { content: '→'; font-size: 1rem; }
@@ -192,7 +192,7 @@
   .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; display: block; }
 
   /* ── SECTION LABELS ── */
-  .slabel { font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-orange); display: flex; align-items: center; gap: 0.8rem; font-weight: bold; }
+  .slabel { font-family: 'Cinzel', serif; font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-orange); display: flex; align-items: center; gap: 0.8rem; font-weight: bold; }
   .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
@@ -204,7 +204,7 @@
   .vs-text-inner { background: rgba(5, 5, 5, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
   .vs-text h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--text-main); line-height: 1.1; margin: 1.2rem 0 2rem; }
   .vs-text h2 em { color: var(--neon-cyan); }
-  .vs-text p { font-size: 0.93rem; line-height: 1.95; color: #d0dde5; }
+  .vs-text p { font-family: 'IM Fell English', serif; font-size: 0.93rem; line-height: 1.95; color: #d0dde5; }
   .vs-text p + p { margin-top: 1.2rem; }
   .vs-pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
   .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main); border-radius: 100px; background: rgba(255,255,255,0.06); }
@@ -223,7 +223,7 @@
   .hf-text .slabel::after { background: var(--neon-blue); }
   .hf-text h2 { font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--text-main); line-height: 1.1; }
   .hf-text h2 em { color: var(--neon-orange); }
-  .hf-text p { font-size: 0.92rem; line-height: 1.95; color: var(--text-muted); }
+  .hf-text p { font-family: 'IM Fell English', serif; font-size: 0.92rem; line-height: 1.95; color: var(--text-muted); }
   .hf-text p + p { margin-top: 1.3rem; }
   .bio-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 2.5rem; padding: 1rem 1.8rem; background: var(--neon-orange); color: var(--black); text-decoration: none; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: transform 0.2s ease, background 0.2s ease; width: fit-content; }
   .bio-button::after { content: '→'; font-size: 1rem; }
@@ -250,7 +250,7 @@
   .off-header h2 em { color: var(--neon-cyan); }
   .retreat-link { color: var(--neon-cyan); text-decoration: none; border-bottom: 2px solid rgba(56,199,204,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
   .retreat-link:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
-  .off-header p { font-size: 0.92rem; line-height: 1.9; color: var(--text-muted); }
+  .off-header p { font-family: 'IM Fell English', serif; font-size: 0.92rem; line-height: 1.9; color: var(--text-muted); }
   .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .off-item { background: rgba(0,0,0,0.6); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: all 0.3s; border-bottom: 2px solid transparent; }
   .off-item:hover { background: var(--black); border-bottom-color: var(--neon-blue); }
@@ -391,8 +391,8 @@
     <span class="nav-tagline">School of Traditional Medicine</span>
   </a>
       <ul class="nav-links">
-      <li><a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
-      <li><a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
       <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
       <li><a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a></li>
       <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
@@ -412,8 +412,8 @@
 <!-- MOBILE NAV OVERLAY -->
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="americo-vision.html" data-en="Vision" data-es="Visión">Vision</a>
-  <a href="americo-bio.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
   <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
   <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
   <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
@@ -454,7 +454,7 @@
         <span class="vs-pill" data-en="Traditional Knowledge" data-es="Conocimiento Tradicional">Traditional Knowledge</span>
         <span class="vs-pill" data-en="Cultural Immersion" data-es="Inmersión Cultural">Cultural Immersion</span>
       </div>
-      <a class="vs-cta" href="americo-vision.html" data-en="Read Americo's Full Vision" data-es="Leer la Visión Completa de Americo">Read Americo's Full Vision</a>
+      <a class="vs-cta" href="vision.html" data-en="Read Americo's Full Vision" data-es="Leer la Visión Completa de Americo">Read Americo's Full Vision</a>
     </div>
   </div>
   <div class="vs-img">
@@ -489,7 +489,7 @@
           <span class="pp">Chiric Sanango</span>
           <span class="pp">Marusa</span>
         </div>
-        <a href="americo-bio.html" target="_blank" class="bio-button" data-en="Read Americo's Full Bio" data-es="Leer la Biografía Completa de Americo">Read Americo's Full Bio</a>
+        <a href="the-maestro.html" target="_blank" class="bio-button" data-en="Read Americo's Full Bio" data-es="Leer la Biografía Completa de Americo">Read Americo's Full Bio</a>
       </div>
     </div>
     </div><!-- /.healer-feature-inner -->
