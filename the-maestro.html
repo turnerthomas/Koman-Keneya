@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Americo's Full Bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #3E8EDE;
+      --neon-cyan:   #38C7CC;
+      --neon-orange: #E58654;
+      --bg-dark:     #050505;
+      --text-main:   #FFFFFF;
+      --text-muted:  #A0AAB2;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    /* Same shipibo-pattern2 background as vision page */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; letter-spacing: -0.02em; text-transform: uppercase; font-weight: 900; color: var(--text-main); text-decoration: none; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.2rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover { color: var(--neon-cyan); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 980px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(5, 8, 15, 0.82);
+      border: 1px solid rgba(56, 199, 204, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Eyebrow */
+    .scroll-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Title */
+    .scroll-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dividers */
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* ── PHOTO + INTRO LAYOUT ── */
+    .bio-top {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio-photo-wrap {
+      position: relative;
+    }
+    .bio-photo-wrap img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+      border: 1px solid rgba(56,199,204,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transition: transform 0.5s ease;
+    }
+    .bio-photo-wrap:hover img { transform: scale(1.02); }
+
+    /* Decorative accent line beside photo */
+    .bio-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--neon-orange), transparent);
+      border-radius: 2px;
+    }
+
+    .bio-photo-caption {
+      text-align: center;
+      margin-top: 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      opacity: 0.8;
+    }
+
+    /* Intro text beside photo */
+    .bio-intro-text { display: flex; flex-direction: column; justify-content: flex-start; }
+
+    /* Section subheading */
+    .scroll-subheading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin: 1.8rem 0 0.9rem;
+    }
+
+    /* Body paragraphs */
+    .scroll-p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .scroll-p .highlight {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    /* List items */
+    ul.scroll-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+    ul.scroll-list li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.65rem;
+    }
+    ul.scroll-list li::before {
+      content: '❖';
+      position: absolute;
+      left: 0;
+      top: 3px;
+      color: var(--neon-cyan);
+      font-size: 0.6rem;
+    }
+
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 760px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 2rem 1.2rem; }
+      .scroll-outer { padding: 2rem 1.5rem; }
+      .bio-top { grid-template-columns: 1fr; }
+      .bio-photo-wrap { max-width: 280px; margin: 0 auto; }
+    }
+
+  /* ── HAMBURGER / MOBILE NAV ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; z-index: 250;
+    background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
+    text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+  .mobile-nav a:hover { color: #38C7CC; }
+  .mobile-nav .lang-btns { margin-top: 1rem; }
+  @media (max-width: 900px) { .hamburger { display: flex; } }
+
+  @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } main { padding: 2rem 1rem; } .bio-top { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+
+  <nav>
+    <a href="index.html" class="nav-brand" style="text-decoration:none;">
+      <span class="nav-name">Koman Keneya</span>
+      <span class="nav-tagline" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</span>
+    </a>
+        <ul class="nav-links">
+      <li><a href="vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="the-maestro.html" class="active" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+  <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
+  <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-btns" style="margin-top:1rem;">
+    <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+    <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
+
+  <main>
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#E58654" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+
+      <!-- Header -->
+      <div class="scroll-eyebrow" data-en="Maestro Profile" data-es="Perfil del Maestro">Maestro Profile</div>
+      <h1 class="scroll-title">Americo López Sanchez</h1>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- Photo + opening paragraphs side by side -->
+      <div class="bio-top">
+        <div class="bio-photo-wrap">
+          <img src="Photos/Americo 3.jpeg" alt="Maestro Americo López Sanchez">
+          <div class="bio-photo-caption">Pekon Nima</div>
+        </div>
+        <div class="bio-intro-text">
+          <p class="scroll-p"
+             data-en="Hello everyone! I am Americo López Sanchez. My authentic Shipibo name is <span class='highlight'>“PEKON NIMA,”</span> which means “the many colors of nature” in English."
+             data-es="¡Hola a todos!, Americo López Sanchez. Mi nombre auténtico en shipibo es <span class='highlight'>“PEKON NIMA”</span>, que significa en español “los muchos colores de la naturaleza”.">
+            Hello everyone! I am Americo López Sanchez. My authentic Shipibo name is <span class="highlight">“PEKON NIMA,”</span> which means “the many colors of nature” in English.
+          </p>
+          <p class="scroll-p"
+             data-en="Americo is a great healer who possesses a true gift and a desire to share his knowledge; he is always striving to grow and become a better doctor and a better person. He works extensively with young people, seeking to pass down his knowledge of medicinal plants and Shipibo culture."
+             data-es="Americo es un gran médico que tiene un verdadero don y un deseo de compartir sus conocimientos, siempre está tratando de crecer y convertirse en un mejor médico y una mejor persona. Trabaja mucho con los jóvenes tratando de transmitir sus conocimientos sobre las plantas medicinales y la cultura shipibo.">
+            Americo is a great healer who possesses a true gift and a desire to share his knowledge; he is always striving to grow and become a better doctor and a better person. He works extensively with young people, seeking to pass down his knowledge of medicinal plants and Shipibo culture.
+          </p>
+          <p class="scroll-p"
+             data-en="Americo López Sanchez comes from a community called <span class='highlight'>Roaboya Nativa</span>, near Pucallpa, Peru."
+             data-es="Americo López Sanchez viene de una comunidad llamada <span class='highlight'>Roaboya Nativa</span>, cerca de Pucallpa - Perú.">
+            Americo López Sanchez comes from a community called <span class="highlight">Roaboya Nativa</span>, near Pucallpa, Peru.
+          </p>
+        </div>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- History -->
+      <div class="scroll-subheading" data-en="His Story" data-es="Su Historia">His Story</div>
+
+      <p class="scroll-p"
+         data-en="The story goes that Americo’s mother gave birth to him under a <span class='highlight'>Shihuahuaco</span> tree, near a rubber plantation where his parents had been sent to work at the time. His mother, who had already had four boys before him, had prayed for a girl and, in her disappointment, decided to bury him. Fortunately, he was rescued and raised by his cousin, who was a newlywed."
+         data-es="Cuenta la historia que la madre de Americo le dio a luz debajo de un árbol <span class='highlight'>Shihuahuaco</span>, cerca de una plantación de caucho donde sus padres fueron enviados a trabajar en ese momento. Su madre, que ya había tenido 4 niños antes que él, había pedido una niña y por eso había decidido enterrarlo. Como resultado, fue rescatado y criado por su prima, que estaba recién casada.">
+        The story goes that Americo’s mother gave birth to him under a <span class="highlight">Shihuahuaco</span> tree, near a rubber plantation where his parents had been sent to work at the time. His mother, who had already had four boys before him, had prayed for a girl and, in her disappointment, decided to bury him. Fortunately, he was rescued and raised by his cousin, who was a newlywed.
+      </p>
+
+      <p class="scroll-p"
+         data-en="Americo carried these formative early experiences with him and was inspired by his father, <span class='highlight'>José López Rengifo (Sani Meni)</span>, and his work as a prominent healer. He decided to follow in his footsteps to become a healer in his own right, helping those who are suffering, lost, or seeking a cure."
+         data-es="Americo llevó consigo estas primeras experiencias formativas y se inspiró en su padre <span class='highlight'>José López Rengifo (Sani Meni)</span>, y su trabajo como un destacado sanador. Decidió seguir sus pasos para convertirse en un sanador por derecho propio, para ayudar a aquellos que estaban sufriendo, perdidos o buscando curación.">
+        Americo carried these formative early experiences with him and was inspired by his father, José López Rengifo (Sani Meni), and his work as a prominent healer. He decided to follow in his footsteps to become a healer in his own right, helping those who are suffering, lost, or seeking a cure.
+      </p>
+
+      <!-- Teaching -->
+      <div class="scroll-subheading" data-en="Teaching and Tradition" data-es="Enseñanza y Tradición">Teaching and Tradition</div>
+
+      <p class="scroll-p"
+         data-en="Americo loves working with youth and used to be a school teacher. He is deeply eloquent with a gift for storytelling. He tells us that in the old days, there was a direct line of healing; he would like to recover this type of traditional education—starting from gestation with diets and songs—which allows the natural gifts of children to shine."
+         data-es="Americo le encanta trabajar con los jóvenes y solía ser maestro de la escuela. Es profundamente elocuente con un don para contar historias. Nos dice que antiguamente una línea directa de curación le gustaría recuperar este tipo de educación tradicional desde la gestación con dietas y canciones, que permite que los dones de los niños brillen.">
+        Americo loves working with youth and used to be a school teacher. He is deeply eloquent with a gift for storytelling. He tells us that in the old days, there was a direct line of healing; he would like to recover this type of traditional education—starting from gestation with diets and songs—which allows the natural gifts of children to shine.
+      </p>
+
+      <!-- Path -->
+      <div class="scroll-subheading" data-en="The Path of the Healer" data-es="El Camino del Sanador">The Path of the Healer</div>
+
+      <p class="scroll-p"
+         data-en="Although he was exposed to plant medicines from a very young age, he began his training in earnest around age 15 with a diet of <span class='highlight'>Pinon Colorado</span>. At age 19, he began drinking Ayahuasca and assisting his father in healing ceremonies. He describes this as a difficult time filled with multiple trials."
+         data-es="Aunque estuvo expuesto a medicamentos vegetales desde una edad muy temprana, comenzó su entrenamiento en serio alrededor de los 15 años con una dieta de <span class='highlight'>pinon colorado</span>. A los 19 años comenzó a beber ayahuasca y ayudar a su padre en la curación. Describe esto como un momento difícil de múltiples pruebas.">
+        Although he was exposed to plant medicines from a very young age, he began his training in earnest around age 15 with a diet of <span class="highlight">Pinon Colorado</span>. At age 19, he began drinking Ayahuasca and assisting his father in healing ceremonies. He describes this as a difficult time filled with multiple trials.
+      </p>
+
+      <p class="scroll-p"
+         data-en="Overcoming these challenges gave him the spiritual strength and resilience to continue his learning. Some years later, after the death of his father, he began dieting with Master Plants. After years of arduous training in isolation, he felt ready to begin working as a curandero (healer) in his community."
+         data-es="Superar este desafío le dio la fuerza y la resistencia espiritual para continuar su aprendizaje. Algunos años más tarde, después de la muerte de su padre, comenzó a hacer dieta de plantas maestras y después de años de arduo entrenamiento en aislamiento, se sintió listo para comenzar a trabajar como curandero en su comunidad.">
+        Overcoming these challenges gave him the spiritual strength and resilience to continue his learning. Some years later, after the death of his father, he began dieting with Master Plants. After years of arduous training in isolation, he felt ready to begin working as a curandero (healer) in his community.
+      </p>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- Favorites -->
+      <div class="scroll-subheading" data-en="Americo’s Favorite Plants & Interests" data-es="Las plantas favoritas de Americo e intereses">Americo’s Favorite Plants & Interests</div>
+
+      <ul class="scroll-list">
+        <li><span class="highlight">Noya Rao</span></li>
+        <li><span class="highlight">Shihuahuaco</span></li>
+        <li><span class="highlight">Manchinga</span></li>
+        <li><span class="highlight">Chiric Sanango</span></li>
+        <li><span class="highlight">Bobinsana</span></li>
+        <li><span class="highlight">Marusa</span></li>
+        <li data-en="Lodging and nutrition" data-es="Alojamiento y alimentación">Lodging and nutrition</li>
+        <li data-en="Ancestral games" data-es="Juegos ancestrales">Ancestral games</li>
+        <li data-en="Cultural dances" data-es="Danzas y culturales">Cultural dances</li>
+      </ul>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-size:1.8rem; color:#fff; text-transform:uppercase; font-weight:900; letter-spacing:-0.02em;">Koman Keneya</div>
+    <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:#A0AAB2; margin-top:0.3rem; font-family:'DM Sans',sans-serif; font-weight:500;" data-en="School of Traditional Medicine" data-es="Escuela de Medicina Tradicional">School of Traditional Medicine</div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @koman_keneya_center
+        </a>
+        <a href="https://wa.me/51993186086" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          +51 993 186 086
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya — Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya — School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+  function toggleMenu() {
+    var h = document.getElementById('hamburger');
+    var m = document.getElementById('mobileNav');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function setLang(lang) {
+      sessionStorage.setItem('kk-lang', lang);
+      document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+      var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
+      if (btn) btn.classList.add('on');
+      document.querySelectorAll('[data-en]').forEach(el => {
+        var txt = el.getAttribute('data-' + lang);
+        if (!txt) return;
+        if (txt.includes('<span') || txt.includes('<em')) {
+          el.innerHTML = txt;
+        } else {
+          el.textContent = txt;
+        }
+      });
+    }
+    (function() {
+      var lang = sessionStorage.getItem('kk-lang') || 'en';
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>
