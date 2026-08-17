@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --neon-blue:   #3E8EDE;
-      --neon-cyan:   #38C7CC;
-      --neon-orange: #E58654;
-      --bg-dark:     #050505;
+      --neon-blue:   #24C7FF;
+      --neon-violet:   #A274F1;
+      --neon-orange: #FF9701;
+      --bg-dark:     #0A1128;
       --text-main:   #FFFFFF;
-      --text-muted:  #A0AAB2;
+      --text-muted:  #94A3B8;
       --border-dark: rgba(255,255,255,0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +40,7 @@
       position: sticky; top: 0; left: 0; right: 0; z-index: 200;
       padding: 1.2rem 3.5rem;
       display: flex; justify-content: space-between; align-items: center;
-      background: rgba(0,0,0,0.85);
+      background: rgba(10, 17, 40,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-dark);
     }
@@ -71,10 +71,10 @@
     .nav-links li { margin-bottom: 0; padding-left: 0; }
     .nav-links li::before { content: none; }
     .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
-    .nav-links a:hover, .nav-links a.active { color: var(--neon-cyan); }
+    .nav-links a:hover, .nav-links a.active { color: var(--neon-violet); }
     .lang-btns { display: flex; gap: 0.3rem; }
-    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #A0AAB2; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
-    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #000; font-weight: bold; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #94A3B8; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #060A1A; font-weight: bold; }
 
     /* ── HAMBURGER / MOBILE NAV ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -84,13 +84,13 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .mobile-nav {
       display: none; position: fixed; inset: 0; z-index: 250;
-      background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+      background: rgba(10, 17, 40,0.97); backdrop-filter: blur(16px);
       flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
       text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
-    .mobile-nav a:hover { color: #38C7CC; }
+    .mobile-nav a:hover { color: #A274F1; }
     .mobile-nav .lang-btns { margin-top: 1rem; }
     @media (max-width: 900px) {
  .hamburger { display: flex; } .nav-links { display: none; } nav { padding: 1rem 1.5rem; } }
@@ -106,7 +106,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--neon-cyan);
+      color: var(--neon-violet);
       margin-bottom: 1rem;
     }
     .page-title {
@@ -137,7 +137,7 @@
       max-width: 860px;
       padding: 0 2rem;
     }
-    .divider-line { flex: 1; height: 1px; background: rgba(229,134,84,0.35); }
+    .divider-line { flex: 1; height: 1px; background: rgba(255, 151, 1,0.35); }
     .divider-glyph { color: var(--neon-orange); font-size: 0.8rem; flex-shrink: 0; }
 
     /* ── MAIN ── */
@@ -156,17 +156,17 @@
 
     .retreat-card {
       position: relative;
-      background: rgba(5, 8, 15, 0.85);
+      background: rgba(8, 14, 34, 0.85);
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(56, 199, 204, 0.2);
+      border: 1px solid rgba(162, 116, 241, 0.2);
       display: flex;
       flex-direction: column;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
     .retreat-card:hover {
-      border-color: rgba(56, 199, 204, 0.5);
-      box-shadow: 0 0 40px rgba(56, 199, 204, 0.08);
+      border-color: rgba(162, 116, 241, 0.5);
+      box-shadow: 0 0 40px rgba(162, 116, 241, 0.08);
     }
 
     /* Corner ornaments on cards */
@@ -188,7 +188,7 @@
     .card-photo-placeholder {
       width: 100%;
       height: 220px;
-      background: linear-gradient(135deg, rgba(62,142,222,0.15) 0%, rgba(56,199,204,0.08) 50%, rgba(229,134,84,0.12) 100%);
+      background: linear-gradient(135deg, rgba(36, 199, 255,0.15) 0%, rgba(162, 116, 241,0.08) 50%, rgba(255, 151, 1,0.12) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -202,7 +202,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 60px;
-      background: linear-gradient(to bottom, transparent, rgba(5,8,15,0.9));
+      background: linear-gradient(to bottom, transparent, rgba(8, 14, 34,0.9));
     }
 
     /* Option badge */
@@ -218,8 +218,8 @@
       border-radius: 50px;
       z-index: 2;
     }
-    .badge-one { background: rgba(20,60,120,0.82); border: 1px solid rgba(62,142,222,0.75); color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); box-shadow: 0 2px 10px rgba(0,0,0,0.45); }
-    .badge-two { background: rgba(110,50,10,0.82); border: 1px solid rgba(229,134,84,0.75); color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.7); box-shadow: 0 2px 10px rgba(0,0,0,0.45); }
+    .badge-one { background: rgba(20,60,120,0.82); border: 1px solid rgba(36, 199, 255,0.75); color: #fff; text-shadow: 0 1px 4px rgba(10, 17, 40,0.7); box-shadow: 0 2px 10px rgba(10, 17, 40,0.45); }
+    .badge-two { background: rgba(110,50,10,0.82); border: 1px solid rgba(255, 151, 1,0.75); color: #fff; text-shadow: 0 1px 4px rgba(10, 17, 40,0.7); box-shadow: 0 2px 10px rgba(10, 17, 40,0.45); }
 
     /* Card body */
     .card-body { padding: 1.8rem 2rem 2rem; flex: 1; display: flex; flex-direction: column; }
@@ -229,7 +229,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--neon-cyan);
+      color: var(--neon-violet);
       margin-bottom: 0.5rem;
     }
     .card-title {
@@ -288,8 +288,8 @@
       border-radius: 50px;
       font-weight: 500;
     }
-    .card-one .incl-tag { background: rgba(62,142,222,0.12); border: 1px solid rgba(62,142,222,0.25); color: #6aadeb; }
-    .card-two .incl-tag { background: rgba(229,134,84,0.1); border: 1px solid rgba(229,134,84,0.25); color: #eba07a; }
+    .card-one .incl-tag { background: rgba(36, 199, 255,0.12); border: 1px solid rgba(36, 199, 255,0.25); color: #71DBFF; }
+    .card-two .incl-tag { background: rgba(255, 151, 1,0.1); border: 1px solid rgba(255, 151, 1,0.25); color: #FFBB5A; }
 
     /* Price block */
     .card-price-row {
@@ -340,16 +340,16 @@
       transition: all 0.3s;
       white-space: nowrap;
     }
-    .card-one .card-cta { background: var(--neon-blue); color: #000; }
-    .card-one .card-cta:hover { background: var(--neon-cyan); box-shadow: 0 0 18px rgba(56,199,204,0.35); }
-    .card-two .card-cta { background: var(--neon-orange); color: #000; }
-    .card-two .card-cta:hover { background: #f0a070; box-shadow: 0 0 18px rgba(229,134,84,0.35); }
+    .card-one .card-cta { background: var(--neon-blue); color: #060A1A; }
+    .card-one .card-cta:hover { background: var(--neon-violet); box-shadow: 0 0 18px rgba(162, 116, 241,0.35); }
+    .card-two .card-cta { background: var(--neon-orange); color: #060A1A; }
+    .card-two .card-cta:hover { background: #FFAC34; box-shadow: 0 0 18px rgba(255, 151, 1,0.35); }
 
     /* ── WHAT TO EXPECT SCROLL ── */
     .expect-outer {
       position: relative;
-      background: rgba(5, 8, 15, 0.82);
-      border: 1px solid rgba(229,134,84,0.2);
+      background: rgba(8, 14, 34, 0.82);
+      border: 1px solid rgba(255, 151, 1,0.2);
       border-radius: 20px;
       padding: 3rem 3.5rem;
       margin-top: 3.5rem;
@@ -422,9 +422,9 @@
       text-align: center;
       padding: 4rem 2rem;
       margin-top: 3rem;
-      border: 1px solid rgba(56,199,204,0.15);
+      border: 1px solid rgba(162, 116, 241,0.15);
       border-radius: 20px;
-      background: rgba(56,199,204,0.03);
+      background: rgba(162, 116, 241,0.03);
       position: relative;
     }
     .cta-band-eyebrow {
@@ -432,7 +432,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--neon-cyan);
+      color: var(--neon-violet);
       margin-bottom: 1rem;
     }
     .cta-band-title {
@@ -457,8 +457,8 @@
       align-items: center;
       gap: 0.8rem;
       padding: 1.1rem 2.5rem;
-      background: var(--neon-cyan);
-      color: #000;
+      background: var(--neon-violet);
+      color: #060A1A;
       text-decoration: none;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.82rem;
@@ -468,7 +468,7 @@
       border-radius: 50px;
       transition: all 0.3s;
     }
-    .cta-email-link:hover { background: #fff; box-shadow: 0 0 25px rgba(56,199,204,0.4); }
+    .cta-email-link:hover { background: #fff; box-shadow: 0 0 25px rgba(162, 116, 241,0.4); }
     .cta-email-note {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.72rem;
@@ -560,20 +560,20 @@
 
         <!-- Corner ornaments -->
         <svg class="card-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#24C7FF"/>
         </svg>
         <svg class="card-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#24C7FF"/>
         </svg>
         <svg class="card-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#24C7FF"/>
         </svg>
         <svg class="card-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#3E8EDE"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#24C7FF"/>
         </svg>
 
         <!-- Photo -->
@@ -616,20 +616,20 @@
 
         <!-- Corner ornaments -->
         <svg class="card-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#FF9701" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
         </svg>
         <svg class="card-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#FF9701" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
         </svg>
         <svg class="card-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#FF9701" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
         </svg>
         <svg class="card-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 L2 2 L26 2" stroke="#E58654" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+          <path d="M2 26 L2 2 L26 2" stroke="#FF9701" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
         </svg>
 
         <!-- Photo -->
@@ -675,22 +675,22 @@
     <!-- WHAT TO EXPECT -->
     <div class="expect-outer">
       <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
-        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
       </svg>
       <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
-        <path d="M9 2 L2 9" stroke="#E58654" stroke-width="0.8" opacity="0.6"/>
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
       </svg>
       <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
       </svg>
       <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#38C7CC" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#E58654"/>
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
       </svg>
 
       <div class="expect-eyebrow" data-en="Before You Arrive" data-es="Antes de Llegar">Before You Arrive</div>
@@ -741,31 +741,31 @@
   </main>
 
   <!-- FOOTER (matches site template) -->
-  <footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+  <footer style="background:#060A1A; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #0F1830;">
     <a href="index.html" aria-label="Koman Keneya Home" style="display:inline-block; text-decoration:none; transition:opacity 0.25s;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
       <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="footer-logo-word">
       <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="footer-logo-tag">
     </a>
     <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
-      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#94A3B8;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
       <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
         <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
            style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
-           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
            onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           @koman_keneya_center
         </a>
         <a href="https://youtube.com/@komankeneya?si=irAHyyIv_CL4D7Es" target="_blank" rel="noopener"
            style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
-           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
            onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
           Koman Keneya
         </a>
       </div>
     </div>
-    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+    <div style="margin-top:1rem; font-size:0.72rem; color:#7C8AA0; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
       <span data-en="© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya, Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved.</span>
     </div>
   </footer>
