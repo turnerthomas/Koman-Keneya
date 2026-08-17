@@ -9,18 +9,18 @@
 <style>
   :root {
     /* Updated Dark Theme / Neon Colors extracted from the Shipibo image */
-    --neon-blue:   #3E8EDE;
-    --neon-cyan:   #38C7CC;
-    --neon-orange: #E58654;
-    --neon-purple: #B66BFF;
+    --neon-blue:   #24C7FF;
+    --neon-violet:   #A274F1;
+    --neon-orange: #FF9701;
+    --neon-pink: #FF71D6;
     
-    --bg-dark:     #050505;
-    --black:       #000000;
-    --glass-dark:  rgba(0, 0, 0, 0.75);
-    --glass-light: rgba(20, 20, 20, 0.85);
+    --bg-dark:     #0A1128;
+    --black:       #060A1A;
+    --glass-dark:  rgba(10, 17, 40, 0.75);
+    --glass-light: rgba(22, 31, 58, 0.85);
     
     --text-main:   #FFFFFF;
-    --text-muted:  #A0AAB2;
+    --text-muted:  #94A3B8;
     --border-dark: rgba(255, 255, 255, 0.1);
   }
   
@@ -79,23 +79,23 @@
       ellipse 85% 80% at 50% 50%,
       rgba(255, 255, 255, 0.07) 0%,
       rgba(255, 255, 255, 0.04) 40%,
-      rgba(0, 0, 0, 0.0)  100%
+      rgba(10, 17, 40, 0.0)  100%
     );
     mix-blend-mode: screen;
   }
 
   /* The right panel of the hero has its own dark overlay inline; lighten it */
   .hero-right {
-    background: rgba(0, 0, 0, 0.52) !important;
+    background: rgba(10, 17, 40, 0.52) !important;
   }
 
   /* Vision and Healer section backdrops; pull them lighter so pattern shows */
   .vision-split {
-    background: rgba(5, 5, 5, 0.55) !important;
+    background: rgba(10, 17, 40, 0.55) !important;
   }
 
   .healer-feature {
-    background: rgba(5, 5, 5, 0.55) !important;
+    background: rgba(10, 17, 40, 0.55) !important;
   }
 
   @media (max-width: 900px) {
@@ -121,7 +121,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     padding: 1.2rem 3.5rem;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(0, 0, 0, 0.85); 
+    background: rgba(10, 17, 40, 0.85); 
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-dark);
   }
@@ -138,7 +138,7 @@
   .hero-logo-tag { width: 100%; max-width: 400px; height: auto; margin-top: 1.4rem; margin-bottom: 1.8rem; display: block; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500;}
-  .nav-links a:hover { color: var(--neon-cyan); }
+  .nav-links a:hover { color: var(--neon-violet); }
   .lang-btns { display: flex; gap: 0.3rem; }
   .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); cursor: pointer; transition: all 0.2s; border-radius: 4px; }
   .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: var(--black); font-weight: bold; }
@@ -151,17 +151,17 @@
     position: absolute; bottom: 2.5rem; left: 2.5rem;
     background: var(--black); color: var(--text-main);
     padding: 1.2rem 1.5rem; max-width: 260px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; line-height: 1.5; border-left: 3px solid var(--neon-violet);
   }
-  .hero-right { background: rgba(0, 0, 0, 0.52); backdrop-filter: blur(0px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
-  .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 2rem; font-weight: 800; letter-spacing: 0.35em; }
+  .hero-right { background: rgba(10, 17, 40, 0.52); backdrop-filter: blur(0px); display: flex; flex-direction: column; justify-content: center; padding: 6rem 4.5rem; }
+  .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--neon-violet); margin-bottom: 2rem; font-weight: 800; letter-spacing: 0.35em; }
   
   /* The black rounded box effect from your image */
   .hero-right h1 { 
     font-size: clamp(2.8rem, 5vw, 4.8rem); 
     color: var(--text-main); 
     line-height: 0.95;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(10, 17, 40, 0.45);
     padding: 2rem 2.5rem;
     border-radius: 32px;
     display: inline-block;
@@ -183,7 +183,7 @@
     font-weight: 800;
 
     /* 3. The Highlight (Now perfectly fitted to the text size) */
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(10, 17, 40, 0.45);
     padding: 0.45rem 0.7rem; /* Slightly larger buffer for visual weight */
 
     /* 4. Structural Spacing (Moved outside the highlight) */
@@ -193,11 +193,11 @@
     /* 5. Keep the bottom border, but make sure it sits nicely below */
     border-bottom: 1px solid var(--border-dark);
   }
-  .hero-body { font-family: 'DM Sans', sans-serif; font-size: 0.98rem; line-height: 1.95; color: var(--text-main); max-width: 540px; margin-bottom: 2.5rem; background-color: rgba(0, 0, 0, 0.45); font-weight: 600; padding: 0.5rem 0.7rem; border-radius: 6px; }
+  .hero-body { font-family: 'DM Sans', sans-serif; font-size: 0.98rem; line-height: 1.95; color: var(--text-main); max-width: 540px; margin-bottom: 2.5rem; background-color: rgba(10, 17, 40, 0.45); font-weight: 600; padding: 0.5rem 0.7rem; border-radius: 6px; }
   .hero-cta { display: inline-flex; width: fit-content; align-items: center; gap: 1rem; padding: 1rem 2rem; background: var(--neon-blue); color: var(--black); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: bold; transition: all 0.3s; border-radius: 50px; }
-  .hero-cta:hover { background: var(--neon-cyan); box-shadow: 0 0 15px rgba(56, 199, 204, 0.4); }
+  .hero-cta:hover { background: var(--neon-violet); box-shadow: 0 0 15px rgba(162, 116, 241, 0.4); }
   .hero-cta::after { content: '→'; font-size: 1rem; }
-  .stat-num { font-size: 2rem; color: var(--neon-cyan); display: block; }
+  .stat-num { font-size: 2rem; color: var(--neon-violet); display: block; }
   .stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.2rem; display: block; }
 
   /* ── SECTION LABELS ── */
@@ -205,30 +205,30 @@
   .slabel::after { content: ''; flex: none; width: 32px; height: 1px; background: var(--neon-orange); }
 
   /* ── VISION SPLIT ── */
-  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(5, 5, 5, 0.55); backdrop-filter: blur(0px); }
+  .vision-split { display: grid; grid-template-columns: 1fr 1fr; background: rgba(10, 17, 40, 0.55); backdrop-filter: blur(0px); }
   .vs-img, .vs-text { min-width: 0; }
   .vs-img { position: relative; overflow: hidden; }
   .vs-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; transition: transform 0.7s; opacity: 1; }
   .vs-img:hover img { transform: scale(1.04); }
   .vs-text { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-  .vs-text-inner { background: rgba(5, 5, 5, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
+  .vs-text-inner { background: rgba(10, 17, 40, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
   .vs-text h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--text-main); line-height: 1.1; margin: 1.2rem 0 2rem; }
-  .vs-text h2 em { color: var(--neon-cyan); }
+  .vs-text h2 em { color: var(--neon-violet); }
   .vs-text p { font-size: 0.93rem; line-height: 1.95; color: #d0dde5; }
   .vs-text p + p { margin-top: 1.2rem; }
   .vs-pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
   .vs-pill { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid rgba(255,255,255,0.25); color: var(--text-main); border-radius: 100px; background: rgba(255,255,255,0.06); }
-  .vs-cta { display: inline-flex; align-self: flex-start; align-items: center; gap: 0.5rem; margin-top: 2.5rem; padding: 0.55rem 0.9rem; background: var(--neon-cyan); color: var(--black); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-radius: 999px; transition: transform 0.2s, background 0.2s; white-space: nowrap; width: fit-content; }
+  .vs-cta { display: inline-flex; align-self: flex-start; align-items: center; gap: 0.5rem; margin-top: 2.5rem; padding: 0.55rem 0.9rem; background: var(--neon-violet); color: var(--black); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; border-radius: 999px; transition: transform 0.2s, background 0.2s; white-space: nowrap; width: fit-content; }
   .vs-cta:hover { background: var(--neon-blue); transform: translateY(-1px); }
   .vs-cta::after { content: '→'; font-size: 1rem; }
 
   /* ── HEALER FEATURE ── */
-  .healer-feature { background: rgba(5, 5, 5, 0.55); color: var(--text-main); }
+  .healer-feature { background: rgba(10, 17, 40, 0.55); color: var(--text-main); }
   .healer-feature-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .hf-img { overflow: hidden; }
   .hf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 580px; opacity: 1; }
   .hf-text { padding: 5rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
-  .hf-text-inner { background: rgba(5, 5, 5, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
+  .hf-text-inner { background: rgba(10, 17, 40, 0.72); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem 3rem; display: flex; flex-direction: column; }
   .hf-text .slabel { color: var(--neon-blue); }
   .hf-text .slabel::after { background: var(--neon-blue); }
   .hf-text h2 { font-size: clamp(2rem, 3.2vw, 3rem); margin: 1.2rem 0 2rem; color: var(--text-main); line-height: 1.1; }
@@ -238,31 +238,31 @@
   .bio-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 2.5rem; padding: 1rem 1.8rem; background: var(--neon-orange); color: var(--black); text-decoration: none; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: transform 0.2s ease, background 0.2s ease; width: fit-content; }
   .bio-button::after { content: '→'; font-size: 1rem; }
   .bio-button:hover { background: #f6b488; transform: translateY(-1px); }
-  .hf-name-block { margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,0.05); border-left: 3px solid var(--neon-cyan); }
+  .hf-name-block { margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,0.05); border-left: 3px solid var(--neon-violet); }
   .hf-name { font-size: 1.4rem; color: var(--text-main); }
-  .hf-name-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-cyan); margin-top: 0.4rem; }
+  .hf-name-sub { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-violet); margin-top: 0.4rem; }
   .plant-pills-title { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.6rem; letter-spacing: -0.03em; text-transform: uppercase; color: var(--text-main); }
   .plant-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .pp { font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.35rem 0.9rem; background: rgba(62, 142, 222, 0.1); border: 1px solid rgba(62, 142, 222, 0.3); color: var(--neon-blue); border-radius: 4px; }
+  .pp { font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.35rem 0.9rem; background: rgba(36, 199, 255, 0.1); border: 1px solid rgba(36, 199, 255, 0.3); color: var(--neon-blue); border-radius: 4px; }
 
   /* ── PHOTO WALL ── */
   .photo-wall { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1rem; align-items: stretch; margin: 4rem 0; }
-  .pw-item { overflow: hidden; position: relative; border-radius: 30px; background: rgba(255, 255, 255, 0.02); box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35); padding: 4px; }
-  .pw-item:nth-child(1) { border: 1px solid rgba(56, 199, 204, 0.9); }
-  .pw-item:nth-child(2) { border: 1px solid rgba(229, 134, 84, 0.9); }
+  .pw-item { overflow: hidden; position: relative; border-radius: 30px; background: rgba(255, 255, 255, 0.02); box-shadow: 0 30px 90px rgba(10, 17, 40, 0.35); padding: 4px; }
+  .pw-item:nth-child(1) { border: 1px solid rgba(162, 116, 241, 0.9); }
+  .pw-item:nth-child(2) { border: 1px solid rgba(255, 151, 1, 0.9); }
   .pw-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; opacity: 1; border-radius: 24px; }
   .pw-item:hover img { transform: scale(1.04); opacity: 1; }
 
   /* ── OFFERINGS ── */
-  .offerings { background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(0px); padding: 7rem 3.5rem; }
+  .offerings { background: rgba(10, 17, 40, 0.88); backdrop-filter: blur(0px); padding: 7rem 3.5rem; }
   .off-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
   .off-header h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text-main); margin-top: 1rem; line-height: 1.1; }
-  .off-header h2 em { color: var(--neon-cyan); }
-  .retreat-link { color: var(--neon-cyan); text-decoration: none; border-bottom: 2px solid rgba(56,199,204,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+  .off-header h2 em { color: var(--neon-violet); }
+  .retreat-link { color: var(--neon-violet); text-decoration: none; border-bottom: 2px solid rgba(162, 116, 241,0.35); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
   .retreat-link:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
   .off-header p { font-size: 0.92rem; line-height: 1.9; color: var(--text-muted); }
   .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-  .off-item { background: rgba(0,0,0,0.6); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: all 0.3s; border-bottom: 2px solid transparent; }
+  .off-item { background: rgba(10, 17, 40,0.6); padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; transition: all 0.3s; border-bottom: 2px solid transparent; }
   .off-item:hover { background: var(--black); border-bottom-color: var(--neon-blue); }
   .off-num { font-size: 2.5rem; color: #333; line-height: 1; flex-shrink: 0; }
   .off-content {}
@@ -272,11 +272,11 @@
 
   /* ── PHOTO ROW ── */
   .photo-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3rem 0; }
-  .photo-row-item { overflow: hidden; position: relative; border-radius: 28px; background: rgba(255,255,255,0.04); box-shadow: 0 20px 45px rgba(86, 48, 145, 0.22); border: 1px solid rgba(182, 107, 255, 0.9); min-height: 340px; max-height: 440px; display: flex; align-items: center; justify-content: center; }
-  .photo-row-item:nth-child(1), .photo-row-item:nth-child(2) { border-color: rgba(182, 107, 255, 0.9); }
+  .photo-row-item { overflow: hidden; position: relative; border-radius: 28px; background: rgba(255,255,255,0.04); box-shadow: 0 20px 45px rgba(86, 48, 145, 0.22); border: 1px solid rgba(255, 113, 214, 0.9); min-height: 340px; max-height: 440px; display: flex; align-items: center; justify-content: center; }
+  .photo-row-item:nth-child(1), .photo-row-item:nth-child(2) { border-color: rgba(255, 113, 214, 0.9); }
   .photo-row-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease, box-shadow 0.4s ease; opacity: 0.95; border-radius: 22px; }
   .photo-row-item.kitchen img { object-position: center top; }
-  .photo-row-item:hover { box-shadow: 0 22px 70px rgba(182, 107, 255, 0.3); }
+  .photo-row-item:hover { box-shadow: 0 22px 70px rgba(255, 113, 214, 0.3); }
   .photo-row-item:hover img { transform: scale(1.02); opacity: 1; }
 
   /* ── CONTACT ── */
@@ -284,9 +284,9 @@
   .contact-section-inner { display: grid; grid-template-columns: 1fr 1fr; }
   .cs-img { position: relative; overflow: hidden; }
   .cs-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; min-height: 500px; opacity: 0.85;}
-  .cs-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.9)); display: flex; align-items: flex-end; padding: 3rem; }
+  .cs-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(10, 17, 40,0.9)); display: flex; align-items: flex-end; padding: 3rem; }
   .cs-img-text h3 { font-size: 1.8rem; color: var(--text-main); }
-  .cs-img-text p { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-cyan); margin-top: 0.5rem; }
+  .cs-img-text p { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon-violet); margin-top: 0.5rem; }
   .cs-form { background: var(--glass-light); backdrop-filter: blur(10px); padding: 5rem 4rem; display: flex; flex-direction: column; gap: 0; }
   .cs-form-header { margin-bottom: 3rem; }
   .cs-form-header h2 { font-size: clamp(1.8rem, 2.5vw, 2.5rem); color: var(--text-main); margin-top: 1rem; }
@@ -300,15 +300,15 @@
     color: var(--text-main); outline: none; transition: border-color 0.2s; width: 100%;
     -webkit-appearance: none; border-radius: 4px 4px 0 0;
   }
-  .fi:focus, .fsel:focus, .fta:focus { border-bottom-color: var(--neon-cyan); background: rgba(255,255,255,0.06); }
+  .fi:focus, .fsel:focus, .fta:focus { border-bottom-color: var(--neon-violet); background: rgba(255,255,255,0.06); }
   .fta { resize: vertical; min-height: 100px; }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .fsel option { background: var(--black); color: var(--text-main); }
   .fsub { padding: 1rem 2.5rem; background: var(--neon-blue); color: var(--black); border: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: bold; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; align-self: flex-start; margin-top: 0.5rem; border-radius: 50px; }
-  .fsub:hover { background: var(--neon-cyan); }
+  .fsub:hover { background: var(--neon-violet); }
 
   /* ── FOOTER ── */
-  footer { background: var(--black); border-top: 1px solid #111; }
+  footer { background: var(--black); border-top: 1px solid #0F1830; }
   .foot-bottom { grid-column: 1 / -1; border-top: 1px solid var(--border-dark); padding-top: 2rem; font-size: 0.72rem; color: #666; letter-spacing: 0.08em; }
 
   /* ── HAMBURGER ── */
@@ -319,13 +319,13 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mobile-nav {
     display: none; position: fixed; inset: 0; z-index: 250;
-    background: rgba(0,0,0,0.97); backdrop-filter: blur(16px);
+    background: rgba(10, 17, 40,0.97); backdrop-filter: blur(16px);
     flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
   }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; color: #fff;
     text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
-  .mobile-nav a:hover { color: #38C7CC; }
+  .mobile-nav a:hover { color: #A274F1; }
 
   @media (max-width: 900px) {
     /* Nav */
@@ -580,7 +580,7 @@
         <div class="off-en" data-en="Shipibo Arts & Culture" data-es="Artes y Cultura Shipibo">Shipibo Arts &amp; Culture</div>
         <div class="off-es" data-en="Embroidery, Song & Dance" data-es="Bordado, Canto y Danza">Embroidery, Song &amp; Dance</div>
         <p class="off-desc" data-en="Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games." data-es="Aprende el lenguaje visual Shipibo a través del bordado tradicional con diseños geométricos, canciones ancestrales, danzas culturales y juegos.">Learn the visual language of the Shipibo through traditional embroidery with geometric designs, ancestral songs, cultural dances, and games.</p>
-        <a href="teachings.html" style="display:inline-block;margin-top:0.9rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--neon-cyan);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(56,199,204,0.3);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--neon-cyan)'" data-en="Discover the sacred language of Kene →" data-es="Descubre el lenguaje sagrado del Kene →">Discover the sacred language of Kene →</a>
+        <a href="teachings.html" style="display:inline-block;margin-top:0.9rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--neon-violet);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(162, 116, 241,0.3);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--neon-violet)'" data-en="Discover the sacred language of Kene →" data-es="Descubre el lenguaje sagrado del Kene →">Discover the sacred language of Kene →</a>
       </div>
     </div>
   </div>
@@ -602,7 +602,7 @@
       <div class="cs-form-header">
         <span class="slabel" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</span>
         <h2 data-en="Start Your <em>Journey</em>" data-es="Inicia Tu <em>Viaje</em>">Start Your <em>Journey</em></h2>
-        <p style="margin-top:1rem; font-size:0.88rem; line-height:1.85; color:#A0AAB2;" data-en="We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch." data-es="Damos la bienvenida a huéspedes de todos los orígenes que se acercan a este trabajo con sinceridad y respeto. Rellena el formulario a continuación y nos pondremos en contacto.">We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch.</p>
+        <p style="margin-top:1rem; font-size:0.88rem; line-height:1.85; color:#94A3B8;" data-en="We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch." data-es="Damos la bienvenida a huéspedes de todos los orígenes que se acercan a este trabajo con sinceridad y respeto. Rellena el formulario a continuación y nos pondremos en contacto.">We welcome guests from all backgrounds who approach this work with sincerity and respect. Fill in the form below and we will be in touch.</p>
       </div>
       <form action="https://formspree.io/f/meoyyykd" method="POST" onsubmit="handleSubmit(event)">
         <div class="frow">
@@ -621,37 +621,37 @@
         <div class="fg"><label class="fl" data-en="Your Message" data-es="Tu Mensaje">Your Message</label><textarea class="fta" name="message"></textarea></div>
         <button type="submit" class="fsub" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
       </form>
-      <p id="succ" style="display:none; margin-top:1.5rem; color:var(--neon-cyan); font-size:0.9rem; font-weight: bold;" data-en="Thank you, we'll be in touch soon." data-es="Gracias, nos pondremos en contacto pronto.">Thank you, we'll be in touch soon.</p>
+      <p id="succ" style="display:none; margin-top:1.5rem; color:var(--neon-violet); font-size:0.9rem; font-weight: bold;" data-en="Thank you, we'll be in touch soon." data-es="Gracias, nos pondremos en contacto pronto.">Thank you, we'll be in touch soon.</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#000; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #111;">
+<footer style="background:#060A1A; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #0F1830;">
     <a href="index.html" aria-label="Koman Keneya Home" style="display:inline-block; text-decoration:none; transition:opacity 0.25s;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
       <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="footer-logo-word">
       <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="footer-logo-tag">
     </a>
     <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
-      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#A0AAB2;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#94A3B8;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
       <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
         <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
            style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
-           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
            onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           @koman_keneya_center
         </a>
         <a href="https://youtube.com/@komankeneya?si=irAHyyIv_CL4D7Es" target="_blank" rel="noopener"
            style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
-           onmouseover="this.style.background='#38C7CC';this.style.borderColor='#38C7CC';this.style.color='#000';"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
            onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
           Koman Keneya
         </a>
       </div>
     </div>
-    <div style="margin-top:1rem; font-size:0.72rem; color:#555; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+    <div style="margin-top:1rem; font-size:0.72rem; color:#7C8AA0; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
       <span data-en="© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya, Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved.</span>
     </div>
   </footer>
