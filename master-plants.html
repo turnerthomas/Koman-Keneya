@@ -282,9 +282,6 @@
 
     /* Explorer */
     .explorer-tools { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin: 1rem 0 0.5rem; }
-    .search-box { width: 100%; max-width: 440px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); color: #fff; padding: 0.75rem 1.2rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
-    .search-box:focus { border-color: var(--neon-blue); }
-    .search-box::placeholder { color: var(--text-muted); }
     .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
     .chip { background: none; border: 1px solid var(--border-dark); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 0.95rem; border-radius: 50px; cursor: pointer; transition: all 0.2s; }
     .chip:hover { border-color: var(--neon-violet); color: #fff; }
@@ -322,7 +319,18 @@
     .mp-cta a:hover { background: var(--neon-violet); color: #060A1A; }
 
     @media (max-width: 760px) { .mp-two { grid-template-columns: 1fr; } .modal { padding: 1.8rem 1.4rem 1.4rem; } .step-panel { padding: 1.3rem; } }
-  </style>
+  
+  /* ── NAV FIX: keep each link on one line, switch to hamburger before it gets crowded ── */
+  .nav-links { gap: clamp(1rem, 1.7vw, 2.5rem); white-space: nowrap; }
+  .nav-links a { white-space: nowrap; }
+  nav { gap: 1.5rem; }
+  .nav-brand { flex-shrink: 0; }
+  @media (max-width: 1240px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
 </head>
 <body>
   <script>
@@ -452,9 +460,7 @@
       </div>
 
       <div class="scroll-subheading" data-en="Explore the Master Plants" data-es="Explora las Plantas Maestras">Explore the Master Plants</div>
-      <p class="scroll-p" style="text-align:center;margin-bottom:0;" data-en="These are the master plants Maestro Americo offers for dieta. Search, filter by theme, and tap any plant to read more." data-es="Estas son las plantas maestras que el Maestro Americo ofrece para la dieta. Busca, filtra por tema y toca cualquier planta para saber más.">These are the master plants Maestro Americo offers for dieta. Search, filter by theme, and tap any plant to read more.</p>
       <div class="explorer-tools">
-        <input type="search" class="search-box" id="search" autocomplete="off" data-ph-en="Search by name, quality or botanical name…" data-ph-es="Busca por nombre, cualidad o nombre botánico…" placeholder="Search by name, quality or botanical name…" aria-label="Search master plants">
         <div class="chips" id="chips"></div>
       </div>
       <div class="result-count" id="count"></div>
@@ -545,8 +551,8 @@
     {k:"ceremony",en:"Ceremonial Plants",es:"Plantas Ceremoniales"}
   ];
   var UI = {
-    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants match your search.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",uses:"Documented traditional uses"},
-    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta coincide con tu búsqueda.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",uses:"Usos tradicionales documentados"}
+    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants in this category.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",uses:"Documented traditional uses"},
+    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta en esta categoría.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",uses:"Usos tradicionales documentados"}
   };
   var lang = sessionStorage.getItem('kk-lang') || 'en';
   var cat = 'all', query = '', step = 0, current = -1, visible = [];
@@ -632,8 +638,6 @@
       var txt = el.getAttribute('data-' + l);
       if (txt) el.innerHTML = txt;
     });
-    var s = document.getElementById('search');
-    s.placeholder = s.getAttribute('data-ph-' + l);
     renderChips(); renderGrid(); renderSteps();
     if (current>0) renderModal();
   }
@@ -642,7 +646,6 @@
     var b = e.target.closest('.chip'); if(!b) return;
     cat = b.getAttribute('data-k'); renderChips(); renderGrid();
   });
-  document.getElementById('search').addEventListener('input', function(e){ query = e.target.value; renderGrid(); });
   document.getElementById('grid').addEventListener('click', function(e){
     var b = e.target.closest('.plant'); if(b) openModal(parseInt(b.getAttribute('data-i'),10));
   });
