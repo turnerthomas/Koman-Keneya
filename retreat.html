@@ -485,7 +485,18 @@
       main { padding: 0 1rem 4rem; }
       .page-hero { padding: 3.5rem 1rem 2rem; }
     }
-  </style>
+  
+  /* ── NAV FIX: keep each link on one line, switch to hamburger before it gets crowded ── */
+  .nav-links { gap: clamp(1rem, 1.7vw, 2.5rem); white-space: nowrap; }
+  .nav-links a { white-space: nowrap; }
+  nav { gap: 1.5rem; }
+  .nav-brand { flex-shrink: 0; }
+  @media (max-width: 1240px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>
 </head>
 <body>
 
