@@ -251,6 +251,9 @@
  .hamburger { display: flex; } }
 
   @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } main { padding: 2rem 1rem; } .bio-top { grid-template-columns: 1fr; } }
+
+    .yt-frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; border: 1px solid rgba(162,116,241,0.25); box-shadow: 0 20px 60px rgba(10,17,40,0.5); background: #060A1A; }
+    .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   </style>
 </head>
 <body>
@@ -270,6 +273,7 @@
       <li><a href="vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
       <li><a href="the-maestro.html" class="active" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
       <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="master-plants.html" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a></li>
       <li><a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a></li>
       <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
       <li><a href="media.html" data-en="Media" data-es="Media">Media</a></li>
@@ -291,6 +295,7 @@
   <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
   <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
   <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+  <a href="master-plants.html" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a>
   <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
   <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
     <a href="media.html" data-en="Media" data-es="Media">Media</a>
@@ -435,6 +440,14 @@
         <div class="scroll-divider-line"></div>
         <span class="scroll-divider-glyph">❖</span>
         <div class="scroll-divider-line"></div>
+      </div>
+
+      <!-- Video -->
+      <div style="text-align:center; margin:1.8rem 0 1rem;">
+        <div class="scroll-eyebrow" style="margin-bottom:1rem;" data-en="Watch &amp; Listen" data-es="Mira y Escucha">Watch &amp; Listen</div>
+        <div class="yt-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/pZmYZR7YZuk" title="Maestro Americo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
 
     </div>
