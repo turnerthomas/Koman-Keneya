@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Plants · Koman Keneya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #24C7FF;
+      --neon-violet:   #A274F1;
+      --neon-orange: #FF9701;
+      --bg-dark:     #0A1128;
+      --text-main:   #FFFFFF;
+      --text-muted:  #94A3B8;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 17, 40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+
+  /* -- LOGO IMAGES (responsive) -- */
+  .nav-logo-word { height: 34px; width: auto; display: block; }
+  .nav-logo-tag { height: 9px; width: auto; display: block; margin-top: 2px; }
+  .footer-logo-word { height: 56px; width: auto; margin: 0 auto; display: block; }
+  .footer-logo-tag { height: 15px; width: auto; margin: 10px auto 0; display: block; }
+
+  @media (max-width: 900px) {
+    footer { padding: 3rem 1.2rem 2rem !important; }
+    .nav-logo-word { height: 24px; }
+    .nav-logo-tag { height: 6px; margin-top: 1px; }
+    .footer-logo-word { height: 42px; }
+    .footer-logo-tag { height: 12px; margin-top: 8px; }
+  }
+  @media (max-width: 420px) {
+    .nav-logo-word { height: 20px; }
+    .nav-logo-tag { height: 5px; }
+    .footer-logo-word { height: 34px; }
+    .footer-logo-tag { height: 9px; margin-top: 6px; }
+  }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover { color: var(--neon-violet); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #94A3B8; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #060A1A; font-weight: bold; }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 860px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(8, 14, 34, 0.82);
+      border: 1px solid rgba(162, 116, 241, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Eyebrow */
+    .scroll-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-violet);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Title */
+    .scroll-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dividers */
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(255, 151, 1,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* Body paragraphs */
+    .scroll-p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    /* Check items */
+    .scroll-check {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .scroll-check::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-orange);
+      font-size: 0.7rem;
+    }
+
+    /* Section subheading */
+    .scroll-subheading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* List items */
+    ul.scroll-list { list-style: none; padding: 0; margin: 0; }
+    ul.scroll-list li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.6rem;
+    }
+    ul.scroll-list li::before {
+      content: '❖';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-violet);
+      font-size: 0.6rem;
+    }
+
+    /* ── VIDEO ── */
+    .vision-video-wrap {
+      margin: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .vision-video-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-violet);
+      font-weight: 700;
+    }
+    .vision-video-frame {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(162, 116, 241, 0.25);
+      box-shadow: 0 20px 60px rgba(10, 17, 40,0.5);
+      background: #060A1A;
+    }
+    .vision-video-frame video {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+    }
+    .vision-video-caption {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 2.5rem 1.5rem; }
+      .scroll-outer { padding: 2rem 1.5rem; }
+    }
+
+  /* ── HAMBURGER / MOBILE NAV ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; z-index: 250;
+    background: rgba(10, 17, 40,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
+    text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+  .mobile-nav a:hover { color: #A274F1; }
+  .mobile-nav .lang-btns { margin-top: 1rem; }
+  @media (max-width: 900px) {
+ .hamburger { display: flex; } }
+
+  @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } main { padding: 2rem 1rem; } }
+
+    .yt-frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; border: 1px solid rgba(162,116,241,0.25); box-shadow: 0 20px 60px rgba(10,17,40,0.5); background: #060A1A; }
+    .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    main.wide { max-width: 1100px; }
+    .mp-lead { text-align: center; max-width: 720px; margin: 0 auto 1rem; }
+    .mp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0; }
+    .mp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(162,116,241,0.2); border-radius: 14px; padding: 1.5rem 1.6rem; }
+    .mp-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 0.8rem; }
+    .mp-card .scroll-p { margin-bottom: 0; font-size: 0.97rem; line-height: 1.85; }
+    .scroll-p b, .step-panel b { color: var(--text-main); font-weight: 500; }
+
+    /* Dieta stepper */
+    .steps { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+    .step-tab { background: none; border: 1px solid var(--border-dark); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.06em; padding: 0.6rem 1rem; border-radius: 50px; cursor: pointer; transition: all 0.2s; display: inline-flex; gap: 0.55rem; align-items: center; }
+    .step-tab span.num { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--neon-orange); }
+    .step-tab:hover { border-color: var(--neon-violet); color: #fff; }
+    .step-tab.on { background: var(--neon-violet); border-color: var(--neon-violet); color: #060A1A; font-weight: 600; }
+    .step-tab.on span.num { color: #060A1A; }
+    .step-panel { background: rgba(255,255,255,0.03); border: 1px solid rgba(162,116,241,0.2); border-radius: 14px; padding: 1.6rem 1.8rem; min-height: 150px; }
+    .step-panel h4 { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; color: #fff; margin-bottom: 0.6rem; }
+    .step-panel p { color: var(--text-muted); line-height: 1.85; font-size: 0.98rem; }
+    .step-nav { display: flex; justify-content: space-between; margin-top: 1rem; }
+    .mini-btn { background: none; border: 1px solid var(--border-dark); color: var(--text-muted); border-radius: 50px; padding: 0.45rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .mini-btn:hover:not(:disabled) { border-color: var(--neon-blue); color: var(--neon-blue); }
+    .mini-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* Explorer */
+    .explorer-tools { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin: 1rem 0 0.5rem; }
+    .search-box { width: 100%; max-width: 440px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); color: #fff; padding: 0.75rem 1.2rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    .search-box:focus { border-color: var(--neon-blue); }
+    .search-box::placeholder { color: var(--text-muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .chip { background: none; border: 1px solid var(--border-dark); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 0.95rem; border-radius: 50px; cursor: pointer; transition: all 0.2s; }
+    .chip:hover { border-color: var(--neon-violet); color: #fff; }
+    .chip.on { background: var(--neon-blue); border-color: var(--neon-blue); color: #060A1A; font-weight: 700; }
+    .result-count { text-align: center; font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.1em; margin: 0.4rem 0 1.2rem; }
+    .plant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+    .plant { text-align: left; background: rgba(255,255,255,0.03); border: 1px solid rgba(162,116,241,0.2); border-radius: 14px; padding: 1.2rem 1.2rem 1.3rem; cursor: pointer; color: inherit; font-family: inherit; transition: transform 0.25s, border-color 0.25s, background 0.25s; display: flex; flex-direction: column; gap: 0.35rem; }
+    .plant:hover, .plant:focus-visible { transform: translateY(-4px); border-color: var(--neon-violet); background: rgba(162,116,241,0.08); outline: none; }
+    .plant .pnum { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--neon-orange); }
+    .plant .pname { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.25; }
+    .plant .pbot { font-style: italic; font-size: 0.8rem; color: var(--neon-violet); line-height: 1.4; }
+    .kws { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+    .kw { font-size: 0.68rem; letter-spacing: 0.04em; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 0.18rem 0.55rem; }
+    .plant .more { margin-top: 0.7rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neon-blue); }
+    .empty { grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem 0; }
+
+    /* Modal */
+    .modal-bg { position: fixed; inset: 0; z-index: 400; background: rgba(4,8,22,0.86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 1.2rem; }
+    .modal-bg.open { display: flex; }
+    .modal { position: relative; background: #0A1128; border: 1px solid rgba(162,116,241,0.4); border-radius: 18px; width: 100%; max-width: 640px; max-height: 88vh; overflow-y: auto; padding: 2.2rem 2.2rem 1.8rem; box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+    .modal-close { position: absolute; top: 0.8rem; right: 0.9rem; background: none; border: none; color: var(--text-muted); font-size: 1.7rem; cursor: pointer; line-height: 1; padding: 0.2rem 0.5rem; }
+    .modal-close:hover { color: #fff; }
+    .modal .pnum { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; letter-spacing: 0.25em; color: var(--neon-orange); }
+    .modal h3 { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 800; color: #fff; margin: 0.3rem 0 0.2rem; line-height: 1.2; padding-right: 2rem; }
+    .modal .pbot { font-style: italic; color: var(--neon-violet); font-size: 0.95rem; margin-bottom: 0.6rem; }
+    .m-label { font-family: 'Montserrat', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--neon-blue); margin: 1.3rem 0 0.4rem; }
+    .modal p { color: var(--text-muted); line-height: 1.85; font-size: 0.97rem; }
+    .modal .kws { margin-top: 0.8rem; }
+    .modal .kw { font-size: 0.74rem; border-color: rgba(162,116,241,0.4); color: #cbb6f7; }
+    .modal-nav { display: flex; justify-content: space-between; margin-top: 1.8rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    .mp-note { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); text-align: center; font-style: italic; max-width: 760px; margin: 0.5rem auto; }
+    .mp-cta { text-align: center; margin: 1rem 0 0.5rem; }
+    .mp-cta a { display: inline-block; margin: 0.4rem; padding: 0.8rem 1.8rem; border-radius: 50px; border: 1px solid var(--neon-violet); color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.25s; }
+    .mp-cta a:hover { background: var(--neon-violet); color: #060A1A; }
+
+    @media (max-width: 760px) { .mp-two { grid-template-columns: 1fr; } .modal { padding: 1.8rem 1.4rem 1.4rem; } .step-panel { padding: 1.3rem; } }
+  </style>
+</head>
+<body>
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+
+  <nav>
+    <a href="index.html" class="nav-brand" style="text-decoration:none; display:flex; flex-direction:column; gap:6px;">
+      <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="nav-logo-word">
+      <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="nav-logo-tag">
+    </a>
+        <ul class="nav-links">
+      <li><a href="vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="master-plants.html" class="active" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a></li>
+      <li><a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="media.html" data-en="Media" data-es="Media">Media</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+  <a href="master-plants.html" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a>
+  <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
+  <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+    <a href="media.html" data-en="Media" data-es="Media">Media</a>
+  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-btns" style="margin-top:1rem;">
+    <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+    <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
+
+  <main class="wide">
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+
+      <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
+      <h1 class="scroll-title" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</h1>
+      <p class="scroll-p mp-lead" style="text-align:center;" data-en="Discover the plant teachers Maestro Americo works with, and what it means to diet them in the Shipibo tradition." data-es="Conoce a las plantas maestras con las que trabaja el Maestro Americo, y lo que significa hacer dieta con ellas en la tradición shipibo.">Discover the plant teachers Maestro Americo works with, and what it means to diet them in the Shipibo tradition.</p>
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" data-en="The Basics" data-es="Lo Básico">The Basics</div>
+      <div class="mp-two">
+        <div class="mp-card">
+          <h3 data-en="What is a Master Plant?" data-es="¿Qué es una Planta Maestra?">What is a Master Plant?</h3>
+          <p class="scroll-p" data-en="In the Shipibo and wider Amazonian traditions, a master plant (<b>planta maestra</b>) is a plant regarded as a teacher and healer, not just a remedy. Each one is understood to carry its own spirit, character and gifts, such as strength, protection, an open heart, or the ability to bring clarity through dreams. Healers learn their craft by building a long, personal relationship with these plants." data-es="En las tradiciones shipibo y amazónicas en general, una planta maestra es una planta considerada maestra y sanadora, no solo un remedio. Se entiende que cada una tiene su propio espíritu, carácter y dones, como la fortaleza, la protección, un corazón abierto o la capacidad de traer claridad a través de los sueños. Los sanadores aprenden su oficio construyendo una relación larga y personal con estas plantas.">In the Shipibo and wider Amazonian traditions, a master plant (<b>planta maestra</b>) is a plant regarded as a teacher and healer, not just a remedy. Each one is understood to carry its own spirit, character and gifts, such as strength, protection, an open heart, or the ability to bring clarity through dreams. Healers learn their craft by building a long, personal relationship with these plants.</p>
+        </div>
+        <div class="mp-card">
+          <h3 data-en="What is a Dieta?" data-es="¿Qué es una Dieta?">What is a Dieta?</h3>
+          <p class="scroll-p" data-en="A <b>dieta</b> is the traditional way of getting to know a master plant. You take the plant in a prepared form, usually as a tea or juice, while living simply and apart from daily life, with a very plain diet and a set of restrictions. The goal is to become quiet and receptive so the plant can teach, heal and strengthen you. It is a commitment that goes well beyond the days spent with the plant." data-es="Una <b>dieta</b> es la forma tradicional de conocer a una planta maestra. Se toma la planta de forma preparada, normalmente como té o jugo, mientras se vive con sencillez y apartado de la vida cotidiana, con una alimentación muy simple y una serie de restricciones. El objetivo es volverse silencioso y receptivo para que la planta pueda enseñar, sanar y fortalecer. Es un compromiso que va mucho más allá de los días que se pasan con la planta.">A <b>dieta</b> is the traditional way of getting to know a master plant. You take the plant in a prepared form, usually as a tea or juice, while living simply and apart from daily life, with a very plain diet and a set of restrictions. The goal is to become quiet and receptive so the plant can teach, heal and strengthen you. It is a commitment that goes well beyond the days spent with the plant.</p>
+        </div>
+      </div>
+
+      <div class="scroll-subheading" style="margin-top:1.6rem;" data-en="How a Dieta Unfolds" data-es="Cómo se Desarrolla una Dieta">How a Dieta Unfolds</div>
+      <div class="steps" id="steps" role="tablist"></div>
+      <div class="step-panel" id="stepPanel" aria-live="polite"></div>
+      <div class="step-nav">
+        <button class="mini-btn" id="stepPrev" data-en="← Previous" data-es="← Anterior">← Previous</button>
+        <button class="mini-btn" id="stepNext" data-en="Next →" data-es="Siguiente →">Next →</button>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="vision-video-wrap">
+        <div class="vision-video-eyebrow" data-en="Watch &amp; Learn" data-es="Mira y Aprende">Watch &amp; Learn</div>
+        <div class="yt-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/LLfK7iJpTX0" title="Master Plants" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" data-en="Explore the Master Plants" data-es="Explora las Plantas Maestras">Explore the Master Plants</div>
+      <p class="scroll-p" style="text-align:center;margin-bottom:0;" data-en="These are the master plants Maestro Americo offers for dieta. Search, filter by theme, and tap any plant to read more." data-es="Estas son las plantas maestras que el Maestro Americo ofrece para la dieta. Busca, filtra por tema y toca cualquier planta para saber más.">These are the master plants Maestro Americo offers for dieta. Search, filter by theme, and tap any plant to read more.</p>
+      <div class="explorer-tools">
+        <input type="search" class="search-box" id="search" autocomplete="off" data-ph-en="Search by name, quality or botanical name…" data-ph-es="Busca por nombre, cualidad o nombre botánico…" placeholder="Search by name, quality or botanical name…" aria-label="Search master plants">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="result-count" id="count"></div>
+      <div class="plant-grid" id="grid"></div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <p class="mp-note" data-en="Everything on this page is traditional and ethnobotanical information shared for education. It is not medical advice. Some of these plants are toxic or pharmacologically active, so they should never be prepared or taken on your own. Properties and teachings can also vary between lineages. A dieta is done only under the guidance of an experienced maestro, and plants are chosen for each person through consultation with Maestro Americo." data-es="Todo lo que aparece en esta página es información tradicional y etnobotánica compartida con fines educativos. No es consejo médico. Algunas de estas plantas son tóxicas o farmacológicamente activas, por lo que nunca deben prepararse ni tomarse por cuenta propia. Además, las propiedades y enseñanzas pueden variar entre linajes. La dieta se hace solo bajo la guía de un maestro con experiencia, y las plantas se eligen para cada persona mediante una consulta con el Maestro Americo.">Everything on this page is traditional and ethnobotanical information shared for education. It is not medical advice. Some of these plants are toxic or pharmacologically active, so they should never be prepared or taken on your own. Properties and teachings can also vary between lineages. A dieta is done only under the guidance of an experienced maestro, and plants are chosen for each person through consultation with Maestro Americo.</p>
+      <div class="mp-cta">
+        <a href="retreat.html" data-en="See the Retreats" data-es="Ver los Retiros">See the Retreats</a>
+        <a href="index.html#contact" data-en="Ask a Question" data-es="Haz una Pregunta">Ask a Question</a>
+      </div>
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal">
+      <button class="modal-close" id="mClose" aria-label="Close">&times;</button>
+      <div id="mBody"></div>
+      <div class="modal-nav">
+        <button class="mini-btn" id="mPrev" data-en="← Previous" data-es="← Anterior">← Previous</button>
+        <button class="mini-btn" id="mNext" data-en="Next →" data-es="Siguiente →">Next →</button>
+      </div>
+    </div>
+  </div>
+
+
+  <footer style="background:#060A1A; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #0F1830;">
+    <a href="index.html" aria-label="Koman Keneya Home" style="display:inline-block; text-decoration:none; transition:opacity 0.25s;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
+      <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="footer-logo-word">
+      <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="footer-logo-tag">
+    </a>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#94A3B8;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/koman_keneya_center" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @koman_keneya_center
+        </a>
+        <a href="https://youtube.com/@komankeneya?si=irAHyyIv_CL4D7Es" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          Koman Keneya
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#7C8AA0; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya, Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+  var PLANTS = [{"n": "Ayahuma", "bot": "Couroupita guianensis", "tags": ["strength", "cleanse"], "en": {"kw": ["Protection", "Strength", "Cleansing", "Grounding", "Resilience"], "prof": "Large tropical tree with cannonball-like fruits that grow directly from the trunk and large branches, and highly fragrant flowers.", "props": "Protection, strength, cleansing, grounding, spiritual protection and resilience. Often regarded as a powerful master/teacher plant.", "uses": "Used traditionally in Amazonian medicine; the tree, bark, flowers and fruit each have various regional uses."}, "es": {"kw": ["Protección", "Fortaleza", "Limpieza", "Arraigo", "Resiliencia"], "prof": "Gran árbol tropical con frutos en forma de bala de cañón que crecen directamente del tronco y de las ramas grandes, y flores muy fragantes.", "props": "Protección, fortaleza, limpieza, arraigo, protección espiritual y resiliencia. A menudo se la considera una poderosa planta maestra y maestra de enseñanza.", "uses": "Se usa tradicionalmente en la medicina amazónica; el árbol, la corteza, las flores y el fruto tienen diversos usos regionales."}, "i": 1}, {"n": "Catahua / Katawa", "bot": "Hura crepitans", "tags": ["dream", "cleanse"], "en": {"kw": ["Dreaming", "Deep plant work", "Transformation", "Power", "Protection"], "prof": "Large rainforest tree with a distinctive spiny trunk and round fruits that can split explosively when mature. It contains an irritating, toxic latex.", "props": "Dreaming, deep plant work, transformation, power and protection. Historical Shipibo sources classify Catahua among the master plants associated with dreaming.", "uses": "Traditional medicinal uses occur in Amazonian communities; ethnobotanical sources document multiple uses of the latex and other parts."}, "es": {"kw": ["Sueños", "Trabajo profundo con plantas", "Transformación", "Poder", "Protección"], "prof": "Gran árbol de la selva con un tronco espinoso característico y frutos redondos que pueden abrirse con violencia al madurar. Contiene un látex irritante y tóxico.", "props": "Sueños, trabajo profundo con plantas, transformación, poder y protección. Las fuentes históricas shipibo clasifican la Catahua entre las plantas maestras asociadas con los sueños.", "uses": "Existen usos medicinales tradicionales en comunidades amazónicas; las fuentes etnobotánicas documentan varios usos del látex y de otras partes."}, "i": 2}, {"n": "Bobinsana", "bot": "Calliandra angustifolia", "tags": ["heart", "dream"], "en": {"kw": ["Love", "Heart opening", "Emotional healing", "Intuition", "Creativity"], "prof": "Shrub or small tree, commonly found along rivers, with delicate compound foliage and distinctive pink and white brush-like flowers.", "props": "Love, heart opening, emotional healing, compassion, sensitivity, dreams, intuition, creativity and protection. Often described as a “heart” plant.", "uses": "Traditionally used as a medicinal plant and as a master-plant dieta; widely associated with emotional and spiritual work."}, "es": {"kw": ["Amor", "Apertura del corazón", "Sanación emocional", "Intuición", "Creatividad"], "prof": "Arbusto o árbol pequeño que crece comúnmente a orillas de los ríos, con follaje compuesto delicado y flores características en forma de pincel, rosadas y blancas.", "props": "Amor, apertura del corazón, sanación emocional, compasión, sensibilidad, sueños, intuición, creatividad y protección. A menudo se describe como una planta del “corazón”.", "uses": "Se usa tradicionalmente como planta medicinal y como dieta de planta maestra; se asocia ampliamente con el trabajo emocional y espiritual."}, "i": 3}, {"n": "Chiric Sanango", "bot": "Brunfelsia grandiflora", "tags": ["strength", "cleanse"], "en": {"kw": ["Strength", "Courage", "Purification", "Vitality", "Transformation"], "prof": "Flowering shrub with flowers ranging from purple and violet to lighter colors; native to tropical South America.", "props": "Strength, courage, resilience, purification, vitality, transformation, and working with “cold” energy. Historical Shipibo sources classify it among the master plants.", "uses": "A traditional Amazonian medicinal plant, used in regional ethnomedicine for pain, fever and other ailments."}, "es": {"kw": ["Fortaleza", "Valentía", "Purificación", "Vitalidad", "Transformación"], "prof": "Arbusto con flores que van del morado y violeta a tonos más claros; nativo de Sudamérica tropical.", "props": "Fortaleza, valentía, resiliencia, purificación, vitalidad, transformación y trabajo con la energía “fría”. Las fuentes históricas shipibo la clasifican entre las plantas maestras.", "uses": "Planta medicinal tradicional amazónica, usada en la etnomedicina regional para el dolor, la fiebre y otras dolencias."}, "i": 4}, {"n": "Marosa / Marusa", "bot": "Commonly Pfaffia iresinoides", "botEs": "Comúnmente Pfaffia iresinoides", "tags": ["heart"], "en": {"kw": ["Love", "Emotional balance", "Confidence", "Self-worth", "Heart opening"], "prof": "Herbaceous plant; its botanical identification varies somewhat between secondary sources.", "props": "Love, emotional balance, confidence, self-worth, heart opening, sensitivity, dreams, and feminine and relational energy. One of the most commonly cited Shipibo master plants.", "uses": "Contemporary Shipibo dieta sources identify Marusa as a principal master plant, and historical Shipibo literature classifies Marosa among the master plants."}, "es": {"kw": ["Amor", "Equilibrio emocional", "Confianza", "Valía personal", "Apertura del corazón"], "prof": "Planta herbácea; su identificación botánica varía un poco entre las fuentes secundarias.", "props": "Amor, equilibrio emocional, confianza, valía personal, apertura del corazón, sensibilidad, sueños y energía femenina y relacional. Una de las plantas maestras shipibo más citadas.", "uses": "Las fuentes contemporáneas de dieta shipibo identifican la Marusa como una planta maestra principal, y la literatura histórica shipibo clasifica la Marosa entre las plantas maestras."}, "i": 5}, {"n": "Piñón Colorado", "bot": "Jatropha gossypiifolia", "tags": ["cleanse"], "en": {"kw": ["Cleansing", "Purification", "Protection", "Strengthening", "Clearing"], "prof": "Shrub with lobed leaves and reddish-purple new growth; a member of the Euphorbiaceae family.", "props": "Cleansing, purification, energetic protection, strengthening and clearing. Included among the culturally important medicinal plants in Shipibo communities.", "uses": "Traditional medicinal applications are documented in Peru; preparations and uses vary from community to community."}, "es": {"kw": ["Limpieza", "Purificación", "Protección", "Fortalecimiento", "Despeje"], "prof": "Arbusto de hojas lobuladas y brotes nuevos rojizos y púrpuras; de la familia Euphorbiaceae.", "props": "Limpieza, purificación, protección energética, fortalecimiento y despeje. Se cuenta entre las plantas medicinales culturalmente importantes en las comunidades shipibo.", "uses": "Se documentan aplicaciones medicinales tradicionales en el Perú; las preparaciones y los usos varían según la comunidad."}, "i": 6}, {"n": "Toé", "bot": "Brugmansia spp.", "botEs": "Brugmansia spp.", "tags": ["dream", "cleanse"], "en": {"kw": ["Dreaming", "Visions", "Plant communication", "Power", "Transformation"], "prof": "Shrub or small tree with large, pendulous, trumpet-shaped flowers.", "props": "Dreaming, visions, plant communication, teaching, power, protection and deep transformation. Historical Shipibo sources classify Toé among the master plants with strong psychoactive properties.", "uses": "Traditional ritual and medicinal use is documented in Amazonian traditions."}, "es": {"kw": ["Sueños", "Visiones", "Comunicación con las plantas", "Poder", "Transformación"], "prof": "Arbusto o árbol pequeño con grandes flores colgantes en forma de trompeta.", "props": "Sueños, visiones, comunicación con las plantas, enseñanza, poder, protección y transformación profunda. Las fuentes históricas shipibo clasifican el Toé entre las plantas maestras con fuertes propiedades psicoactivas.", "uses": "Se documenta su uso ritual y medicinal en las tradiciones amazónicas."}, "i": 7}, {"n": "Patiquina", "bot": "Dieffenbachia spp.", "tags": ["medicine", "cleanse"], "en": {"kw": ["Medicine", "Cleansing", "Healing"], "prof": "Tropical herbaceous plant with large, broad leaves, often patterned or variegated.", "props": "A medicinal plant with cleansing and healing qualities. Maestro Americo confirms Patiquina as medicine.", "uses": "Peruvian ethnobotanical sources associate Patiquina with Dieffenbachia species and with the traditional treatment of certain skin and fungal conditions and bites."}, "es": {"kw": ["Medicina", "Limpieza", "Sanación"], "prof": "Planta herbácea tropical de hojas grandes y anchas, a menudo con patrones o variegadas.", "props": "Planta medicinal con cualidades de limpieza y sanación. El Maestro Americo confirma la Patiquina como medicina.", "uses": "Las fuentes etnobotánicas peruanas asocian la Patiquina con especies de Dieffenbachia y con el tratamiento tradicional de ciertas afecciones de la piel, hongos y mordeduras."}, "i": 8}, {"n": "Requia", "bot": "Guarea spp. (Guarea guidonia is one documented identification)", "botEs": "Guarea spp. (Guarea guidonia es una identificación documentada)", "tags": ["medicine"], "en": {"kw": ["Medicine", "Healing", "Plant knowledge"], "prof": "Tropical tree of the Meliaceae family; several species may be called Requia regionally.", "props": "Medicine, healing and plant knowledge. Maestro Americo confirms Requia as medicine.", "uses": "Traditional Amazonian medicinal uses are documented for several Guarea species."}, "es": {"kw": ["Medicina", "Sanación", "Conocimiento de las plantas"], "prof": "Árbol tropical de la familia Meliaceae; varias especies pueden llamarse Requia según la región.", "props": "Medicina, sanación y conocimiento de las plantas. El Maestro Americo confirma la Requia como medicina.", "uses": "Se documentan usos medicinales tradicionales amazónicos para varias especies de Guarea."}, "i": 9}, {"n": "Renaquilla", "bot": "Ficus spp. (Ficus americana specifically documented)", "botEs": "Ficus spp. (Ficus americana documentada específicamente)", "tags": ["heart", "medicine"], "en": {"kw": ["Love", "Healing", "Relational medicine", "Strength"], "prof": "Ficus tree that produces latex and may develop substantial roots.", "props": "Love, healing, relational medicine and strength. Historical Shipibo-Konibo research identifies Renaquilla as a rao and associates it with traditional healing and dieta.", "uses": "A Shipibo ethnobotanical study identified Ficus americana as “renaquilla” and documented its traditional use for wounds, hernias and colds, accompanied by a month-long dietary regimen."}, "es": {"kw": ["Amor", "Sanación", "Medicina relacional", "Fortaleza"], "prof": "Árbol de Ficus que produce látex y puede desarrollar raíces considerables.", "props": "Amor, sanación, medicina relacional y fortaleza. La investigación histórica shipibo-konibo identifica la Renaquilla como un rao y la asocia con la sanación tradicional y la dieta.", "uses": "Un estudio etnobotánico shipibo identificó Ficus americana como “renaquilla” y documentó su uso tradicional para heridas, hernias y resfríos, acompañado de un régimen dietético de un mes."}, "i": 10}, {"n": "Shihuahuaco", "bot": "Dipteryx spp.", "tags": ["strength"], "en": {"kw": ["Strength", "Endurance", "Grounding", "Stability", "Resilience"], "prof": "Very large, exceptionally dense hardwood tree; one of the major canopy trees of the rainforest.", "props": "Strength, endurance, grounding, stability, protection and resilience. Contemporary Shipibo sources include it among the principal master plants.", "uses": "Famous botanically and ecologically for its extremely durable timber; traditional medicinal and spiritual uses vary by community."}, "es": {"kw": ["Fortaleza", "Resistencia", "Arraigo", "Estabilidad", "Resiliencia"], "prof": "Árbol de madera dura muy grande y excepcionalmente densa; uno de los principales árboles del dosel de la selva.", "props": "Fortaleza, resistencia, arraigo, estabilidad, protección y resiliencia. Las fuentes shipibo contemporáneas lo incluyen entre las plantas maestras principales.", "uses": "Famoso botánica y ecológicamente por su madera extremadamente duradera; los usos medicinales y espirituales tradicionales varían según la comunidad."}, "i": 11}, {"n": "Chullachaqui / Chullachaqui Caspi", "bot": "Botanical identification pending", "botEs": "Identificación botánica pendiente", "tags": ["dream", "cleanse"], "en": {"kw": ["Forest wisdom", "Dreaming", "Protection", "Deep teaching"], "prof": "An Amazonian forest plant or tree; the vernacular name is applied inconsistently across sources.", "props": "Forest wisdom, dreaming, protection and challenging, deep plant teaching. Historical Shipibo sources classify Chullachaqui among the master plants associated with dreaming.", "uses": "Traditional uses depend heavily on which species is meant."}, "es": {"kw": ["Sabiduría del bosque", "Sueños", "Protección", "Enseñanza profunda"], "prof": "Planta o árbol de la selva amazónica; el nombre vernáculo se aplica de manera inconsistente entre las fuentes.", "props": "Sabiduría del bosque, sueños, protección y enseñanza profunda y desafiante de las plantas. Las fuentes históricas shipibo clasifican el Chullachaqui entre las plantas maestras asociadas con los sueños.", "uses": "Los usos tradicionales dependen en gran medida de qué especie se designe."}, "i": 12}, {"n": "Manchinga / Machinga", "bot": "Brosimum alicastrum", "tags": ["strength"], "en": {"kw": ["Strength", "Nourishment", "Grounding", "Vitality", "Endurance"], "prof": "Large tropical tree of the Moraceae family.", "props": "Strength, nourishment, grounding, physical vitality and endurance.", "uses": "Amazonian and wider tropical American communities have longstanding food, medicinal and practical uses for the tree."}, "es": {"kw": ["Fortaleza", "Nutrición", "Arraigo", "Vitalidad", "Resistencia"], "prof": "Gran árbol tropical de la familia Moraceae.", "props": "Fortaleza, nutrición, arraigo, vitalidad física y resistencia.", "uses": "Las comunidades amazónicas y de la América tropical en general tienen usos alimenticios, medicinales y prácticos de larga data para este árbol."}, "i": 13}, {"n": "Tamamuri", "bot": "Brosimum acutifolium", "tags": ["strength"], "en": {"kw": ["Strength", "Grounding", "Physical resilience", "Learning medicine"], "prof": "Tropical Amazonian tree of the Moraceae family.", "props": "Strength, grounding, physical resilience, body medicine, endurance and learning medicine. Recognized as a master plant in contemporary Shipibo dieta practice.", "uses": "A traditional medicinal tree; regional sources document uses of the bark and other plant parts."}, "es": {"kw": ["Fortaleza", "Arraigo", "Resiliencia física", "Aprender medicina"], "prof": "Árbol tropical amazónico de la familia Moraceae.", "props": "Fortaleza, arraigo, resiliencia física, medicina del cuerpo, resistencia y aprendizaje de la medicina. Reconocida como planta maestra en la práctica contemporánea de la dieta shipibo.", "uses": "Árbol medicinal tradicional; las fuentes regionales documentan usos de la corteza y de otras partes de la planta."}, "i": 14}, {"n": "Chuchuhuasi / Chuchuwasi", "bot": "Monteverdia macrocarpa (older literature: Maytenus macrocarpa)", "botEs": "Monteverdia macrocarpa (literatura antigua: Maytenus macrocarpa)", "tags": ["strength", "dream"], "en": {"kw": ["Strength", "Endurance", "Vitality", "Dreaming"], "prof": "Large Amazonian tree.", "props": "Strength, endurance, physical vitality, dreaming and deepening the relationship with plant medicine. Historical Shipibo sources classify Chuchuhuasi among the dreaming master plants.", "uses": "One of the best-known Amazonian medicinal trees; traditionally used for pain, inflammation, rheumatic complaints and physical strength."}, "es": {"kw": ["Fortaleza", "Resistencia", "Vitalidad", "Sueños"], "prof": "Gran árbol amazónico.", "props": "Fortaleza, resistencia, vitalidad física, sueños y profundización de la relación con la medicina de las plantas. Las fuentes históricas shipibo clasifican el Chuchuhuasi entre las plantas maestras de los sueños.", "uses": "Uno de los árboles medicinales amazónicos más conocidos; se usa tradicionalmente para el dolor, la inflamación, dolencias reumáticas y la fortaleza física."}, "i": 15}, {"n": "Huayra Caspi / Huaracaspi", "bot": "Often associated with Cedrelinga cateniformis; the vernacular name varies", "botEs": "A menudo asociado con Cedrelinga cateniformis; el nombre vernáculo varía", "tags": ["dream", "strength"], "en": {"kw": ["Dreaming", "Strength", "Forest connection", "Plant teaching"], "prof": "Large Amazonian tree; the exact plant depends on regional naming.", "props": "Dreaming, strength, forest connection and plant teaching. Historical Shipibo sources explicitly classify Huayracaspi among the master plants that provoke dreaming.", "uses": "Traditional uses vary depending on the species referred to as Huayra Caspi."}, "es": {"kw": ["Sueños", "Fortaleza", "Conexión con el bosque", "Enseñanza de la planta"], "prof": "Gran árbol amazónico; la planta exacta depende del nombre regional.", "props": "Sueños, fortaleza, conexión con el bosque y enseñanza de las plantas. Las fuentes históricas shipibo clasifican explícitamente el Huayracaspi entre las plantas maestras que provocan sueños.", "uses": "Los usos tradicionales varían según la especie a la que se llame Huayra Caspi."}, "i": 16}, {"n": "Timareo", "bot": "Aquatic plant (botanical identification pending)", "botEs": "Planta acuática (identificación botánica pendiente)", "tags": ["heart", "medicine"], "en": {"kw": ["Love", "Love-energy", "Medicine"], "prof": "An aquatic plant.", "props": "Love, love-energy and medicine. Maestro Americo describes it as “una planta acuática que tiene mucha energía del amor y medicina” (an aquatic plant with a great deal of love energy and medicine).", "uses": "No standardized ethnobotanical profile has yet been established for this name."}, "es": {"kw": ["Amor", "Energía del amor", "Medicina"], "prof": "Una planta acuática.", "props": "Amor, energía del amor y medicina. El Maestro Americo la describe como “una planta acuática que tiene mucha energía del amor y medicina”.", "uses": "Aún no se ha establecido un perfil etnobotánico estandarizado para este nombre."}, "i": 17}, {"n": "Ayahuasca", "bot": "Banisteriopsis caapi", "tags": ["ceremony"], "en": {"kw": ["Healing", "Diagnosis", "Visions", "Learning", "Transformation"], "prof": "Woody Amazonian vine (liana).", "props": "Healing, spiritual work, diagnosis, learning, visions, communication and transformation. A central medicine in many Amazonian traditions, including Shipibo-Konibo ceremonial practice.", "uses": "Long-established ceremonial and medicinal use in Amazonian traditions. The vine contains β-carboline alkaloids, including harmine and harmaline."}, "es": {"kw": ["Sanación", "Diagnóstico", "Visiones", "Aprendizaje", "Transformación"], "prof": "Bejuco (liana) leñoso amazónico.", "props": "Sanación, trabajo espiritual, diagnóstico, aprendizaje, visiones, comunicación y transformación. Medicina central en muchas tradiciones amazónicas, incluida la práctica ceremonial shipibo-konibo.", "uses": "Uso ceremonial y medicinal consolidado desde hace mucho tiempo en las tradiciones amazónicas. El bejuco contiene alcaloides β-carbolínicos, entre ellos harmina y harmalina."}, "i": 18}, {"n": "Chacruna", "bot": "Psychotria viridis", "tags": ["ceremony"], "en": {"kw": ["Vision", "Perception", "Receptivity", "Ceremony"], "prof": "Tropical shrub with broad green leaves; Rubiaceae family.", "props": "Vision, perception, receptivity, and connection and participation in the ayahuasca ceremony.", "uses": "Traditionally used as an admixture plant in some ayahuasca preparations. It contains DMT."}, "es": {"kw": ["Visión", "Percepción", "Receptividad", "Ceremonia"], "prof": "Arbusto tropical de hojas verdes anchas; familia Rubiaceae.", "props": "Visión, percepción, receptividad, y conexión y participación en la ceremonia de ayahuasca.", "uses": "Se usa tradicionalmente como planta de mezcla en algunas preparaciones de ayahuasca. Contiene DMT."}, "i": 19}, {"n": "Tabaco / Mapacho", "bot": "Nicotiana rustica", "tags": ["ceremony", "cleanse"], "en": {"kw": ["Protection", "Cleansing", "Prayer", "Grounding", "Concentration"], "prof": "Tobacco herb traditionally cultivated in the Americas; generally higher in nicotine than many commercial tobacco varieties.", "props": "Protection, cleansing, prayer, grounding, concentration, communication and spiritual strength. One of the foundational medicines in Amazonian vegetalismo and Shipibo practice. Historical Shipibo literature classifies Tabaco among the master plants.", "uses": "Traditional ceremonial and medicinal uses are extensively documented among Amazonian peoples."}, "es": {"kw": ["Protección", "Limpieza", "Oración", "Arraigo", "Concentración"], "prof": "Hierba de tabaco cultivada tradicionalmente en las Américas; por lo general con más nicotina que muchas variedades comerciales.", "props": "Protección, limpieza, oración, arraigo, concentración, comunicación y fortaleza espiritual. Una de las medicinas fundamentales del vegetalismo amazónico y de la práctica shipibo. La literatura histórica shipibo clasifica el Tabaco entre las plantas maestras.", "uses": "Sus usos ceremoniales y medicinales tradicionales están ampliamente documentados entre los pueblos amazónicos."}, "i": 20}];
+  var STEPS = [
+    {en:["Preparation","Before you arrive, you begin a clean diet that opens the body to the plants. Together with Maestro Americo, the plant or plants for your dieta are chosen through a consultation, based on you and what you are seeking."],
+     es:["Preparación","Antes de llegar, comienzas una dieta limpia que abre el cuerpo a las plantas. Junto con el Maestro Americo, la planta o plantas de tu dieta se eligen mediante una consulta, según quién eres y lo que buscas."]},
+    {en:["Drinking the Plant","The maestro prepares the plant, often as the juice or tea of its leaves, bark, roots or seeds. You drink it in a quiet, intentional way, and over the days you begin to build a relationship with that plant."],
+     es:["Beber la Planta","El maestro prepara la planta, a menudo como jugo o té de sus hojas, corteza, raíces o semillas. La bebes de manera tranquila e intencionada y, con los días, comienzas a construir una relación con esa planta."]},
+    {en:["Fasting &amp; Restrictions","A dieta involves fasting and a very simple diet, and traditionally avoids things like salt, sugar, spices, pork, alcohol and sexual activity. Time is spent in quiet and relative isolation, away from distractions, so the senses can open."],
+     es:["Ayuno y Restricciones","La dieta implica ayuno y una alimentación muy sencilla, y tradicionalmente evita cosas como la sal, el azúcar, las especias, el cerdo, el alcohol y la actividad sexual. Se pasa el tiempo en silencio y en relativo aislamiento, lejos de las distracciones, para que los sentidos se abran."]},
+    {en:["Dreaming &amp; Learning","The plants themselves become teachers. Dieters often notice sharper senses, vivid dreams, insights and a deeper sense of who they are. In the Shipibo tradition, healers also receive songs (icaros) and knowledge from the plants this way."],
+     es:["Soñar y Aprender","Las plantas mismas se vuelven maestras. Quienes hacen dieta suelen notar sentidos más agudos, sueños vívidos, comprensiones y una percepción más profunda de quiénes son. En la tradición shipibo, los sanadores también reciben cantos (icaros) y conocimiento de las plantas de esta manera."]},
+    {en:["The Post-Diet","The dieta does not end when the plant does. The maestro prescribes a post-diet to follow faithfully, traditionally for several months or even up to a year. This protects what you have received and lets it settle into your life."],
+     es:["La Post-Dieta","La dieta no termina cuando termina la planta. El maestro prescribe una post-dieta que se sigue con fidelidad, tradicionalmente durante varios meses o incluso hasta un año. Esto protege lo que has recibido y le permite asentarse en tu vida."]}
+  ];
+  var CATS = [
+    {k:"all",en:"All",es:"Todas"},
+    {k:"heart",en:"Heart & Love",es:"Corazón y Amor"},
+    {k:"strength",en:"Strength & Grounding",es:"Fortaleza y Arraigo"},
+    {k:"dream",en:"Dreaming & Vision",es:"Sueños y Visión"},
+    {k:"cleanse",en:"Cleansing & Protection",es:"Limpieza y Protección"},
+    {k:"medicine",en:"Healing Medicine",es:"Medicina Curativa"},
+    {k:"ceremony",en:"Ceremonial Plants",es:"Plantas Ceremoniales"}
+  ];
+  var UI = {
+    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants match your search.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",uses:"Documented traditional uses"},
+    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta coincide con tu búsqueda.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",uses:"Usos tradicionales documentados"}
+  };
+  var lang = sessionStorage.getItem('kk-lang') || 'en';
+  var cat = 'all', query = '', step = 0, current = -1, visible = [];
+
+  function bot(p){ return (lang==='es' && p.botEs) ? p.botEs : p.bot; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function renderChips(){
+    document.getElementById('chips').innerHTML = CATS.map(function(c){
+      return '<button class="chip'+(c.k===cat?' on':'')+'" data-k="'+c.k+'">'+c[lang].replace(/&/g,'&amp;')+'</button>';
+    }).join('');
+  }
+  function renderGrid(){
+    var q = query.trim().toLowerCase();
+    visible = PLANTS.filter(function(p){
+      if (cat!=='all' && p.tags.indexOf(cat)<0) return false;
+      if (!q) return true;
+      var hay = (p.n+' '+bot(p)+' '+p.en.kw.join(' ')+' '+p.es.kw.join(' ')+' '+p[lang].props).toLowerCase();
+      return hay.indexOf(q)>=0;
+    });
+    var g = document.getElementById('grid');
+    g.innerHTML = visible.length ? visible.map(function(p){
+      return '<button class="plant" data-i="'+p.i+'"><span class="pnum">'+String(p.i).padStart(2,'0')+'</span>'+
+        '<span class="pname">'+esc(p.n)+'</span><span class="pbot">'+esc(bot(p))+'</span>'+
+        '<span class="kws">'+p[lang].kw.slice(0,3).map(function(k){return '<span class="kw">'+esc(k)+'</span>';}).join('')+'</span>'+
+        '<span class="more">'+UI[lang].more+'</span></button>';
+    }).join('') : '<div class="empty">'+UI[lang].none+'</div>';
+    document.getElementById('count').textContent = UI[lang].results(visible.length);
+  }
+  function renderModal(){
+    var p = PLANTS.filter(function(x){return x.i===current;})[0]; if(!p) return;
+    var d = p[lang], u = UI[lang];
+    document.getElementById('mBody').innerHTML =
+      '<div class="pnum">'+String(p.i).padStart(2,'0')+' / '+PLANTS.length+'</div>'+
+      '<h3 id="mTitle">'+esc(p.n)+'</h3><div class="pbot">'+esc(bot(p))+'</div>'+
+      '<div class="kws">'+d.kw.map(function(k){return '<span class="kw">'+esc(k)+'</span>';}).join('')+'</div>'+
+      '<div class="m-label">'+u.props+'</div><p>'+esc(d.props)+'</p>'+
+      '<div class="m-label">'+u.prof+'</div><p>'+esc(d.prof)+'</p>'+
+      '<div class="m-label">'+u.uses+'</div><p>'+esc(d.uses)+'</p>';
+    var idx = visible.map(function(x){return x.i;}).indexOf(current);
+    document.getElementById('mPrev').disabled = idx<=0;
+    document.getElementById('mNext').disabled = idx<0 || idx>=visible.length-1;
+  }
+  function openModal(i){
+    current = i; renderModal();
+    document.getElementById('modalBg').classList.add('open');
+    document.body.style.overflow='hidden';
+    document.getElementById('mClose').focus();
+  }
+  function closeModal(){
+    current=-1; document.getElementById('modalBg').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function moveModal(d){
+    var idx = visible.map(function(x){return x.i;}).indexOf(current)+d;
+    if (idx>=0 && idx<visible.length){ current=visible[idx].i; renderModal(); document.getElementById('modal').scrollTop=0; }
+  }
+  function renderSteps(){
+    document.getElementById('steps').innerHTML = STEPS.map(function(s,i){
+      return '<button class="step-tab'+(i===step?' on':'')+'" role="tab" data-s="'+i+'"><span class="num">'+(i+1)+'</span>'+s[lang][0]+'</button>';
+    }).join('');
+    var s = STEPS[step][lang];
+    document.getElementById('stepPanel').innerHTML = '<h4>'+s[0]+'</h4><p>'+s[1]+'</p>';
+    document.getElementById('stepPrev').disabled = step===0;
+    document.getElementById('stepNext').disabled = step===STEPS.length-1;
+  }
+
+  function toggleMenu() {
+    var h = document.getElementById('hamburger');
+    var m = document.getElementById('mobileNav');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function setLang(l) {
+    lang = l;
+    sessionStorage.setItem('kk-lang', l);
+    document.querySelectorAll('.lb').forEach(function(b){ b.classList.remove('on'); });
+    var btn = document.querySelector('.lb[onclick="setLang(\'' + l + '\')"]');
+    if (btn) btn.classList.add('on');
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var txt = el.getAttribute('data-' + l);
+      if (txt) el.innerHTML = txt;
+    });
+    var s = document.getElementById('search');
+    s.placeholder = s.getAttribute('data-ph-' + l);
+    renderChips(); renderGrid(); renderSteps();
+    if (current>0) renderModal();
+  }
+
+  document.getElementById('chips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if(!b) return;
+    cat = b.getAttribute('data-k'); renderChips(); renderGrid();
+  });
+  document.getElementById('search').addEventListener('input', function(e){ query = e.target.value; renderGrid(); });
+  document.getElementById('grid').addEventListener('click', function(e){
+    var b = e.target.closest('.plant'); if(b) openModal(parseInt(b.getAttribute('data-i'),10));
+  });
+  document.getElementById('steps').addEventListener('click', function(e){
+    var b = e.target.closest('.step-tab'); if(b){ step=parseInt(b.getAttribute('data-s'),10); renderSteps(); }
+  });
+  document.getElementById('stepPrev').onclick = function(){ if(step>0){step--;renderSteps();} };
+  document.getElementById('stepNext').onclick = function(){ if(step<STEPS.length-1){step++;renderSteps();} };
+  document.getElementById('mClose').onclick = closeModal;
+  document.getElementById('mPrev').onclick = function(){ moveModal(-1); };
+  document.getElementById('mNext').onclick = function(){ moveModal(1); };
+  document.getElementById('modalBg').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if (current<0) return;
+    if (e.key==='Escape') closeModal();
+    else if (e.key==='ArrowLeft') moveModal(-1);
+    else if (e.key==='ArrowRight') moveModal(1);
+  });
+
+  setLang(lang);
+  </script>
+</body>
+</html>
