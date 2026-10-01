@@ -406,6 +406,17 @@
     .footer-logo-tag { height: 9px; margin-top: 6px; }
     .vs-cta { white-space: normal !important; text-align: center; }
   }
+
+  /* ── NAV FIX: keep each link on one line, switch to hamburger before it gets crowded ── */
+  .nav-links { gap: clamp(1rem, 1.7vw, 2.5rem); white-space: nowrap; }
+  .nav-links a { white-space: nowrap; }
+  nav { gap: 1.5rem; }
+  .nav-brand { flex-shrink: 0; }
+  @media (max-width: 1240px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
 </style>
 </head>
 <body>
