@@ -303,10 +303,10 @@
     .plant:nth-child(3n+2) { border-radius: 110px 28px 110px 28px; margin-top: 2.2rem; }
     .plant:nth-child(3n) { border-radius: 28px 110px 28px 110px; }
     .plant:hover, .plant:focus-visible { transform: translateY(-8px) scale(1.025); border-color: rgba(var(--rgb),.85); box-shadow: 0 18px 50px -12px rgba(var(--rgb),.5), inset 0 0 40px -18px rgba(var(--rgb),.5); outline: none; }
-    .pglyph { position: relative; width: 112px; height: 112px; display: grid; place-items: center; color: var(--c); margin-bottom: .35rem; }
+    .pglyph { position: relative; width: 128px; height: 128px; display: grid; place-items: center; color: var(--c); margin-bottom: .35rem; }
     .pglyph::before { content: ''; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--rgb),.30), transparent 68%); animation: breathe 6s ease-in-out infinite alternate; }
-    .pglyph svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0 6px rgba(var(--rgb),.6)); transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s; }
-    .plant:hover .pglyph svg { transform: rotate(8deg) scale(1.08); filter: drop-shadow(0 0 12px rgba(var(--rgb),.95)); }
+    .pglyph svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0 7px rgba(var(--rgb),.45)); transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s; }
+    .plant:hover .pglyph svg { transform: rotate(12deg) scale(1.06); filter: drop-shadow(0 0 13px rgba(var(--rgb),.8)); }
     .plant .pname { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.7rem; color: #fff; line-height: 1.1; }
     .plant .pkw { font-size: .74rem; letter-spacing: .04em; color: var(--text-muted); line-height: 1.7; }
     .plant .more { margin-top: .5rem; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--rgb)); opacity: .9; transition: letter-spacing .4s; }
@@ -321,14 +321,19 @@
     .modal { --c: #A274F1; --rgb: 162,116,241; position: relative; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; padding: 0 2.4rem 1.8rem; border: 1px solid rgba(var(--rgb),.45); border-radius: 170px 170px 26px 26px; background: linear-gradient(180deg, rgba(var(--rgb),.22), #0A1128 280px); box-shadow: 0 30px 90px rgba(0,0,0,.65), 0 0 80px -20px rgba(var(--rgb),.5); animation: bloom .6s cubic-bezier(.2,.8,.2,1); scrollbar-width: thin; }
     .modal-close { position: absolute; top: 1.1rem; right: 1.1rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; transition: all .3s; }
     .modal-close:hover { background: rgba(255,255,255,.14); transform: rotate(90deg); }
-    .m-glyph { width: 130px; height: 130px; margin: 2.6rem auto .3rem; color: var(--c); }
-    .m-glyph svg { width: 100%; height: 100%; filter: drop-shadow(0 0 12px rgba(var(--rgb),.8)); }
+    .m-glyph { width: 150px; height: 150px; margin: 2.4rem auto .4rem; color: var(--c); }
+    .m-glyph svg { width: 100%; height: 100%; filter: drop-shadow(0 0 14px rgba(var(--rgb),.6)); }
     .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 500; color: #fff; text-align: center; line-height: 1.1; margin: .2rem 0 .2rem; }
     .m-cat { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgb(var(--rgb)); margin-bottom: .6rem; }
     .m-label { font-family: 'DM Sans', sans-serif; font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgb(var(--rgb)); margin: 1.5rem 0 .45rem; }
     .modal p { color: var(--text-muted); line-height: 1.85; font-size: .98rem; }
     .modal .kws { margin-top: .8rem; justify-content: center; }
     .modal .kw { border-color: rgba(var(--rgb),.45); color: #fff; background: rgba(var(--rgb),.08); }
+    .m-video { display: flex; align-items: center; gap: .9rem; margin-top: 1.5rem; padding: .85rem 1.1rem; border-radius: 22px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); color: #fff; text-decoration: none; line-height: 1.5; font-size: .95rem; transition: border-color .35s, box-shadow .35s, background .35s; }
+    .m-video .yt { flex-shrink: 0; display: grid; place-items: center; transition: transform .35s; }
+    .m-video .yt-text b { font-weight: 600; color: rgb(var(--rgb)); }
+    .m-video:hover, .m-video:focus-visible { border-color: rgba(var(--rgb),.8); background: rgba(var(--rgb),.08); box-shadow: 0 0 28px -8px rgba(var(--rgb),.7); outline: none; }
+    .m-video:hover .yt { transform: scale(1.12); }
     .modal-nav { display: flex; justify-content: space-between; margin-top: 1.8rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.08); }
 
     .mp-note { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); text-align: center; font-style: italic; max-width: 760px; margin: 0.5rem auto; }
@@ -339,8 +344,6 @@
     .m-teach li { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.75rem; padding-left: 1.4rem; position: relative; }
     .m-teach li::before { content: '✦'; position: absolute; left: 0; top: 4px; color: var(--neon-orange); font-size: 0.6rem; }
     .m-teach li b { color: #fff; font-weight: 500; }
-    .m-teach-note { font-size: 0.74rem; font-style: italic; color: var(--text-muted); opacity: 0.85; line-height: 1.6; margin-top: 0.4rem; }
-    .plant .pteach { margin-top: 0.55rem; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neon-orange); }
 
     .mp-cta { text-align: center; margin: 1rem 0 0.5rem; }
     .mp-cta a { display: inline-block; margin: 0.4rem; padding: 0.8rem 1.8rem; border-radius: 50px; border: 1px solid var(--neon-violet); color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.25s; }
@@ -393,7 +396,7 @@
   main.wide { max-width: 1080px; }
   .scroll-outer { background: none; border: 0; border-radius: 0; padding: 1rem 0 2rem; }
   .scroll-corner { display: none; }
-  .hero-glyph { width: 120px; height: 120px; margin: 0 auto 1.2rem; color: var(--neon-orange); animation: spin 140s linear infinite; filter: drop-shadow(0 0 14px rgba(255,151,1,.55)); }
+  .hero-glyph { width: 140px; height: 140px; margin: 0 auto 1.2rem; color: var(--neon-orange); animation: spin 140s linear infinite; filter: drop-shadow(0 0 14px rgba(255,151,1,.55)); }
   .scroll-eyebrow { color: rgba(255,151,1,.9); letter-spacing: .42em; }
   .scroll-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(3rem, 8vw, 5.2rem); letter-spacing: .01em; line-height: 1.02; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 30%, #d8c6ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .mp-lead { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; line-height: 1.6; font-style: italic; color: #b9c4d8; max-width: 640px; }
@@ -414,7 +417,6 @@
   .mp-cta a:hover { box-shadow: 0 0 30px -6px var(--neon-violet); }
   .m-teach { border: 1px solid rgba(255,151,1,.28); border-radius: 26px; background: linear-gradient(160deg, rgba(255,151,1,.10), rgba(255,151,1,.02)); }
   .m-teach .m-label { font-family: 'Cormorant Garamond', serif; font-style: italic; text-transform: none; letter-spacing: .02em; font-size: 1.35rem; }
-  .plant .pteach { margin-top: .3rem; }
 
   @media (max-width: 760px) {
     .plant-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .8rem; }
@@ -422,7 +424,7 @@
     .plant:nth-child(3n+2) { margin-top: 0; border-radius: 70px 22px 70px 22px; }
     .plant:nth-child(3n) { border-radius: 22px 70px 22px 70px; }
     .plant:nth-child(even) { margin-top: 1.6rem; }
-    .pglyph { width: 84px; height: 84px; }
+    .pglyph { width: 96px; height: 96px; }
     .plant .pname { font-size: 1.4rem; }
     .modal { border-radius: 120px 120px 22px 22px; padding: 0 1.4rem 1.4rem; }
     .modal h3 { font-size: 2.4rem; }
@@ -692,9 +694,19 @@
     }
   };
 
+  /* ── YOUTUBE INTRODUCTIONS FROM MAESTRO AMERICO ──
+     To add one: add the plant's exact name and its YouTube link. */
+  var VIDEOS = {
+    "Catahua": "https://youtu.be/RLKfj7GjqFE?si=XT5MdZ7Vo6LNN-KH",
+    "Chiric Sanango": "https://youtu.be/3d5gtzAN-ZM?si=lEOUIQtmJ6TRjujJ",
+    "Bobinsana": "https://youtu.be/QIR0ItrMFjo?si=29khNPz-YcgwdpVf",
+    "Shihuahuaco": "https://youtu.be/hUNoSRn38uk?si=4gy9B_3eOZwmOKtN",
+    "Patiquina": "https://youtu.be/xQpVHIsFODo?si=a3K1Ac-5ybJkB27A"
+  };
+
   /* Alphabetical order (accent-insensitive), then number cards 01, 02, ... in that order */
   PLANTS.sort(function(a,b){ return a.n.localeCompare(b.n, 'en', {sensitivity:'base'}); });
-  PLANTS.forEach(function(p, k){ p.i = k + 1; p.t = TEACH[p.n] || null; });
+  PLANTS.forEach(function(p, k){ p.i = k + 1; p.t = TEACH[p.n] || null; p.v = VIDEOS[p.n] || null; });
 
   var STEPS = [
     {en:["Preparation","Before you arrive, you begin a clean diet that opens the body to the plants. Together with Maestro Americo, the plant or plants for your dieta are chosen through a consultation, based on you and what you are seeking."],
@@ -718,74 +730,218 @@
     {k:"ceremony",en:"Ceremonial Plants",es:"Plantas Ceremoniales"}
   ];
   var UI = {
-    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants in this category.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",teach:"Teaching from Maestro Americo",teachTag:"✦ Maestro's teaching",teachNote:"Translated from Maestro Americo's original Spanish. Shared as traditional knowledge, not medical advice."},
-    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta en esta categoría.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",teach:"Enseñanza del Maestro Americo",teachTag:"✦ Enseñanza del Maestro",teachNote:"En las palabras del Maestro Americo. Se comparte como conocimiento tradicional, no como consejo médico."}
+    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants in this category.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",teach:"Teaching from Maestro Americo",watch:function(n){return "Watch Maestro Americo introduce <b>"+n+"</b>";}},
+    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta en esta categoría.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",teach:"Enseñanza del Maestro Americo",watch:function(n){return "Mira al Maestro Americo presentar a <b>"+n+"</b>";}}
   };
-  /* ── KENÉ-STYLE GLYPHS ──
-     Every plant gets its own geometric, four-fold symmetric design, generated
-     from the plant's name so it is unique and always the same. */
+  /* ── SHIPIBO EMBROIDERED ROUNDS ──
+     Each plant gets its own circular "bordado": a blanket-stitched edge, bands of
+     zigzag / cross stitch, and a centre motif of satin-stitch leaves, curling
+     tendrils and tiny bird-foot stitches. Everything is generated from the
+     plant's name, so each piece is unique and always the same. */
   var KENE_CACHE = {};
+  var TAU = Math.PI * 2;
+  var THREAD = {pink:'#FF2D95', rose:'#FF7AB8', magenta:'#D61FD4', blue:'#3B63FF', teal:'#19D6B0', yellow:'#FFD21F', orange:'#FF8A1F', lime:'#A3E635', green:'#14B86B', deep:'#0E8F57', violet:'#A07BFF', cream:'#FFF1C9', red:'#FF4D4D', cyan:'#22D3EE', gold:'#F5B700', peach:'#FFB58A'};
+  var KPAL = [
+    {fab:'#07060C', ring:['magenta','blue','teal'],   main:['pink','rose','peach'],      mainFill:'#B8156A', sec:['deep','green','lime'],   ctr:['pink','orange','yellow'],  tick:['cream','orange','violet'], curl:'green',  patch:'yellow'},
+    {fab:'#0B1232', ring:['yellow','cyan','magenta'], main:['violet','rose','pink'],     mainFill:'#5B3FC4', sec:['green','lime','lime'],   ctr:['cyan','blue','violet'],    tick:['orange','pink','cream'],   curl:'lime',    patch:'orange'},
+    {fab:'#12061F', ring:['cyan','pink','yellow'],    main:['orange','gold','yellow'],   mainFill:'#C25A08', sec:['teal','green','lime'],   ctr:['pink','rose','peach'],     tick:['cream','teal','pink'],     curl:'teal',    patch:'pink'},
+    {fab:'#051A17', ring:['pink','yellow','violet'], main:['magenta','pink','rose'],    mainFill:'#9A0F92', sec:['gold','yellow','lime'],  ctr:['orange','gold','yellow'],  tick:['cream','pink','cyan'],     curl:'yellow',  patch:'cyan'},
+    {fab:'#08070D', ring:['orange','magenta','cyan'],main:['blue','cyan','teal'],       mainFill:'#1F3FBF', sec:['pink','rose','peach'],   ctr:['yellow','orange','red'],   tick:['cream','lime','orange'],   curl:'rose',    patch:'lime'},
+    {fab:'#0A0F2E', ring:['lime','pink','blue'],     main:['red','orange','gold'],      mainFill:'#B8281E', sec:['cyan','teal','green'],   ctr:['violet','magenta','pink'], tick:['cream','yellow','pink'],   curl:'cyan',    patch:'yellow'},
+    {fab:'#14060A', ring:['yellow','teal','pink'],   main:['teal','cyan','lime'],       mainFill:'#0E8F78', sec:['rose','pink','magenta'], ctr:['orange','yellow','cream'], tick:['cream','orange','violet'], curl:'peach',   patch:'pink'},
+    {fab:'#0E0A2E', ring:['teal','orange','violet'], main:['gold','yellow','cream'],    mainFill:'#B58A00', sec:['green','teal','cyan'],   ctr:['red','pink','rose'],       tick:['pink','cyan','cream'],     curl:'green',   patch:'orange'}
+  ];
   function hashStr(s){ var h = 2166136261; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
   function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-  function poly(a){ return a.map(function(p, i){ return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(''); }
-  function stepDiamond(r, n){
+  function fx(n){ return Math.round(n * 10) / 10; }
+  function xy(r, a){ return fx(r * Math.cos(a)) + ' ' + fx(r * Math.sin(a)); }
+  /* a layer collects path data by stroke/fill style so each glyph stays ~60 elements */
+  function Lyr(){ var order = [], map = {}; return {
+    add: function(attrs, d){ if (!map[attrs]){ map[attrs] = []; order.push(attrs); } map[attrs].push(d); },
+    out: function(){ return order.map(function(k){ return '<path ' + k + ' d="' + map[k].join('') + '"/>'; }).join(''); } }; }
+  function LeafSet(){ return {fill: Lyr(), hatch: Lyr(), line: Lyr()}; }
+  function emit(S){ return S.fill.out() + S.hatch.out() + S.line.out(); }
+  function T(k){ return THREAD[k] || k; }
+
+  /* one satin-stitch leaf: filled shape, slanted "feather" stitches, a midrib */
+  function leaf(S, x, y, a, len, wid, ramp, fill, rib){
+    var ca = Math.cos(a), sa = Math.sin(a);
+    function X(u, v){ return fx(x + u * ca - v * sa) + ' ' + fx(y + u * sa + v * ca); }
+    var d = 'M' + X(0, 0) + 'C' + X(len * .3, -wid) + ' ' + X(len * .7, -wid) + ' ' + X(len, 0) + 'C' + X(len * .7, wid) + ' ' + X(len * .3, wid) + ' ' + X(0, 0) + 'Z';
+    S.fill.add('fill="' + fill + '" stroke="none"', d);
+    S.line.add('stroke="' + T(ramp[ramp.length - 1]) + '" stroke-width="1.2" stroke-opacity=".95"', d);
+    function hw(t){ return 3 * wid * t * (1 - t); }
+    var m = Math.max(5, Math.round(len / 3.1));
+    for (var k = 1; k < m; k++){
+      var t = k / m, t2 = Math.min(.98, t + .18), col = ramp[Math.min(ramp.length - 1, Math.floor(t * ramp.length))];
+      S.hatch.add('stroke="' + T(col) + '" stroke-width="1.2"', 'M' + X(t * len, 0) + 'L' + X(t2 * len, -hw(t2)) + 'M' + X(t * len, 0) + 'L' + X(t2 * len, hw(t2)));
+    }
+    S.line.add('stroke="' + rib + '" stroke-width=".9" stroke-opacity=".6"', 'M' + X(0, 0) + 'L' + X(len * .95, 0));
+  }
+  /* curling tendril: a stem that ends in a spiral */
+  function curl(L, col, x0, y0, cx, cy, rr, dir, a0, turns){
+    var sx = cx + rr * Math.cos(a0), sy = cy + rr * Math.sin(a0);
+    var qx = (x0 + sx) / 2 + (sy - y0) * .28 * dir, qy = (y0 + sy) / 2 - (sx - x0) * .28 * dir;
+    var d = 'M' + fx(x0) + ' ' + fx(y0) + 'Q' + fx(qx) + ' ' + fx(qy) + ' ' + fx(sx) + ' ' + fx(sy);
+    for (var a = .4; a <= turns * TAU; a += .42){
+      var rad = rr * (1 - .84 * a / (turns * TAU)), ang = a0 + dir * a;
+      d += 'L' + fx(cx + rad * Math.cos(ang)) + ' ' + fx(cy + rad * Math.sin(ang));
+    }
+    L.add('stroke="' + col + '" stroke-width="1.7"', d);
+  }
+  /* little bird-foot stitch, pointing in to the centre */
+  function tick(L, col, r, a, sz){
+    var ca = Math.cos(a), sa = Math.sin(a), bx = r * ca, by = r * sa;
+    function X(u, v){ return fx(bx + u * ca - v * sa) + ' ' + fx(by + u * sa + v * ca); }
+    L.add('stroke="' + col + '" stroke-width="1.5"', 'M' + X(sz, -sz * .95) + 'L' + X(0, 0) + 'L' + X(sz, sz * .95) + 'M' + X(0, 0) + 'L' + X(-sz * 1.25, 0));
+  }
+  /* zigzag patch of yellow "meander" stitching in a wedge */
+  function patch(L, col, a, rb, span, rows){
+    for (var j = 0; j < rows; j++){
+      var d = '', n = 7, r0 = rb + j * 3.1;
+      for (var i = 0; i <= n * 2; i++){ d += (i ? 'L' : 'M') + xy(r0 + (i % 2 ? 2.3 : 0), a - span + 2 * span * i / (n * 2)); }
+      L.add('stroke="' + col + '" stroke-width="1.2"', d);
+    }
+  }
+  /* stitched ring bands */
+  function ringZig(L, col, r, amp, n, w){ var d = ''; for (var i = 0; i <= n * 2; i++) d += (i ? 'L' : 'M') + xy(r + (i % 2 ? amp : -amp), i * TAU / (n * 2)); L.add('stroke="' + col + '" stroke-width="' + w + '"', d + 'Z'); }
+  function ringX(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, c = Math.cos(a), sn = Math.sin(a);
+      function P(u, v){ return fx((r + u) * c - v * sn) + ' ' + fx((r + u) * sn + v * c); }
+      d += 'M' + P(-s, -s) + 'L' + P(s, s) + 'M' + P(-s, s) + 'L' + P(s, -s); } L.add('stroke="' + col + '" stroke-width="1.7"', d); }
+  function ringV(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, c = Math.cos(a), sn = Math.sin(a);
+      function P(u, v){ return fx((r + u) * c - v * sn) + ' ' + fx((r + u) * sn + v * c); }
+      d += 'M' + P(-s, -s * 1.1) + 'L' + P(s, 0) + 'L' + P(-s, s * 1.1); } L.add('stroke="' + col + '" stroke-width="1.7"', d); }
+  function ringDash(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n; d += 'M' + xy(r - s, a) + 'L' + xy(r + s, a); } L.add('stroke="' + col + '" stroke-width="1.8"', d); }
+  function ringLine(L, col, r, w){ L.add('stroke="' + col + '" stroke-width="' + w + '"', 'M' + r + ' 0A' + r + ' ' + r + ' 0 1 1 ' + (-r) + ' 0A' + r + ' ' + r + ' 0 1 1 ' + r + ' 0Z'); }
+  function ringScal(L, col, r, n, amp){ var d = 'M' + xy(r, 0); for (var i = 0; i < n; i++){ var a1 = (i + .5) * TAU / n, a2 = (i + 1) * TAU / n; d += 'Q' + xy(r + amp * 2, a1) + ' ' + xy(r, a2); } L.add('stroke="' + col + '" stroke-width="1.6"', d); }
+  function ringDots(L, col, r, n, rad){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, x = r * Math.cos(a), y = r * Math.sin(a); d += 'M' + fx(x - rad) + ' ' + fx(y) + 'a' + rad + ' ' + rad + ' 0 1 0 ' + (rad * 2) + ' 0a' + rad + ' ' + rad + ' 0 1 0 ' + (-rad * 2) + ' 0Z'; } L.add('fill="' + col + '" stroke="none"', d); }
+  function sd(r, n){ /* stepped diamond, relative to centre */
     var s = r / n, P = [[0, -r]], k;
     for (k = 0; k < n; k++){ P.push([(k + 1) * s, -r + k * s]); P.push([(k + 1) * s, -r + (k + 1) * s]); }
-    var q2 = P.map(function(p){ return [p[0], -p[1]]; }).reverse();
-    var q3 = P.map(function(p){ return [-p[0], -p[1]]; });
-    var q4 = P.map(function(p){ return [-p[0], p[1]]; }).reverse();
-    return P.concat(q2, q3, q4).map(function(p){ return [50 + p[0], 50 + p[1]]; });
+    var q2 = P.map(function(p){ return [p[0], -p[1]]; }).reverse(), q3 = P.map(function(p){ return [-p[0], -p[1]]; }), q4 = P.map(function(p){ return [-p[0], p[1]]; }).reverse();
+    return P.concat(q2, q3, q4).map(function(p, i){ return (i ? 'L' : 'M') + fx(p[0]) + ' ' + fx(p[1]); }).join('') + 'Z';
   }
-  function diamond(r){ return 'M50 ' + (50 - r) + 'L' + (50 + r) + ' 50L50 ' + (50 + r) + 'L' + (50 - r) + ' 50Z'; }
-  function spiral(x, y, w, g){
-    var dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]], cx = x, cy = y, d = 'M' + x + ' ' + y;
-    for (var i = 0; i < 12; i++){
-      var len = w - Math.floor(i / 2) * g; if (len < g * 0.8) break;
-      cx += dirs[i % 4][0] * len; cy += dirs[i % 4][1] * len; d += 'L' + cx.toFixed(1) + ' ' + cy.toFixed(1);
-    }
-    return d;
-  }
-  function rot4(inner){ var s = ''; for (var a = 0; a < 360; a += 90) s += '<g transform="rotate(' + a + ' 50 50)">' + inner + '</g>'; return s; }
-  function mir4(inner){
-    return inner + '<g transform="translate(100 0) scale(-1 1)">' + inner + '</g>' +
-      '<g transform="translate(0 100) scale(1 -1)">' + inner + '</g>' +
-      '<g transform="translate(100 100) scale(-1 -1)">' + inner + '</g>';
-  }
+
+  /* each current plant keeps a fixed design slot, so adding plants never changes the others */
+  var KENE_SLOT = {"Ayahuasca": 0, "Ayahuma": 1, "Bobinsana": 2, "Catahua": 3, "Chacruna": 4, "Chiric Sanango": 5, "Chuchuhuasi": 6, "Chullachaqui": 7, "Huayra Caspi": 8, "Manchinga": 9, "Marosa": 10, "Patiquina": 11, "Piñón Colorado": 12, "Renaquilla": 13, "Requia": 14, "Shihuahuaco": 15, "Tabaco": 16, "Tamamuri": 17, "Timareo": 18, "Toé": 19};
   function kene(name, idx){
     if (KENE_CACHE[name]) return KENE_CACHE[name];
-    var h = hashStr(name), R = mulberry(h), v = (idx == null ? (h >>> 7) : idx) % 6, n = 3 + Math.floor(R() * 3), m = 2 + Math.floor(R() * 2), o = '';
-    function P(d, w, op){ o += '<path d="' + d + '" stroke-width="' + (w || 1.5) + '"' + (op ? ' opacity="' + op + '"' : '') + '/>'; }
-    function dot(x, y, r){ o += '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="currentColor" stroke="none"/>'; }
-    if (v === 3){                                   /* four small diamonds around a heart */
-      P(poly(stepDiamond(44, n)) + 'Z', 1.7);
-      P(diamond(9), 1.4); dot(50, 50, 2.2);
-      o += rot4('<path d="M50 41V33" stroke-width="1.4"/><path d="M50 18L59 27L50 36L41 27Z" stroke-width="1.5"/><circle cx="50" cy="27" r="1.8" fill="currentColor" stroke="none"/>');
-      P(poly(stepDiamond(20, m)) + 'Z', 1.2, .55);
-    } else {
-      P(poly(stepDiamond(44, n)) + 'Z', 1.7);
-      if (v === 0){                                 /* spirals in the four quarters */
-        P(diamond(8), 1.4);
-        o += mir4('<path d="' + spiral(56, 29, 15, 3.4) + '" stroke-width="1.5"/>');
-        dot(50, 50, 2.2);
-      } else if (v === 1){                          /* cross with diamond tips */
-        P(diamond(27), 1.4, .9);
-        o += rot4('<path d="M50 43V19" stroke-width="1.5"/><path d="M50 9L55 14L50 19L45 14Z" stroke-width="1.3"/>');
-        P(diamond(7), 1.4); dot(50, 50, 2);
-      } else if (v === 2){                          /* stacked chevrons */
-        o += rot4('<path d="M41 27L50 18L59 27" stroke-width="1.5"/><path d="M41 34L50 25L59 34" stroke-width="1.5" opacity=".8"/><path d="M44 41L50 35L56 41" stroke-width="1.4" opacity=".6"/>');
-        P(diamond(7), 1.4); dot(50, 50, 2);
-      } else if (v === 4){                          /* ring of dots around a stepped heart */
-        P(poly(stepDiamond(22, m)) + 'Z', 1.5);
-        o += rot4('<circle cx="50" cy="17" r="2" fill="currentColor" stroke="none"/><circle cx="35" cy="22" r="1.4" fill="currentColor" stroke="none"/><circle cx="65" cy="22" r="1.4" fill="currentColor" stroke="none"/>');
-        P(diamond(9), 1.4); dot(50, 50, 2.3);
-      } else {                                      /* triangles on the four axes */
-        P(poly(stepDiamond(26, 2)) + 'Z', 1.4, .85);
-        o += rot4('<path d="M50 12L57 25H43Z" stroke-width="1.4"/><path d="M50 30L54 38H46Z" stroke-width="1.2" opacity=".7"/>');
-        dot(50, 50, 2.6);
-      }
+    idx = idx != null ? idx : (KENE_SLOT[name] != null ? KENE_SLOT[name] : 20 + hashStr(name) % 24);
+    var h = hashStr(name), R = mulberry(h), fam = idx % 3;
+    var pal = KPAL[(idx * 3 + Math.floor(idx / 8)) % 8];
+    var ring = pal.ring.map(T), mainRamp = pal.main, secRamp = pal.sec, ctrRamp = pal.ctr, tickCols = pal.tick.map(T);
+    var rib = pal.fab, ph1 = R() * TAU, ph2 = R() * TAU;
+    function er(a){ return 96 + 1.4 * Math.sin(3 * a + ph1) + .9 * Math.sin(5 * a + ph2); }
+
+    /* fabric + blanket-stitch edge (edge takes the plant's category colour) */
+    var o = '', edge = Lyr(), fab = '';
+    for (var i = 0; i < 96; i++){ var fa = i * TAU / 96; fab += (i ? 'L' : 'M') + xy(er(fa) - .6, fa); }
+    o += '<path d="' + fab + 'Z" fill="' + pal.fab + '" stroke="none"/>';
+    var nb = 64 + Math.floor(R() * 3) * 4, loop = '', ticks = '';
+    for (i = 0; i < nb; i++){
+      var a = i * TAU / nb;
+      loop += (i ? 'L' : 'M') + xy(er(a) - 9, a);
+      ticks += 'M' + xy(er(a) - 9, a) + 'L' + xy(er(a + .1) - .4, a + .1);
     }
-    dot(50, 2.5, 1.3); dot(97.5, 50, 1.3); dot(50, 97.5, 1.3); dot(2.5, 50, 1.3);
-    return KENE_CACHE[name] = '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + o + '</svg>';
+    edge.add('stroke="currentColor" stroke-width="1.9"', loop + 'Z' + ticks);
+    o += edge.out();
+
+    /* three stitched bands */
+    var rings = Lyr(), pick = [Math.floor(R() * 3), Math.floor(R() * 4), Math.floor(R() * 3)];
+    var nA = Math.round(79.5 * TAU / (9 + R() * 3)), nB = Math.round(71 * TAU / (9 + R() * 3));
+    if (pick[0] === 0) ringZig(rings, ring[0], 79.5, 3.6, Math.round(nA / 2), 1.9);
+    else if (pick[0] === 1) ringV(rings, ring[0], 79.5, nA, 3);
+    else ringX(rings, ring[0], 79.5, Math.round(nA * .8), 2.6);
+    if (pick[1] === 0) ringX(rings, ring[1], 71, Math.round(nB * .85), 2.4);
+    else if (pick[1] === 1) ringZig(rings, ring[1], 71, 3, Math.round(nB / 2), 1.8);
+    else if (pick[1] === 2) ringDash(rings, ring[1], 71, nB, 2.6);
+    else ringScal(rings, ring[1], 69, Math.round(nB * .8), 1.7);
+    if (pick[2] === 0) { ringLine(rings, ring[2], 64.5, 1.8); }
+    else if (pick[2] === 1) ringZig(rings, ring[2], 64.5, 2.2, 34, 1.5);
+    else { ringLine(rings, ring[2], 64.5, 1.5); ringDots(rings, ring[2], 61.2, 40, .9); }
+    o += rings.out();
+
+    /* centre motif --------------------------------------------------- */
+    var covers = [], curls = [], patches = [];
+    var tk = Lyr(), tl = Lyr(), S1 = LeafSet(), S2 = LeafSet(), top = Lyr();
+    var a0 = -Math.PI / 2, k, P;
+    if (fam === 0){                                   /* leaf mandala */
+      P = [4, 5, 6][Math.floor(R() * 3)];
+      var lenM = [0, 0, 0, 0, 42, 40, 36][P], widM = [0, 0, 0, 0, 12, 10, 8.4][P];
+      var lenS = [0, 0, 0, 0, 28, 24, 22][P], widS = [0, 0, 0, 0, 6.5, 5.5, 4.6][P];
+      for (k = 0; k < P; k++){
+        var am = a0 + k * TAU / P, ag = am + Math.PI / P, gh = Math.PI / P;
+        leaf(S1, 11 * Math.cos(am), 11 * Math.sin(am), am, lenM, widM, mainRamp, pal.mainFill, rib);
+        covers.push([am, 11, lenM, widM]);
+        leaf(S1, 14 * Math.cos(ag), 14 * Math.sin(ag), ag, lenS, widS, secRamp, '#0B6B43', rib);
+        covers.push([ag, 14, lenS, widS]);
+        [-1, 1].forEach(function(sg){
+          var ca2 = ag + sg * gh * .66, cx = 47 * Math.cos(ca2), cy = 47 * Math.sin(ca2), s0 = ag + sg * gh * .2;
+          curl(tl, T(pal.curl), 22 * Math.cos(s0), 22 * Math.sin(s0), cx, cy, 4.6, -sg, ca2 + Math.PI, 1.15);
+          curls.push([cx, cy]);
+        });
+        patch(tl, T(pal.patch), ag, 46, gh * .3, 3); patches.push([ag, gh * .34]);
+        leaf(S2, 0, 0, am + gh, 15, 4.6, ctrRamp, '#7a1d60', rib);
+      }
+      top.add('fill="' + T('gold') + '" stroke="none"', 'M2.4 0a2.4 2.4 0 1 0 -4.8 0a2.4 2.4 0 1 0 4.8 0Z');
+    } else if (fam === 1){                            /* flower bloom */
+      P = [6, 7, 8][Math.floor(R() * 3)];
+      for (k = 0; k < P; k++){
+        var ao = a0 + k * TAU / P, ai = ao + Math.PI / P;
+        leaf(S1, 7 * Math.cos(ao), 7 * Math.sin(ao), ao, 27, 8.6, mainRamp, pal.mainFill, rib); covers.push([ao, 7, 27, 8.6]);
+        var cg = ao + Math.PI / P;
+        leaf(S2, 5 * Math.cos(ai), 5 * Math.sin(ai), ai, 17, 6, ctrRamp, '#7a1d60', rib);
+        leaf(S1, 31 * Math.cos(cg), 31 * Math.sin(cg), cg, 21, 5.2, secRamp, '#0B6B43', rib); covers.push([cg, 31, 21, 5.2]);
+        var cc = ao, cx2 = 47.5 * Math.cos(cc), cy2 = 47.5 * Math.sin(cc);
+        curl(tl, T(pal.curl), 35 * Math.cos(cc), 35 * Math.sin(cc), cx2, cy2, 4.2, k % 2 ? 1 : -1, cc + Math.PI * .5, 1.1); curls.push([cx2, cy2]);
+      }
+      top.add('fill="' + T('gold') + '" stroke="none"', 'M5.2 0a5.2 5.2 0 1 0 -10.4 0a5.2 5.2 0 1 0 10.4 0Z');
+      top.add('fill="' + T('red') + '" stroke="none"', 'M1.4 0a1.4 1.4 0 1 0 -2.8 0a1.4 1.4 0 1 0 2.8 0Z');
+    } else {                                          /* vine wreath */
+      P = [8, 9, 10][Math.floor(R() * 3)];
+      ringLine(tl, T(pal.curl), 38, 1.9);
+      for (k = 0; k < P; k++){
+        var th = a0 + k * TAU / P, bx = 38 * Math.cos(th), by = 38 * Math.sin(th), tan = th + Math.PI / 2;
+        var out = k % 2 === 0;
+        leaf(S1, bx, by, out ? tan - .55 : tan + Math.PI + .55, out ? 23 : 17, out ? 6.4 : 5.4, out ? secRamp : mainRamp, out ? '#0B6B43' : pal.mainFill, rib);
+        covers.push([out ? tan - .55 : tan + Math.PI + .55, 0, 0, 0, bx, by, out ? 23 : 17, out ? 6.4 : 5.4]);
+        var bd = th + Math.PI / P;
+        top.add('fill="' + T(k % 2 ? 'yellow' : 'pink') + '" stroke="none"', 'M' + fx(38 * Math.cos(bd) + 2.6) + ' ' + fx(38 * Math.sin(bd)) + 'a2.6 2.6 0 1 0 -5.2 0a2.6 2.6 0 1 0 5.2 0Z');
+      }
+      var d1 = sd(17, 3), d2 = sd(9, 2);
+      top.add('stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', d1);
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', d2);
+      top.add('fill="' + T(ctrRamp[2]) + '" stroke="none"', 'M2.8 0a2.8 2.8 0 1 0 -5.6 0a2.8 2.8 0 1 0 5.6 0Z');
+    }
+
+    /* scattered bird-foot stitches, skipping anything a leaf or tendril covers */
+    function covered(r, a){
+      var px = r * Math.cos(a), py = r * Math.sin(a), j;
+      for (j = 0; j < covers.length; j++){
+        var c = covers[j], ox, oy, ang, len, wid;
+        if (c.length === 4){ ang = c[0]; ox = c[1] * Math.cos(ang); oy = c[1] * Math.sin(ang); len = c[2]; wid = c[3]; }
+        else { ang = c[0]; ox = c[4]; oy = c[5]; len = c[6]; wid = c[7]; }
+        var dx = px - ox, dy = py - oy, u = dx * Math.cos(ang) + dy * Math.sin(ang), v = -dx * Math.sin(ang) + dy * Math.cos(ang);
+        if (u > -3 && u < len + 3 && Math.abs(v) < wid * .8 + 3.5) return true;
+      }
+      for (j = 0; j < curls.length; j++){ if (Math.hypot(px - curls[j][0], py - curls[j][1]) < 8.2) return true; }
+      for (j = 0; j < patches.length; j++){ var da = Math.abs(((a - patches[j][0]) % TAU + TAU + Math.PI) % TAU - Math.PI); if (r > 43 && da < patches[j][1] + .05) return true; }
+      if (fam === 2 && Math.abs(r - 38) < 4.5) return true;
+      if (r < 13 && fam !== 2) return true;
+      return false;
+    }
+    var rr = fam === 2 ? [27, 47, 53.5] : [20, 27, 34, 41, 47.5, 54];
+    rr.forEach(function(r0, ri){
+      var n = Math.round(r0 * TAU / 8.6);
+      for (var q = 0; q < n; q++){
+        var aa = (q + (ri % 2 ? .5 : 0)) * TAU / n;
+        if (r0 > 55 || covered(r0, aa)) continue;
+        tick(tk, tickCols[(q + ri) % 3], r0, aa, 2.6);
+      }
+    });
+
+    o += tk.out() + tl.out() + emit(S1) + emit(S2) + top.out();
+    return KENE_CACHE[name] = '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + o + '</svg>';
   }
 
   /* ── CATEGORY COLORS (each category has its own light) ── */
@@ -872,10 +1028,9 @@
     g.innerHTML = visible.length ? visible.map(function(p, n){
       var cc = colOf(p);
       return '<button class="plant reveal" data-i="' + p.i + '" style="--c:' + cc.c + ';--rgb:' + cc.rgb + ';--k:' + (n % 6) + ';--bd:' + (6 + p.i % 4) + 's">' +
-        '<span class="pglyph">' + kene(p.n, p.i - 1) + '</span>' +
+        '<span class="pglyph">' + kene(p.n) + '</span>' +
         '<span class="pname">' + esc(p.n) + '</span>' +
         '<span class="pkw">' + p[lang].kw.slice(0, 3).map(esc).join(' · ') + '</span>' +
-        (p.t ? '<span class="pteach">' + UI[lang].teachTag + '</span>' : '') +
         '<span class="more">' + UI[lang].more + '</span></button>';
     }).join('') : '<div class="empty">' + UI[lang].none + '</div>';
     document.getElementById('count').textContent = UI[lang].results(visible.length);
@@ -886,7 +1041,12 @@
     var u = UI[lang];
     return '<div class="m-teach"><div class="m-label">' + u.teach + '</div><ul>' +
       p.t[lang].map(function(it){ return '<li>' + (it[0] ? '<b>' + esc(it[0]) + '</b> ' : '') + esc(it[1]) + '</li>'; }).join('') +
-      '</ul><div class="m-teach-note">' + u.teachNote + '</div></div>';
+      '</ul></div>';
+  }
+  var YT_ICON = '<svg viewBox="0 0 28 20" width="30" height="21" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0000"/><path d="M11 5.6v8.8L18.6 10z" fill="#fff"/></svg>';
+  function videoHTML(p){
+    if (!p.v) return '';
+    return '<a class="m-video" href="' + p.v + '" target="_blank" rel="noopener noreferrer"><span class="yt">' + YT_ICON + '</span><span class="yt-text">' + UI[lang].watch(esc(p.n)) + '</span></a>';
   }
   function renderModal(){
     var p = PLANTS.filter(function(x){ return x.i === current; })[0]; if (!p) return;
@@ -894,12 +1054,12 @@
     m.style.setProperty('--c', cc.c); m.style.setProperty('--rgb', cc.rgb);
     var cats = p.tags.map(function(t){ for (var i = 0; i < CATS.length; i++) if (CATS[i].k === t) return CATS[i][lang]; return t; }).join(' · ').replace(/&/g,'&amp;');
     document.getElementById('mBody').innerHTML =
-      '<div class="m-glyph">' + kene(p.n, p.i - 1) + '</div>' +
+      '<div class="m-glyph">' + kene(p.n) + '</div>' +
       '<h3 id="mTitle">' + esc(p.n) + '</h3>' +
       '<div class="m-cat">' + cats + '</div>' +
       '<div class="kws">' + d.kw.map(function(k){ return '<span class="kw">' + esc(k) + '</span>'; }).join('') + '</div>' +
       '<div class="m-label">' + u.props + '</div><p>' + esc(d.props) + '</p>' +
-      '<div class="m-label">' + u.prof + '</div><p>' + esc(d.prof) + '</p>' + teachHTML(p);
+      '<div class="m-label">' + u.prof + '</div><p>' + esc(d.prof) + '</p>' + videoHTML(p) + teachHTML(p);
     var idx = visible.map(function(x){ return x.i; }).indexOf(current);
     document.getElementById('mPrev').disabled = idx <= 0;
     document.getElementById('mNext').disabled = idx < 0 || idx >= visible.length - 1;
