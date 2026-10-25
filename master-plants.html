@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon-blue:   #24C7FF;
@@ -280,9 +280,9 @@
     .vstep .vtext { max-width: 440px; }
     .vstep:nth-child(odd) .vtext { grid-column: 1; justify-self: end; text-align: right; padding-right: 3.6rem; }
     .vstep:nth-child(even) .vtext { grid-column: 2; text-align: left; padding-left: 3.6rem; }
-    .vnode { position: absolute; left: 50%; top: 1.5rem; width: 44px; height: 44px; margin-left: -22px; border-radius: 50%; display: grid; place-items: center; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--text-muted); background: #0A1128; border: 1px solid rgba(255,255,255,0.18); transition: all .7s ease; z-index: 2; }
+    .vnode { position: absolute; left: 50%; top: 1.5rem; width: 44px; height: 44px; margin-left: -22px; border-radius: 50%; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; color: var(--text-muted); background: #0A1128; border: 1px solid rgba(255,255,255,0.18); transition: all .7s ease; z-index: 2; }
     .vnode.lit { color: #fff; border-color: var(--neon-orange); box-shadow: 0 0 0 6px rgba(255,151,1,0.10), 0 0 26px rgba(255,151,1,0.45); background: radial-gradient(circle, rgba(255,151,1,.30), #0A1128 70%); }
-    .vtext h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.75rem; color: #fff; line-height: 1.15; margin-bottom: .5rem; }
+    .vtext h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: 1.15rem; color: #fff; line-height: 1.2; margin-bottom: .5rem; }
     .vtext p { color: var(--text-muted); line-height: 1.85; font-size: .98rem; }
     @media (max-width: 760px) {
       .vstep { grid-template-columns: 1fr; }
@@ -300,7 +300,7 @@
     .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
     .chip:hover { color: #fff; border-color: rgba(var(--rgb),.7); background: rgba(var(--rgb),.08); }
     .chip.on { color: #fff; border-color: var(--c); background: rgba(var(--rgb),.16); box-shadow: 0 0 22px -4px rgba(var(--rgb),.55); }
-    .result-count { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+    .result-count { text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .95rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
     .plant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 2rem 1.4rem; align-items: start; padding: .5rem 0 1.5rem; }
     .plant { --c: #A274F1; --rgb: 162,116,241; position: relative; text-align: center; cursor: pointer; color: inherit; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: .45rem; padding: 1.7rem 1.2rem 1.5rem; border: 1px solid rgba(var(--rgb),.22); background: radial-gradient(120% 70% at 50% 0%, rgba(var(--rgb),.16), rgba(var(--rgb),.03) 55%, rgba(255,255,255,.015)); transition: transform .5s cubic-bezier(.2,.8,.2,1), border-color .4s, box-shadow .5s, background .4s; }
     .plant:nth-child(3n+1) { border-radius: 50% 50% 28px 28px / 34% 34% 28px 28px; padding-top: 2.1rem; }
@@ -311,7 +311,7 @@
     .pglyph::before { content: ''; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--rgb),.30), transparent 68%); animation: breathe 6s ease-in-out infinite alternate; }
     .pglyph svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0 7px rgba(var(--rgb),.45)); transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s; }
     .plant:hover .pglyph svg { transform: rotate(12deg) scale(1.06); filter: drop-shadow(0 0 13px rgba(var(--rgb),.8)); }
-    .plant .pname { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.7rem; color: #fff; line-height: 1.1; }
+    .plant .pname { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: 1.15rem; color: #fff; line-height: 1.15; }
     .plant .pkw { font-size: .74rem; letter-spacing: .04em; color: var(--text-muted); line-height: 1.7; }
     .plant .more { margin-top: .5rem; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--rgb)); opacity: .9; transition: letter-spacing .4s; }
     .plant:hover .more { letter-spacing: .22em; }
@@ -327,8 +327,8 @@
     .modal-close:hover { background: rgba(255,255,255,.14); transform: rotate(90deg); }
     .m-glyph { width: 150px; height: 150px; margin: 2.4rem auto .4rem; color: var(--c); }
     .m-glyph svg { width: 100%; height: 100%; filter: drop-shadow(0 0 14px rgba(var(--rgb),.6)); }
-    .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 500; color: #fff; text-align: center; line-height: 1.1; margin: .2rem 0 .2rem; }
-    .m-cat { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgb(var(--rgb)); margin-bottom: .6rem; }
+    .modal h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #fff; text-align: center; line-height: 1.1; margin: .2rem 0 .2rem; }
+    .m-cat { text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .25em; font-size: .72rem; color: rgb(var(--rgb)); margin-bottom: .8rem; }
     .m-label { font-family: 'DM Sans', sans-serif; font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgb(var(--rgb)); margin: 1.5rem 0 .45rem; }
     .modal p { color: var(--text-muted); line-height: 1.85; font-size: .98rem; }
     .modal .kws { margin-top: .8rem; justify-content: center; }
@@ -402,13 +402,13 @@
   .scroll-corner { display: none; }
   .hero-glyph { width: 170px; height: 170px; margin: 0 auto 1.2rem; color: var(--neon-orange); animation: bob 7s ease-in-out infinite alternate; filter: drop-shadow(0 0 14px rgba(255,151,1,.55)); }
   .scroll-eyebrow { color: rgba(255,151,1,.9); letter-spacing: .42em; }
-  .scroll-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(3rem, 8vw, 5.2rem); letter-spacing: .01em; line-height: 1.02; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 30%, #d8c6ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .mp-lead { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; line-height: 1.6; font-style: italic; color: #b9c4d8; max-width: 640px; }
-  .scroll-subheading { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 500; font-style: italic; letter-spacing: .01em; text-transform: none; color: #fff; margin: 2.2rem 0 1.4rem; }
+  .scroll-title { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.05; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 30%, #d8c6ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mp-lead { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; color: #b9c4d8; max-width: 640px; }
+  .scroll-subheading { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(1.3rem, 3vw, 1.9rem); color: #fff; margin: 2.2rem 0 1.4rem; }
   .mp-two { gap: 2rem; }
   .mp-card { background: linear-gradient(155deg, rgba(36,199,255,.07), rgba(162,116,241,.07) 60%, rgba(255,255,255,.02)); border: 1px solid rgba(162,116,241,.22); border-radius: 80px 20px 80px 20px; padding: 2.4rem 2.4rem 2.2rem; }
   .mp-card:nth-child(2) { border-radius: 20px 80px 20px 80px; }
-  .mp-card h3 { font-family: 'Cormorant Garamond', serif; text-transform: none; letter-spacing: .01em; font-size: 1.75rem; font-weight: 600; font-style: italic; color: #fff; }
+  .mp-card h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.1rem; font-weight: 900; font-style: normal; color: #fff; }
   .mp-card .scroll-p { text-align: left; }
   .yt-frame { border-radius: 30px; box-shadow: 0 0 80px -20px rgba(162,116,241,.55), 0 20px 60px rgba(4,8,22,.6); }
   .vision-video-eyebrow { color: rgba(255,151,1,.9); }
@@ -416,11 +416,11 @@
   .scroll-divider svg { width: 100%; height: 100%; display: block; overflow: visible; }
   .vdiv-path { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 2.4s ease; }
   .rv .scroll-divider:not(.in) .vdiv-path { stroke-dashoffset: 1; }
-  .mp-note { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+  .mp-note { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .95rem; }
   .mp-cta a { transition: all .35s; }
   .mp-cta a:hover { box-shadow: 0 0 30px -6px var(--neon-violet); }
   .m-teach { border: 1px solid rgba(255,151,1,.28); border-radius: 26px; background: linear-gradient(160deg, rgba(255,151,1,.10), rgba(255,151,1,.02)); }
-  .m-teach .m-label { font-family: 'Cormorant Garamond', serif; font-style: italic; text-transform: none; letter-spacing: .02em; font-size: 1.35rem; }
+  .m-teach .m-label { font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: .25em; font-size: .72rem; }
 
   @media (max-width: 760px) {
     .plant-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .8rem; }
