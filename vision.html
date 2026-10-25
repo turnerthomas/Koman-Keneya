@@ -307,6 +307,13 @@
     .mp-card { border-radius: 50px 16px 50px 16px; padding: 1.8rem 1.6rem; }
     .mp-card:nth-child(even) { border-radius: 16px 50px 16px 50px; }
   }
+
+  /* text frames: same cards as Master Plants */
+  .mp-stack { display: flex; flex-direction: column; gap: 2rem; margin: 1rem 0; }
+  .mp-stack > .mp-card, .mp-two > .mp-card { margin: 0; }
+  .mp-card .scroll-list { margin-top: .2rem; }
+  .mp-card .scroll-check:last-child, .mp-card .scroll-p:last-child { margin-bottom: 0; }
+  .mp-card .plants-pills { margin: 0; }
 </style>
 </head>
 <body>
@@ -361,70 +368,51 @@
 
   <main>
     <div class="scroll-outer">
-
       <!-- Corner ornaments -->
-
       <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
       <h1 class="scroll-title" data-en="Maestro Americo's Vision" data-es="La Visión del Maestro Americo">Maestro Americo's Vision</h1>
-
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">❖</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">❖</span>
+<div class="scroll-divider-line"></div>
+</div>
       <!-- ── VIDEO ── -->
       <div class="vision-video-wrap">
-        <div class="vision-video-eyebrow" data-en="Hear It From the Maestro" data-es="Escúchalo del Maestro">Hear It From the Maestro</div>
-        <div class="vision-video-frame yt-frame">
-          <iframe src="https://www.youtube-nocookie.com/embed/bNLEgL958qI" title="Maestro Americo's Vision" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <p class="vision-video-caption" data-en="Maestro Americo shares his vision for Koman Keneya, in his own words." data-es="El Maestro Americo comparte su visión para Koman Keneya, en sus propias palabras.">Maestro Americo shares his vision for Koman Keneya, in his own words.</p>
-      </div>
-
+<div class="vision-video-eyebrow" data-en="Hear It From the Maestro" data-es="Escúchalo del Maestro">Hear It From the Maestro</div>
+<div class="vision-video-frame yt-frame">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/bNLEgL958qI" title="Maestro Americo's Vision"></iframe>
+</div>
+<p class="vision-video-caption" data-en="Maestro Americo shares his vision for Koman Keneya, in his own words." data-es="El Maestro Americo comparte su visión para Koman Keneya, en sus propias palabras.">Maestro Americo shares his vision for Koman Keneya, in his own words.</p>
+</div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">✦</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
-      <p class="scroll-check" data-en='The vision of the Koman Keneya school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.' data-es='La visión de la escuela "Koman Keneya" es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina.'>The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p>
-
-      <p class="scroll-check" data-en="The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines." data-es="La idea de la escuela surge de una preocupación actual: estamos perdiendo cada vez más la cultura de nuestros ancestros. Nuestros adolescentes y jóvenes en las comunidades ya no conocen las diferentes plantas medicinales utilizadas para tratar diversas enfermedades; solo tienen la idea de comprar medicamentos farmacéuticos.">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p>
-
-      <p class="scroll-check" data-en="The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive." data-es="El propósito de la escuela es salvar nuestro planeta Tierra reflejando claramente el valor de las plantas y manteniendo así nuestra cultura viva.">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p>
-
-      <p class="scroll-check" data-en="It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities." data-es="Busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con sus comunidades.">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p>
-
-      <p class="scroll-check" data-en="The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo." data-es="El objetivo de la escuela es invitar y preparar a adolescentes y jóvenes interesados, y crear oportunidades reales para quienes más las necesitan, tanto Shipibo como no Shipibo.">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">✦</span>
+<div class="scroll-divider-line"></div>
+</div>
+      <div class="mp-stack"><div class="mp-card"><p class="scroll-check" data-en="The vision of the Koman Keneya school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine." data-es='La visión de la escuela "Koman Keneya" es crear un mejor futuro a través del poder de las plantas medicinales y ayudar a las personas a mejorar con el conocimiento ancestral de la medicina.'>The vision of the "Koman Keneya" school is to create a better future through the power of medicinal plants and to help people improve themselves with ancestral knowledge of medicine.</p><p class="scroll-check" data-en="The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines." data-es="La idea de la escuela surge de una preocupación actual: estamos perdiendo cada vez más la cultura de nuestros ancestros. Nuestros adolescentes y jóvenes en las comunidades ya no conocen las diferentes plantas medicinales utilizadas para tratar diversas enfermedades; solo tienen la idea de comprar medicamentos farmacéuticos.">The idea for the school stems from a current concern: we are increasingly losing the culture of our ancestors. Our teenagers and young adults in the communities no longer know the different medicinal plants used to treat various illnesses; they only have the idea of buying pharmaceutical medicines.</p><p class="scroll-check" data-en="The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive." data-es="El propósito de la escuela es salvar nuestro planeta Tierra reflejando claramente el valor de las plantas y manteniendo así nuestra cultura viva.">The school's purpose is to save our planet Earth by clearly reflecting the value of plants and thus keeping our culture alive.</p><p class="scroll-check" data-en="It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities." data-es="Busca fomentar la innovación, fortalecer la presencia global de las plantas y conectar mejor con sus comunidades.">It seeks to foster innovation, strengthen the global presence of plants, and better connect with its communities.</p><p class="scroll-check" data-en="The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo." data-es="El objetivo de la escuela es invitar y preparar a adolescentes y jóvenes interesados, y crear oportunidades reales para quienes más las necesitan, tanto Shipibo como no Shipibo.">The school's objective is to invite and prepare interested teenagers and young adults and create real opportunities for those who need them most, both Shipibo and non-Shipibo.</p></div></div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">✦</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">✦</span>
+<div class="scroll-divider-line"></div>
+</div>
       <div class="scroll-subheading" data-en="Traditional Schooling Offers the Following Benefits" data-es="La Escuela Tradicional Ofrece los Siguientes Beneficios">Traditional Schooling Offers the Following Benefits</div>
-
-      <ul class="scroll-list">
-        <li data-en="Knowledge of medicinal plants and their benefits." data-es="Conocimiento de plantas medicinales y sus beneficios.">Knowledge of medicinal plants and their benefits.</li>
-        <li data-en="Medicinal plant diet to acquire knowledge and wisdom for healing." data-es="Dieta de plantas medicinales para adquirir conocimiento y sabiduría para la sanación.">Medicinal plant diet to acquire knowledge and wisdom for healing.</li>
-        <li data-en="Saunas with medicinal plants (bark, leaves)." data-es="Saunas con plantas medicinales (corteza, hojas).">Saunas with medicinal plants (bark, leaves).</li>
-        <li data-en="Baths with aromatic jungle plants." data-es="Baños con plantas aromáticas de la selva.">Baths with aromatic jungle plants.</li>
-        <li data-en="Emetics with leaves and bark of medicinal plants." data-es="Eméticos con hojas y corteza de plantas medicinales.">Emetics with leaves and bark of medicinal plants.</li>
-        <li data-en="Practice in preparing medicinal plants for the treatment and healing of various illnesses." data-es="Práctica en la preparación de plantas medicinales para el tratamiento y la sanación de diversas enfermedades.">Practice in preparing medicinal plants for the treatment and healing of various illnesses.</li>
-        <li data-en="Teaching icaros (songs) for the energetic cleansing and protection of the body." data-es="Enseñanza de icaros (cantos) para la limpieza energética y la protección del cuerpo.">Teaching icaros (songs) for the energetic cleansing and protection of the body.</li>
-        <li data-en="Practice of embroidery with Shipibo designs." data-es="Práctica de bordado con diseños Shipibo.">Practice of embroidery with Shipibo designs.</li>
-        <li data-en="Lodging and meals." data-es="Alojamiento y comidas.">Lodging and meals.</li>
-        <li data-en="Ancestral games. Dances, cultural songs." data-es="Juegos ancestrales. Danzas, canciones culturales.">Ancestral games. Dances, cultural songs.</li>
-      </ul>
-
+      <div class="mp-stack"><div class="mp-card"><ul class="scroll-list">
+<li data-en="Knowledge of medicinal plants and their benefits." data-es="Conocimiento de plantas medicinales y sus beneficios.">Knowledge of medicinal plants and their benefits.</li>
+<li data-en="Medicinal plant diet to acquire knowledge and wisdom for healing." data-es="Dieta de plantas medicinales para adquirir conocimiento y sabiduría para la sanación.">Medicinal plant diet to acquire knowledge and wisdom for healing.</li>
+<li data-en="Saunas with medicinal plants (bark, leaves)." data-es="Saunas con plantas medicinales (corteza, hojas).">Saunas with medicinal plants (bark, leaves).</li>
+<li data-en="Baths with aromatic jungle plants." data-es="Baños con plantas aromáticas de la selva.">Baths with aromatic jungle plants.</li>
+<li data-en="Emetics with leaves and bark of medicinal plants." data-es="Eméticos con hojas y corteza de plantas medicinales.">Emetics with leaves and bark of medicinal plants.</li>
+<li data-en="Practice in preparing medicinal plants for the treatment and healing of various illnesses." data-es="Práctica en la preparación de plantas medicinales para el tratamiento y la sanación de diversas enfermedades.">Practice in preparing medicinal plants for the treatment and healing of various illnesses.</li>
+<li data-en="Teaching icaros (songs) for the energetic cleansing and protection of the body." data-es="Enseñanza de icaros (cantos) para la limpieza energética y la protección del cuerpo.">Teaching icaros (songs) for the energetic cleansing and protection of the body.</li>
+<li data-en="Practice of embroidery with Shipibo designs." data-es="Práctica de bordado con diseños Shipibo.">Practice of embroidery with Shipibo designs.</li>
+<li data-en="Lodging and meals." data-es="Alojamiento y comidas.">Lodging and meals.</li>
+<li data-en="Ancestral games. Dances, cultural songs." data-es="Juegos ancestrales. Danzas, canciones culturales.">Ancestral games. Dances, cultural songs.</li>
+</ul></div></div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">❖</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">❖</span>
+<div class="scroll-divider-line"></div>
+</div>
     </div>
   </main>
 
