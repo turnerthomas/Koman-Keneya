@@ -304,6 +304,13 @@
     .mp-card { border-radius: 50px 16px 50px 16px; padding: 1.8rem 1.6rem; }
     .mp-card:nth-child(even) { border-radius: 16px 50px 16px 50px; }
   }
+
+  /* text frames: same cards as Master Plants */
+  .mp-stack { display: flex; flex-direction: column; gap: 2rem; margin: 1rem 0; }
+  .mp-stack > .mp-card, .mp-two > .mp-card { margin: 0; }
+  .mp-card .scroll-list { margin-top: .2rem; }
+  .mp-card .scroll-check:last-child, .mp-card .scroll-p:last-child { margin-bottom: 0; }
+  .mp-card .plants-pills { margin: 0; }
 </style>
 </head>
 <body>
@@ -358,124 +365,81 @@
 
   <main>
     <div class="scroll-outer">
-
-      <!-- Corner ornaments -->
-
-      <!-- Header -->
+      <!-- Corner ornaments 
+       Header -->
       <div class="scroll-eyebrow" data-en="Maestro Profile" data-es="Perfil del Maestro">Maestro Profile</div>
       <h1 class="scroll-title">Americo López Sanchez</h1>
-
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">❖</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">❖</span>
+<div class="scroll-divider-line"></div>
+</div>
       <!-- Photo + opening paragraphs side by side -->
-      <div class="bio-top">
-        <div class="bio-photo-wrap">
-          <img src="Photos/americo-pekon-nima.jpg" alt="Maestro Americo López Sanchez">
-          <div class="bio-photo-caption">Pekon Nima</div>
-        </div>
-        <div class="bio-intro-text">
-          <p class="scroll-p"
-             data-en="Hello everyone! I am Americo López Sanchez. My authentic Shipibo name is <span class='highlight'>“PEKON NIMA,”</span> which means “the many colors of nature” in English."
-             data-es="¡Hola a todos!, Americo López Sanchez. Mi nombre auténtico en shipibo es <span class='highlight'>“PEKON NIMA”</span>, que significa en español “los muchos colores de la naturaleza”.">
+      <div class="mp-stack"><div class="mp-card"><div class="bio-top">
+<div class="bio-photo-wrap">
+<img alt="Maestro Americo López Sanchez" src="Photos/americo-pekon-nima.jpg"/>
+<div class="bio-photo-caption">Pekon Nima</div>
+</div>
+<div class="bio-intro-text">
+<p class="scroll-p" data-en="Hello everyone! I am Americo López Sanchez. My authentic Shipibo name is &lt;span class='highlight'&gt;“PEKON NIMA,”&lt;/span&gt; which means “the many colors of nature” in English." data-es="¡Hola a todos!, Americo López Sanchez. Mi nombre auténtico en shipibo es &lt;span class='highlight'&gt;“PEKON NIMA”&lt;/span&gt;, que significa en español “los muchos colores de la naturaleza”.">
             Hello everyone! I am Americo López Sanchez. My authentic Shipibo name is <span class="highlight">“PEKON NIMA,”</span> which means “the many colors of nature” in English.
           </p>
-          <p class="scroll-p"
-             data-en="Americo is a great healer who possesses a true gift and a desire to share his knowledge; he is always striving to grow and become a better doctor and a better person. He works extensively with young people, seeking to pass down his knowledge of medicinal plants and Shipibo culture."
-             data-es="Americo es un gran médico que tiene un verdadero don y un deseo de compartir sus conocimientos, siempre está tratando de crecer y convertirse en un mejor médico y una mejor persona. Trabaja mucho con los jóvenes tratando de transmitir sus conocimientos sobre las plantas medicinales y la cultura shipibo.">
+<p class="scroll-p" data-en="Americo is a great healer who possesses a true gift and a desire to share his knowledge; he is always striving to grow and become a better doctor and a better person. He works extensively with young people, seeking to pass down his knowledge of medicinal plants and Shipibo culture." data-es="Americo es un gran médico que tiene un verdadero don y un deseo de compartir sus conocimientos, siempre está tratando de crecer y convertirse en un mejor médico y una mejor persona. Trabaja mucho con los jóvenes tratando de transmitir sus conocimientos sobre las plantas medicinales y la cultura shipibo.">
             Americo is a great healer who possesses a true gift and a desire to share his knowledge; he is always striving to grow and become a better doctor and a better person. He works extensively with young people, seeking to pass down his knowledge of medicinal plants and Shipibo culture.
           </p>
-          <p class="scroll-p"
-             data-en="Americo López Sanchez comes from a community called <span class='highlight'>Roaboya Nativa</span>, near Pucallpa, Peru."
-             data-es="Americo López Sanchez viene de una comunidad llamada <span class='highlight'>Roaboya Nativa</span>, cerca de Pucallpa - Perú.">
+<p class="scroll-p" data-en="Americo López Sanchez comes from a community called &lt;span class='highlight'&gt;Roaboya Nativa&lt;/span&gt;, near Pucallpa, Peru." data-es="Americo López Sanchez viene de una comunidad llamada &lt;span class='highlight'&gt;Roaboya Nativa&lt;/span&gt;, cerca de Pucallpa - Perú.">
             Americo López Sanchez comes from a community called <span class="highlight">Roaboya Nativa</span>, near Pucallpa, Peru.
           </p>
-        </div>
-      </div>
-
+</div>
+</div></div></div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">✦</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
-      <!-- History -->
-      <div class="scroll-subheading" data-en="His Story" data-es="Su Historia">His Story</div>
-
-      <p class="scroll-p"
-         data-en="The story goes that Americo’s mother gave birth to him under a <span class='highlight'>Shihuahuaco</span> tree, near a rubber plantation where his parents had been sent to work at the time. His mother, who had already had four boys before him, had prayed for a girl and, in her disappointment, decided to bury him. Fortunately, he was rescued and raised by his cousin, who was a newlywed."
-         data-es="Cuenta la historia que la madre de Americo le dio a luz debajo de un árbol <span class='highlight'>Shihuahuaco</span>, cerca de una plantación de caucho donde sus padres fueron enviados a trabajar en ese momento. Su madre, que ya había tenido 4 niños antes que él, había pedido una niña y por eso había decidido enterrarlo. Como resultado, fue rescatado y criado por su prima, que estaba recién casada.">
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">✦</span>
+<div class="scroll-divider-line"></div>
+</div>
+      <!-- History 
+       Teaching 
+       Path -->
+      <div class="mp-stack"><div class="mp-card"><h3 data-en="His Story" data-es="Su Historia">His Story</h3><p class="scroll-p" data-en="The story goes that Americo’s mother gave birth to him under a &lt;span class='highlight'&gt;Shihuahuaco&lt;/span&gt; tree, near a rubber plantation where his parents had been sent to work at the time. His mother, who had already had four boys before him, had prayed for a girl and, in her disappointment, decided to bury him. Fortunately, he was rescued and raised by his cousin, who was a newlywed." data-es="Cuenta la historia que la madre de Americo le dio a luz debajo de un árbol &lt;span class='highlight'&gt;Shihuahuaco&lt;/span&gt;, cerca de una plantación de caucho donde sus padres fueron enviados a trabajar en ese momento. Su madre, que ya había tenido 4 niños antes que él, había pedido una niña y por eso había decidido enterrarlo. Como resultado, fue rescatado y criado por su prima, que estaba recién casada.">
         The story goes that Americo’s mother gave birth to him under a <span class="highlight">Shihuahuaco</span> tree, near a rubber plantation where his parents had been sent to work at the time. His mother, who had already had four boys before him, had prayed for a girl and, in her disappointment, decided to bury him. Fortunately, he was rescued and raised by his cousin, who was a newlywed.
-      </p>
-
-      <p class="scroll-p"
-         data-en="Americo carried these formative early experiences with him and was inspired by his father, <span class='highlight'>José López Rengifo (Sani Meni)</span>, and his work as a prominent healer. He decided to follow in his footsteps to become a healer in his own right, helping those who are suffering, lost, or seeking a cure."
-         data-es="Americo llevó consigo estas primeras experiencias formativas y se inspiró en su padre <span class='highlight'>José López Rengifo (Sani Meni)</span>, y su trabajo como un destacado sanador. Decidió seguir sus pasos para convertirse en un sanador por derecho propio, para ayudar a aquellos que estaban sufriendo, perdidos o buscando curación.">
+      </p><p class="scroll-p" data-en="Americo carried these formative early experiences with him and was inspired by his father, &lt;span class='highlight'&gt;José López Rengifo (Sani Meni)&lt;/span&gt;, and his work as a prominent healer. He decided to follow in his footsteps to become a healer in his own right, helping those who are suffering, lost, or seeking a cure." data-es="Americo llevó consigo estas primeras experiencias formativas y se inspiró en su padre &lt;span class='highlight'&gt;José López Rengifo (Sani Meni)&lt;/span&gt;, y su trabajo como un destacado sanador. Decidió seguir sus pasos para convertirse en un sanador por derecho propio, para ayudar a aquellos que estaban sufriendo, perdidos o buscando curación.">
         Americo carried these formative early experiences with him and was inspired by his father, José López Rengifo (Sani Meni), and his work as a prominent healer. He decided to follow in his footsteps to become a healer in his own right, helping those who are suffering, lost, or seeking a cure.
-      </p>
-
-      <!-- Teaching -->
-      <div class="scroll-subheading" data-en="Teaching and Tradition" data-es="Enseñanza y Tradición">Teaching and Tradition</div>
-
-      <p class="scroll-p"
-         data-en="Americo loves working with youth and used to be a school teacher. He is deeply eloquent with a gift for storytelling. He tells us that in the old days, there was a direct line of healing; he would like to recover this type of traditional education, starting from gestation with diets and songs, which allows the natural gifts of children to shine."
-         data-es="Americo le encanta trabajar con los jóvenes y solía ser maestro de la escuela. Es profundamente elocuente con un don para contar historias. Nos dice que antiguamente una línea directa de curación le gustaría recuperar este tipo de educación tradicional desde la gestación con dietas y canciones, que permite que los dones de los niños brillen.">
+      </p></div><div class="mp-card"><h3 data-en="Teaching and Tradition" data-es="Enseñanza y Tradición">Teaching and Tradition</h3><p class="scroll-p" data-en="Americo loves working with youth and used to be a school teacher. He is deeply eloquent with a gift for storytelling. He tells us that in the old days, there was a direct line of healing; he would like to recover this type of traditional education, starting from gestation with diets and songs, which allows the natural gifts of children to shine." data-es="Americo le encanta trabajar con los jóvenes y solía ser maestro de la escuela. Es profundamente elocuente con un don para contar historias. Nos dice que antiguamente una línea directa de curación le gustaría recuperar este tipo de educación tradicional desde la gestación con dietas y canciones, que permite que los dones de los niños brillen.">
         Americo loves working with youth and used to be a school teacher. He is deeply eloquent with a gift for storytelling. He tells us that in the old days, there was a direct line of healing; he would like to recover this type of traditional education, starting from gestation with diets and songs, which allows the natural gifts of children to shine.
-      </p>
-
-      <!-- Path -->
-      <div class="scroll-subheading" data-en="The Path of the Healer" data-es="El Camino del Sanador">The Path of the Healer</div>
-
-      <p class="scroll-p"
-         data-en="Although he was exposed to plant medicines from a very young age, he began his training in earnest around age 15 with a diet of <span class='highlight'>Piñón Colorado</span>. At age 19, he began drinking Ayahuasca and assisting his father in healing ceremonies. He describes this as a difficult time filled with multiple trials."
-         data-es="Aunque estuvo expuesto a medicamentos vegetales desde una edad muy temprana, comenzó su entrenamiento en serio alrededor de los 15 años con una dieta de <span class='highlight'>piñón colorado</span>. A los 19 años comenzó a beber ayahuasca y ayudar a su padre en la curación. Describe esto como un momento difícil de múltiples pruebas.">
+      </p></div><div class="mp-card"><h3 data-en="The Path of the Healer" data-es="El Camino del Sanador">The Path of the Healer</h3><p class="scroll-p" data-en="Although he was exposed to plant medicines from a very young age, he began his training in earnest around age 15 with a diet of &lt;span class='highlight'&gt;Piñón Colorado&lt;/span&gt;. At age 19, he began drinking Ayahuasca and assisting his father in healing ceremonies. He describes this as a difficult time filled with multiple trials." data-es="Aunque estuvo expuesto a medicamentos vegetales desde una edad muy temprana, comenzó su entrenamiento en serio alrededor de los 15 años con una dieta de &lt;span class='highlight'&gt;piñón colorado&lt;/span&gt;. A los 19 años comenzó a beber ayahuasca y ayudar a su padre en la curación. Describe esto como un momento difícil de múltiples pruebas.">
         Although he was exposed to plant medicines from a very young age, he began his training in earnest around age 15 with a diet of <span class="highlight">Piñón Colorado</span>. At age 19, he began drinking Ayahuasca and assisting his father in healing ceremonies. He describes this as a difficult time filled with multiple trials.
-      </p>
-
-      <p class="scroll-p"
-         data-en="Overcoming these challenges gave him the spiritual strength and resilience to continue his learning. Some years later, after the death of his father, he began dieting with Master Plants. After years of arduous training in isolation, he felt ready to begin working as a curandero (healer) in his community."
-         data-es="Superar este desafío le dio la fuerza y la resistencia espiritual para continuar su aprendizaje. Algunos años más tarde, después de la muerte de su padre, comenzó a hacer dieta de plantas maestras y después de años de arduo entrenamiento en aislamiento, se sintió listo para comenzar a trabajar como curandero en su comunidad.">
+      </p><p class="scroll-p" data-en="Overcoming these challenges gave him the spiritual strength and resilience to continue his learning. Some years later, after the death of his father, he began dieting with Master Plants. After years of arduous training in isolation, he felt ready to begin working as a curandero (healer) in his community." data-es="Superar este desafío le dio la fuerza y la resistencia espiritual para continuar su aprendizaje. Algunos años más tarde, después de la muerte de su padre, comenzó a hacer dieta de plantas maestras y después de años de arduo entrenamiento en aislamiento, se sintió listo para comenzar a trabajar como curandero en su comunidad.">
         Overcoming these challenges gave him the spiritual strength and resilience to continue his learning. Some years later, after the death of his father, he began dieting with Master Plants. After years of arduous training in isolation, he felt ready to begin working as a curandero (healer) in his community.
-      </p>
-
+      </p></div></div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">✦</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">✦</span>
+<div class="scroll-divider-line"></div>
+</div>
       <!-- Favorites -->
-      <div class="scroll-subheading" data-en="Americo’s Favorite Plants & Interests" data-es="Las plantas favoritas de Americo e intereses">Americo’s Favorite Plants & Interests</div>
-
-      <ul class="scroll-list">
-        <li><span class="highlight">Noya Rao</span></li>
-        <li><span class="highlight">Shihuahuaco</span></li>
-        <li><span class="highlight">Manchinga</span></li>
-        <li><span class="highlight">Chiric Sanango</span></li>
-        <li><span class="highlight">Bobinsana</span></li>
-        <li><span class="highlight">Marosa</span></li>
-        <li data-en="Lodging and nutrition" data-es="Alojamiento y alimentación">Lodging and nutrition</li>
-        <li data-en="Ancestral games" data-es="Juegos ancestrales">Ancestral games</li>
-        <li data-en="Cultural dances" data-es="Danzas y culturales">Cultural dances</li>
-      </ul>
-
+      <div class="mp-stack"><div class="mp-card"><h3 data-en="Americo’s Favorite Plants &amp; Interests" data-es="Las plantas favoritas de Americo e intereses">Americo’s Favorite Plants &amp; Interests</h3><ul class="scroll-list">
+<li><span class="highlight">Noya Rao</span></li>
+<li><span class="highlight">Shihuahuaco</span></li>
+<li><span class="highlight">Manchinga</span></li>
+<li><span class="highlight">Chiric Sanango</span></li>
+<li><span class="highlight">Bobinsana</span></li>
+<li><span class="highlight">Marosa</span></li>
+<li data-en="Lodging and nutrition" data-es="Alojamiento y alimentación">Lodging and nutrition</li>
+<li data-en="Ancestral games" data-es="Juegos ancestrales">Ancestral games</li>
+<li data-en="Cultural dances" data-es="Danzas y culturales">Cultural dances</li>
+</ul></div></div>
       <div class="scroll-divider">
-        <div class="scroll-divider-line"></div>
-        <span class="scroll-divider-glyph">❖</span>
-        <div class="scroll-divider-line"></div>
-      </div>
-
+<div class="scroll-divider-line"></div>
+<span class="scroll-divider-glyph">❖</span>
+<div class="scroll-divider-line"></div>
+</div>
       <!-- Video -->
       <div style="text-align:center; margin:1.8rem 0 1rem;">
-        <div class="scroll-eyebrow" style="margin-bottom:1rem;" data-en="Watch &amp; Listen" data-es="Mira y Escucha">Watch &amp; Listen</div>
-        <div class="yt-frame">
-          <iframe src="https://www.youtube-nocookie.com/embed/pZmYZR7YZuk" title="Maestro Americo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-
+<div class="scroll-eyebrow" data-en="Watch &amp; Listen" data-es="Mira y Escucha" style="margin-bottom:1rem;">Watch &amp; Listen</div>
+<div class="yt-frame">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/pZmYZR7YZuk" title="Maestro Americo"></iframe>
+</div>
+</div>
     </div>
   </main>
 
