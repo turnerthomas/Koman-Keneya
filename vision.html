@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Americo's Full Vision</title>
+  <title>Vision · Koman Keneya</title>
+  <meta name="description" content="Maestro Americo's vision for Koman Keneya: reviving ancestral plant medicine knowledge and creating opportunities for the next generation.">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon-blue:   #24C7FF;
@@ -272,6 +273,40 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
   }
+
+  /* ══════════ SITE-WIDE UNIFORM STYLE (matches Master Plants) ══════════ */
+  main, main.wide { max-width: 1080px; }
+  .nav-links a.active, .mobile-nav a.active { color: var(--neon-violet); }
+  .scroll-outer { background: none; border: 0; border-radius: 0; padding: 1rem 0 2rem; }
+  .scroll-corner { display: none; }
+  .scroll-eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .68rem; text-align: center; color: rgba(255,151,1,.9); letter-spacing: .42em; text-transform: uppercase; margin-bottom: .75rem; }
+  .scroll-title { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; text-align: center; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.05; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 30%, #d8c6ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .scroll-title span { color: inherit; }
+  .scroll-subheading { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; text-align: center; font-size: clamp(1.3rem, 3vw, 1.9rem); color: #fff; margin: 2.2rem 0 1.4rem; }
+  .scroll-p { text-align: left; }
+  .scroll-p b { color: var(--text-main); font-weight: 500; }
+  .mp-lead { text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; color: #b9c4d8; max-width: 640px; margin: 0 auto 1rem; }
+  .mp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1rem 0; }
+  .mp-card { background: linear-gradient(155deg, rgba(36,199,255,.07), rgba(162,116,241,.07) 60%, rgba(255,255,255,.02)); border: 1px solid rgba(162,116,241,.22); border-radius: 80px 20px 80px 20px; padding: 2.4rem 2.4rem 2.2rem; }
+  .mp-card:nth-child(even) { border-radius: 20px 80px 20px 80px; }
+  .mp-card h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.1rem; font-weight: 900; font-style: normal; color: #fff; margin-bottom: .8rem; }
+  .mp-card .scroll-p { text-align: left; margin-bottom: 0; font-size: .97rem; line-height: 1.85; }
+  .mp-card .scroll-p + .scroll-p { margin-top: 1rem; }
+  .yt-frame, .vision-video-frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 30px; overflow: hidden; border: 1px solid rgba(162,116,241,.25); box-shadow: 0 0 80px -20px rgba(162,116,241,.55), 0 20px 60px rgba(4,8,22,.6); background: #060A1A; }
+  .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .vision-video-eyebrow { color: rgba(255,151,1,.9); }
+  .scroll-divider { display: block; height: 52px; margin: 2.2rem auto; max-width: 640px; }
+  .scroll-divider svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .mp-note { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .95rem; line-height: 1.8; color: var(--text-muted); text-align: center; font-style: italic; max-width: 760px; margin: .5rem auto; }
+  .mp-cta { text-align: center; margin: 1rem 0 .5rem; }
+  .mp-cta a { display: inline-block; margin: .4rem; padding: .8rem 1.8rem; border-radius: 50px; border: 1px solid var(--neon-violet); color: #fff; text-decoration: none; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; transition: all .35s; }
+  .mp-cta a:hover { background: var(--neon-violet); color: #060A1A; box-shadow: 0 0 30px -6px var(--neon-violet); }
+  .mp-feature { background: linear-gradient(160deg, rgba(255,151,1,.10), rgba(255,151,1,.02)); border: 1px solid rgba(255,151,1,.28); border-radius: 26px; padding: 1.4rem 1.6rem; }
+  @media (max-width: 760px) {
+    .mp-two { grid-template-columns: 1fr; }
+    .mp-card { border-radius: 50px 16px 50px 16px; padding: 1.8rem 1.6rem; }
+    .mp-card:nth-child(even) { border-radius: 16px 50px 16px 50px; }
+  }
 </style>
 </head>
 <body>
@@ -310,7 +345,7 @@
 
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="vision.html" class="active" data-en="Vision" data-es="Visión">Vision</a>
   <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
   <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
   <a href="master-plants.html" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a>
@@ -328,30 +363,6 @@
     <div class="scroll-outer">
 
       <!-- Corner ornaments -->
-      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
-        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
-        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
-      </svg>
-      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
-        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
-        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
-      </svg>
-      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
-        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
-        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
-      </svg>
-      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
-        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
-        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
-      </svg>
 
       <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
       <h1 class="scroll-title" data-en="Maestro Americo's Vision" data-es="La Visión del Maestro Americo">Maestro Americo's Vision</h1>
@@ -447,6 +458,16 @@
   </footer>
 
   <script>
+  /* ── VINE DIVIDERS (static, shared look) ── */
+  (function(){
+    document.querySelectorAll('.scroll-divider').forEach(function(el, n){
+      el.innerHTML = '<svg viewBox="0 0 600 52" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="vd' + n + '" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#A274F1" stop-opacity="0"/><stop offset=".5" stop-color="#FF9701"/><stop offset="1" stop-color="#24C7FF" stop-opacity="0"/></linearGradient></defs>' +
+        '<path d="M0 26C50 6 100 46 150 26S250 6 300 26S400 46 450 26S550 6 600 26" fill="none" stroke="url(#vd' + n + ')" stroke-width="1.6" stroke-linecap="round"/>' +
+        '<g fill="#4ADE9A" opacity=".55"><path d="M118 33q8-16 22-11q-6 14-22 11z"/><path d="M212 19q10-14 22-8q-8 13-22 8z"/><path d="M386 33q8-16 22-11q-6 14-22 11z"/><path d="M468 19q10-14 22-8q-8 13-22 8z"/></g>' +
+        '<path d="M300 14L312 26L300 38L288 26Z" fill="#0A1128" stroke="#FF9701" stroke-width="1.4"/><circle cx="300" cy="26" r="2.2" fill="#FF9701"/></svg>';
+    });
+  })();
+
   
   function toggleMenu() {
     var h = document.getElementById('hamburger');
@@ -458,6 +479,7 @@
 
   function setLang(lang) {
       sessionStorage.setItem('kk-lang', lang);
+      document.documentElement.lang = lang;
       document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
       var btn = document.querySelector('.lb[onclick="setLang(\'' + lang + '\')"]');
       if (btn) btn.classList.add('on');
