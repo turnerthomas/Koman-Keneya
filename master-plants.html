@@ -948,14 +948,13 @@
     return KENE_CACHE[name] = '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + o + '</svg>';
   }
 
-  /* ── FROG KENE: a top-down frog, head up, in the same stitched-round style ── */
-  function frogKene(){
+  /* ── OWL KENE: a front-facing owl on a perch, in the same stitched-round style ── */
+  function owlKene(){
     var pal = KPAL[0], ringc = pal.ring.map(T), tickCols = pal.tick.map(T), fab = pal.fab;
     var i, o = '';
     function er(a){ return 96 + 1.2 * Math.sin(3 * a + 1.1) + .8 * Math.sin(5 * a + 2.3); }
     function circ(cx, cy, r){ return 'M' + fx(cx - r) + ' ' + fx(cy) + 'a' + r + ' ' + r + ' 0 1 0 ' + (r * 2) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + (-r * 2) + ' 0Z'; }
 
-    /* fabric + blanket-stitch edge */
     var fp = '';
     for (i = 0; i < 96; i++){ var fa = i * TAU / 96; fp += (i ? 'L' : 'M') + xy(er(fa) - .6, fa); }
     o += '<path d="' + fp + 'Z" fill="' + fab + '" stroke="none"/>';
@@ -964,7 +963,6 @@
     edge.add('stroke="currentColor" stroke-width="1.9"', loop + 'Z' + tks);
     o += edge.out();
 
-    /* stitched bands */
     var rings = Lyr();
     ringZig(rings, ringc[0], 79.5, 3.6, 26, 1.9);
     ringX(rings, ringc[1], 71, 38, 2.4);
@@ -972,57 +970,48 @@
     ringDots(rings, ringc[2], 61.2, 40, .9);
     o += rings.out();
 
-    /* the frog (drawn in its own space, then scaled to sit inside the bands) */
     var S1 = LeafSet(), top = Lyr(), toes = Lyr(), tk = Lyr(), blobs = [], rib = fab;
     function seg(x0, y0, x1, y1, r){ var n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 5)); for (var j = 0; j <= n; j++){ var px = x0 + (x1 - x0) * j / n, py = y0 + (y1 - y0) * j / n; blobs.push([px, py, r]); blobs.push([-px, py, r]); } }
-    function limb(x, y, a, len, wid, ramp, fill){
-      [1, -1].forEach(function(s){ leaf(S1, s * x, y, s > 0 ? a : Math.PI - a, len, wid, ramp, fill, rib); });
-      var ex = x + len * Math.cos(a), ey = y + len * Math.sin(a);
-      seg(x, y, ex, ey, wid + 3);
-      return [ex, ey];
-    }
-    function toe(x, y, a, len, col){
-      [1, -1].forEach(function(s){
-        var aa = s > 0 ? a : Math.PI - a, tx = s * x + len * Math.cos(aa), ty = y + len * Math.sin(aa);
-        toes.add('stroke="' + col + '" stroke-width="1.9"', 'M' + fx(s * x) + ' ' + fx(y) + 'L' + fx(tx) + ' ' + fx(ty));
-        top.add('fill="' + col + '" stroke="none"', circ(tx, ty, 1.7));
-      });
-    }
-    /* hind legs: thigh, shin, webbed toes */
-    var knee = limb(12, 16, .4, 26, 7.5, pal.main, pal.mainFill);
-    var foot = limb(knee[0], knee[1], 1.95, 24, 6.5, pal.sec, '#0B6B43');
-    [.9, 1.4, 1.9, 2.4].forEach(function(a){ toe(foot[0], foot[1], a, 8, T('yellow')); });
-    /* front legs: upper arm, forearm, fingers */
-    var elbow = limb(10, -8, .15, 19, 5, pal.main, pal.mainFill);
-    var hand = limb(elbow[0], elbow[1], -1.15, 15, 4.6, pal.sec, '#0B6B43');
-    [-1.75, -1.15, -.55].forEach(function(a){ toe(hand[0], hand[1], a, 8, T('yellow')); });
+    function pair(x, y, a, len, wid, ramp, fill){ [1, -1].forEach(function(s){ leaf(S1, s * x, y, s > 0 ? a : Math.PI - a, len, wid, ramp, fill, rib); }); seg(x, y, x + len * Math.cos(a), y + len * Math.sin(a), wid + 2); }
 
-    /* body: stepped diamonds */
-    var body = '<g transform="translate(0 8)">' +
-      '<path fill="' + fab + '" stroke="' + T('pink') + '" stroke-width="2.1" d="' + sd(22, 4) + '"/>' +
-      '<path stroke="' + T('orange') + '" stroke-width="1.8" d="' + sd(15, 3) + '"/>' +
-      '<path stroke="' + T('yellow') + '" stroke-width="1.7" d="' + sd(8, 2) + '"/>' +
-      '<path fill="' + T('gold') + '" stroke="none" d="' + circ(0, 0, 2.4) + '"/></g>';
-    blobs.push([0, 8, 24]);
-    /* head: smaller diamond with nostrils */
-    var head = '<g transform="translate(0 -25)">' +
-      '<path fill="' + fab + '" stroke="' + T('pink') + '" stroke-width="2.1" d="' + sd(13, 3) + '"/>' +
-      '<path stroke="' + T('cyan') + '" stroke-width="1.6" d="' + sd(7, 2) + '"/>' +
-      '<path fill="' + T('yellow') + '" stroke="none" d="' + circ(-3, -4, 1) + circ(3, -4, 1) + '"/></g>';
-    blobs.push([0, -25, 15]);
-    /* eyes: bulging concentric rounds */
-    [1, -1].forEach(function(s){
-      top.add('fill="' + fab + '" stroke="' + T('pink') + '" stroke-width="1.9"', circ(s * 12, -33, 6));
-      top.add('stroke="' + T('cyan') + '" stroke-width="1.5"', circ(s * 12, -33, 3.5));
-      top.add('fill="' + T('yellow') + '" stroke="none"', circ(s * 12, -33, 1.7));
-      blobs.push([s * 12, -33, 8]);
+    /* ear tufts */
+    pair(13, -35, -1.2, 15, 4.5, pal.sec, '#0B6B43');
+    /* wings: two layered leaves sweeping down each side of the body */
+    pair(17, -6, 1.3, 38, 10, pal.main, pal.mainFill);
+    pair(14, -2, 1.42, 29, 7, pal.sec, '#0B6B43');
+    /* body: one tall central leaf */
+    leaf(S1, 0, -8, Math.PI / 2, 54, 21, pal.sec, '#0B6B43', rib);
+    for (i = -8; i <= 40; i += 6) blobs.push([0, i, 15]);
+    /* chest feathers: stacked chevrons */
+    [0, 8, 16, 24, 32].forEach(function(y, k){
+      var c = [T('pink'), T('orange'), T('yellow'), T('orange'), T('pink')][k], w = 9 - k * 1.1;
+      top.add('stroke="' + c + '" stroke-width="1.7"', 'M' + fx(-w) + ' ' + fx(y) + 'L0 ' + fx(y + 5) + 'L' + fx(w) + ' ' + fx(y));
     });
-    /* small diamond between the hind legs */
-    top.add('stroke="' + T('orange') + '" stroke-width="1.6"', 'M0 37L5 42L0 47L-5 42Z');
-    top.add('fill="' + T('yellow') + '" stroke="none"', circ(0, 42, 1.3));
-    blobs.push([0, 42, 7]);
 
-    /* scattered bird-foot stitches in the open fabric */
+    /* facial disc + big concentric eyes */
+    [1, -1].forEach(function(s){
+      var ex = s * 14, ey = -24;
+      top.add('fill="' + fab + '" stroke="' + T('pink') + '" stroke-width="2.1"', circ(ex, ey, 13));
+      top.add('stroke="' + T('orange') + '" stroke-width="1.8"', circ(ex, ey, 9.2));
+      top.add('stroke="' + T('cyan') + '" stroke-width="1.7"', circ(ex, ey, 5.6));
+      top.add('fill="' + T('yellow') + '" stroke="none"', circ(ex, ey, 2.4));
+      blobs.push([ex, ey, 15]);
+    });
+    /* beak */
+    top.add('fill="' + T('yellow') + '" stroke="' + T('orange') + '" stroke-width="1.4"', 'M0 -26L4.2 -17.5L0 -9L-4.2 -17.5Z');
+    blobs.push([0, -17, 7]);
+
+    /* perch with feet */
+    top.add('stroke="' + T('orange') + '" stroke-width="2.2"', 'M-36 49L36 49');
+    top.add('stroke="' + T('yellow') + '" stroke-width="1.4"', 'M-30 53L30 53');
+    seg(-36, 49, 36, 49, 5);
+    [1.15, 1.57, 2.0].forEach(function(a){
+      [1, -1].forEach(function(s){
+        var x = s * 9, tx = x + 6.5 * Math.cos(s > 0 ? a : Math.PI - a), ty = 41 + 8 * Math.sin(a);
+        toes.add('stroke="' + T('yellow') + '" stroke-width="1.9"', 'M' + fx(x) + ' 41L' + fx(tx) + ' ' + fx(ty));
+      });
+    });
+
     var SC = .9;
     function hit(px, py){ for (var j = 0; j < blobs.length; j++){ if (Math.hypot(px - blobs[j][0], py - blobs[j][1]) < blobs[j][2] + 3.5) return true; } return false; }
     [20, 27, 34, 41, 47.5, 54].forEach(function(r0, ri){
@@ -1034,8 +1023,8 @@
       }
     });
 
-    o += tk.out() + '<g transform="scale(' + SC + ')">' + emit(S1) + toes.out() + body + head + top.out() + '</g>';
-    return '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Frog in Shipibo kene style">' + o + '</svg>';
+    o += tk.out() + '<g transform="scale(' + SC + ')">' + emit(S1) + toes.out() + top.out() + '</g>';
+    return '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Owl in Shipibo kene style">' + o + '</svg>';
   }
 
   /* ── CATEGORY COLORS (each category has its own light) ── */
@@ -1268,7 +1257,7 @@
   window.addEventListener('scroll', updateVine, {passive: true});
   var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(layoutVine, 150); });
 
-  document.getElementById('heroGlyph').innerHTML = frogKene();
+  document.getElementById('heroGlyph').innerHTML = owlKene();
   buildForest();
   buildDividers();
   document.querySelectorAll('.scroll-subheading,.mp-card,.vision-video-wrap,.scroll-divider,.mp-note,.mp-cta,.explorer-tools').forEach(function(el){ el.classList.add('reveal'); });
