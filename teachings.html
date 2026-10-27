@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon-blue:   #24C7FF;
@@ -422,6 +422,47 @@
   .mp-card .scroll-list { margin-top: .2rem; }
   .mp-card .scroll-check:last-child, .mp-card .scroll-p:last-child { margin-bottom: 0; }
   .mp-card .plants-pills { margin: 0; }
+
+  /* ══════════ HEADER FONT: Cormorant Garamond, mixed case ══════════ */
+  h1, h2, h3, h4,
+  .nav-name, .hf-name, .stat-num, .fn, .off-en, .off-num,
+  .scroll-title, .scroll-subheading, .mp-card h3, .page-title, .card-title, .card-body h2, .card-body h3,
+  .expect-title, .expect-item-title, .cta-band-title, .price-amount,
+  .video-card-title, .vtext h4, .plant .pname, .modal h3, .plant-pills-title,
+  .cs-img-text h3, .cs-form-header h2, .mobile-nav a {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .scroll-title, .page-title { font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1.05; }
+  .scroll-subheading { font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.15; }
+  .mp-card h3, .vtext h4, .expect-item-title, .video-card-title { font-size: 1.45rem; font-weight: 600; line-height: 1.2; }
+  .plant .pname { font-size: 1.5rem; font-weight: 600; line-height: 1.15; }
+  .modal h3 { font-size: clamp(2.2rem, 6vw, 3rem); line-height: 1.05; }
+  .card-title { font-size: clamp(1.8rem, 3vw, 2.3rem); }
+  .expect-title { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+  .cta-band-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+  .price-amount { font-size: 2.7rem; font-weight: 600; font-variant-numeric: lining-nums; }
+  .off-num { font-size: 2.8rem; font-weight: 600; font-variant-numeric: lining-nums; }
+  .mobile-nav a { font-size: 1.9rem; }
+  .hf-name { font-size: 1.9rem; }
+  .hf-text h2 { font-size: clamp(2.4rem, 3.8vw, 3.5rem); line-height: 1.05; }
+  .vs-text h2 { font-size: clamp(2.3rem, 3.6vw, 3.3rem); line-height: 1.05; }
+  .off-header h2 { font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.05; }
+  .off-en { font-size: 1.5rem; font-weight: 600; }
+  .plant-pills-title { font-size: 2rem; }
+  .cs-form-header h2 { font-size: clamp(2.2rem, 3vw, 3rem); }
+  .cs-img-text h3 { font-size: 2.2rem; }
+  @media (max-width: 760px) {
+    .plant .pname { font-size: 1.2rem; }
+    .modal h3 { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .plant-pills-title { font-size: 1.6rem; }
+    .hf-text h2 { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .vs-text h2 { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .off-header h2 { font-size: clamp(2.1rem, 7.5vw, 2.8rem); }
+  }
+  @media (max-width: 380px) { .plant .pname { font-size: 1.05rem; } }
 </style>
 </head>
 <body>
