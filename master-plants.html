@@ -424,18 +424,24 @@
   .m-teach .m-label { font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: .25em; font-size: .72rem; }
 
   @media (max-width: 760px) {
-    .plant-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem .8rem; }
+    .plant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem .8rem; }
+    .plant { min-width: 0; }
+    .plant .pname, .plant .pkw { overflow-wrap: anywhere; hyphens: auto; }
+    .plant .pkw { font-size: .68rem; }
     .plant { padding: 1.3rem .7rem 1.2rem; }
     .plant:nth-child(3n+2) { margin-top: 0; border-radius: 70px 22px 70px 22px; }
     .plant:nth-child(3n) { border-radius: 22px 70px 22px 70px; }
     .plant:nth-child(even) { margin-top: 1.6rem; }
     .pglyph { width: 96px; height: 96px; }
-    .plant .pname { font-size: 1.4rem; }
+    .plant .pname { font-size: .98rem; letter-spacing: -0.01em; }
     .modal { border-radius: 120px 120px 22px 22px; padding: 0 1.4rem 1.4rem; }
-    .modal h3 { font-size: 2.4rem; }
+    .modal h3 { font-size: clamp(1.6rem, 8vw, 2.1rem); overflow-wrap: anywhere; }
+    .modal { max-width: 100%; }
     .mp-card { border-radius: 50px 16px 50px 16px; padding: 1.8rem 1.6rem; }
     .mp-card:nth-child(2) { border-radius: 16px 50px 16px 50px; }
   }
+  html, body { max-width: 100%; overflow-x: clip; }
+  @media (max-width: 380px) { .plant { padding: 1.1rem .5rem 1rem; } .pglyph { width: 84px; height: 84px; } .plant .pname { font-size: .88rem; } }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .ff { display: none; }
@@ -832,7 +838,7 @@
   function kene(name, idx){
     if (KENE_CACHE[name]) return KENE_CACHE[name];
     idx = idx != null ? idx : (KENE_SLOT[name] != null ? KENE_SLOT[name] : 20 + hashStr(name) % 24);
-    var h = hashStr(name), R = mulberry(h), fam = idx % 3;
+    var h = hashStr(name), R = mulberry(h), fam = idx % 10, vr = idx >= 10 ? 1 : 0;
     var pal = KPAL[(idx * 3 + Math.floor(idx / 8)) % 8];
     var ring = pal.ring.map(T), mainRamp = pal.main, secRamp = pal.sec, ctrRamp = pal.ctr, tickCols = pal.tick.map(T);
     var rib = pal.fab, ph1 = R() * TAU, ph2 = R() * TAU;
@@ -869,16 +875,20 @@
     /* centre motif --------------------------------------------------- */
     var covers = [], curls = [], patches = [];
     var tk = Lyr(), tl = Lyr(), S1 = LeafSet(), S2 = LeafSet(), top = Lyr();
-    var a0 = -Math.PI / 2, k, P;
+    var a0 = -Math.PI / 2, k, P, V = vr, discs = [];
+    var GREEN = '#0B6B43', PLUM = '#7a1d60';
+    function LF2(S, x, y, a, len, wid, ramp, fill){ leaf(S, x, y, a, len, wid, ramp, fill, rib); covers.push([a, 0, 0, 0, x, y, len, wid]); }
+    function DISC(x, y, r){ discs.push([x, y, r]); }
+    function dot(col, x, y, r){ top.add('fill="' + T(col) + '" stroke="none"', 'M' + fx(x + r) + ' ' + fx(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + fx(-2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + fx(2 * r) + ' 0Z'); }
     if (fam === 0){                                   /* leaf mandala */
-      P = [4, 5, 6][Math.floor(R() * 3)];
+      P = V ? 4 : 6;
       var lenM = [0, 0, 0, 0, 42, 40, 36][P], widM = [0, 0, 0, 0, 12, 10, 8.4][P];
       var lenS = [0, 0, 0, 0, 28, 24, 22][P], widS = [0, 0, 0, 0, 6.5, 5.5, 4.6][P];
       for (k = 0; k < P; k++){
         var am = a0 + k * TAU / P, ag = am + Math.PI / P, gh = Math.PI / P;
         leaf(S1, 11 * Math.cos(am), 11 * Math.sin(am), am, lenM, widM, mainRamp, pal.mainFill, rib);
         covers.push([am, 11, lenM, widM]);
-        leaf(S1, 14 * Math.cos(ag), 14 * Math.sin(ag), ag, lenS, widS, secRamp, '#0B6B43', rib);
+        leaf(S1, 14 * Math.cos(ag), 14 * Math.sin(ag), ag, lenS, widS, secRamp, GREEN, rib);
         covers.push([ag, 14, lenS, widS]);
         [-1, 1].forEach(function(sg){
           var ca2 = ag + sg * gh * .66, cx = 47 * Math.cos(ca2), cy = 47 * Math.sin(ca2), s0 = ag + sg * gh * .2;
@@ -886,29 +896,29 @@
           curls.push([cx, cy]);
         });
         patch(tl, T(pal.patch), ag, 46, gh * .3, 3); patches.push([ag, gh * .34]);
-        leaf(S2, 0, 0, am + gh, 15, 4.6, ctrRamp, '#7a1d60', rib);
+        leaf(S2, 0, 0, am + gh, 15, 4.6, ctrRamp, PLUM, rib);
       }
       top.add('fill="' + T('gold') + '" stroke="none"', 'M2.4 0a2.4 2.4 0 1 0 -4.8 0a2.4 2.4 0 1 0 4.8 0Z');
     } else if (fam === 1){                            /* flower bloom */
-      P = [6, 7, 8][Math.floor(R() * 3)];
+      P = V ? 6 : 8;
       for (k = 0; k < P; k++){
         var ao = a0 + k * TAU / P, ai = ao + Math.PI / P;
         leaf(S1, 7 * Math.cos(ao), 7 * Math.sin(ao), ao, 27, 8.6, mainRamp, pal.mainFill, rib); covers.push([ao, 7, 27, 8.6]);
         var cg = ao + Math.PI / P;
-        leaf(S2, 5 * Math.cos(ai), 5 * Math.sin(ai), ai, 17, 6, ctrRamp, '#7a1d60', rib);
-        leaf(S1, 31 * Math.cos(cg), 31 * Math.sin(cg), cg, 21, 5.2, secRamp, '#0B6B43', rib); covers.push([cg, 31, 21, 5.2]);
+        leaf(S2, 5 * Math.cos(ai), 5 * Math.sin(ai), ai, 17, 6, ctrRamp, PLUM, rib);
+        leaf(S1, 31 * Math.cos(cg), 31 * Math.sin(cg), cg, 21, 5.2, secRamp, GREEN, rib); covers.push([cg, 31, 21, 5.2]);
         var cc = ao, cx2 = 47.5 * Math.cos(cc), cy2 = 47.5 * Math.sin(cc);
         curl(tl, T(pal.curl), 35 * Math.cos(cc), 35 * Math.sin(cc), cx2, cy2, 4.2, k % 2 ? 1 : -1, cc + Math.PI * .5, 1.1); curls.push([cx2, cy2]);
       }
       top.add('fill="' + T('gold') + '" stroke="none"', 'M5.2 0a5.2 5.2 0 1 0 -10.4 0a5.2 5.2 0 1 0 10.4 0Z');
       top.add('fill="' + T('red') + '" stroke="none"', 'M1.4 0a1.4 1.4 0 1 0 -2.8 0a1.4 1.4 0 1 0 2.8 0Z');
-    } else {                                          /* vine wreath */
-      P = [8, 9, 10][Math.floor(R() * 3)];
+    } else if (fam === 2){                            /* vine wreath */
+      P = V ? 8 : 10;
       ringLine(tl, T(pal.curl), 38, 1.9);
       for (k = 0; k < P; k++){
         var th = a0 + k * TAU / P, bx = 38 * Math.cos(th), by = 38 * Math.sin(th), tan = th + Math.PI / 2;
         var out = k % 2 === 0;
-        leaf(S1, bx, by, out ? tan - .55 : tan + Math.PI + .55, out ? 23 : 17, out ? 6.4 : 5.4, out ? secRamp : mainRamp, out ? '#0B6B43' : pal.mainFill, rib);
+        leaf(S1, bx, by, out ? tan - .55 : tan + Math.PI + .55, out ? 23 : 17, out ? 6.4 : 5.4, out ? secRamp : mainRamp, out ? GREEN : pal.mainFill, rib);
         covers.push([out ? tan - .55 : tan + Math.PI + .55, 0, 0, 0, bx, by, out ? 23 : 17, out ? 6.4 : 5.4]);
         var bd = th + Math.PI / P;
         top.add('fill="' + T(k % 2 ? 'yellow' : 'pink') + '" stroke="none"', 'M' + fx(38 * Math.cos(bd) + 2.6) + ' ' + fx(38 * Math.sin(bd)) + 'a2.6 2.6 0 1 0 -5.2 0a2.6 2.6 0 1 0 5.2 0Z');
@@ -917,6 +927,104 @@
       top.add('stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', d1);
       top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', d2);
       top.add('fill="' + T(ctrRamp[2]) + '" stroke="none"', 'M2.8 0a2.8 2.8 0 1 0 -5.6 0a2.8 2.8 0 1 0 5.6 0Z');
+    } else if (fam === 3){                            /* tree of life */
+      var nb3 = V ? 5 : 4, ty0 = 42, ty1 = -34, step3 = (ty0 - ty1 - 10) / (nb3 - 1);
+      tl.add('stroke="' + T(pal.curl) + '" stroke-width="2.4"', 'M0 54L0 ' + ty1);
+      for (k = 0; k < nb3; k++){
+        var yy = ty0 - k * step3, ln = 32 - k * (V ? 3.6 : 4.4), wd3 = 8.4 - k * .8;
+        var rp = k % 2 ? secRamp : mainRamp, fl3 = k % 2 ? GREEN : pal.mainFill;
+        LF2(S1, 0, yy, Math.PI + .72, ln, wd3, rp, fl3);
+        LF2(S1, 0, yy, -.72, ln, wd3, rp, fl3);
+      }
+      LF2(S2, 0, ty1 + 4, -Math.PI / 2, 20, 6.4, ctrRamp, PLUM);
+      [-1, 1].forEach(function(s){
+        curl(tl, T(pal.curl), s * 2, 54, s * 20, 50, 6, -s, s > 0 ? Math.PI : 0, 1.2); DISC(s * 20, 50, 8);
+        dot(s > 0 ? 'yellow' : 'pink', s * 11, ty0 - 2, 2);
+      });
+      for (k = -34; k <= 54; k += 8) DISC(0, k, 4);
+      dot('gold', 0, ty1 - 2, 2.6);
+    } else if (fam === 4){                            /* sun star */
+      P = V ? 10 : 8;
+      for (k = 0; k < P; k++){
+        var an = a0 + k * TAU / P, lg = k % 2 === 0;
+        LF2(S1, 10 * Math.cos(an), 10 * Math.sin(an), an, lg ? 46 : 30, lg ? 7.4 : 5.6, lg ? mainRamp : secRamp, lg ? pal.mainFill : GREEN);
+        if (!lg){ dot('yellow', 44 * Math.cos(an), 44 * Math.sin(an), 1.9); DISC(44 * Math.cos(an), 44 * Math.sin(an), 2); }
+      }
+      top.add('fill="' + pal.fab + '" stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', sd(13, 3));
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', sd(6.5, 2));
+      dot(ctrRamp[2], 0, 0, 2.2);
+    } else if (fam === 5){                            /* double spiral */
+      var tn = V ? 1.6 : 1.25;
+      curl(tl, T(pal.curl), 22, -44, -22, -8, 20, 1, -Math.PI / 2, tn); DISC(-22, -8, 21);
+      curl(tl, T(pal.curl), -22, 44, 22, 8, 20, 1, Math.PI / 2, tn); DISC(22, 8, 21);
+      LF2(S1, 14, -12, -Math.PI / 4, 38, 10, mainRamp, pal.mainFill);
+      LF2(S1, -14, 12, 3 * Math.PI / 4, 38, 10, mainRamp, pal.mainFill);
+      [1, -1].forEach(function(s){
+        var base = s > 0 ? -Math.PI / 4 : 3 * Math.PI / 4;
+        [-.6, .6].forEach(function(dd){ LF2(S2, s * 18, -s * 18, base + dd, V ? 22 : 18, 5, secRamp, GREEN); });
+        dot('yellow', s * 24, -s * 24, 2);
+      });
+      top.add('stroke="' + T(ctrRamp[0]) + '" stroke-width="1.7"', sd(6, 2));
+      dot(ctrRamp[1], 0, 0, 2);
+    } else if (fam === 6){                            /* quatrefoil cross */
+      for (k = 0; k < 4; k++){
+        var ac = a0 + k * Math.PI / 2, ad = ac + Math.PI / 4;
+        LF2(S1, 12 * Math.cos(ac), 12 * Math.sin(ac), ac, 42, 12, mainRamp, pal.mainFill);
+        if (!V){ LF2(S1, 14 * Math.cos(ad), 14 * Math.sin(ad), ad, 30, 7, secRamp, GREEN); }
+        else {
+          var qx = 44 * Math.cos(ad), qy = 44 * Math.sin(ad);
+          curl(tl, T(pal.curl), 22 * Math.cos(ad), 22 * Math.sin(ad), qx, qy, 6.5, k % 2 ? 1 : -1, ad + Math.PI, 1.25); DISC(qx, qy, 8);
+          patch(tl, T(pal.patch), ad, 26, .16, 2);
+        }
+      }
+      top.add('fill="' + pal.fab + '" stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', sd(19, 4));
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', sd(12, 3));
+      top.add('stroke="' + T(ctrRamp[2]) + '" stroke-width="1.5"', sd(5.5, 2));
+      dot('gold', 0, 0, 1.8);
+    } else if (fam === 7){                            /* diagonal fern frond */
+      var sg7 = V ? -1 : 1, nf = V ? 7 : 6, sa0 = sg7 > 0 ? -Math.PI / 4 : -3 * Math.PI / 4;
+      tl.add('stroke="' + T(pal.curl) + '" stroke-width="2.2"', 'M' + fx(-28 * sg7) + ' 28L' + fx(28 * sg7) + ' -28');
+      for (k = 0; k < nf; k++){
+        var t7 = k / (nf - 1), x7 = -28 * sg7 + 56 * sg7 * t7, y7 = 28 - 56 * t7, ln7 = 27 - 15 * t7, wd7 = 7.6 - 3 * t7;
+        var rp7 = k % 2 ? secRamp : mainRamp, fl7 = k % 2 ? GREEN : pal.mainFill;
+        LF2(S1, x7, y7, sa0 + .95, ln7, wd7, rp7, fl7);
+        LF2(S1, x7, y7, sa0 - .95, ln7, wd7, rp7, fl7);
+        DISC(x7, y7, 3.5);
+      }
+      LF2(S2, 28 * sg7, -28, sa0, 14, 4.4, ctrRamp, PLUM);
+      curl(tl, T(pal.curl), -28 * sg7, 28, -37 * sg7, 39, 4.6, sg7, sg7 > 0 ? -Math.PI / 2 : -Math.PI / 2, 1.2); DISC(-37 * sg7, 39, 7);
+      dot('yellow', 28 * sg7, -28, 2);
+    } else if (fam === 8){                            /* lotus */
+      var po = V ? 9 : 7, by0 = 24, f8;
+      for (k = 0; k < po; k++){
+        f8 = k / (po - 1) * 2 - 1;
+        LF2(S1, 0, by0, -Math.PI / 2 + f8 * 1.25, 56 - 16 * Math.abs(f8), 10, mainRamp, pal.mainFill);
+      }
+      var pm = V ? 6 : 5;
+      for (k = 0; k < pm; k++){
+        f8 = k / (pm - 1) * 2 - 1;
+        LF2(S1, 0, by0, -Math.PI / 2 + f8 * .85, 42 - 6 * Math.abs(f8), 8, ctrRamp, PLUM);
+      }
+      [-.42, 0, .42].forEach(function(f){ LF2(S2, 0, by0, -Math.PI / 2 + f, 28, 6, ['yellow', 'orange', 'pink'], '#C25A08'); });
+      LF2(S1, -8, 33, Math.PI + .12, 27, 5.2, secRamp, GREEN);
+      LF2(S1, 8, 33, -.12, 27, 5.2, secRamp, GREEN);
+      tl.add('stroke="' + T('cyan') + '" stroke-width="1.6"', 'M-34 40q5.7-7 11.3 0t11.3 0t11.3 0t11.3 0t11.3 0t11.3 0');
+      DISC(0, 42, 38);
+      dot('gold', 0, by0, 2.6);
+    } else {                                          /* nested diamonds lattice */
+      var tiers = V ? 5 : 4, dcol = [ctrRamp[0], mainRamp[0], ctrRamp[1], mainRamp[1], ctrRamp[2]];
+      for (k = 0; k < 4; k++){
+        var dg = Math.PI / 4 + k * Math.PI / 2, dc = k * Math.PI / 2;
+        LF2(S1, 26 * Math.cos(dg), 26 * Math.sin(dg), dg, V ? 30 : 26, 7.4, k % 2 ? secRamp : mainRamp, k % 2 ? GREEN : pal.mainFill);
+        var cx9 = 49 * Math.cos(dc), cy9 = 49 * Math.sin(dc);
+        curl(tl, T(pal.curl), 38 * Math.cos(dc), 38 * Math.sin(dc), cx9, cy9, 5.2, k % 2 ? 1 : -1, dc + Math.PI, 1.2); DISC(cx9, cy9, 7);
+      }
+      for (k = 0; k < tiers; k++){
+        var r9 = 36 - k * (V ? 7 : 8.5);
+        top.add('fill="' + pal.fab + '" stroke="' + T(dcol[k]) + '" stroke-width="1.8"', sd(r9, Math.max(2, 5 - k)));
+      }
+      dot('gold', 0, 0, 2);
+      DISC(0, 0, 38);
     }
 
     /* scattered bird-foot stitches, skipping anything a leaf or tendril covers */
@@ -931,6 +1039,7 @@
       }
       for (j = 0; j < curls.length; j++){ if (Math.hypot(px - curls[j][0], py - curls[j][1]) < 8.2) return true; }
       for (j = 0; j < patches.length; j++){ var da = Math.abs(((a - patches[j][0]) % TAU + TAU + Math.PI) % TAU - Math.PI); if (r > 43 && da < patches[j][1] + .05) return true; }
+      for (j = 0; j < discs.length; j++){ if (Math.hypot(px - discs[j][0], py - discs[j][1]) < discs[j][2] + 3) return true; }
       if (fam === 2 && Math.abs(r - 38) < 4.5) return true;
       if (r < 13 && fam !== 2) return true;
       return false;
@@ -1258,7 +1367,230 @@
   window.addEventListener('scroll', updateVine, {passive: true});
   var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(layoutVine, 150); });
 
-  document.getElementById('heroGlyph').innerHTML = owlKene();
+  
+  /* ── ANIMAL KENE: random animal for the page hero, same stitched-round style ── */
+  var ANIMALS = {
+    owl:       {name: 'Owl', owl: true},
+    dolphin:   {name: 'Pink river dolphin', pal: 0, rs: 1},
+    jaguar:    {name: 'Jaguar', pal: 2, rs: 2},
+    frog:      {name: 'Frog', pal: 3, rs: 0},
+    hummingbird: {name: 'Hummingbird', pal: 4, rs: 1},
+    snake:     {name: 'Snake', pal: 6, rs: 2},
+    butterfly: {name: 'Butterfly', pal: 1, rs: 0},
+    caiman:    {name: 'Caiman', pal: 5, rs: 2},
+    condor:    {name: 'Condor', pal: 7, rs: 1},
+    turtle:    {name: 'Turtle', pal: 3, rs: 2},
+    howler:    {name: 'Howler monkey', pal: 6, rs: 0}
+  };
+  var ANIMAL_KEYS = Object.keys(ANIMALS);
+  function animalKene(kind){
+    var A = ANIMALS[kind];
+    if (A.owl) return owlKene();
+    var pal = KPAL[A.pal], ringc = pal.ring.map(T), tickCols = pal.tick.map(T), fab = pal.fab, i, o = '';
+    var PI = Math.PI, GREEN = '#0B6B43', PLUM = '#7a1d60';
+    function er(a){ return 96 + 1.2 * Math.sin(3 * a + 1.1 + A.pal) + .8 * Math.sin(5 * a + 2.3); }
+    var fp = '';
+    for (i = 0; i < 96; i++){ var fa = i * TAU / 96; fp += (i ? 'L' : 'M') + xy(er(fa) - .6, fa); }
+    o += '<path d="' + fp + 'Z" fill="' + fab + '" stroke="none"/>';
+    var edge = Lyr(), nb = 64 + 4 * (A.pal % 3), loop = '', tks = '';
+    for (i = 0; i < nb; i++){ var ea = i * TAU / nb; loop += (i ? 'L' : 'M') + xy(er(ea) - 9, ea); tks += 'M' + xy(er(ea) - 9, ea) + 'L' + xy(er(ea + .1) - .4, ea + .1); }
+    edge.add('stroke="currentColor" stroke-width="1.9"', loop + 'Z' + tks);
+    o += edge.out();
+    var rings = Lyr();
+    if (A.rs === 0){ ringZig(rings, ringc[0], 79.5, 3.6, 26, 1.9); ringX(rings, ringc[1], 71, 38, 2.4); ringLine(rings, ringc[2], 64.5, 1.5); ringDots(rings, ringc[2], 61.2, 40, .9); }
+    else if (A.rs === 1){ ringV(rings, ringc[0], 79.5, 52, 3); ringZig(rings, ringc[1], 71, 3, 30, 1.8); ringLine(rings, ringc[2], 64.5, 1.8); }
+    else { ringX(rings, ringc[0], 79.5, 40, 2.6); ringScal(rings, ringc[1], 69, 34, 1.7); ringLine(rings, ringc[2], 64.5, 1.5); ringDots(rings, ringc[2], 61.2, 44, .9); }
+    o += rings.out();
+
+    var S1 = LeafSet(), S2 = LeafSet(), top = Lyr(), toes = Lyr(), tk = Lyr(), tl = Lyr(), blobs = [], rib = fab;
+    function B(x, y, r){ blobs.push([x, y, r]); }
+    function seg(x0, y0, x1, y1, r){ var n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 5)); for (var j = 0; j <= n; j++) B(x0 + (x1 - x0) * j / n, y0 + (y1 - y0) * j / n, r); }
+    function LF(x, y, a, len, wid, ramp, fill, S){ leaf(S || S1, x, y, a, len, wid, ramp, fill, rib); seg(x, y, x + len * .85 * Math.cos(a), y + len * .85 * Math.sin(a), wid * .7 + 1.5); }
+    function LP(x, y, a, len, wid, ramp, fill, S){ LF(x, y, a, len, wid, ramp, fill, S); LF(-x, y, PI - a, len, wid, ramp, fill, S); }
+    function circ(cx, cy, r, fill, stroke, w){ top.add((fill ? 'fill="' + fill + '"' : 'fill="none"') + ' stroke="' + stroke + '" stroke-width="' + w + '"', 'M' + fx(cx - r) + ' ' + fx(cy) + 'a' + r + ' ' + r + ' 0 1 0 ' + fx(r * 2) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + fx(-r * 2) + ' 0Z'); B(cx, cy, r + 1); }
+    function dot(col, x, y, r){ top.add('fill="' + T(col) + '" stroke="none"', 'M' + fx(x + r) + ' ' + fx(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + fx(-2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + fx(2 * r) + ' 0Z'); }
+    function ln(col, w, d){ top.add('stroke="' + T(col) + '" stroke-width="' + w + '"', d); }
+    /* a thick stitched ribbon along a curve (snake, dolphin, caiman) */
+    function ribbon(fn, wf, N, col, edgeCol){
+      var j, p, q, w;
+      for (j = 0; j < N; j++){
+        var t0 = j / N, t1 = (j + 1) / N; p = fn(t0); q = fn(t1); w = Math.round(wf((t0 + t1) / 2) * 2) / 2;
+        top.add('stroke="' + edgeCol + '" stroke-width="' + fx(w + 3) + '"', 'M' + fx(p[0]) + ' ' + fx(p[1]) + 'L' + fx(q[0]) + ' ' + fx(q[1]));
+      }
+      for (j = 0; j < N; j++){
+        var u0 = j / N, u1 = (j + 1) / N; p = fn(u0); q = fn(u1); w = Math.round(wf((u0 + u1) / 2) * 2) / 2;
+        top.add('stroke="' + col + '" stroke-width="' + fx(w) + '"', 'M' + fx(p[0]) + ' ' + fx(p[1]) + 'L' + fx(q[0]) + ' ' + fx(q[1]));
+        B(p[0], p[1], w / 2 + 2);
+      }
+    }
+    function tang(fn, t){ var a = fn(Math.max(0, t - .01)), b = fn(Math.min(1, t + .01)), d = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1; return [(b[0] - a[0]) / d, (b[1] - a[1]) / d]; }
+    function chev(fn, wf, t, col, k){
+      var p = fn(t), g = tang(fn, t), s = wf(t) * (k || .36), nx = -g[1], ny = g[0];
+      ln(col, 1.6, 'M' + fx(p[0] + nx * s) + ' ' + fx(p[1] + ny * s) + 'L' + fx(p[0] + g[0] * s * .9) + ' ' + fx(p[1] + g[1] * s * .9) + 'L' + fx(p[0] - nx * s) + ' ' + fx(p[1] - ny * s));
+    }
+    var c = {};
+    var D = {
+      hummingbird: function(){
+        LF(-12, -10, .78, 46, 12, pal.main, pal.mainFill);                    /* body */
+        LF(22, 22, 1.05, 28, 5.2, pal.sec, GREEN); LF(22, 22, .85, 30, 5.6, pal.sec, GREEN); LF(22, 22, 1.25, 24, 5, pal.sec, GREEN);   /* tail */
+        LF(2, -4, -1.15, 42, 9.4, pal.main, pal.mainFill); LF(2, -4, -.65, 46, 8.6, pal.sec, GREEN); LF(2, -4, -1.6, 34, 7.4, pal.main, pal.mainFill);  /* wings */
+        circ(-20, -17, 9, fab, T('pink'), 2.1); circ(-22, -19, 4, fab, T('cyan'), 1.5); dot('yellow', -22, -19, 1.7);
+        LF(-28, -17, PI + .09, 32, 2.4, ['yellow', 'orange'], '#C25A08');        /* beak */
+        for (k = 0; k < 5; k++){ var pa = k * TAU / 5 + .3; LF(-48 + 3 * Math.cos(pa), 16 + 3 * Math.sin(pa), pa, 10, 3.8, ['pink', 'rose'], '#B8156A', S2); }
+        dot('gold', -48, 16, 2.2);
+        tl.add('stroke="' + T('green') + '" stroke-width="1.9"', 'M-48 18Q-44 36 -30 46');
+        var k;
+        chev2();
+        function chev2(){ for (var q = 0; q < 4; q++){ ln(['pink', 'orange', 'yellow', 'orange'][q], 1.6, 'M' + fx(-6 + q * 7) + ' ' + fx(-2 + q * 6.4) + 'l5 -4 l5 4'); } }
+      },
+      butterfly: function(){
+        LP(4, -4, -.5, 52, 21, pal.main, pal.mainFill);
+        LP(4, 4, .62, 40, 15, pal.sec, GREEN);
+        LP(9, -7, -.5, 32, 9.5, pal.ctr, PLUM, S2);
+        LP(8, 7, .62, 22, 6.4, pal.main, '#7a1d60', S2);
+        dot('yellow', 33, -24, 2.4); dot('yellow', -33, -24, 2.4); dot('pink', 26, 26, 2); dot('pink', -26, 26, 2);
+        LF(0, -20, PI / 2, 52, 4.6, ['yellow', 'orange', 'pink'], '#C25A08', S2);
+        circ(0, -24, 4.6, fab, T('pink'), 1.9);
+        [1, -1].forEach(function(s){ curl(tl, T(pal.curl), s * 2, -27, s * 18, -50, 4.6, -s, s > 0 ? PI * .1 : PI * .9, 1.15); B(s * 12, -44, 8); });
+      },
+      frog: function(){
+        LP(18, 22, .38, 30, 8.2, pal.main, pal.mainFill);                      /* hind legs */
+        LP(14, 6, .95, 26, 5.6, pal.sec, GREEN);                               /* arms */
+        LF(0, -22, PI / 2, 60, 24, pal.sec, GREEN);                            /* body */
+        for (var j = 0; j < 4; j++) B(0, -14 + j * 14, 20);
+        [1, -1].forEach(function(s){
+          circ(s * 17, -30, 10.4, fab, T('pink'), 2.1); circ(s * 17, -30, 6.8, null, T('orange'), 1.7); dot('yellow', s * 17, -30, 2.8); dot('red', s * 17, -30, 1);
+          [0, .45, .9].forEach(function(d){ var ex = s * 46 + s * 7 * Math.cos(d), ey = 33 + 8 * Math.sin(d + .2); toes.add('stroke="' + T('yellow') + '" stroke-width="2"', 'M' + fx(s * 47) + ' 33L' + fx(ex + s * 3) + ' ' + fx(ey + 5)); });
+          [-.35, .1, .55].forEach(function(d){ toes.add('stroke="' + T('yellow') + '" stroke-width="1.8"', 'M' + fx(s * 25) + ' 20L' + fx(s * (25 + 8 * Math.cos(d + 1.1))) + ' ' + fx(20 + 8 * Math.sin(d + 1.1) + 4)); });
+          dot('cyan', s * 6, -14, 1.2);
+        });
+        ln('pink', 2, 'M-26 -12Q0 0 26 -12');
+        for (var m = 0; m < 5; m++) ln(['pink', 'orange', 'yellow', 'orange', 'pink'][m], 1.6, 'M' + fx(-8) + ' ' + fx(8 + m * 6.5) + 'l8 4 l8 -4');
+        dot('yellow', -14, 4, 1.6); dot('yellow', 14, 4, 1.6);
+      },
+      snake: function(){
+        var fn = function(t){ var y = 50 - 100 * t; return [26 * Math.sin(t * PI * 2.3 + .5), y]; };
+        var wf = function(t){ return t > .88 ? 13 : 3.5 + 8 * Math.min(1, t * 1.8) * (1 - Math.max(0, t - .8) * .6); };
+        ribbon(fn, wf, 46, T(pal.mainFill), T(pal.main[0]));
+        for (var t = .05; t < .84; t += .05) chev(fn, wf, t, T(['yellow', 'cream', 'orange'][Math.round(t / .05) % 3]), .42);
+        var h = fn(1), g = tang(fn, 1), ah = Math.atan2(g[1], g[0]);
+        LF(h[0] - g[0] * 6, h[1] - g[1] * 6, ah, 24, 9.6, pal.main, pal.mainFill);
+        var ex = h[0] + g[0] * 8, ey = h[1] + g[1] * 8, nx = -g[1], ny = g[0];
+        circ(ex + nx * 5, ey + ny * 5, 2.8, fab, T('yellow'), 1.6); circ(ex - nx * 5, ey - ny * 5, 2.8, fab, T('yellow'), 1.6);
+        var tx = h[0] + g[0] * 17, ty = h[1] + g[1] * 17;
+        ln('red', 1.7, 'M' + fx(tx) + ' ' + fx(ty) + 'L' + fx(tx + g[0] * 9) + ' ' + fx(ty + g[1] * 9) + 'M' + fx(tx + g[0] * 9) + ' ' + fx(ty + g[1] * 9) + 'l' + fx(g[0] * 4 + nx * 4) + ' ' + fx(g[1] * 4 + ny * 4) + 'M' + fx(tx + g[0] * 9) + ' ' + fx(ty + g[1] * 9) + 'l' + fx(g[0] * 4 - nx * 4) + ' ' + fx(g[1] * 4 - ny * 4));
+        var tp = fn(0); dot('gold', tp[0], tp[1], 2.4);
+      },
+      turtle: function(){
+        LF(0, -26, -PI / 2, 22, 8.5, pal.sec, GREEN);                           /* head */
+        dot('yellow', -3.4, -41, 1.5); dot('yellow', 3.4, -41, 1.5);
+        LP(20, -14, -.45, 38, 9, pal.sec, GREEN); LP(18, 20, .75, 28, 7.6, pal.sec, GREEN);   /* flippers */
+        LF(0, 30, PI / 2, 15, 3.6, pal.sec, GREEN);
+        circ(0, 3, 29, fab, T('pink'), 2.1); circ(0, 3, 25, null, T('orange'), 1.5);
+        top.add('stroke="' + T(pal.ctr[0]) + '" stroke-width="1.8"', 'M' + 0 + ' ' + (-12) + 'L11 3L0 18L-11 3Z');
+        top.add('stroke="' + T(pal.ctr[1]) + '" stroke-width="1.7"', 'M0 -4L5 3L0 10L-5 3Z');
+        for (var q = 0; q < 8; q++){ var a = q * TAU / 8 + TAU / 16; ln(['yellow', 'orange'][q % 2], 1.6, 'M' + fx(14 * Math.cos(a)) + ' ' + fx(3 + 14 * Math.sin(a)) + 'L' + fx(24 * Math.cos(a)) + ' ' + fx(3 + 24 * Math.sin(a))); }
+        for (q = 0; q < 4; q++){ var b = q * PI / 2 + PI / 4; ln('pink', 1.6, 'M' + fx(11 * Math.cos(b)) + ' ' + fx(3 + 11 * Math.sin(b)) + 'L' + fx(14 * Math.cos(b + .0)) + ' ' + fx(3 + 14 * Math.sin(b))); }
+        dot('gold', 0, 3, 1.8);
+      },
+      jaguar: function(){
+        for (var q = 0; q < 12; q++){ var a = q * TAU / 12 + .26; LF(30 * Math.cos(a), 6 + 30 * Math.sin(a), a, 15, 4.6, q % 2 ? pal.sec : pal.main, q % 2 ? GREEN : pal.mainFill); }
+        [1, -1].forEach(function(s){ circ(s * 24, -26, 10, fab, T('orange'), 2.1); circ(s * 24, -26, 5, null, T('pink'), 1.5); });
+        circ(0, 5, 31, fab, T('orange'), 2.2); circ(0, 5, 27.5, null, T('gold'), 1.3);
+        [1, -1].forEach(function(s){
+          circ(s * 12, -4, 6.4, fab, T('yellow'), 1.9); dot('lime', s * 12, -4, 2.8); dot('cream', s * 12 + 1, -5, 1);
+          ln('orange', 1.6, 'M' + fx(s * 4) + ' -14L' + fx(s * 8) + ' -20M' + fx(s * 12) + ' -15L' + fx(s * 15) + ' -22M' + fx(s * 20) + ' -12L' + fx(s * 23) + ' -18');
+          [[s * 21, 8], [s * 17, 17], [s * 24, 15]].forEach(function(p){ circ(p[0], p[1], 2.8, null, T('yellow'), 1.3); dot('red', p[0], p[1], .9); });
+          ln('cream', 1.4, 'M' + fx(s * 17) + ' 10L' + fx(s * 46) + ' 5M' + fx(s * 17) + ' 14L' + fx(s * 46) + ' 15');
+        });
+        top.add('fill="' + T('pink') + '" stroke="none"', 'M-6 9L6 9L0 16Z');
+        ln('pink', 1.7, 'M0 16L0 21M0 21Q-6 27 -13 23M0 21Q6 27 13 23');
+        dot('yellow', -9, 25, .9); dot('yellow', 9, 25, .9); dot('yellow', 0, 28, .9);
+        LP(16, 38, 1.2, 20, 6.5, pal.main, pal.mainFill);
+      },
+      dolphin: function(){
+        var fn = function(t){ var x = -38 + 80 * t; return [x, 12 - 40 * Math.sin(Math.min(1, t * 1.05) * PI * .93) + 8 * t]; };
+        var wf = function(t){ return t < .2 ? 3.4 + 40 * t : (t < .75 ? 11.4 - (t - .2) * 8 : 7 - (t - .75) * 16); };
+        ribbon(fn, wf, 40, T(pal.mainFill), T('rose'));
+        for (var t = .3; t < .82; t += .06) chev(fn, wf, t, T(['peach', 'pink', 'cream'][Math.round(t / .06) % 3]), .4);
+        var hp = fn(.18); circ(hp[0] + 1, hp[1] - 4, 8, null, T('rose'), 1.6);
+        var ep = fn(.24); circ(ep[0], ep[1] - 1.5, 2.6, fab, T('cyan'), 1.4); dot('yellow', ep[0], ep[1] - 1.5, 1);
+        var dp = fn(.52); LF(dp[0] - 2, dp[1] - 4, -1.0, 24, 5.6, pal.main, pal.mainFill);
+        var fp2 = fn(.3); LF(fp2[0], fp2[1] + 6, 1.05, 22, 5, pal.main, pal.mainFill);
+        var tp = fn(1); LF(tp[0], tp[1], -.55, 20, 5.2, pal.main, pal.mainFill); LF(tp[0], tp[1], 1.25, 20, 5.2, pal.main, pal.mainFill);
+        tl.add('stroke="' + T('cyan') + '" stroke-width="1.7"', 'M-48 36q5.5-6 11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0');
+        tl.add('stroke="' + T('blue') + '" stroke-width="1.5"', 'M-40 45q5-5 10 0t10 0t10 0t10 0t10 0t10 0t10 0t10 0');
+        [[-50, -22, 4], [-44, -34, 3], [-56, -10, 2.5]].forEach(function(b){ circ(b[0], b[1], b[2], null, T('cyan'), 1.4); });
+      },
+      caiman: function(){
+        var fn = function(t){ return [7 * Math.sin(t * PI * 1.3 + 1.5), -52 + 108 * t]; };
+        var wf = function(t){ return t < .18 ? 6 + 30 * t : (t < .55 ? 11.4 + (t - .18) * 16 : 17.3 - (t - .55) * 36); };
+        LP(12, -12, -.35, 34, 7, pal.sec, GREEN); LP(12, 24, .5, 34, 7.4, pal.sec, GREEN);
+        ribbon(fn, wf, 46, T(pal.mainFill), T(pal.main[0]));
+        for (var t = .22; t < .88; t += .055) chev(fn, wf, t, T(['yellow', 'orange', 'cream'][Math.round(t / .055) % 3]), .4);
+        for (var q = 0; q < 6; q++){ var yy = -50 + q * 4.6, hw = 5 + q * .8; ln('cream', 1.3, 'M' + fx(-hw) + ' ' + fx(yy) + 'l0 2.4M' + fx(hw) + ' ' + fx(yy) + 'l0 2.4'); }
+        [1, -1].forEach(function(s){
+          circ(s * 7, -31, 3.8, fab, T('yellow'), 1.7); dot('lime', s * 7, -31, 1.4);
+          dot('cream', s * 2.6, -52, 1);
+          [0, .5, 1].forEach(function(d){ toes.add('stroke="' + T('yellow') + '" stroke-width="1.7"', 'M' + fx(s * 44) + ' -22L' + fx(s * (44 + 6 * Math.cos(d))) + ' ' + fx(-28 - 6 * Math.sin(d)));  });
+        });
+        var tp = fn(1); dot('gold', tp[0], tp[1], 2);
+      },
+      condor: function(){
+        var a;
+        for (a = 0; a < 5; a++){ LP(12, -10 + a * 2, -.5 + a * .26, 56 - a * 3, 7.6 - a * .3, a % 2 ? pal.sec : pal.main, a % 2 ? GREEN : pal.mainFill); }
+        for (a = 0; a < 4; a++){ LP(13, -8, -.3 + a * .3, 31, 6, pal.ctr, PLUM, S2); }
+        LF(0, -14, PI / 2, 42, 11, pal.main, pal.mainFill);
+        LP(2, 26, 1.35, 22, 4.8, pal.sec, GREEN); LF(0, 26, PI / 2, 24, 5, pal.sec, GREEN);
+        LP(5, -15, .55, 14, 4, ['cream', 'cream'], '#8a7a55', S2); LP(5, -18, .15, 13, 3.6, ['cream', 'cream'], '#8a7a55', S2);
+        circ(0, -28, 8.4, '#C25A08', T('orange'), 2); dot('pink', 0, -28, 1);
+        circ(-3.6, -30, 2.2, fab, T('yellow'), 1.3); circ(3.6, -30, 2.2, fab, T('yellow'), 1.3);
+        top.add('fill="' + T('yellow') + '" stroke="' + T('orange') + '" stroke-width="1.3"', 'M-3.2 -24Q0 -18 3.2 -24Q4 -19 0 -15Q-4 -19 -3.2 -24Z');
+        ln('cream', 1.6, 'M-9 -12L0 -8L9 -12M-7 -6L0 -2L7 -6');
+        for (var q = 0; q < 4; q++){ ln(['pink', 'orange', 'yellow', 'orange'][q], 1.6, 'M-6 ' + fx(6 + q * 6) + 'L0 ' + fx(10 + q * 6) + 'L6 ' + fx(6 + q * 6)); }
+      },
+      howler: function(){
+        ln('orange', 2.3, 'M-46 52L46 52'); ln('yellow', 1.4, 'M-38 56L38 56'); seg(-46, 52, 46, 52, 4);
+        curl(tl, T(pal.curl), 14, 46, 38, 30, 9, -1, PI * .2, 1.4); B(40, 34, 11);
+        LP(18, 22, .85, 30, 7.6, pal.main, pal.mainFill);
+        LF(0, 8, PI / 2, 46, 17, pal.sec, GREEN);
+        for (var j = 0; j < 3; j++) B(0, 12 + j * 12, 17);
+        LF(0, 6, PI / 2, 34, 13, pal.main, pal.mainFill);                       /* beard */
+        for (var q = 0; q < 4; q++) ln(['pink', 'orange', 'yellow', 'orange'][q], 1.6, 'M-7 ' + fx(20 + q * 5.6) + 'L0 ' + fx(24 + q * 5.6) + 'L7 ' + fx(20 + q * 5.6));
+        [1, -1].forEach(function(s){ circ(s * 24, -14, 6, fab, T('orange'), 1.8); circ(s * 24, -14, 3, null, T('pink'), 1.3); });
+        circ(0, -10, 22, fab, T('orange'), 2.2);
+        for (q = 0; q < 7; q++){ var a = -PI + .45 + q * (PI - .9) / 6; LF(20 * Math.cos(a), -10 + 20 * Math.sin(a), a, 11, 3.6, q % 2 ? pal.sec : pal.main, q % 2 ? GREEN : pal.mainFill); }
+        circ(0, -6, 14, null, T('peach'), 1.6);
+        [1, -1].forEach(function(s){ circ(s * 7, -10, 4, fab, T('yellow'), 1.7); dot('red', s * 7, -10, 1.7); dot('cream', s * 7 + 1, -11, .7); });
+        dot('rose', -2.2, -1, 1.1); dot('rose', 2.2, -1, 1.1);
+        ln('pink', 1.6, 'M-6 5Q0 9 6 5');
+        [1, -1].forEach(function(s){ [-.3, .2, .7].forEach(function(d){ toes.add('stroke="' + T('yellow') + '" stroke-width="1.7"', 'M' + fx(s * 40) + ' 48L' + fx(s * (40 + 5 * Math.cos(d + 1))) + ' ' + fx(48 + 6)); }); });
+      }
+    };
+    D[kind]();
+    var SC = .9;
+    function hit(px, py){ for (var j = 0; j < blobs.length; j++){ if (Math.hypot(px - blobs[j][0], py - blobs[j][1]) < blobs[j][2] + 3.5) return true; } return false; }
+    [20, 27, 34, 41, 47.5, 54].forEach(function(r0, ri){
+      var n = Math.round(r0 * TAU / 8.6);
+      for (var q = 0; q < n; q++){
+        var aa = (q + (ri % 2 ? .5 : 0)) * TAU / n;
+        if (hit(r0 * Math.cos(aa) / SC, r0 * Math.sin(aa) / SC)) continue;
+        tick(tk, tickCols[(q + ri) % 3], r0, aa, 2.6);
+      }
+    });
+    o += tk.out() + '<g transform="scale(' + SC + ')">' + tl.out() + emit(S1) + emit(S2) + toes.out() + top.out() + '</g>';
+    return '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="' + A.name + ' in Shipibo kene style">' + o + '</svg>';
+  }
+  function randomAnimal(){
+    var last = null, pick;
+    try { last = sessionStorage.getItem('kk-animal'); } catch (e) {}
+    do { pick = ANIMAL_KEYS[Math.floor(Math.random() * ANIMAL_KEYS.length)]; } while (pick === last && ANIMAL_KEYS.length > 1);
+    try { sessionStorage.setItem('kk-animal', pick); } catch (e) {}
+    return pick;
+  }
+
+  var heroKind = randomAnimal();
+  document.getElementById('heroGlyph').innerHTML = animalKene(heroKind);
   buildForest();
   buildDividers();
   document.querySelectorAll('.scroll-subheading,.mp-card,.vision-video-wrap,.scroll-divider,.mp-note,.mp-cta,.explorer-tools').forEach(function(el){ el.classList.add('reveal'); });
