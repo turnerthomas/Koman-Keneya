@@ -473,6 +473,21 @@
     .off-header h2 { font-size: clamp(2.1rem, 7.5vw, 2.8rem); }
   }
   @media (max-width: 380px) { .plant .pname { font-size: 1.05rem; } }
+
+  /* ── Mobile menu: never clip the top; scroll if the screen is short ── */
+  .mobile-nav {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.1rem;
+    padding: 5.5rem 1rem 2.5rem;
+    height: 100vh; height: 100dvh;
+    box-sizing: border-box;
+  }
+  .mobile-nav a { font-size: 1.6rem; line-height: 1.15; }
+  .mobile-nav > :first-child { margin-top: auto; }
+  .mobile-nav > :last-child { margin-bottom: auto; }
+  @media (max-height: 700px) { .mobile-nav { gap: .8rem; } .mobile-nav a { font-size: 1.4rem; } }
 </style>
 </head>
 <body>
