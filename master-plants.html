@@ -1374,7 +1374,7 @@
   var ANIMALS = {
     owl:         {name: 'Owl', pal: 0, rs: 0},
     dolphin:     {name: 'Pink river dolphin', pal: 5, rs: 1},
-    jaguar:      {name: 'Jaguar', pal: 2, rs: 2},
+    jaguar:      {name: 'Jaguar', pal: 2, rs: 2, z: 1.35, ty: 1},
     frog:        {name: 'Frog', pal: 3, rs: 0},
     hummingbird: {name: 'Hummingbird', pal: 4, rs: 1, z: 1.05, tx: 8},
     snake:       {name: 'Anaconda', pal: 6, rs: 2},
@@ -1483,32 +1483,39 @@
         dot('yellow', 36, 28, 1.3); dot('yellow', 44, 31, 1.2); dot('yellow', 27, 30, 1.2);
       },
 
-      /* ============ JAGUAR: face with spotted ruff ============ */
+      /* ============ JAGUAR: broad spotted face, no mane ============ */
       jaguar: function(){
-        ruff(0, 4, 26, 18, 24, 6, ['orange', 'gold', 'yellow'], '#C25A08', -PI / 2 + .17);
+        /* small rounded ears, black-backed */
         mirror(function(s){
-          disc(s * 25, -26, 12, '#E8820C', T('yellow'), 2);
-          disc(s * 25, -26, 6.8, '#7a1d60', T('pink'), 1.6);
-          run('orange', 1.2, 'M' + fx(s * 25) + ' -20L' + fx(s * 25) + ' -14');
+          disc(s * 27, -26, 10, '#E8820C', fab, 2.4);
+          disc(s * 27, -26, 5.6, fab, T('yellow'), 1.4);
+          disc(s * 27, -26, 2, T('cream'), null);
         });
-        sat(circP(0, 5, 30), '#E8820C', T('yellow'), .5, 3.6, T('yellow'), 2.2);
-        disc(0, 5, 26.5, null, T('pink'), 1.2, ' stroke-dasharray="3 2.4"');
-        /* forehead stripes + rosettes */
-        ln('orange', 0, '');
-        [[-6, -20], [0, -22], [6, -20]].forEach(function(p){ ln(fab, 0, ''); add(P('M' + p[0] + ' ' + p[1] + 'l0 8', null, fab, 2)); });
-        [[-17, -9], [17, -9], [-23, 6], [23, 6], [-19, 18], [19, 18], [-12, -17], [12, -17]].forEach(function(p){ disc(p[0], p[1], 3.3, null, fab, 1.7); disc(p[0], p[1], 1.1, fab, null); });
-        /* eyes under heavy brow */
+        /* cheek tufts */
+        mirror(function(s){ [[34, -2, .2], [37, 8, .6], [34, 19, 1.05], [27, 28, 1.45]].forEach(function(p){ LF(s * p[0], p[1], s > 0 ? p[2] : PI - p[2], 13, 4.6, ['orange', 'gold', 'yellow'], '#C25A08'); }); });
+        /* broad head */
+        var head = sym([0, -31], [[20, -31, 34, -19, 36, -3], [38, 14, 24, 33, 0, 35]]);
+        sat(head, '#E8820C', T('gold'), .5, 3.6, T('yellow'), 2.2);
+        run('pink', 1.2, 'M0 -26C17 -26 30 -16 31 -3C32 12 21 28 0 30C-21 28 -32 12 -31 -3C-30 -16 -17 -26 0 -26Z');
+        /* forehead stripes */
+        [[-7, -26], [0, -28], [7, -26]].forEach(function(p){ add(P('M' + p[0] + ' ' + p[1] + 'l0 9', null, fab, 2.2)); });
+        /* rosettes: dark open rings with a centre dot */
+        [[-19, -16], [19, -16], [-26, -2], [26, -2], [-24, 12], [24, 12], [-14, 24], [14, 24], [-13, -22], [13, -22]].forEach(function(p){
+          disc(p[0], p[1], 3.6, null, fab, 1.9); disc(p[0], p[1], 1.1, fab, null);
+        });
+        /* eyes: pale patch, gold iris, tear lines */
         mirror(function(s){
-          add(P('M' + fx(s * 3) + ' -8Q' + fx(s * 11) + ' -16 ' + fx(s * 20) + ' -8', null, fab, 2.6));
-          eye(s * 11.5, -1.5, 6.4, 'yellow', 'orange', 'lime');
+          add(P('M' + fx(s * 3) + ' -8Q' + fx(s * 11) + ' -15 ' + fx(s * 20) + ' -8', null, fab, 2.8));
+          disc(s * 11.5, -2, 8, '#FFE9C2', fab, 1.6);
+          eye(s * 11.5, -2, 5.4, 'yellow', 'orange', 'lime');
+          add(P('M' + fx(s * 14) + ' 4Q' + fx(s * 17) + ' 12 ' + fx(s * 14) + ' 20', null, fab, 2));
         });
-        /* muzzle */
-        mirror(function(s){ disc(s * 6.5, 16.5, 8.8, '#FFE9C2', T('pink'), 1.6); });
-        add(P('M-6 8.5L6 8.5L0 15Z', T('pink'), T('red'), 1.2));
-        add(P('M0 15L0 20M0 20Q-5 25 -12 22M0 20Q5 25 12 22', null, fab, 1.7));
-        [[-10, 17], [-13, 14.5], [-9.5, 21], [10, 17], [13, 14.5], [9.5, 21]].forEach(function(p){ dot(fab, p[0], p[1], .95); });
-        /* chin chevrons */
-        chevs(0, 31, 2, 4, 6, ['pink', 'orange'], 1.5);
+        /* muzzle, broad nose, mouth */
+        mirror(function(s){ disc(s * 6.5, 17.5, 9, '#FFE9C2', T('pink'), 1.6); });
+        add(P('M-7 7L7 7L3 15L-3 15Z', '#7a1d60', T('pink'), 1.4));
+        add(P('M0 15L0 20M0 20Q-5 26 -12 23M0 20Q5 26 12 23', null, fab, 1.8));
+        [[-10, 18], [-13, 15.5], [-9.5, 22], [10, 18], [13, 15.5], [9.5, 22]].forEach(function(p){ dot(fab, p[0], p[1], .95); });
+        chevs(0, 31, 1, 4, 6, ['pink'], 1.5);
       },
 
       /* ============ OWL: wise face on a perch ============ */
