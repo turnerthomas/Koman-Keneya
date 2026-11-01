@@ -1,7 +1,1727 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Plants · Koman Keneya</title>
+  <meta name="description" content="Explore the master plants Maestro Americo works with and learn how a dieta unfolds in the Shipibo tradition.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue:   #24C7FF;
+      --neon-violet:   #A274F1;
+      --neon-orange: #FF9701;
+      --bg-dark:     #0A1128;
+      --text-main:   #FFFFFF;
+      --text-muted:  #94A3B8;
+      --border-dark: rgba(255,255,255,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; position: relative; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('Photos/shipibo-pattern2.png');
+      background-size: auto 340px;
+      background-position: center top;
+      background-repeat: repeat;
+      opacity: 0.12;
+      filter: invert(1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 17, 40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; }
+    .nav-tagline { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-top: 0.15rem; font-weight: 700; }
+
+  /* -- LOGO IMAGES (responsive) -- */
+  .nav-logo-word { height: 34px; width: auto; display: block; }
+  .nav-logo-tag { height: 9px; width: auto; display: block; margin-top: 2px; }
+  .footer-logo-word { height: 56px; width: auto; margin: 0 auto; display: block; }
+  .footer-logo-tag { height: 15px; width: auto; margin: 10px auto 0; display: block; }
+
+  @media (max-width: 900px) {
+    footer { padding: 3rem 1.2rem 2rem !important; }
+    .nav-logo-word { height: 24px; }
+    .nav-logo-tag { height: 6px; margin-top: 1px; }
+    .footer-logo-word { height: 42px; }
+    .footer-logo-tag { height: 12px; margin-top: 8px; }
+  }
+  @media (max-width: 420px) {
+    .nav-logo-word { height: 20px; }
+    .nav-logo-tag { height: 5px; }
+    .footer-logo-word { height: 34px; }
+    .footer-logo-tag { height: 9px; margin-top: 6px; }
+  }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links li { margin-bottom: 0; padding-left: 0; }
+    .nav-links li::before { content: none; }
+    .nav-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; text-transform: uppercase; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+    .nav-links a:hover { color: var(--neon-violet); }
+    .lang-btns { display: flex; gap: 0.3rem; }
+    .lb { background: none; border: 1px solid var(--border-dark); padding: 0.28rem 0.6rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; color: #94A3B8; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+    .lb.on, .lb:hover { background: var(--neon-blue); border-color: var(--neon-blue); color: #060A1A; font-weight: bold; }
+
+    /* ── MAIN ── */
+    main { padding: 4rem 3rem; max-width: 860px; margin: 0 auto; }
+
+    /* ── SCROLL CARD ── */
+    .scroll-outer {
+      position: relative;
+      background: rgba(8, 14, 34, 0.82);
+      border: 1px solid rgba(162, 116, 241, 0.25);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+    }
+
+    /* Corner ornaments */
+    .scroll-corner { position: absolute; width: 28px; height: 28px; }
+    .scroll-corner.tl { top: 10px; left: 10px; }
+    .scroll-corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .scroll-corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .scroll-corner.br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Eyebrow */
+    .scroll-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-violet);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Title */
+    .scroll-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Dividers */
+    .scroll-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .scroll-divider-line { flex: 1; height: 1px; background: rgba(255, 151, 1,0.4); }
+    .scroll-divider-glyph { color: var(--neon-orange); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* Body paragraphs */
+    .scroll-p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    /* Check items */
+    .scroll-check {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .scroll-check::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-orange);
+      font-size: 0.7rem;
+    }
+
+    /* Section subheading */
+    .scroll-subheading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* List items */
+    ul.scroll-list { list-style: none; padding: 0; margin: 0; }
+    ul.scroll-list li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.6rem;
+    }
+    ul.scroll-list li::before {
+      content: '❖';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--neon-violet);
+      font-size: 0.6rem;
+    }
+
+    /* ── VIDEO ── */
+    .vision-video-wrap {
+      margin: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .vision-video-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--neon-violet);
+      font-weight: 700;
+    }
+    .vision-video-frame {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(162, 116, 241, 0.25);
+      box-shadow: 0 20px 60px rgba(10, 17, 40,0.5);
+      background: #060A1A;
+    }
+    .vision-video-frame video {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+    }
+    .vision-video-caption {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    footer { padding: 2rem 3rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      main { padding: 2.5rem 1.5rem; }
+      .scroll-outer { padding: 2rem 1.5rem; }
+    }
+
+  /* ── HAMBURGER / MOBILE NAV ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; z-index: 250;
+    background: rgba(10, 17, 40,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #fff;
+    text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 0.05em; transition: color 0.2s; }
+  .mobile-nav a:hover { color: #A274F1; }
+  .mobile-nav .lang-btns { margin-top: 1rem; }
+  @media (max-width: 900px) {
+ .hamburger { display: flex; } }
+
+  @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } main { padding: 2rem 1rem; } }
+
+    .yt-frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; border: 1px solid rgba(162,116,241,0.25); box-shadow: 0 20px 60px rgba(10,17,40,0.5); background: #060A1A; }
+    .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    main.wide { max-width: 1100px; }
+    .mp-lead { text-align: center; max-width: 720px; margin: 0 auto 1rem; }
+    .mp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0; }
+    .mp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(162,116,241,0.2); border-radius: 14px; padding: 1.5rem 1.6rem; }
+    .mp-card h3 { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 0.8rem; }
+    .mp-card .scroll-p { margin-bottom: 0; font-size: 0.97rem; line-height: 1.85; }
+    .scroll-p b, .step-panel b { color: var(--text-main); font-weight: 500; }
+
+    /* Dieta vine */
+    .vine { position: relative; margin: 1.5rem 0 0.5rem; padding-bottom: 1rem; }
+    .vine-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+    .vine-bg { fill: none; stroke: rgba(255,255,255,0.09); stroke-width: 1.6; stroke-linecap: round; }
+    .vine-fg { fill: none; stroke: url(#vineGrad); stroke-width: 2.4; stroke-linecap: round; filter: drop-shadow(0 0 5px rgba(255,151,1,0.45)); }
+    .vleaf { fill: rgba(74,222,154,0.55); opacity: 0; transform-box: fill-box; transform-origin: 0% 50%; transform: scale(0.2); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+    .vleaf.on { opacity: 1; transform: scale(1); }
+    .vstep { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 1.4rem 0 2.8rem; }
+    .vstep .vtext { max-width: 440px; }
+    .vstep:nth-child(odd) .vtext { grid-column: 1; justify-self: end; text-align: right; padding-right: 3.6rem; }
+    .vstep:nth-child(even) .vtext { grid-column: 2; text-align: left; padding-left: 3.6rem; }
+    .vnode { position: absolute; left: 50%; top: 1.5rem; width: 44px; height: 44px; margin-left: -22px; border-radius: 50%; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; color: var(--text-muted); background: #0A1128; border: 1px solid rgba(255,255,255,0.18); transition: all .7s ease; z-index: 2; }
+    .vnode.lit { color: #fff; border-color: var(--neon-orange); box-shadow: 0 0 0 6px rgba(255,151,1,0.10), 0 0 26px rgba(255,151,1,0.45); background: radial-gradient(circle, rgba(255,151,1,.30), #0A1128 70%); }
+    .vtext h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: 1.15rem; color: #fff; line-height: 1.2; margin-bottom: .5rem; }
+    .vtext p { color: var(--text-muted); line-height: 1.85; font-size: .98rem; }
+    @media (max-width: 760px) {
+      .vstep { grid-template-columns: 1fr; }
+      .vstep:nth-child(odd) .vtext, .vstep:nth-child(even) .vtext { grid-column: 1; justify-self: start; text-align: left; padding: 0 0 0 3.8rem; }
+      .vnode { left: 22px; }
+    }
+    .mini-btn { background: none; border: 1px solid var(--border-dark); color: var(--text-muted); border-radius: 50px; padding: 0.45rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .mini-btn:hover:not(:disabled) { border-color: var(--neon-blue); color: var(--neon-blue); }
+    .mini-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* Explorer */
+    .explorer-tools { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin: 1rem 0 0.5rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: center; }
+    .chip { --c: #fff; --rgb: 255,255,255; display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.14); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: .78rem; letter-spacing: .06em; padding: .5rem 1.05rem; border-radius: 50px; cursor: pointer; transition: all .35s ease; }
+    .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+    .chip:hover { color: #fff; border-color: rgba(var(--rgb),.7); background: rgba(var(--rgb),.08); }
+    .chip.on { color: #fff; border-color: var(--c); background: rgba(var(--rgb),.16); box-shadow: 0 0 22px -4px rgba(var(--rgb),.55); }
+    .result-count { text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .95rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+    .plant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 2rem 1.4rem; align-items: start; padding: .5rem 0 1.5rem; }
+    .plant { --c: #A274F1; --rgb: 162,116,241; position: relative; text-align: center; cursor: pointer; color: inherit; font-family: inherit; display: flex; flex-direction: column; align-items: center; gap: .45rem; padding: 1.7rem 1.2rem 1.5rem; border: 1px solid rgba(var(--rgb),.22); background: radial-gradient(120% 70% at 50% 0%, rgba(var(--rgb),.16), rgba(var(--rgb),.03) 55%, rgba(255,255,255,.015)); transition: transform .5s cubic-bezier(.2,.8,.2,1), border-color .4s, box-shadow .5s, background .4s; }
+    .plant:nth-child(3n+1) { border-radius: 50% 50% 28px 28px / 34% 34% 28px 28px; padding-top: 2.1rem; }
+    .plant:nth-child(3n+2) { border-radius: 110px 28px 110px 28px; margin-top: 2.2rem; }
+    .plant:nth-child(3n) { border-radius: 28px 110px 28px 110px; }
+    .plant:hover, .plant:focus-visible { transform: translateY(-8px) scale(1.025); border-color: rgba(var(--rgb),.85); box-shadow: 0 18px 50px -12px rgba(var(--rgb),.5), inset 0 0 40px -18px rgba(var(--rgb),.5); outline: none; }
+    .pglyph { position: relative; width: 128px; height: 128px; display: grid; place-items: center; color: var(--c); margin-bottom: .35rem; }
+    .pglyph::before { content: ''; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--rgb),.30), transparent 68%); animation: breathe 6s ease-in-out infinite alternate; }
+    .pglyph svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0 7px rgba(var(--rgb),.45)); transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s; }
+    .plant:hover .pglyph svg { transform: rotate(12deg) scale(1.06); filter: drop-shadow(0 0 13px rgba(var(--rgb),.8)); }
+    .plant .pname { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: 1.15rem; color: #fff; line-height: 1.15; }
+    .plant .pkw { font-size: .74rem; letter-spacing: .04em; color: var(--text-muted); line-height: 1.7; }
+    .plant .more { margin-top: .5rem; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--rgb)); opacity: .9; transition: letter-spacing .4s; }
+    .plant:hover .more { letter-spacing: .22em; }
+    .kws { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+    .kw { font-size: .72rem; letter-spacing: .04em; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12); border-radius: 50px; padding: .2rem .65rem; }
+    .empty { grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem 0; }
+
+    /* Modal */
+    .modal-bg { position: fixed; inset: 0; z-index: 400; background: radial-gradient(70% 60% at 50% 30%, rgba(14,24,56,.9), rgba(4,8,22,.95)); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 1.2rem; }
+    .modal-bg.open { display: flex; }
+    .modal { --c: #A274F1; --rgb: 162,116,241; position: relative; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; padding: 0 2.4rem 1.8rem; border: 1px solid rgba(var(--rgb),.45); border-radius: 170px 170px 26px 26px; background: linear-gradient(180deg, rgba(var(--rgb),.22), #0A1128 280px); box-shadow: 0 30px 90px rgba(0,0,0,.65), 0 0 80px -20px rgba(var(--rgb),.5); animation: bloom .6s cubic-bezier(.2,.8,.2,1); scrollbar-width: thin; }
+    .modal-close { position: absolute; top: 1.1rem; right: 1.1rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; transition: all .3s; }
+    .modal-close:hover { background: rgba(255,255,255,.14); transform: rotate(90deg); }
+    .m-glyph { width: 150px; height: 150px; margin: 2.4rem auto .4rem; color: var(--c); }
+    .m-glyph svg { width: 100%; height: 100%; filter: drop-shadow(0 0 14px rgba(var(--rgb),.6)); }
+    .modal h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #fff; text-align: center; line-height: 1.1; margin: .2rem 0 .2rem; }
+    .m-cat { text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .25em; font-size: .72rem; color: rgb(var(--rgb)); margin-bottom: .8rem; }
+    .m-label { font-family: 'DM Sans', sans-serif; font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: rgb(var(--rgb)); margin: 1.5rem 0 .45rem; }
+    .modal p { color: var(--text-muted); line-height: 1.85; font-size: .98rem; }
+    .modal .kws { margin-top: .8rem; justify-content: center; }
+    .modal .kw { border-color: rgba(var(--rgb),.45); color: #fff; background: rgba(var(--rgb),.08); }
+    .m-video { display: flex; align-items: center; gap: .9rem; margin-top: 1.5rem; padding: .85rem 1.1rem; border-radius: 22px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); color: #fff; text-decoration: none; line-height: 1.5; font-size: .95rem; transition: border-color .35s, box-shadow .35s, background .35s; }
+    .m-video .yt { flex-shrink: 0; display: grid; place-items: center; transition: transform .35s; }
+    .m-video .yt-text b { font-weight: 600; color: rgb(var(--rgb)); }
+    .m-video:hover, .m-video:focus-visible { border-color: rgba(var(--rgb),.8); background: rgba(var(--rgb),.08); box-shadow: 0 0 28px -8px rgba(var(--rgb),.7); outline: none; }
+    .m-video:hover .yt { transform: scale(1.12); }
+    .modal-nav { display: flex; justify-content: space-between; margin-top: 1.8rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    .mp-note { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); text-align: center; font-style: italic; max-width: 760px; margin: 0.5rem auto; }
+    /* Teaching from Maestro Americo */
+    .m-teach { margin-top: 1.6rem; padding: 1.1rem 1.3rem 1.2rem; border: 1px solid rgba(255,151,1,0.3); border-left: 3px solid var(--neon-orange); border-radius: 12px; background: rgba(255,151,1,0.05); }
+    .m-teach .m-label { margin-top: 0; color: var(--neon-orange); }
+    .m-teach ul { list-style: none; padding: 0; margin: 0.6rem 0 0; }
+    .m-teach li { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.75rem; padding-left: 1.4rem; position: relative; }
+    .m-teach li::before { content: '✦'; position: absolute; left: 0; top: 4px; color: var(--neon-orange); font-size: 0.6rem; }
+    .m-teach li b { color: #fff; font-weight: 500; }
+
+    .mp-cta { text-align: center; margin: 1rem 0 0.5rem; }
+    .mp-cta a { display: inline-block; margin: 0.4rem; padding: 0.8rem 1.8rem; border-radius: 50px; border: 1px solid var(--neon-violet); color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.25s; }
+    .mp-cta a:hover { background: var(--neon-violet); color: #060A1A; }
+
+    @media (max-width: 760px) { .mp-two { grid-template-columns: 1fr; } .modal { padding: 1.8rem 1.4rem 1.4rem; } .step-panel { padding: 1.3rem; } }
+  
+  /* ── NAV FIX: keep each link on one line, switch to hamburger before it gets crowded ── */
+  .nav-links { gap: clamp(1rem, 1.7vw, 2.5rem); white-space: nowrap; }
+  .nav-links a { white-space: nowrap; }
+  nav { gap: 1.5rem; }
+  .nav-brand { flex-shrink: 0; }
+  @media (max-width: 1240px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  /* ══════════ FOREST / ORGANIC LAYER ══════════ */
+  body::before { opacity: .07; -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 25%, transparent 85%); mask-image: radial-gradient(ellipse at 50% 40%, #000 25%, transparent 85%); }
+  .forest { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .forest .blob { position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%; will-change: transform; }
+  .forest .b1 { left: -25vmax; top: -22vmax; background: radial-gradient(circle, rgba(36,199,255,.13), transparent 62%); animation: drift1 38s ease-in-out infinite alternate; }
+  .forest .b2 { right: -30vmax; top: 8vh; background: radial-gradient(circle, rgba(162,116,241,.17), transparent 62%); animation: drift2 46s ease-in-out infinite alternate; }
+  .forest .b3 { left: 8vw; bottom: -40vmax; background: radial-gradient(circle, rgba(46,170,120,.17), transparent 62%); animation: drift1 54s ease-in-out infinite alternate-reverse; }
+  .forest .mist { position: absolute; left: -50%; bottom: 0; width: 200%; height: 40vh; background: radial-gradient(ellipse 28% 50% at 20% 60%, rgba(160,200,220,.055), transparent), radial-gradient(ellipse 34% 45% at 65% 50%, rgba(160,200,220,.045), transparent); animation: mist 70s linear infinite alternate; }
+  .ff { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--ffc); box-shadow: 0 0 10px 3px var(--ffc); opacity: 0; animation: ff var(--dur) ease-in-out var(--del) infinite; }
+  .frond { position: absolute; bottom: -34px; width: 340px; height: auto; overflow: visible; opacity: .45; transform-origin: 50% 100%; animation: sway 11s ease-in-out infinite alternate; }
+  .frond.l { left: -120px; }
+  .frond.r { right: -120px; animation-duration: 13s; animation-direction: alternate-reverse; }
+  @media (max-width: 1200px) { .frond { display: none; } }
+
+  @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(8vmax, 6vmax) scale(1.12); } }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1.05); } to { transform: translate(-9vmax, 8vmax) scale(.94); } }
+  @keyframes mist { from { transform: translateX(0); } to { transform: translateX(25%); } }
+  @keyframes ff { 0% { opacity: 0; transform: translate(0,0); } 15% { opacity: .9; } 50% { opacity: .35; transform: translate(var(--dx), var(--dy)); } 85% { opacity: .9; } 100% { opacity: 0; transform: translate(calc(var(--dx) * 1.6), calc(var(--dy) * 0.4)); } }
+  @keyframes sway { from { transform: rotate(-1.4deg); } to { transform: rotate(1.6deg); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes bob { from { translate: 0 -5px; } to { translate: 0 7px; } }
+  @keyframes breathe { from { opacity: .55; transform: scale(.92); } to { opacity: 1; transform: scale(1.08); } }
+  @keyframes bloom { from { opacity: 0; transform: translateY(30px) scale(.92); } to { opacity: 1; transform: none; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* scroll reveals (only active when the script confirms it can run them) */
+  .rv .reveal:not(.in) { opacity: 0; }
+  .reveal.in { animation: rise .9s cubic-bezier(.2,.7,.2,1) backwards; }
+  .plant.in { animation: rise .9s cubic-bezier(.2,.7,.2,1) backwards, bob var(--bd, 7s) ease-in-out infinite alternate; animation-delay: calc(var(--k, 0) * 80ms), calc(var(--k, 0) * -1.1s); }
+
+  /* ══════════ PAGE FEEL ══════════ */
+  main.wide { max-width: 1080px; }
+  .scroll-outer { background: none; border: 0; border-radius: 0; padding: 1rem 0 2rem; }
+  .scroll-corner { display: none; }
+  .hero-glyph { width: 170px; height: 170px; margin: 0 auto 1.2rem; color: var(--neon-orange); animation: bob 7s ease-in-out infinite alternate; filter: drop-shadow(0 0 14px rgba(255,151,1,.55)); }
+  .scroll-eyebrow { color: rgba(255,151,1,.9); letter-spacing: .42em; }
+  .scroll-title { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.05; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 30%, #d8c6ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mp-lead { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; color: #b9c4d8; max-width: 640px; }
+  .scroll-subheading { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.02em; font-style: normal; font-size: clamp(1.3rem, 3vw, 1.9rem); color: #fff; margin: 2.2rem 0 1.4rem; }
+  .mp-two { gap: 2rem; }
+  .mp-card { background: linear-gradient(155deg, rgba(36,199,255,.07), rgba(162,116,241,.07) 60%, rgba(255,255,255,.02)); border: 1px solid rgba(162,116,241,.22); border-radius: 80px 20px 80px 20px; padding: 2.4rem 2.4rem 2.2rem; }
+  .mp-card:nth-child(2) { border-radius: 20px 80px 20px 80px; }
+  .mp-card h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.1rem; font-weight: 900; font-style: normal; color: #fff; }
+  .mp-card .scroll-p { text-align: left; }
+  .yt-frame { border-radius: 30px; box-shadow: 0 0 80px -20px rgba(162,116,241,.55), 0 20px 60px rgba(4,8,22,.6); }
+  .vision-video-eyebrow { color: rgba(255,151,1,.9); }
+  .scroll-divider { display: block; height: 52px; margin: 2.2rem auto; max-width: 640px; }
+  .scroll-divider svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .vdiv-path { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 2.4s ease; }
+  .rv .scroll-divider:not(.in) .vdiv-path { stroke-dashoffset: 1; }
+  .mp-note { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: .95rem; }
+  .mp-cta a { transition: all .35s; }
+  .mp-cta a:hover { box-shadow: 0 0 30px -6px var(--neon-violet); }
+  .m-teach { border: 1px solid rgba(255,151,1,.28); border-radius: 26px; background: linear-gradient(160deg, rgba(255,151,1,.10), rgba(255,151,1,.02)); }
+  .m-teach .m-label { font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 700; text-transform: uppercase; letter-spacing: .25em; font-size: .72rem; }
+
+  @media (max-width: 760px) {
+    .plant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem .8rem; }
+    .plant { min-width: 0; }
+    .plant .pname, .plant .pkw { overflow-wrap: anywhere; hyphens: auto; }
+    .plant .pkw { font-size: .68rem; }
+    .plant { padding: 1.3rem .7rem 1.2rem; }
+    .plant:nth-child(3n+2) { margin-top: 0; border-radius: 70px 22px 70px 22px; }
+    .plant:nth-child(3n) { border-radius: 22px 70px 22px 70px; }
+    .plant:nth-child(even) { margin-top: 1.6rem; }
+    .pglyph { width: 96px; height: 96px; }
+    .plant .pname { font-size: .98rem; letter-spacing: -0.01em; }
+    .modal { border-radius: 120px 120px 22px 22px; padding: 0 1.4rem 1.4rem; }
+    .modal h3 { font-size: clamp(1.6rem, 8vw, 2.1rem); overflow-wrap: anywhere; }
+    .modal { max-width: 100%; }
+    .mp-card { border-radius: 50px 16px 50px 16px; padding: 1.8rem 1.6rem; }
+    .mp-card:nth-child(2) { border-radius: 16px 50px 16px 50px; }
+  }
+  html, body { max-width: 100%; overflow-x: clip; }
+  @media (max-width: 380px) { .plant { padding: 1.1rem .5rem 1rem; } .pglyph { width: 84px; height: 84px; } .plant .pname { font-size: .88rem; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .ff { display: none; }
+  }
+
+  /* ══════════ HEADER FONT: Cormorant Garamond, mixed case ══════════ */
+  h1, h2, h3, h4,
+  .nav-name, .hf-name, .stat-num, .fn, .off-en, .off-num,
+  .scroll-title, .scroll-subheading, .mp-card h3, .page-title, .card-title, .card-body h2, .card-body h3,
+  .expect-title, .expect-item-title, .cta-band-title, .price-amount,
+  .video-card-title, .vtext h4, .plant .pname, .modal h3, .plant-pills-title,
+  .cs-img-text h3, .cs-form-header h2, .mobile-nav a {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .scroll-title, .page-title { font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1.05; }
+  .scroll-subheading { font-size: clamp(1.7rem, 3.6vw, 2.4rem); line-height: 1.15; }
+  .mp-card h3, .vtext h4, .expect-item-title, .video-card-title { font-size: 1.45rem; font-weight: 600; line-height: 1.2; }
+  .plant .pname { font-size: 1.5rem; font-weight: 600; line-height: 1.15; }
+  .modal h3 { font-size: clamp(2.2rem, 6vw, 3rem); line-height: 1.05; }
+  .card-title { font-size: clamp(1.8rem, 3vw, 2.3rem); }
+  .expect-title { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+  .cta-band-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+  .price-amount { font-size: 2.7rem; font-weight: 600; font-variant-numeric: lining-nums; }
+  .off-num { font-size: 2.8rem; font-weight: 600; font-variant-numeric: lining-nums; }
+  .mobile-nav a { font-size: 1.9rem; }
+  .hf-name { font-size: 1.9rem; }
+  .hf-text h2 { font-size: clamp(2.4rem, 3.8vw, 3.5rem); line-height: 1.05; }
+  .vs-text h2 { font-size: clamp(2.3rem, 3.6vw, 3.3rem); line-height: 1.05; }
+  .off-header h2 { font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.05; }
+  .off-en { font-size: 1.5rem; font-weight: 600; }
+  .plant-pills-title { font-size: 2rem; }
+  .cs-form-header h2 { font-size: clamp(2.2rem, 3vw, 3rem); }
+  .cs-img-text h3 { font-size: 2.2rem; }
+  @media (max-width: 760px) {
+    .plant .pname { font-size: 1.2rem; }
+    .modal h3 { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .plant-pills-title { font-size: 1.6rem; }
+    .hf-text h2 { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .vs-text h2 { font-size: clamp(2rem, 7vw, 2.6rem); }
+    .off-header h2 { font-size: clamp(2.1rem, 7.5vw, 2.8rem); }
+  }
+  @media (max-width: 380px) { .plant .pname { font-size: 1.05rem; } }
+
+  /* ── Mobile menu: never clip the top; scroll if the screen is short ── */
+  .mobile-nav {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.1rem;
+    padding: 5.5rem 1rem 2.5rem;
+    height: 100vh; height: 100dvh;
+    box-sizing: border-box;
+  }
+  .mobile-nav a { font-size: 1.6rem; line-height: 1.15; }
+  .mobile-nav > :first-child { margin-top: auto; }
+  .mobile-nav > :last-child { margin-bottom: auto; }
+  @media (max-height: 700px) { .mobile-nav { gap: .8rem; } .mobile-nav a { font-size: 1.4rem; } }
+
+  /* ══════════ HERO GLYPH: line-built kené emblem (one thread colour + one accent) ══════════ */
+  .hero-glyph { width: 200px; height: 200px; filter: drop-shadow(0 0 12px rgba(255,151,1,.28)); }
+  .hero-glyph svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .hero-glyph path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .hero-glyph .kg-m  { stroke: var(--neon-orange); stroke-width: 1.7; }
+  .hero-glyph .kg-t  { stroke: var(--neon-orange); stroke-width: 1; stroke-opacity: .6; }
+  .hero-glyph .kg-a  { stroke: var(--neon-violet); stroke-width: 1.5; }
+  .hero-glyph .kg-st { stroke: rgba(255,151,1,.38); stroke-width: 1.1; stroke-dasharray: 2.6 2.6; }
+  .hero-glyph .kg-mf { fill: var(--neon-orange); stroke: none; }
+  .hero-glyph .kg-af { fill: var(--neon-violet); stroke: none; }
+  .hero-glyph .kg-m.kg-af { stroke: var(--neon-orange); stroke: var(--neon-orange); }
+  .hero-glyph .kg-bgf { fill: var(--bg-dark); }
+  /* the thread is "woven" in on load */
+  .hero-glyph .kg-m, .hero-glyph .kg-t, .hero-glyph .kg-a { stroke-linecap: butt; stroke-dasharray: 1; stroke-dashoffset: 1; animation: kgweave 2.2s cubic-bezier(.4,.1,.2,1) forwards; animation-delay: var(--d, 0s); }
+  .hero-glyph .kg-st, .hero-glyph .kg-mf, .hero-glyph .kg-af, .hero-glyph .kg-bgf { opacity: 0; animation: kgfade 1.4s ease 1.2s forwards; }
+  /* outlined + filled shapes: weave the outline, fade the fill in separately */
+  .hero-glyph .kg-m.kg-bgf, .hero-glyph .kg-m.kg-af { opacity: 1; fill-opacity: 0; animation: kgweave 2.2s cubic-bezier(.4,.1,.2,1) forwards, kgfill 1.4s ease 1.2s forwards; animation-delay: var(--d, 0s), 1.2s; }
+  @keyframes kgfill { to { fill-opacity: 1; } }
+  @keyframes kgweave { to { stroke-dashoffset: 0; } }
+  @keyframes kgfade { to { opacity: 1; } }
+  @media (max-width: 760px) { .hero-glyph { width: 160px; height: 160px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glyph .kg-m, .hero-glyph .kg-t, .hero-glyph .kg-a { stroke-dashoffset: 0 !important; }
+    .hero-glyph .kg-st, .hero-glyph .kg-mf, .hero-glyph .kg-af, .hero-glyph .kg-bgf { opacity: 1 !important; }
+    .hero-glyph .kg-m.kg-bgf, .hero-glyph .kg-m.kg-af { fill-opacity: 1 !important; }
+  }
+</style>
+</head>
+<body>
+  <script>
+    (function(){
+      var saved = sessionStorage.getItem('kk-lang') || 'en';
+      document.documentElement.setAttribute('data-lang', saved);
+      if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) document.documentElement.classList.add('rv');
+    })();
+  </script>
+
+  <div class="forest" id="forest" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="mist"></div></div>
+
+  <nav>
+    <a href="index.html" class="nav-brand" style="text-decoration:none; display:flex; flex-direction:column; gap:6px;">
+      <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="nav-logo-word">
+      <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="nav-logo-tag">
+    </a>
+        <ul class="nav-links">
+      <li><a href="vision.html" data-en="Vision" data-es="Visión">Vision</a></li>
+      <li><a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a></li>
+      <li><a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a></li>
+      <li><a href="master-plants.html" class="active" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a></li>
+      <li><a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a></li>
+      <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+      <li><a href="media.html" data-en="Media" data-es="Media">Media</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <div class="lang-btns">
+        <button class="lb on" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="vision.html" data-en="Vision" data-es="Visión">Vision</a>
+  <a href="the-maestro.html" data-en="The Maestro" data-es="El Maestro">The Maestro</a>
+  <a href="teachings.html" data-en="Teachings" data-es="Enseñanzas">Teachings</a>
+  <a href="master-plants.html" class="active" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</a>
+  <a href="retreat.html" data-en="Retreat" data-es="Retiro">Retreat</a>
+  <a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a>
+    <a href="media.html" data-en="Media" data-es="Media">Media</a>
+  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <div class="lang-btns" style="margin-top:1rem;">
+    <button class="lb on" onclick="setLang('en');toggleMenu()">EN</button>
+    <button class="lb" onclick="setLang('es');toggleMenu()">ES</button>
+  </div>
+</div>
+
+  <main class="wide">
+    <div class="scroll-outer">
+
+      <!-- Corner ornaments -->
+      <svg class="scroll-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner tr" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner bl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <svg class="scroll-corner br" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 26 L2 2 L26 2" stroke="#A274F1" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="2" cy="2" r="2.5" fill="#FF9701"/>
+        <path d="M9 2 L2 9" stroke="#FF9701" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15 2 L2 15" stroke="#FF9701" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+
+      <div class="hero-glyph" id="heroGlyph"></div>
+      <div class="scroll-eyebrow" data-en="Koman Keneya · School of Traditional Medicine" data-es="Koman Keneya · Escuela de Medicina Tradicional">Koman Keneya · School of Traditional Medicine</div>
+      <h1 class="scroll-title" data-en="Master Plants" data-es="Plantas Maestras">Master Plants</h1>
+      <p class="scroll-p mp-lead" style="text-align:center;" data-en="Discover the plant teachers Maestro Americo works with, and what it means to diet them in the Shipibo tradition." data-es="Conoce a las plantas maestras con las que trabaja el Maestro Americo, y lo que significa hacer dieta con ellas en la tradición shipibo.">Discover the plant teachers Maestro Americo works with, and what it means to diet them in the Shipibo tradition.</p>
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" data-en="The Basics" data-es="Lo Básico">The Basics</div>
+      <div class="mp-two">
+        <div class="mp-card">
+          <h3 data-en="What is a Master Plant?" data-es="¿Qué es una Planta Maestra?">What is a Master Plant?</h3>
+          <p class="scroll-p" data-en="In the Shipibo and wider Amazonian traditions, a master plant (<b>planta maestra</b>) is a plant regarded as a teacher and healer, not just a remedy. Each one is understood to carry its own spirit, character and gifts, such as strength, protection, an open heart, or the ability to bring clarity through dreams. Healers learn their craft by building a long, personal relationship with these plants." data-es="En las tradiciones shipibo y amazónicas en general, una planta maestra es una planta considerada maestra y sanadora, no solo un remedio. Se entiende que cada una tiene su propio espíritu, carácter y dones, como la fortaleza, la protección, un corazón abierto o la capacidad de traer claridad a través de los sueños. Los sanadores aprenden su oficio construyendo una relación larga y personal con estas plantas.">In the Shipibo and wider Amazonian traditions, a master plant (<b>planta maestra</b>) is a plant regarded as a teacher and healer, not just a remedy. Each one is understood to carry its own spirit, character and gifts, such as strength, protection, an open heart, or the ability to bring clarity through dreams. Healers learn their craft by building a long, personal relationship with these plants.</p>
+        </div>
+        <div class="mp-card">
+          <h3 data-en="What is a Dieta?" data-es="¿Qué es una Dieta?">What is a Dieta?</h3>
+          <p class="scroll-p" data-en="A <b>dieta</b> is the traditional way of getting to know a master plant. You take the plant in a prepared form, usually as a tea or juice, while living simply and apart from daily life, with a very plain diet and a set of restrictions. The goal is to become quiet and receptive so the plant can teach, heal and strengthen you. It is a commitment that goes well beyond the days spent with the plant. Through our commitment to the dieta, our sensitivity begins to increase and the world (nete) of the plants begins to open to us, allowing us to deepen our connection with them and begin receiving their icaros." data-es="Una <b>dieta</b> es la forma tradicional de conocer a una planta maestra. Se toma la planta de forma preparada, normalmente como té o jugo, mientras se vive con sencillez y apartado de la vida cotidiana, con una alimentación muy simple y una serie de restricciones. El objetivo es volverse silencioso y receptivo para que la planta pueda enseñar, sanar y fortalecer. Es un compromiso que va mucho más allá de los días que se pasan con la planta. A través de nuestro compromiso con la dieta, nuestra sensibilidad comienza a aumentar y el mundo (nete) de las plantas comienza a abrirse ante nosotros, permitiéndonos profundizar nuestra conexión con ellas y comenzar a recibir sus icaros.">A <b>dieta</b> is the traditional way of getting to know a master plant. You take the plant in a prepared form, usually as a tea or juice, while living simply and apart from daily life, with a very plain diet and a set of restrictions. The goal is to become quiet and receptive so the plant can teach, heal and strengthen you. It is a commitment that goes well beyond the days spent with the plant. Through our commitment to the dieta, our sensitivity begins to increase and the world (nete) of the plants begins to open to us, allowing us to deepen our connection with them and begin receiving their icaros.</p>
+        </div>
+      </div>
+
+      <div class="scroll-subheading" style="margin-top:1.6rem;" data-en="How a Dieta Unfolds" data-es="Cómo se Desarrolla una Dieta">How a Dieta Unfolds</div>
+      <div class="vine" id="vine">
+        <svg class="vine-svg" id="vineSvg" aria-hidden="true">
+          <defs><linearGradient id="vineGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9701"/><stop offset=".55" stop-color="#A274F1"/><stop offset="1" stop-color="#24C7FF"/></linearGradient></defs>
+          <path class="vine-bg" id="vineBg"/>
+          <path class="vine-fg" id="vineFg"/>
+          <g id="vineLeaves"></g>
+        </svg>
+        <div id="vineSteps"></div>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="vision-video-wrap">
+        <div class="vision-video-eyebrow" data-en="Watch &amp; Learn" data-es="Mira y Aprende">Watch &amp; Learn</div>
+        <div class="yt-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/LLfK7iJpTX0" title="Master Plants" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <div class="scroll-subheading" data-en="Explore the Master Plants" data-es="Explora las Plantas Maestras">Explore the Master Plants</div>
+      <div class="explorer-tools">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="result-count" id="count"></div>
+      <div class="plant-grid" id="grid"></div>
+
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">✦</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+      <p class="mp-note" data-en="Everything on this page is traditional and ethnobotanical information shared for education. It is not medical advice. Some of these plants are toxic or pharmacologically active, so they should never be prepared or taken on your own. Properties and teachings can also vary between lineages. A dieta is done only under the guidance of an experienced maestro, and plants are chosen for each person through consultation with Maestro Americo." data-es="Todo lo que aparece en esta página es información tradicional y etnobotánica compartida con fines educativos. No es consejo médico. Algunas de estas plantas son tóxicas o farmacológicamente activas, por lo que nunca deben prepararse ni tomarse por cuenta propia. Además, las propiedades y enseñanzas pueden variar entre linajes. La dieta se hace solo bajo la guía de un maestro con experiencia, y las plantas se eligen para cada persona mediante una consulta con el Maestro Americo.">Everything on this page is traditional and ethnobotanical information shared for education. It is not medical advice. Some of these plants are toxic or pharmacologically active, so they should never be prepared or taken on your own. Properties and teachings can also vary between lineages. A dieta is done only under the guidance of an experienced maestro, and plants are chosen for each person through consultation with Maestro Americo.</p>
+      <div class="mp-cta">
+        <a href="retreat.html" data-en="See the Retreats" data-es="Ver los Retiros">See the Retreats</a>
+        <a href="index.html#contact" data-en="Ask a Question" data-es="Haz una Pregunta">Ask a Question</a>
+      </div>
+      <div class="scroll-divider">
+        <div class="scroll-divider-line"></div>
+        <span class="scroll-divider-glyph">❖</span>
+        <div class="scroll-divider-line"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="modal-bg" id="modalBg">
+    <button class="modal-close" id="mClose" aria-label="Close">&times;</button>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal">
+      <div id="mBody"></div>
+      <div class="modal-nav">
+        <button class="mini-btn" id="mPrev" data-en="← Previous" data-es="← Anterior">← Previous</button>
+        <button class="mini-btn" id="mNext" data-en="Next →" data-es="Siguiente →">Next →</button>
+      </div>
+    </div>
+  </div>
+
+
+  <footer style="background:#060A1A; padding:4rem 3.5rem 2rem; text-align:center; border-top:1px solid #0F1830;">
+    <a href="index.html" aria-label="Koman Keneya Home" style="display:inline-block; text-decoration:none; transition:opacity 0.25s;" onmouseover="this.style.opacity='0.75';" onmouseout="this.style.opacity='1';">
+      <img src="Photos/koman-keneya-wordmark.png" alt="Koman Keneya" class="footer-logo-word">
+      <img src="Photos/koman-keneya-tagline.png" alt="School of Traditional Medicine" class="footer-logo-tag">
+    </a>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem; padding:2.5rem 0 1rem; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:#94A3B8;" data-en="Connect With Us" data-es="Conéctate Con Nosotros">Connect With Us</div>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://www.instagram.com/komankeneya_center/" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @komankeneya_center
+        </a>
+        <a href="https://youtube.com/@komankeneya?si=irAHyyIv_CL4D7Es" target="_blank" rel="noopener"
+           style="display:inline-flex; align-items:center; gap:0.7rem; padding:0.75rem 1.5rem; border-radius:50px; border:1px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; font-size:0.88rem; font-weight:600; letter-spacing:0.05em; transition:all 0.25s; background:rgba(255,255,255,0.05);"
+           onmouseover="this.style.background='#A274F1';this.style.borderColor='#A274F1';this.style.color='#060A1A';"
+           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          Koman Keneya
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:#7C8AA0; letter-spacing:0.08em; border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem;">
+      <span data-en="© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved." data-es="© 2026 Koman Keneya, Escuela De Medicina Tradicional. Todos los derechos reservados.">© 2026 Koman Keneya, School of Traditional Medicine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+  var PLANTS = [{"n": "Ayahuma", "tags": ["strength", "cleanse"], "en": {"kw": ["Protection", "Strength", "Cleansing", "Grounding", "Resilience"], "prof": "Large tropical tree (the cannonball tree), reaching about 35 m. Its long, strongly fragrant flower clusters, most scented at night, grow directly from the trunk, and its woody, cannonball-sized fruits hang from the trunk and large branches. Native to lowland tropical forest from Central America to Brazil and Bolivia.", "props": "Ayahuma is regarded as a serious and powerful teacher, a tree to be approached with respect. The name is generally read as “spirit head” (aya, spirit; huma, head), and in Shipibo-Konibo tradition the tree is treated as one with a strong spirit: loggers are said to speak to it before felling it, and its spirit is called upon in healing songs (icaros) alongside other great trees such as lupuna and catahua. In dieta it is traditionally taken for protection, cleansing and grounding, and for the steadiness needed to work with heavy or dense energies. Its teaching is described as slow, firm and patient, building resilience and the courage to hold your own center. Elsewhere in the Amazon, infusions of leaf, bark and flower are used for pain and inflammation."}, "es": {"kw": ["Protección", "Fortaleza", "Limpieza", "Arraigo", "Resiliencia"], "prof": "Gran árbol tropical (el árbol bala de cañón), que alcanza unos 35 m. Sus largos racimos de flores, muy fragantes sobre todo de noche, crecen directamente del tronco, y sus frutos leñosos, del tamaño de una bala de cañón, cuelgan del tronco y de las ramas grandes. Nativo de la selva tropical de tierras bajas desde Centroamérica hasta Brasil y Bolivia.", "props": "La Ayahuma se considera una maestra seria y poderosa, un árbol al que se acerca con respeto. El nombre suele entenderse como “cabeza de espíritu” (aya, espíritu; huma, cabeza), y en la tradición shipibo-konibo el árbol se trata como un ser de espíritu fuerte: se dice que los madereros le hablan antes de talarlo, y su espíritu es invocado en los cantos de sanación (icaros) junto con otros grandes árboles como la lupuna y la catahua. En la dieta se toma tradicionalmente para la protección, la limpieza y el arraigo, y para la firmeza necesaria al trabajar con energías pesadas o densas. Su enseñanza se describe como lenta, firme y paciente, y construye resiliencia y el valor de sostener el propio centro. En otras partes de la Amazonía se usan infusiones de hoja, corteza y flor para el dolor y la inflamación."}, "i": 1}, {"n": "Catahua", "tags": ["dream", "cleanse"], "en": {"kw": ["Dreaming", "Deep plant work", "Transformation", "Power", "Protection"], "prof": "Towering rainforest tree, up to about 50 m in dense forest, with a straight trunk covered in conical spines (the “dynamite tree”). Its ribbed, pumpkin-like fruits can burst open with a loud crack when ripe, scattering the seeds. It grows in moist and seasonally flooded forest across the western Amazon.", "props": "Catahua is one of the strongest teachers of the forest. Historical Shipibo sources place it among the master plants associated with dreaming, and its spirit is called upon in icaros. It is known as a tree of power: it cleanses, protects, and carries the dieter toward deep transformation. Its teaching is direct, working through intense dreams and inviting discipline, honesty and respect."}, "es": {"kw": ["Sueños", "Trabajo profundo con plantas", "Transformación", "Poder", "Protección"], "prof": "Imponente árbol de la selva, de hasta unos 50 m en bosque denso, con un tronco recto cubierto de espinas cónicas (el “árbol dinamita”). Sus frutos acostillados, parecidos a una calabaza pequeña, pueden estallar con un fuerte chasquido al madurar y esparcir las semillas. Crece en bosque húmedo y estacionalmente inundable de la Amazonía occidental.", "props": "La Catahua es una de las maestras más fuertes del bosque. Las fuentes históricas shipibo la ubican entre las plantas maestras asociadas con los sueños, y su espíritu es invocado en los icaros. Es conocida como un árbol de poder: limpia, protege y lleva a quien hace dieta hacia una transformación profunda. Su enseñanza es directa, llega a través de sueños intensos e invita a la disciplina, la honestidad y el respeto."}, "i": 2}, {"n": "Bobinsana", "tags": ["heart", "dream"], "en": {"kw": ["Love", "Heart opening", "Emotional healing", "Intuition", "Creativity"], "prof": "Shrub or small tree, 4 to 6 m tall, that grows along river and stream banks across the Amazon basin. It has delicate feathery foliage and distinctive pink-to-reddish, brush-like “powder-puff” flowers, and belongs to the legume family.", "props": "Bobinsana is the plant of the heart. It is often described as a gentle but honest teacher that softens what has hardened, bringing compassion, sensitivity and self-love, and helping the dieter feel and release old emotional wounds, grief and loneliness. It is also associated with intuition, creativity and vivid, meaningful dreams, and with the ability to love and be loved without fear. Because of its softness it is often recommended as a first plant to know. Growing beside rivers, it is said to carry the flow and movement of water. Traditionally the bark is also used for rheumatic pain, colds and body aches."}, "es": {"kw": ["Amor", "Apertura del corazón", "Sanación emocional", "Intuición", "Creatividad"], "prof": "Arbusto o árbol pequeño, de 4 a 6 m de altura, que crece a orillas de ríos y quebradas en toda la cuenca amazónica. Tiene follaje delicado y plumoso y flores características rosadas a rojizas en forma de pincel, y pertenece a la familia de las leguminosas.", "props": "La Bobinsana es la planta del corazón. Suele describirse como una maestra suave pero honesta, que ablanda lo que se ha endurecido y trae compasión, sensibilidad y amor propio, y que ayuda a quien hace dieta a sentir y soltar viejas heridas emocionales, duelos y soledad. También se asocia con la intuición, la creatividad y los sueños vívidos y significativos, y con la capacidad de amar y ser amado sin miedo. Por su suavidad se recomienda a menudo como una primera planta para conocer. Al crecer junto a los ríos, se dice que lleva el fluir y el movimiento del agua. Tradicionalmente la corteza se usa también para dolores reumáticos, resfríos y molestias del cuerpo."}, "i": 3}, {"n": "Chiric Sanango", "tags": ["strength", "cleanse"], "en": {"kw": ["Forgiveness", "Courage", "Strength", "Self-love", "Wisdom"], "prof": "Flowering shrub with flowers ranging from purple and violet to lighter colors; native to tropical South America.", "props": "Known as Abuelo Sanango, the wise elder, Chiric Sanango is a strict but loving teacher who brings balance to our three brains: mind, heart and stomach. Its medicine teaches forgiveness of ourselves and others, releasing grief, anger and resentment so the heart can open again. It also builds strength, courage, self-worth and the confidence to express who we truly are. Teachings often arrive through dreams, visions and icaros, and can be challenging. Traditionally used for the nervous system, muscular and joint discomfort, and physical vitality."}, "es": {"kw": ["Perdón", "Valentía", "Fortaleza", "Amor propio", "Sabiduría"], "prof": "Arbusto con flores que van del morado y violeta a tonos más claros; nativo de Sudamérica tropical.", "props": "Conocido como Abuelo Sanango, el sabio anciano, Chiric Sanango es un maestro estricto pero amoroso que trae equilibrio a nuestros tres cerebros: mente, corazón y estómago. Su medicina enseña el perdón hacia nosotros mismos y hacia los demás, soltando el dolor, la ira y el resentimiento para que el corazón pueda abrirse de nuevo. También fortalece la valentía, el valor propio y la confianza para expresar quiénes somos. Sus enseñanzas suelen llegar a través de sueños, visiones e icaros, y pueden ser desafiantes. Tradicionalmente se usa para el sistema nervioso, las molestias musculares y articulares, y la vitalidad física."}, "i": 4}, {"n": "Marosa", "tags": ["heart"], "en": {"kw": ["Love", "Emotional balance", "Confidence", "Self-worth", "Heart opening"], "prof": "Herbaceous plant. Its botanical identification is not settled: some Shipibo ethnobotanical records identify it with Pfaffia iresinoides, while in dieta circles it is often spoken of alongside the Brunfelsia plants related to chiric sanango. The plant a lineage works with is best confirmed by its maestro.", "props": "Marosa is one of the most commonly cited Shipibo master plants, known as a teacher of love and emotional balance. It is described as nurturing the heart, building confidence and self-worth, and softening the way we relate to others, which is why it is linked with relational and feminine energy. Dieters often speak of dreams that bring tenderness, clarity about relationships and a steadier sense of who they are. Some Shipibo sources also describe marosa as a plant used to prepare for ayahuasca ceremony, to strengthen and orient the experience."}, "es": {"kw": ["Amor", "Equilibrio emocional", "Confianza", "Valía personal", "Apertura del corazón"], "prof": "Planta herbácea. Su identificación botánica no está definida: algunos registros etnobotánicos shipibo la identifican con Pfaffia iresinoides, mientras que en los círculos de dieta se habla a menudo de ella junto a las plantas del género Brunfelsia, emparentadas con el chiric sanango. La planta con la que trabaja cada linaje conviene confirmarla con su maestro.", "props": "La Marosa es una de las plantas maestras shipibo más citadas, conocida como maestra del amor y del equilibrio emocional. Se la describe como nutridora del corazón, que fortalece la confianza y la valía personal y suaviza la manera en que nos relacionamos con los demás, por lo que se vincula con la energía relacional y femenina. Quienes hacen dieta suelen hablar de sueños que traen ternura, claridad sobre las relaciones y un sentido más firme de quiénes son. Algunas fuentes shipibo también describen la marosa como una planta usada para prepararse a la ceremonia de ayahuasca, fortaleciendo y orientando la experiencia."}, "i": 5}, {"n": "Piñón Colorado", "tags": ["cleanse"], "en": {"kw": ["Cleansing", "Purification", "Protection", "Strengthening", "Clearing"], "prof": "Shrub 2 to 4 m tall with lobed leaves that are purplish and slightly sticky when young, small red flowers and three-seeded capsules. Native to tropical America and now widespread. All parts exude a latex sap.", "props": "Piñón Colorado is a plant of cleansing and clearing. It is traditionally used to purify body and spirit, protect against harmful influences and strengthen the dieter before deeper work, and it is counted among the culturally important medicinal plants of Shipibo communities. Its work is described as practical and direct: it clears what is heavy or stuck so that other plants can be received more cleanly. It is also well known in Amazonian and Latin American folk medicine, where different parts are used for fevers, wounds and skin complaints."}, "es": {"kw": ["Limpieza", "Purificación", "Protección", "Fortalecimiento", "Despeje"], "prof": "Arbusto de 2 a 4 m de altura con hojas lobuladas, rojizas y algo pegajosas cuando son jóvenes, pequeñas flores rojas y cápsulas de tres semillas. Nativo de la América tropical y hoy muy extendido. Todas sus partes sueltan un látex.", "props": "El Piñón Colorado es una planta de limpieza y despeje. Tradicionalmente se usa para purificar cuerpo y espíritu, proteger de influencias dañinas y fortalecer a quien hace dieta antes de un trabajo más profundo, y se cuenta entre las plantas medicinales culturalmente importantes de las comunidades shipibo. Su trabajo se describe como práctico y directo: despeja lo que está pesado o estancado para que otras plantas puedan recibirse con más limpieza. También es muy conocido en la medicina popular amazónica y latinoamericana, donde distintas partes se usan para fiebres, heridas y afecciones de la piel."}, "i": 6}, {"n": "Toé", "tags": ["dream", "cleanse"], "en": {"kw": ["Dreaming", "Visions", "Plant communication", "Power", "Transformation"], "prof": "Shrub or small tree, 1 to 6 m tall, with large hanging trumpet-shaped flowers that are strongly fragrant at dusk (Brugmansia). Known in cultivation, often grown near homes and gardens.", "props": "Toé is among the most powerful of the master plants. Historical Shipibo sources list it among the plants with strong visionary properties, and it is associated with dreaming, visions, plant communication and deep transformation. It is understood as a plant of great power, one that can reveal what is hidden, and Shipibo speakers describe bathing with it to take on its strength. A healer who diets a strong plant like this is said to carry more power in their work, and with it a deep responsibility toward everyone around them."}, "es": {"kw": ["Sueños", "Visiones", "Comunicación con las plantas", "Poder", "Transformación"], "prof": "Arbusto o árbol pequeño, de 1 a 6 m de altura, con grandes flores colgantes en forma de trompeta, muy fragantes al atardecer (Brugmansia). Se conoce en cultivo, y a menudo se siembra cerca de las casas y los jardines.", "props": "El Toé es de las plantas maestras más poderosas. Las fuentes históricas shipibo lo incluyen entre las plantas con fuertes propiedades visionarias, y se asocia con los sueños, las visiones, la comunicación con las plantas y la transformación profunda. Se entiende como una planta de gran poder, capaz de revelar lo oculto, y hablantes shipibo describen el baño con ella para tomar su fuerza. Se dice que un sanador que hace dieta con una planta fuerte como esta lleva más poder en su trabajo, y con él una profunda responsabilidad hacia quienes lo rodean."}, "i": 7}, {"n": "Patiquina", "tags": ["medicine", "cleanse"], "en": {"kw": ["Medicine", "Cleansing", "Healing", "Protection"], "prof": "Tropical herbaceous plant of the arum family, with large, broad, often patterned or variegated leaves. The local name is applied to more than one related plant, and one Peruvian record identifies “patiquina negra” as Xanthosoma violaceum.", "props": "Patiquina is a plant of cleansing, healing and protection. Maestro Americo confirms Patiquina as medicine. In Shipibo-Konibo practice its leaves are macerated in water and used as a drink or bath to protect against harm, and one healer calls its spirit “an important doctor.” It is deeply respected, and is associated with protection against unseen harm. Its teaching is described as clearing and shielding, helping the dieter feel safe enough to open."}, "es": {"kw": ["Medicina", "Limpieza", "Sanación", "Protección"], "prof": "Planta herbácea tropical de la familia de las aráceas, con hojas grandes y anchas, a menudo con patrones o variegadas. El nombre local se aplica a más de una planta emparentada, y un registro peruano identifica la “patiquina negra” como Xanthosoma violaceum.", "props": "La Patiquina es una planta de limpieza, sanación y protección. El Maestro Americo confirma la Patiquina como medicina. En la práctica shipibo-konibo sus hojas se maceran en agua y se usan como bebida o baño para protegerse del daño, y un sanador llama a su espíritu “un doctor importante”. Es profundamente respetada y se asocia con la protección contra los daños invisibles. Su enseñanza se describe como despejar y proteger, ayudando a quien hace dieta a sentirse lo bastante seguro como para abrirse."}, "i": 8}, {"n": "Requia", "tags": ["medicine"], "en": {"kw": ["Medicine", "Healing", "Vitality", "Plant knowledge"], "prof": "Tropical tree of the mahogany family (Guarea), with aromatic bark and valued timber. Several species carry the name regionally, and Shipibo-Konibo plots record it as Guarea kunthiana, while the better-known Guarea guidonia grows from the Caribbean to Bolivia.", "props": "Requia is a medicine tree of vitality and healing. Maestro Americo confirms Requia as medicine. In Shipibo-Konibo practice its bark is one of the traditional remedies for male vitality, taken together with a careful diet, and it is known as a working plant. Traditionally it is described as strengthening the body and building discipline in the dieter, with a cleansing character."}, "es": {"kw": ["Medicina", "Sanación", "Vitalidad", "Conocimiento de las plantas"], "prof": "Árbol tropical de la familia de la caoba (Guarea), con corteza aromática y madera valiosa. Varias especies llevan el nombre según la región: los registros shipibo-konibo la identifican como Guarea kunthiana, mientras que la más conocida Guarea guidonia crece desde el Caribe hasta Bolivia.", "props": "La Requia es un árbol medicinal de vitalidad y sanación. El Maestro Americo confirma la Requia como medicina. En la práctica shipibo-konibo su corteza es uno de los remedios tradicionales para la vitalidad masculina, tomada junto con una dieta cuidadosa, y se la conoce como una planta de trabajo. Tradicionalmente se describe como fortalecedora del cuerpo y formadora de disciplina en quien hace dieta, con un carácter limpiador."}, "i": 9}, {"n": "Renaquilla", "tags": ["heart", "medicine"], "en": {"kw": ["Love", "Healing", "Relational medicine", "Strength"], "prof": "Fig tree (Ficus) that produces white latex and can develop large, powerful roots. The name covers several related figs: Shipibo-Konibo plots record renaquilla as Ficus americana and the great strangler renaco as Ficus trigona, and the two are closely related in tradition.", "props": "Renaquilla belongs to the family of the great fig trees, the renacos, which the Shipibo-Konibo count among their master plants (rao). Historical Shipibo-Konibo research identifies it as a plant of traditional healing and dieta. Its spirit is understood to live in the enormous roots of the tree and is called upon in song. It is regarded as a plant of strength, rooting and resilience that also helps in relationships and the heart, and in some accounts it makes people hard-working, steady and capable. The bark is taken before meals within the traditional dieta."}, "es": {"kw": ["Amor", "Sanación", "Medicina relacional", "Fortaleza"], "prof": "Árbol de Ficus que produce látex blanco y puede desarrollar raíces grandes y poderosas. El nombre abarca varios higos emparentados: los registros shipibo-konibo identifican la renaquilla como Ficus americana y al gran renaco estrangulador como Ficus trigona, y en la tradición ambos están estrechamente relacionados.", "props": "La Renaquilla pertenece a la familia de los grandes higos, los renacos, que los shipibo-konibo cuentan entre sus plantas maestras (rao). La investigación histórica shipibo-konibo la identifica como una planta de sanación tradicional y de dieta. Se entiende que su espíritu vive en las enormes raíces del árbol y se le invoca en el canto. Se la considera una planta de fortaleza, arraigo y resiliencia que también ayuda en las relaciones y en el corazón, y en algunos relatos hace a las personas trabajadoras, firmes y capaces. La corteza se toma antes de las comidas dentro de la dieta tradicional."}, "i": 10}, {"n": "Shihuahuaco", "tags": ["strength"], "en": {"kw": ["Strength", "Endurance", "Grounding", "Stability", "Resilience"], "prof": "One of the giants of the rainforest canopy (Dipteryx), reaching up to about 60 m, with trunks over 2 m wide, great buttress roots, salmon-colored bark and exceptionally dense, hard wood. Individual trees can live for around 500 years. Its pods hold one large oily seed that feeds monkeys, bats, birds and fish.", "props": "Shihuahuaco is the elder of the forest, a tree of strength, endurance and stability. Contemporary Shipibo sources include it among the principal master plants. Its teaching mirrors the tree itself: patience, deep roots and the ability to stand firm through storms and long years. In dieta it is associated with grounding, protection and resilience, helping the dieter find a steady center and a strong sense of belonging to the earth and to their ancestors. A tree to honor and protect."}, "es": {"kw": ["Fortaleza", "Resistencia", "Arraigo", "Estabilidad", "Resiliencia"], "prof": "Uno de los gigantes del dosel de la selva (Dipteryx), que alcanza hasta unos 60 m, con troncos de más de 2 m de ancho, grandes raíces tabulares, corteza color salmón y una madera excepcionalmente densa y dura. Cada árbol puede vivir unos 500 años. Sus vainas contienen una semilla grande y aceitosa que alimenta a monos, murciélagos, aves y peces.", "props": "El Shihuahuaco es el anciano del bosque, un árbol de fortaleza, resistencia y estabilidad. Las fuentes shipibo contemporáneas lo incluyen entre las plantas maestras principales. Su enseñanza refleja al árbol mismo: paciencia, raíces profundas y la capacidad de mantenerse firme a través de tormentas y largos años. En la dieta se asocia con el arraigo, la protección y la resiliencia, y ayuda a quien la hace a encontrar un centro firme y un fuerte sentido de pertenencia a la tierra y a sus ancestros. Un árbol para honrar y proteger."}, "i": 11}, {"n": "Chullachaqui", "tags": ["dream", "cleanse"], "en": {"kw": ["Forest wisdom", "Dreaming", "Protection", "Deep teaching"], "prof": "An Amazonian forest tree whose local name is applied inconsistently between regions and sources, so the botanical species is not settled. The name is shared with the Chullachaqui, the forest guardian of Amazonian folklore.", "props": "Chullachaqui carries the name of the forest guardian of Amazonian folklore, the protector of the forest and its animals. As a plant teacher, historical Shipibo sources classify it among the master plants associated with dreaming, and a strong rao taken by healers to build their power. It is known as a deep teacher, working through dreams to bring forest wisdom, protection and a clear sense of boundaries. It is said to teach respect for the forest, humility and honesty."}, "es": {"kw": ["Sabiduría del bosque", "Sueños", "Protección", "Enseñanza profunda"], "prof": "Árbol de la selva amazónica cuyo nombre local se aplica de manera inconsistente entre regiones y fuentes, por lo que la especie botánica no está definida. El nombre lo comparte con el Chullachaqui, el guardián del bosque del folclore amazónico.", "props": "El Chullachaqui lleva el nombre del guardián del bosque del folclore amazónico, protector del bosque y de sus animales. Como planta maestra, las fuentes históricas shipibo la clasifican entre las plantas maestras asociadas con los sueños, y la describen como un rao fuerte que toman los sanadores para fortalecer su poder. Es conocida como una maestra profunda, que trabaja a través de los sueños para traer sabiduría del bosque, protección y un sentido claro de los límites. Se dice que enseña respeto por el bosque, humildad y honestidad."}, "i": 12}, {"n": "Manchinga", "tags": ["strength"], "en": {"kw": ["Strength", "Nourishment", "Grounding", "Vitality", "Endurance"], "prof": "Large tropical tree of the fig family (Brosimum) with milky latex. The name covers more than one Brosimum species depending on the region, including the ramón or breadnut (Brosimum alicastrum), which can reach 45 m and bears a large edible seed.", "props": "Manchinga is a tree of strength and nourishment, a plant that feeds as much as it heals. It is traditionally described as grounding the dieter, building physical vitality and endurance, and giving a feeling of being supported and sustained. Its nature is steady and generous rather than severe, which fits a tree whose seeds feed people and animals of the forest. Among Shipibo-Conibo communities, the resin of one manchinga is recorded as a remedy for rheumatism and stomach complaints. The bark of a related Brosimum is also macerated and taken against chills. Because the name covers several trees, the species a lineage works with is confirmed by its maestro."}, "es": {"kw": ["Fortaleza", "Nutrición", "Arraigo", "Vitalidad", "Resistencia"], "prof": "Gran árbol tropical de la familia de los higos (Brosimum) con látex lechoso. El nombre abarca más de una especie de Brosimum según la región, entre ellas el ramón o árbol del pan (Brosimum alicastrum), que puede alcanzar 45 m y da una semilla grande y comestible.", "props": "La Manchinga es un árbol de fortaleza y nutrición, una planta que alimenta tanto como sana. Tradicionalmente se describe como arraigante para quien hace dieta, que construye vitalidad física y resistencia y da la sensación de estar sostenido y nutrido. Su naturaleza es firme y generosa más que severa, lo que va con un árbol cuyas semillas alimentan a las personas y a los animales del bosque. Entre las comunidades shipibo-conibo se registra la resina de una manchinga como remedio para el reumatismo y las molestias del estómago. La corteza de un Brosimum emparentado también se macera y se toma contra el frío. Como el nombre abarca varios árboles, la especie con la que trabaja cada linaje la confirma su maestro."}, "i": 13}, {"n": "Tamamuri", "tags": ["strength"], "en": {"kw": ["Strength", "Grounding", "Physical resilience", "Learning medicine"], "prof": "Large tree of terra firme rainforest (Brosimum acutifolium), up to about 35 m, with abundant white latex and lance-shaped leaves. Known in Brazil as mururé. Native to Peru, Brazil, Colombia and French Guiana.", "props": "Tamamuri is recognized as a master plant in contemporary Shipibo dieta practice, and is above all a plant of strength and vitality. It is described as building physical resilience and endurance, grounding the dieter and teaching through the body, and it is associated with courage, warmth and the will to keep learning medicine. In Brazil the bark has long been used for rheumatism, joint pain and inflammation."}, "es": {"kw": ["Fortaleza", "Arraigo", "Resiliencia física", "Aprender medicina"], "prof": "Gran árbol de la selva de tierra firme (Brosimum acutifolium), de hasta unos 35 m, con abundante látex blanco y hojas lanceoladas. Conocido en Brasil como mururé. Nativo de Perú, Brasil, Colombia y la Guayana Francesa.", "props": "El Tamamuri se reconoce como planta maestra en la práctica contemporánea de la dieta shipibo, y es sobre todo una planta de fortaleza y vitalidad. Se la describe como constructora de resiliencia física y resistencia, que arraiga a quien hace dieta y enseña a través del cuerpo, y se asocia con la valentía, el calor y la voluntad de seguir aprendiendo medicina. En Brasil la corteza se usa desde hace mucho para el reumatismo, el dolor de articulaciones y la inflamación."}, "i": 14}, {"n": "Chuchuhuasi", "tags": ["strength", "dream"], "en": {"kw": ["Strength", "Endurance", "Vitality", "Dreaming"], "prof": "Large Amazonian canopy tree (Maytenus), up to about 30 m tall, with thick, reddish bark. The name covers several related trees across Peru, Colombia, Ecuador and Brazil. Its name is often glossed as “trembling back,” pointing to its famous use for back pain.", "props": "Chuchuhuasi is a tree of strength and endurance, known as the plant of the back and the bones. Historical Shipibo sources classify it among the dreaming master plants, alongside catahua and lupuna. As a teacher it is associated with physical vitality, stamina and the deepening of the relationship with plant medicine. The bark, prepared as a decoction or as an alcohol maceration, is one of the best-known remedies of the Peruvian Amazon for back pain, arthritis, rheumatism, colds and bronchial complaints, and it is also valued as a general tonic."}, "es": {"kw": ["Fortaleza", "Resistencia", "Vitalidad", "Sueños"], "prof": "Gran árbol del dosel amazónico (Maytenus), de hasta unos 30 m de altura, con corteza gruesa y rojiza. El nombre abarca varios árboles emparentados en Perú, Colombia, Ecuador y Brasil. Su nombre suele traducirse como “espalda temblorosa”, en referencia a su famoso uso para el dolor de espalda.", "props": "El Chuchuhuasi es un árbol de fortaleza y resistencia, conocido como la planta de la espalda y de los huesos. Las fuentes históricas shipibo lo clasifican entre las plantas maestras de los sueños, junto con la catahua y la lupuna. Como maestro se asocia con la vitalidad física, el aguante y la profundización de la relación con la medicina de las plantas. La corteza, preparada en cocimiento o en maceración alcohólica, es uno de los remedios más conocidos de la Amazonía peruana para el dolor de espalda, la artritis, el reumatismo, los resfríos y las afecciones bronquiales, y también se valora como tónico general."}, "i": 15}, {"n": "Huayra Caspi", "tags": ["dream", "strength"], "en": {"kw": ["Dreaming", "Strength", "Forest connection", "Plant teaching"], "prof": "Large Amazonian tree whose name (Quechua for “wind tree”) is applied to different trees in different regions, so the exact species depends on local naming and is best confirmed by the maestro.", "props": "Huayra Caspi, “wind tree,” is a plant of dreaming, strength and connection to the forest. Historical Shipibo sources explicitly classify Huayracaspi among the master plants that provoke dreaming. As a teacher it is often associated with the quality of its name: lightness, movement and clearing, helping the dieter let go of what is heavy and listen more closely to the forest and to the plants themselves. Its strength is described as upright and steady, like the tall tree it is. In dieta it supports a close, attentive relationship with the plant world and learning through dreams."}, "es": {"kw": ["Sueños", "Fortaleza", "Conexión con el bosque", "Enseñanza de la planta"], "prof": "Gran árbol amazónico cuyo nombre (en quechua, “árbol del viento”) se aplica a distintos árboles según la región, por lo que la especie exacta depende del nombre local y conviene confirmarla con el maestro.", "props": "El Huayra Caspi, “árbol del viento”, es una planta de sueños, fortaleza y conexión con el bosque. Las fuentes históricas shipibo clasifican explícitamente el Huayracaspi entre las plantas maestras que provocan sueños. Como maestro se asocia a menudo con la cualidad de su nombre: ligereza, movimiento y despeje, ayudando a quien hace dieta a soltar lo pesado y a escuchar con más atención al bosque y a las plantas mismas. Su fuerza se describe como erguida y firme, como el alto árbol que es. En la dieta apoya una relación cercana y atenta con el mundo vegetal y el aprendizaje a través de los sueños."}, "i": 16}, {"n": "Timareo", "tags": ["heart", "medicine"], "en": {"kw": ["Love", "Love-energy", "Medicine", "Water"], "prof": "An aquatic plant, as described by Maestro Americo. The name timareo is also recorded locally for other plants, so the species is best confirmed with the maestro.", "props": "Timareo is a plant of love and of water. Maestro Americo describes it as “una planta acuática que tiene mucha energía del amor y medicina” (an aquatic plant with a great deal of love energy and medicine). Its name and its home in the water point to softness and flow, and it is associated with the heart, with gentleness and with relating to yourself and others with more tenderness."}, "es": {"kw": ["Amor", "Energía del amor", "Medicina", "Agua"], "prof": "Una planta acuática, según la describe el Maestro Americo. El nombre timareo también se registra localmente para otras plantas, por lo que conviene confirmar la especie con el maestro.", "props": "El Timareo es una planta del amor y del agua. El Maestro Americo la describe como “una planta acuática que tiene mucha energía del amor y medicina”. Su nombre y su hogar en el agua apuntan a la suavidad y al fluir, y se asocia con el corazón, con la dulzura y con tratarse a uno mismo y a los demás con más ternura."}, "i": 17}, {"n": "Ayahuasca", "tags": ["ceremony"], "en": {"kw": ["Healing", "Diagnosis", "Visions", "Learning", "Transformation"], "prof": "Woody Amazonian vine, or liana (Banisteriopsis caapi), of the Malpighiaceae family, climbing high through the forest canopy. In Shipibo the vine is nishi and the brew is oni. The name ayahuasca is used for both the vine and the brew made with it, usually together with chacruna.", "props": "Ayahuasca is the central medicine of Shipibo-Konibo ceremonial practice, the plant that opens the door between the visible and unseen worlds. It is called the vine of the soul, and the Shipibo healer (onanya, “one who knows”) sings icaros over the brew to guide the experience. Its work is healing, diagnosis, learning and transformation, bringing visions, purification and a direct meeting with the plants, with the self and with the roots of illness. Healers also receive songs and knowledge through the plants and dreams in dieta. In Peru, the traditional knowledge and uses of ayahuasca are recognized as national cultural heritage."}, "es": {"kw": ["Sanación", "Diagnóstico", "Visiones", "Aprendizaje", "Transformación"], "prof": "Bejuco (liana) leñoso amazónico (Banisteriopsis caapi), de la familia de las malpigiáceas, que trepa alto por el dosel de la selva. En shipibo el bejuco es nishi y el brebaje es oni. El nombre ayahuasca se usa tanto para el bejuco como para el brebaje preparado con él, normalmente junto con la chacruna.", "props": "La Ayahuasca es la medicina central de la práctica ceremonial shipibo-konibo, la planta que abre la puerta entre el mundo visible y el invisible. Se la llama el bejuco del alma, y el sanador shipibo (onanya, “el que sabe”) canta icaros sobre el brebaje para guiar la experiencia. Su trabajo es la sanación, el diagnóstico, el aprendizaje y la transformación, y trae visiones, purificación y un encuentro directo con las plantas, con uno mismo y con las raíces de la enfermedad. Los sanadores también reciben cantos y conocimiento a través de las plantas y los sueños en la dieta. En el Perú, los conocimientos y usos tradicionales de la ayahuasca están reconocidos como patrimonio cultural de la Nación."}, "i": 18}, {"n": "Chacruna", "tags": ["ceremony"], "en": {"kw": ["Vision", "Perception", "Receptivity", "Ceremony"], "prof": "Tropical shrub (Psychotria viridis) of the coffee family, up to about 5 m tall, with broad, papery green leaves 5 to 15 cm long. A widely used Peruvian name; it grows in the Amazon basin.", "props": "Chacruna is the leaf companion of the vine in the ayahuasca brew, the plant that brings vision and color. Together with the ayahuasca vine, which opens the way, it forms the brew that makes the ceremony possible, and it is associated with perception, receptivity and the opening of inner sight. Its leaves carry the visionary compound DMT, and the pairing of leaf and vine is at the heart of the ceremony."}, "es": {"kw": ["Visión", "Percepción", "Receptividad", "Ceremonia"], "prof": "Arbusto tropical (Psychotria viridis) de la familia del café, de hasta unos 5 m de altura, con hojas verdes, anchas y de textura papirácea, de 5 a 15 cm de largo. Nombre muy usado en el Perú; crece en la cuenca amazónica.", "props": "La Chacruna es la hoja compañera del bejuco en el brebaje de ayahuasca, la planta que trae la visión y el color. Junto con el bejuco de ayahuasca, que abre el camino, forma el brebaje que hace posible la ceremonia, y se asocia con la percepción, la receptividad y la apertura de la visión interior. Sus hojas contienen el compuesto visionario DMT, y el encuentro de la hoja y el bejuco está en el corazón de la ceremonia."}, "i": 19}, {"n": "Tabaco", "tags": ["ceremony", "cleanse"], "en": {"kw": ["Protection", "Cleansing", "Prayer", "Grounding", "Concentration"], "prof": "Tobacco herb (Nicotiana rustica), known in Peru as mapacho, traditionally cultivated across the Americas. It is much stronger than commercial tobacco, with leaves that can contain several times more nicotine.", "props": "Tobacco is one of the foundational medicines of Amazonian vegetalismo and Shipibo practice, a plant of prayer, protection and cleansing, and the historical Shipibo literature classifies it among the master plants. Its smoke is blown over patients, over the brew and over other medicinal plants, to carry intention, clear heavy energy and protect. Traditionally it is also used in the dieta to concentrate, ground and strengthen the spirit. Shipibo accounts of the great healers tell how they worked with tobacco and song."}, "es": {"kw": ["Protección", "Limpieza", "Oración", "Arraigo", "Concentración"], "prof": "Hierba de tabaco (Nicotiana rustica), conocida en el Perú como mapacho, cultivada tradicionalmente en toda América. Es mucho más fuerte que el tabaco comercial, con hojas que pueden contener varias veces más nicotina.", "props": "El Tabaco es una de las medicinas fundamentales del vegetalismo amazónico y de la práctica shipibo, una planta de oración, protección y limpieza, y la literatura histórica shipibo la clasifica entre las plantas maestras. Su humo se sopla sobre los pacientes, sobre el brebaje y sobre otras plantas medicinales, para llevar la intención, despejar la energía pesada y proteger. Tradicionalmente también se usa en la dieta para concentrar, arraigar y fortalecer el espíritu. Los relatos shipibo sobre los grandes sanadores cuentan cómo trabajaban con el tabaco y el canto."}, "i": 20}];
+  /* ── TEACHINGS FROM MAESTRO AMERICO ──
+     To add one: add an entry keyed by the exact plant name above.
+     Each entry has "es" (Maestro Americo's own words) and "en" (translation).
+     Each item is [label, text]; use null for label when there isn't one. */
+  var TEACH = {
+    "Catahua": {
+      es: [
+        ["Semillas = Laxante, purgante:", "Las semillas se ingieren directamente, o tostadas y reducidas a polvo, se toma una cucharadita diluido en un vaso de jugo de naranja o de agua en ayunas."],
+        ["Hojas = Sarna o picazón:", "La zona afectada se lava con el líquido de la decocción de 4 hojas en un litro de agua."],
+        ["Dolores musculares y artritis:", "Se junta la resina y se mezcla con el zumo de tabaco, luego ponemos en estufa para hacer una pasta, luego echamos en la parte dolorida y hacemos un masaje suave, durante 8 días."],
+        [null, "La corteza de Catahua es bueno para eliminar las energías negativas y los malos espíritus de un individuo (baño de sauna)."],
+        [null, "También es bueno para la dieta y recibir sus aprendizajes, sus conocimientos y la sabiduría de la planta Catahua."]
+      ],
+      en: [
+        ["Seeds = Laxative, purgative:", "The seeds are eaten directly, or toasted and ground into powder. One teaspoon is diluted in a glass of orange juice or water and taken on an empty stomach."],
+        ["Leaves = Scabies or itching:", "The affected area is washed with the liquid from a decoction of 4 leaves in one liter of water."],
+        ["Muscle pain and arthritis:", "The resin is collected and mixed with tobacco juice, then put on the stove to make a paste. It is applied to the painful area with a gentle massage for 8 days."],
+        [null, "The bark of Catahua is good for eliminating negative energies and evil spirits from a person (sauna bath)."],
+        [null, "It is also good for the dieta, to receive the plant's teachings, knowledge and wisdom."]
+      ]
+    },
+    "Ayahuma": {
+      es: [
+        [null, "El fruto maduro de la Ayahuma también es bueno para baño de florecimiento durante 4 días para eliminar las energías negativas (tristeza, estrés, ansiedad, saladero y malos sueños)."],
+        [null, "Las hojas y cortezas es bueno para hacer el baño de vapor para eliminar los malos espíritus conectado en un individuo."],
+        ["Yemas foliares = Analgésico dental:", "Las yemas trituradas se aplican localmente en la pieza adolorida."],
+        [null, "La corteza también es bueno para la dieta de aprendizaje y recibir su conocimiento y la sabiduría."]
+      ],
+      en: [
+        [null, "The ripe fruit of Ayahuma is also good for a flowering bath for 4 days, to eliminate negative energies (sadness, stress, anxiety, bad luck and bad dreams)."],
+        [null, "The leaves and bark are good for a steam bath, to eliminate evil spirits attached to a person."],
+        ["Leaf buds = Dental pain reliever:", "The crushed buds are applied locally to the aching tooth."],
+        [null, "The bark is also good for the learning dieta, to receive the plant's knowledge and wisdom."]
+      ]
+    },
+    "Chuchuhuasi": {
+      es: [
+        ["Raíz = Reumatismo:", "La corteza en cocimiento. Se toma una copita en ayunas, hasta que se sane."],
+        ["Resfríos y bronquitis:", "Se raspan 200 gramos de corteza y se hierven en dos litros de agua durante una hora. Se cuela el líquido resultante y se coloca en una botella agregando un cuarto de litro de aguardiente. Se deja macerar durante diez días. Tomar una cucharada en las mañanas por 15 días."],
+        ["Antidiarreico:", "La corteza se hierve con un poco de agua; se toma una cucharada cada tres horas."],
+        ["Hemorroides:", "Con el cocimiento de la corteza se hacen baños de asiento."],
+        ["Afecciones de las mamás:", "Una taza de la corteza, rallada o en trozos, se cocina en tres tazas de agua. El líquido se aplica en los pezones con grietas."],
+        [null, "También se hace dieta para recibir sus conocimientos y la sabiduría de la medicina Chuchuhuasi."]
+      ],
+      en: [
+        ["Root = Rheumatism:", "The bark is prepared as a decoction. Take one small glass on an empty stomach until healed."],
+        ["Colds and bronchitis:", "Scrape 200 grams of bark and boil it in two liters of water for one hour. Strain the liquid and pour it into a bottle, adding a quarter liter of aguardiente (cane liquor). Let it macerate for ten days. Take one tablespoon each morning for 15 days."],
+        ["Anti-diarrheal:", "The bark is boiled in a little water; take one tablespoon every three hours."],
+        ["Hemorrhoids:", "Sitz baths are made with the decoction of the bark."],
+        ["Conditions of mothers:", "One cup of bark, grated or in pieces, is cooked in three cups of water. The liquid is applied to cracked nipples."],
+        [null, "The dieta is also done to receive the knowledge and wisdom of the Chuchuhuasi medicine."]
+      ]
+    },
+    "Chiric Sanango": {
+      es: [
+        ["Raíz = Reumatismo:", "Siete raíces desmenuzadas se colocan en maceración con cinco litros de agua; el líquido resultante se da de beber al enfermo en ayunas, luego debe ducharse y guardar reposo."],
+        [null, "En maceración alcohólica, dos raíces en un litro de aguardiente durante dos días; tomar una copita tres veces al día."],
+        ["Leishmaniasis o Uta:", "Se hace hervir la corteza hasta obtener un líquido espeso; aplicar directamente en la zona afectada y cubrir con una venda durante dos días. Repetir la operación hasta que se sane."],
+        ["Impotencia:", "Se toma una copita del zumo de Chiric Sanango en ayunas y antes de acostarse."],
+        [null, "También es bueno para la dieta para el aprendizaje, recibir el conocimiento, sabiduría y su poder de la medicina."]
+      ],
+      en: [
+        ["Root = Rheumatism:", "Seven crumbled roots are macerated in five liters of water. The resulting liquid is given to the sick person to drink on an empty stomach, after which they should shower and rest."],
+        [null, "As an alcoholic maceration: two roots in one liter of aguardiente (cane liquor) for two days; take one small glass three times a day."],
+        ["Leishmaniasis or \"Uta\":", "The bark is boiled until a thick liquid is obtained; apply it directly to the affected area and cover with a bandage for two days. Repeat until healed."],
+        ["Impotence:", "Take one small glass of Chiric Sanango juice on an empty stomach and before going to bed."],
+        [null, "It is also good for the dieta, for learning and receiving the knowledge, wisdom and power of the medicine."]
+      ]
+    }
+  };
+
+  /* ── YOUTUBE INTRODUCTIONS FROM MAESTRO AMERICO ──
+     To add one: add the plant's exact name and its YouTube link. */
+  var VIDEOS = {
+    "Catahua": "https://youtu.be/RLKfj7GjqFE?si=XT5MdZ7Vo6LNN-KH",
+    "Chiric Sanango": "https://youtu.be/3d5gtzAN-ZM?si=lEOUIQtmJ6TRjujJ",
+    "Bobinsana": "https://youtu.be/QIR0ItrMFjo?si=29khNPz-YcgwdpVf",
+    "Shihuahuaco": "https://youtu.be/hUNoSRn38uk?si=4gy9B_3eOZwmOKtN",
+    "Patiquina": "https://youtu.be/xQpVHIsFODo?si=a3K1Ac-5ybJkB27A"
+  };
+
+  /* Alphabetical order (accent-insensitive), then number cards 01, 02, ... in that order */
+  PLANTS.sort(function(a,b){ return a.n.localeCompare(b.n, 'en', {sensitivity:'base'}); });
+  PLANTS.forEach(function(p, k){ p.i = k + 1; p.t = TEACH[p.n] || null; p.v = VIDEOS[p.n] || null; });
+
+  var STEPS = [
+    {en:["Preparation","Before you arrive, you begin a clean diet that opens the body to the plants. Together with Maestro Americo, the plant or plants for your dieta are chosen through a consultation, based on you and what you are seeking."],
+     es:["Preparación","Antes de llegar, comienzas una dieta limpia que abre el cuerpo a las plantas. Junto con el Maestro Americo, la planta o plantas de tu dieta se eligen mediante una consulta, según quién eres y lo que buscas."]},
+    {en:["Drinking the Plant","The maestro prepares the plant, often as the juice or tea of its leaves, bark, roots or seeds. You drink it in a quiet, intentional way, and over the days you begin to build a relationship with that plant."],
+     es:["Beber la Planta","El maestro prepara la planta, a menudo como jugo o té de sus hojas, corteza, raíces o semillas. La bebes de manera tranquila e intencionada y, con los días, comienzas a construir una relación con esa planta."]},
+    {en:["Fasting &amp; Restrictions","A dieta involves fasting and a very simple diet, and traditionally avoids things like salt, sugar, spices, pork, alcohol and sexual activity. Time is spent in quiet and relative isolation, away from distractions, so the senses can open."],
+     es:["Ayuno y Restricciones","La dieta implica ayuno y una alimentación muy sencilla, y tradicionalmente evita cosas como la sal, el azúcar, las especias, el cerdo, el alcohol y la actividad sexual. Se pasa el tiempo en silencio y en relativo aislamiento, lejos de las distracciones, para que los sentidos se abran."]},
+    {en:["Dreaming &amp; Learning","The plants themselves become teachers. Dieters often notice sharper senses, vivid dreams, insights and a deeper sense of who they are. In the Shipibo tradition, healers also receive songs (icaros) and knowledge from the plants this way."],
+     es:["Soñar y Aprender","Las plantas mismas se vuelven maestras. Quienes hacen dieta suelen notar sentidos más agudos, sueños vívidos, comprensiones y una percepción más profunda de quiénes son. En la tradición shipibo, los sanadores también reciben cantos (icaros) y conocimiento de las plantas de esta manera."]},
+    {en:["The Post-Diet","The dieta continues after you finish taking the plant. The maestro prescribes a post-diet to follow faithfully, traditionally for several months or even up to a year. This protects what you have received and lets it settle into your life."],
+     es:["La Post-Dieta","La dieta continúa después de que terminas de tomar la planta. El maestro prescribe una post-dieta que se sigue con fidelidad, tradicionalmente durante varios meses o incluso hasta un año. Esto protege lo que has recibido y le permite asentarse en tu vida."]}
+  ];
+  var CATS = [
+    {k:"all",en:"All",es:"Todas"},
+    {k:"heart",en:"Heart & Love",es:"Corazón y Amor"},
+    {k:"strength",en:"Strength & Grounding",es:"Fortaleza y Arraigo"},
+    {k:"dream",en:"Dreaming & Vision",es:"Sueños y Visión"},
+    {k:"cleanse",en:"Cleansing & Protection",es:"Limpieza y Protección"},
+    {k:"medicine",en:"Healing Medicine",es:"Medicina Curativa"},
+    {k:"ceremony",en:"Ceremonial Plants",es:"Plantas Ceremoniales"}
+  ];
+  var UI = {
+    en:{results:function(n){return n+(n===1?" plant":" plants");},none:"No plants in this category.",more:"Read more →",prof:"Plant profile",props:"Traditional Shipibo / Amazonian properties",teach:"Teaching from Maestro Americo",watch:function(n){return "Watch Maestro Americo introduce <b>"+n+"</b>";}},
+    es:{results:function(n){return n+(n===1?" planta":" plantas");},none:"Ninguna planta en esta categoría.",more:"Leer más →",prof:"Perfil de la planta",props:"Propiedades tradicionales shipibo / amazónicas",teach:"Enseñanza del Maestro Americo",watch:function(n){return "Mira al Maestro Americo presentar a <b>"+n+"</b>";}}
+  };
+  /* ── SHIPIBO EMBROIDERED ROUNDS ──
+     Each plant gets its own circular "bordado": a blanket-stitched edge, bands of
+     zigzag / cross stitch, and a centre motif of satin-stitch leaves, curling
+     tendrils and tiny bird-foot stitches. Everything is generated from the
+     plant's name, so each piece is unique and always the same. */
+  var KENE_CACHE = {};
+  var TAU = Math.PI * 2;
+  var THREAD = {pink:'#FF2D95', rose:'#FF7AB8', magenta:'#D61FD4', blue:'#3B63FF', teal:'#19D6B0', yellow:'#FFD21F', orange:'#FF8A1F', lime:'#A3E635', green:'#14B86B', deep:'#0E8F57', violet:'#A07BFF', cream:'#FFF1C9', red:'#FF4D4D', cyan:'#22D3EE', gold:'#F5B700', peach:'#FFB58A'};
+  var KPAL = [
+    {fab:'#07060C', ring:['magenta','blue','teal'],   main:['pink','rose','peach'],      mainFill:'#B8156A', sec:['deep','green','lime'],   ctr:['pink','orange','yellow'],  tick:['cream','orange','violet'], curl:'green',  patch:'yellow'},
+    {fab:'#0B1232', ring:['yellow','cyan','magenta'], main:['violet','rose','pink'],     mainFill:'#5B3FC4', sec:['green','lime','lime'],   ctr:['cyan','blue','violet'],    tick:['orange','pink','cream'],   curl:'lime',    patch:'orange'},
+    {fab:'#12061F', ring:['cyan','pink','yellow'],    main:['orange','gold','yellow'],   mainFill:'#C25A08', sec:['teal','green','lime'],   ctr:['pink','rose','peach'],     tick:['cream','teal','pink'],     curl:'teal',    patch:'pink'},
+    {fab:'#051A17', ring:['pink','yellow','violet'], main:['magenta','pink','rose'],    mainFill:'#9A0F92', sec:['gold','yellow','lime'],  ctr:['orange','gold','yellow'],  tick:['cream','pink','cyan'],     curl:'yellow',  patch:'cyan'},
+    {fab:'#08070D', ring:['orange','magenta','cyan'],main:['blue','cyan','teal'],       mainFill:'#1F3FBF', sec:['pink','rose','peach'],   ctr:['yellow','orange','red'],   tick:['cream','lime','orange'],   curl:'rose',    patch:'lime'},
+    {fab:'#0A0F2E', ring:['lime','pink','blue'],     main:['red','orange','gold'],      mainFill:'#B8281E', sec:['cyan','teal','green'],   ctr:['violet','magenta','pink'], tick:['cream','yellow','pink'],   curl:'cyan',    patch:'yellow'},
+    {fab:'#14060A', ring:['yellow','teal','pink'],   main:['teal','cyan','lime'],       mainFill:'#0E8F78', sec:['rose','pink','magenta'], ctr:['orange','yellow','cream'], tick:['cream','orange','violet'], curl:'peach',   patch:'pink'},
+    {fab:'#0E0A2E', ring:['teal','orange','violet'], main:['gold','yellow','cream'],    mainFill:'#B58A00', sec:['green','teal','cyan'],   ctr:['red','pink','rose'],       tick:['pink','cyan','cream'],     curl:'green',   patch:'orange'}
+  ];
+  function hashStr(s){ var h = 2166136261; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function fx(n){ return Math.round(n * 10) / 10; }
+  function xy(r, a){ return fx(r * Math.cos(a)) + ' ' + fx(r * Math.sin(a)); }
+  /* a layer collects path data by stroke/fill style so each glyph stays ~60 elements */
+  function Lyr(){ var order = [], map = {}; return {
+    add: function(attrs, d){ if (!map[attrs]){ map[attrs] = []; order.push(attrs); } map[attrs].push(d); },
+    out: function(){ return order.map(function(k){ return '<path ' + k + ' d="' + map[k].join('') + '"/>'; }).join(''); } }; }
+  function LeafSet(){ return {fill: Lyr(), hatch: Lyr(), line: Lyr()}; }
+  function emit(S){ return S.fill.out() + S.hatch.out() + S.line.out(); }
+  function T(k){ return THREAD[k] || k; }
+
+  /* one satin-stitch leaf: filled shape, slanted "feather" stitches, a midrib */
+  function leaf(S, x, y, a, len, wid, ramp, fill, rib){
+    var ca = Math.cos(a), sa = Math.sin(a);
+    function X(u, v){ return fx(x + u * ca - v * sa) + ' ' + fx(y + u * sa + v * ca); }
+    var d = 'M' + X(0, 0) + 'C' + X(len * .3, -wid) + ' ' + X(len * .7, -wid) + ' ' + X(len, 0) + 'C' + X(len * .7, wid) + ' ' + X(len * .3, wid) + ' ' + X(0, 0) + 'Z';
+    S.fill.add('fill="' + fill + '" stroke="none"', d);
+    S.line.add('stroke="' + T(ramp[ramp.length - 1]) + '" stroke-width="1.2" stroke-opacity=".95"', d);
+    function hw(t){ return 3 * wid * t * (1 - t); }
+    var m = Math.max(5, Math.round(len / 3.1));
+    for (var k = 1; k < m; k++){
+      var t = k / m, t2 = Math.min(.98, t + .18), col = ramp[Math.min(ramp.length - 1, Math.floor(t * ramp.length))];
+      S.hatch.add('stroke="' + T(col) + '" stroke-width="1.2"', 'M' + X(t * len, 0) + 'L' + X(t2 * len, -hw(t2)) + 'M' + X(t * len, 0) + 'L' + X(t2 * len, hw(t2)));
+    }
+    S.line.add('stroke="' + rib + '" stroke-width=".9" stroke-opacity=".6"', 'M' + X(0, 0) + 'L' + X(len * .95, 0));
+  }
+  /* curling tendril: a stem that ends in a spiral */
+  function curl(L, col, x0, y0, cx, cy, rr, dir, a0, turns){
+    var sx = cx + rr * Math.cos(a0), sy = cy + rr * Math.sin(a0);
+    var qx = (x0 + sx) / 2 + (sy - y0) * .28 * dir, qy = (y0 + sy) / 2 - (sx - x0) * .28 * dir;
+    var d = 'M' + fx(x0) + ' ' + fx(y0) + 'Q' + fx(qx) + ' ' + fx(qy) + ' ' + fx(sx) + ' ' + fx(sy);
+    for (var a = .4; a <= turns * TAU; a += .42){
+      var rad = rr * (1 - .84 * a / (turns * TAU)), ang = a0 + dir * a;
+      d += 'L' + fx(cx + rad * Math.cos(ang)) + ' ' + fx(cy + rad * Math.sin(ang));
+    }
+    L.add('stroke="' + col + '" stroke-width="1.7"', d);
+  }
+  /* little bird-foot stitch, pointing in to the centre */
+  function tick(L, col, r, a, sz){
+    var ca = Math.cos(a), sa = Math.sin(a), bx = r * ca, by = r * sa;
+    function X(u, v){ return fx(bx + u * ca - v * sa) + ' ' + fx(by + u * sa + v * ca); }
+    L.add('stroke="' + col + '" stroke-width="1.5"', 'M' + X(sz, -sz * .95) + 'L' + X(0, 0) + 'L' + X(sz, sz * .95) + 'M' + X(0, 0) + 'L' + X(-sz * 1.25, 0));
+  }
+  /* zigzag patch of yellow "meander" stitching in a wedge */
+  function patch(L, col, a, rb, span, rows){
+    for (var j = 0; j < rows; j++){
+      var d = '', n = 7, r0 = rb + j * 3.1;
+      for (var i = 0; i <= n * 2; i++){ d += (i ? 'L' : 'M') + xy(r0 + (i % 2 ? 2.3 : 0), a - span + 2 * span * i / (n * 2)); }
+      L.add('stroke="' + col + '" stroke-width="1.2"', d);
+    }
+  }
+  /* stitched ring bands */
+  function ringZig(L, col, r, amp, n, w){ var d = ''; for (var i = 0; i <= n * 2; i++) d += (i ? 'L' : 'M') + xy(r + (i % 2 ? amp : -amp), i * TAU / (n * 2)); L.add('stroke="' + col + '" stroke-width="' + w + '"', d + 'Z'); }
+  function ringX(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, c = Math.cos(a), sn = Math.sin(a);
+      function P(u, v){ return fx((r + u) * c - v * sn) + ' ' + fx((r + u) * sn + v * c); }
+      d += 'M' + P(-s, -s) + 'L' + P(s, s) + 'M' + P(-s, s) + 'L' + P(s, -s); } L.add('stroke="' + col + '" stroke-width="1.7"', d); }
+  function ringV(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, c = Math.cos(a), sn = Math.sin(a);
+      function P(u, v){ return fx((r + u) * c - v * sn) + ' ' + fx((r + u) * sn + v * c); }
+      d += 'M' + P(-s, -s * 1.1) + 'L' + P(s, 0) + 'L' + P(-s, s * 1.1); } L.add('stroke="' + col + '" stroke-width="1.7"', d); }
+  function ringDash(L, col, r, n, s){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n; d += 'M' + xy(r - s, a) + 'L' + xy(r + s, a); } L.add('stroke="' + col + '" stroke-width="1.8"', d); }
+  function ringLine(L, col, r, w){ L.add('stroke="' + col + '" stroke-width="' + w + '"', 'M' + r + ' 0A' + r + ' ' + r + ' 0 1 1 ' + (-r) + ' 0A' + r + ' ' + r + ' 0 1 1 ' + r + ' 0Z'); }
+  function ringScal(L, col, r, n, amp){ var d = 'M' + xy(r, 0); for (var i = 0; i < n; i++){ var a1 = (i + .5) * TAU / n, a2 = (i + 1) * TAU / n; d += 'Q' + xy(r + amp * 2, a1) + ' ' + xy(r, a2); } L.add('stroke="' + col + '" stroke-width="1.6"', d); }
+  function ringDots(L, col, r, n, rad){ var d = ''; for (var i = 0; i < n; i++){ var a = i * TAU / n, x = r * Math.cos(a), y = r * Math.sin(a); d += 'M' + fx(x - rad) + ' ' + fx(y) + 'a' + rad + ' ' + rad + ' 0 1 0 ' + (rad * 2) + ' 0a' + rad + ' ' + rad + ' 0 1 0 ' + (-rad * 2) + ' 0Z'; } L.add('fill="' + col + '" stroke="none"', d); }
+  function sd(r, n){ /* stepped diamond, relative to centre */
+    var s = r / n, P = [[0, -r]], k;
+    for (k = 0; k < n; k++){ P.push([(k + 1) * s, -r + k * s]); P.push([(k + 1) * s, -r + (k + 1) * s]); }
+    var q2 = P.map(function(p){ return [p[0], -p[1]]; }).reverse(), q3 = P.map(function(p){ return [-p[0], -p[1]]; }), q4 = P.map(function(p){ return [-p[0], p[1]]; }).reverse();
+    return P.concat(q2, q3, q4).map(function(p, i){ return (i ? 'L' : 'M') + fx(p[0]) + ' ' + fx(p[1]); }).join('') + 'Z';
+  }
+
+  /* each current plant keeps a fixed design slot, so adding plants never changes the others */
+  var KENE_SLOT = {"Ayahuasca": 0, "Ayahuma": 1, "Bobinsana": 2, "Catahua": 3, "Chacruna": 4, "Chiric Sanango": 5, "Chuchuhuasi": 6, "Chullachaqui": 7, "Huayra Caspi": 8, "Manchinga": 9, "Marosa": 10, "Patiquina": 11, "Piñón Colorado": 12, "Renaquilla": 13, "Requia": 14, "Shihuahuaco": 15, "Tabaco": 16, "Tamamuri": 17, "Timareo": 18, "Toé": 19};
+  function kene(name, idx){
+    if (KENE_CACHE[name]) return KENE_CACHE[name];
+    idx = idx != null ? idx : (KENE_SLOT[name] != null ? KENE_SLOT[name] : 20 + hashStr(name) % 24);
+    var h = hashStr(name), R = mulberry(h), fam = idx % 10, vr = idx >= 10 ? 1 : 0;
+    var pal = KPAL[(idx * 3 + Math.floor(idx / 8)) % 8];
+    var ring = pal.ring.map(T), mainRamp = pal.main, secRamp = pal.sec, ctrRamp = pal.ctr, tickCols = pal.tick.map(T);
+    var rib = pal.fab, ph1 = R() * TAU, ph2 = R() * TAU;
+    function er(a){ return 96 + 1.4 * Math.sin(3 * a + ph1) + .9 * Math.sin(5 * a + ph2); }
+
+    /* fabric + blanket-stitch edge (edge takes the plant's category colour) */
+    var o = '', edge = Lyr(), fab = '';
+    for (var i = 0; i < 96; i++){ var fa = i * TAU / 96; fab += (i ? 'L' : 'M') + xy(er(fa) - .6, fa); }
+    o += '<path d="' + fab + 'Z" fill="' + pal.fab + '" stroke="none"/>';
+    var nb = 64 + Math.floor(R() * 3) * 4, loop = '', ticks = '';
+    for (i = 0; i < nb; i++){
+      var a = i * TAU / nb;
+      loop += (i ? 'L' : 'M') + xy(er(a) - 9, a);
+      ticks += 'M' + xy(er(a) - 9, a) + 'L' + xy(er(a + .1) - .4, a + .1);
+    }
+    edge.add('stroke="currentColor" stroke-width="1.9"', loop + 'Z' + ticks);
+    o += edge.out();
+
+    /* three stitched bands */
+    var rings = Lyr(), pick = [Math.floor(R() * 3), Math.floor(R() * 4), Math.floor(R() * 3)];
+    var nA = Math.round(79.5 * TAU / (9 + R() * 3)), nB = Math.round(71 * TAU / (9 + R() * 3));
+    if (pick[0] === 0) ringZig(rings, ring[0], 79.5, 3.6, Math.round(nA / 2), 1.9);
+    else if (pick[0] === 1) ringV(rings, ring[0], 79.5, nA, 3);
+    else ringX(rings, ring[0], 79.5, Math.round(nA * .8), 2.6);
+    if (pick[1] === 0) ringX(rings, ring[1], 71, Math.round(nB * .85), 2.4);
+    else if (pick[1] === 1) ringZig(rings, ring[1], 71, 3, Math.round(nB / 2), 1.8);
+    else if (pick[1] === 2) ringDash(rings, ring[1], 71, nB, 2.6);
+    else ringScal(rings, ring[1], 69, Math.round(nB * .8), 1.7);
+    if (pick[2] === 0) { ringLine(rings, ring[2], 64.5, 1.8); }
+    else if (pick[2] === 1) ringZig(rings, ring[2], 64.5, 2.2, 34, 1.5);
+    else { ringLine(rings, ring[2], 64.5, 1.5); ringDots(rings, ring[2], 61.2, 40, .9); }
+    o += rings.out();
+
+    /* centre motif --------------------------------------------------- */
+    var covers = [], curls = [], patches = [];
+    var tk = Lyr(), tl = Lyr(), S1 = LeafSet(), S2 = LeafSet(), top = Lyr();
+    var a0 = -Math.PI / 2, k, P, V = vr, discs = [];
+    var GREEN = '#0B6B43', PLUM = '#7a1d60';
+    function LF2(S, x, y, a, len, wid, ramp, fill){ leaf(S, x, y, a, len, wid, ramp, fill, rib); covers.push([a, 0, 0, 0, x, y, len, wid]); }
+    function DISC(x, y, r){ discs.push([x, y, r]); }
+    function dot(col, x, y, r){ top.add('fill="' + T(col) + '" stroke="none"', 'M' + fx(x + r) + ' ' + fx(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + fx(-2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + fx(2 * r) + ' 0Z'); }
+    if (fam === 0){                                   /* leaf mandala */
+      P = V ? 4 : 6;
+      var lenM = [0, 0, 0, 0, 42, 40, 36][P], widM = [0, 0, 0, 0, 12, 10, 8.4][P];
+      var lenS = [0, 0, 0, 0, 28, 24, 22][P], widS = [0, 0, 0, 0, 6.5, 5.5, 4.6][P];
+      for (k = 0; k < P; k++){
+        var am = a0 + k * TAU / P, ag = am + Math.PI / P, gh = Math.PI / P;
+        leaf(S1, 11 * Math.cos(am), 11 * Math.sin(am), am, lenM, widM, mainRamp, pal.mainFill, rib);
+        covers.push([am, 11, lenM, widM]);
+        leaf(S1, 14 * Math.cos(ag), 14 * Math.sin(ag), ag, lenS, widS, secRamp, GREEN, rib);
+        covers.push([ag, 14, lenS, widS]);
+        [-1, 1].forEach(function(sg){
+          var ca2 = ag + sg * gh * .66, cx = 47 * Math.cos(ca2), cy = 47 * Math.sin(ca2), s0 = ag + sg * gh * .2;
+          curl(tl, T(pal.curl), 22 * Math.cos(s0), 22 * Math.sin(s0), cx, cy, 4.6, -sg, ca2 + Math.PI, 1.15);
+          curls.push([cx, cy]);
+        });
+        patch(tl, T(pal.patch), ag, 46, gh * .3, 3); patches.push([ag, gh * .34]);
+        leaf(S2, 0, 0, am + gh, 15, 4.6, ctrRamp, PLUM, rib);
+      }
+      top.add('fill="' + T('gold') + '" stroke="none"', 'M2.4 0a2.4 2.4 0 1 0 -4.8 0a2.4 2.4 0 1 0 4.8 0Z');
+    } else if (fam === 1){                            /* flower bloom */
+      P = V ? 6 : 8;
+      for (k = 0; k < P; k++){
+        var ao = a0 + k * TAU / P, ai = ao + Math.PI / P;
+        leaf(S1, 7 * Math.cos(ao), 7 * Math.sin(ao), ao, 27, 8.6, mainRamp, pal.mainFill, rib); covers.push([ao, 7, 27, 8.6]);
+        var cg = ao + Math.PI / P;
+        leaf(S2, 5 * Math.cos(ai), 5 * Math.sin(ai), ai, 17, 6, ctrRamp, PLUM, rib);
+        leaf(S1, 31 * Math.cos(cg), 31 * Math.sin(cg), cg, 21, 5.2, secRamp, GREEN, rib); covers.push([cg, 31, 21, 5.2]);
+        var cc = ao, cx2 = 47.5 * Math.cos(cc), cy2 = 47.5 * Math.sin(cc);
+        curl(tl, T(pal.curl), 35 * Math.cos(cc), 35 * Math.sin(cc), cx2, cy2, 4.2, k % 2 ? 1 : -1, cc + Math.PI * .5, 1.1); curls.push([cx2, cy2]);
+      }
+      top.add('fill="' + T('gold') + '" stroke="none"', 'M5.2 0a5.2 5.2 0 1 0 -10.4 0a5.2 5.2 0 1 0 10.4 0Z');
+      top.add('fill="' + T('red') + '" stroke="none"', 'M1.4 0a1.4 1.4 0 1 0 -2.8 0a1.4 1.4 0 1 0 2.8 0Z');
+    } else if (fam === 2){                            /* vine wreath */
+      P = V ? 8 : 10;
+      ringLine(tl, T(pal.curl), 38, 1.9);
+      for (k = 0; k < P; k++){
+        var th = a0 + k * TAU / P, bx = 38 * Math.cos(th), by = 38 * Math.sin(th), tan = th + Math.PI / 2;
+        var out = k % 2 === 0;
+        leaf(S1, bx, by, out ? tan - .55 : tan + Math.PI + .55, out ? 23 : 17, out ? 6.4 : 5.4, out ? secRamp : mainRamp, out ? GREEN : pal.mainFill, rib);
+        covers.push([out ? tan - .55 : tan + Math.PI + .55, 0, 0, 0, bx, by, out ? 23 : 17, out ? 6.4 : 5.4]);
+        var bd = th + Math.PI / P;
+        top.add('fill="' + T(k % 2 ? 'yellow' : 'pink') + '" stroke="none"', 'M' + fx(38 * Math.cos(bd) + 2.6) + ' ' + fx(38 * Math.sin(bd)) + 'a2.6 2.6 0 1 0 -5.2 0a2.6 2.6 0 1 0 5.2 0Z');
+      }
+      var d1 = sd(17, 3), d2 = sd(9, 2);
+      top.add('stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', d1);
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', d2);
+      top.add('fill="' + T(ctrRamp[2]) + '" stroke="none"', 'M2.8 0a2.8 2.8 0 1 0 -5.6 0a2.8 2.8 0 1 0 5.6 0Z');
+    } else if (fam === 3){                            /* tree of life */
+      var nb3 = V ? 5 : 4, ty0 = 42, ty1 = -34, step3 = (ty0 - ty1 - 10) / (nb3 - 1);
+      tl.add('stroke="' + T(pal.curl) + '" stroke-width="2.4"', 'M0 54L0 ' + ty1);
+      for (k = 0; k < nb3; k++){
+        var yy = ty0 - k * step3, ln = 32 - k * (V ? 3.6 : 4.4), wd3 = 8.4 - k * .8;
+        var rp = k % 2 ? secRamp : mainRamp, fl3 = k % 2 ? GREEN : pal.mainFill;
+        LF2(S1, 0, yy, Math.PI + .72, ln, wd3, rp, fl3);
+        LF2(S1, 0, yy, -.72, ln, wd3, rp, fl3);
+      }
+      LF2(S2, 0, ty1 + 4, -Math.PI / 2, 20, 6.4, ctrRamp, PLUM);
+      [-1, 1].forEach(function(s){
+        curl(tl, T(pal.curl), s * 2, 54, s * 20, 50, 6, -s, s > 0 ? Math.PI : 0, 1.2); DISC(s * 20, 50, 8);
+        dot(s > 0 ? 'yellow' : 'pink', s * 11, ty0 - 2, 2);
+      });
+      for (k = -34; k <= 54; k += 8) DISC(0, k, 4);
+      dot('gold', 0, ty1 - 2, 2.6);
+    } else if (fam === 4){                            /* sun star */
+      P = V ? 10 : 8;
+      for (k = 0; k < P; k++){
+        var an = a0 + k * TAU / P, lg = k % 2 === 0;
+        LF2(S1, 10 * Math.cos(an), 10 * Math.sin(an), an, lg ? 46 : 30, lg ? 7.4 : 5.6, lg ? mainRamp : secRamp, lg ? pal.mainFill : GREEN);
+        if (!lg){ dot('yellow', 44 * Math.cos(an), 44 * Math.sin(an), 1.9); DISC(44 * Math.cos(an), 44 * Math.sin(an), 2); }
+      }
+      top.add('fill="' + pal.fab + '" stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', sd(13, 3));
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', sd(6.5, 2));
+      dot(ctrRamp[2], 0, 0, 2.2);
+    } else if (fam === 5){                            /* double spiral */
+      var tn = V ? 1.6 : 1.25;
+      curl(tl, T(pal.curl), 22, -44, -22, -8, 20, 1, -Math.PI / 2, tn); DISC(-22, -8, 21);
+      curl(tl, T(pal.curl), -22, 44, 22, 8, 20, 1, Math.PI / 2, tn); DISC(22, 8, 21);
+      LF2(S1, 14, -12, -Math.PI / 4, 38, 10, mainRamp, pal.mainFill);
+      LF2(S1, -14, 12, 3 * Math.PI / 4, 38, 10, mainRamp, pal.mainFill);
+      [1, -1].forEach(function(s){
+        var base = s > 0 ? -Math.PI / 4 : 3 * Math.PI / 4;
+        [-.6, .6].forEach(function(dd){ LF2(S2, s * 18, -s * 18, base + dd, V ? 22 : 18, 5, secRamp, GREEN); });
+        dot('yellow', s * 24, -s * 24, 2);
+      });
+      top.add('stroke="' + T(ctrRamp[0]) + '" stroke-width="1.7"', sd(6, 2));
+      dot(ctrRamp[1], 0, 0, 2);
+    } else if (fam === 6){                            /* quatrefoil cross */
+      for (k = 0; k < 4; k++){
+        var ac = a0 + k * Math.PI / 2, ad = ac + Math.PI / 4;
+        LF2(S1, 12 * Math.cos(ac), 12 * Math.sin(ac), ac, 42, 12, mainRamp, pal.mainFill);
+        if (!V){ LF2(S1, 14 * Math.cos(ad), 14 * Math.sin(ad), ad, 30, 7, secRamp, GREEN); }
+        else {
+          var qx = 44 * Math.cos(ad), qy = 44 * Math.sin(ad);
+          curl(tl, T(pal.curl), 22 * Math.cos(ad), 22 * Math.sin(ad), qx, qy, 6.5, k % 2 ? 1 : -1, ad + Math.PI, 1.25); DISC(qx, qy, 8);
+          patch(tl, T(pal.patch), ad, 26, .16, 2);
+        }
+      }
+      top.add('fill="' + pal.fab + '" stroke="' + T(ctrRamp[0]) + '" stroke-width="1.9"', sd(19, 4));
+      top.add('stroke="' + T(ctrRamp[1]) + '" stroke-width="1.7"', sd(12, 3));
+      top.add('stroke="' + T(ctrRamp[2]) + '" stroke-width="1.5"', sd(5.5, 2));
+      dot('gold', 0, 0, 1.8);
+    } else if (fam === 7){                            /* diagonal fern frond */
+      var sg7 = V ? -1 : 1, nf = V ? 7 : 6, sa0 = sg7 > 0 ? -Math.PI / 4 : -3 * Math.PI / 4;
+      tl.add('stroke="' + T(pal.curl) + '" stroke-width="2.2"', 'M' + fx(-28 * sg7) + ' 28L' + fx(28 * sg7) + ' -28');
+      for (k = 0; k < nf; k++){
+        var t7 = k / (nf - 1), x7 = -28 * sg7 + 56 * sg7 * t7, y7 = 28 - 56 * t7, ln7 = 27 - 15 * t7, wd7 = 7.6 - 3 * t7;
+        var rp7 = k % 2 ? secRamp : mainRamp, fl7 = k % 2 ? GREEN : pal.mainFill;
+        LF2(S1, x7, y7, sa0 + .95, ln7, wd7, rp7, fl7);
+        LF2(S1, x7, y7, sa0 - .95, ln7, wd7, rp7, fl7);
+        DISC(x7, y7, 3.5);
+      }
+      LF2(S2, 28 * sg7, -28, sa0, 14, 4.4, ctrRamp, PLUM);
+      curl(tl, T(pal.curl), -28 * sg7, 28, -37 * sg7, 39, 4.6, sg7, sg7 > 0 ? -Math.PI / 2 : -Math.PI / 2, 1.2); DISC(-37 * sg7, 39, 7);
+      dot('yellow', 28 * sg7, -28, 2);
+    } else if (fam === 8){                            /* lotus */
+      var po = V ? 9 : 7, by0 = 24, f8;
+      for (k = 0; k < po; k++){
+        f8 = k / (po - 1) * 2 - 1;
+        LF2(S1, 0, by0, -Math.PI / 2 + f8 * 1.25, 56 - 16 * Math.abs(f8), 10, mainRamp, pal.mainFill);
+      }
+      var pm = V ? 6 : 5;
+      for (k = 0; k < pm; k++){
+        f8 = k / (pm - 1) * 2 - 1;
+        LF2(S1, 0, by0, -Math.PI / 2 + f8 * .85, 42 - 6 * Math.abs(f8), 8, ctrRamp, PLUM);
+      }
+      [-.42, 0, .42].forEach(function(f){ LF2(S2, 0, by0, -Math.PI / 2 + f, 28, 6, ['yellow', 'orange', 'pink'], '#C25A08'); });
+      LF2(S1, -8, 33, Math.PI + .12, 27, 5.2, secRamp, GREEN);
+      LF2(S1, 8, 33, -.12, 27, 5.2, secRamp, GREEN);
+      tl.add('stroke="' + T('cyan') + '" stroke-width="1.6"', 'M-34 40q5.7-7 11.3 0t11.3 0t11.3 0t11.3 0t11.3 0t11.3 0');
+      DISC(0, 42, 38);
+      dot('gold', 0, by0, 2.6);
+    } else {                                          /* nested diamonds lattice */
+      var tiers = V ? 5 : 4, dcol = [ctrRamp[0], mainRamp[0], ctrRamp[1], mainRamp[1], ctrRamp[2]];
+      for (k = 0; k < 4; k++){
+        var dg = Math.PI / 4 + k * Math.PI / 2, dc = k * Math.PI / 2;
+        LF2(S1, 26 * Math.cos(dg), 26 * Math.sin(dg), dg, V ? 30 : 26, 7.4, k % 2 ? secRamp : mainRamp, k % 2 ? GREEN : pal.mainFill);
+        var cx9 = 49 * Math.cos(dc), cy9 = 49 * Math.sin(dc);
+        curl(tl, T(pal.curl), 38 * Math.cos(dc), 38 * Math.sin(dc), cx9, cy9, 5.2, k % 2 ? 1 : -1, dc + Math.PI, 1.2); DISC(cx9, cy9, 7);
+      }
+      for (k = 0; k < tiers; k++){
+        var r9 = 36 - k * (V ? 7 : 8.5);
+        top.add('fill="' + pal.fab + '" stroke="' + T(dcol[k]) + '" stroke-width="1.8"', sd(r9, Math.max(2, 5 - k)));
+      }
+      dot('gold', 0, 0, 2);
+      DISC(0, 0, 38);
+    }
+
+    /* scattered bird-foot stitches, skipping anything a leaf or tendril covers */
+    function covered(r, a){
+      var px = r * Math.cos(a), py = r * Math.sin(a), j;
+      for (j = 0; j < covers.length; j++){
+        var c = covers[j], ox, oy, ang, len, wid;
+        if (c.length === 4){ ang = c[0]; ox = c[1] * Math.cos(ang); oy = c[1] * Math.sin(ang); len = c[2]; wid = c[3]; }
+        else { ang = c[0]; ox = c[4]; oy = c[5]; len = c[6]; wid = c[7]; }
+        var dx = px - ox, dy = py - oy, u = dx * Math.cos(ang) + dy * Math.sin(ang), v = -dx * Math.sin(ang) + dy * Math.cos(ang);
+        if (u > -3 && u < len + 3 && Math.abs(v) < wid * .8 + 3.5) return true;
+      }
+      for (j = 0; j < curls.length; j++){ if (Math.hypot(px - curls[j][0], py - curls[j][1]) < 8.2) return true; }
+      for (j = 0; j < patches.length; j++){ var da = Math.abs(((a - patches[j][0]) % TAU + TAU + Math.PI) % TAU - Math.PI); if (r > 43 && da < patches[j][1] + .05) return true; }
+      for (j = 0; j < discs.length; j++){ if (Math.hypot(px - discs[j][0], py - discs[j][1]) < discs[j][2] + 3) return true; }
+      if (fam === 2 && Math.abs(r - 38) < 4.5) return true;
+      if (r < 13 && fam !== 2) return true;
+      return false;
+    }
+    var rr = fam === 2 ? [27, 47, 53.5] : [20, 27, 34, 41, 47.5, 54];
+    rr.forEach(function(r0, ri){
+      var n = Math.round(r0 * TAU / 8.6);
+      for (var q = 0; q < n; q++){
+        var aa = (q + (ri % 2 ? .5 : 0)) * TAU / n;
+        if (r0 > 55 || covered(r0, aa)) continue;
+        tick(tk, tickCols[(q + ri) % 3], r0, aa, 2.6);
+      }
+    });
+
+    o += tk.out() + tl.out() + emit(S1) + emit(S2) + top.out();
+    return KENE_CACHE[name] = '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + o + '</svg>';
+  }
+
+  /* ── OWL KENE: a front-facing owl on a perch, in the same stitched-round style ── */
+  function owlKene(){
+    var pal = KPAL[0], ringc = pal.ring.map(T), tickCols = pal.tick.map(T), fab = pal.fab;
+    var i, o = '';
+    function er(a){ return 96 + 1.2 * Math.sin(3 * a + 1.1) + .8 * Math.sin(5 * a + 2.3); }
+    function circ(cx, cy, r){ return 'M' + fx(cx - r) + ' ' + fx(cy) + 'a' + r + ' ' + r + ' 0 1 0 ' + (r * 2) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + (-r * 2) + ' 0Z'; }
+
+    var fp = '';
+    for (i = 0; i < 96; i++){ var fa = i * TAU / 96; fp += (i ? 'L' : 'M') + xy(er(fa) - .6, fa); }
+    o += '<path d="' + fp + 'Z" fill="' + fab + '" stroke="none"/>';
+    var edge = Lyr(), nb = 68, loop = '', tks = '';
+    for (i = 0; i < nb; i++){ var ea = i * TAU / nb; loop += (i ? 'L' : 'M') + xy(er(ea) - 9, ea); tks += 'M' + xy(er(ea) - 9, ea) + 'L' + xy(er(ea + .1) - .4, ea + .1); }
+    edge.add('stroke="currentColor" stroke-width="1.9"', loop + 'Z' + tks);
+    o += edge.out();
+
+    var rings = Lyr();
+    ringZig(rings, ringc[0], 79.5, 3.6, 26, 1.9);
+    ringX(rings, ringc[1], 71, 38, 2.4);
+    ringLine(rings, ringc[2], 64.5, 1.5);
+    ringDots(rings, ringc[2], 61.2, 40, .9);
+    o += rings.out();
+
+    var S1 = LeafSet(), top = Lyr(), toes = Lyr(), tk = Lyr(), blobs = [], rib = fab;
+    function seg(x0, y0, x1, y1, r){ var n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 5)); for (var j = 0; j <= n; j++){ var px = x0 + (x1 - x0) * j / n, py = y0 + (y1 - y0) * j / n; blobs.push([px, py, r]); blobs.push([-px, py, r]); } }
+    function pair(x, y, a, len, wid, ramp, fill){ [1, -1].forEach(function(s){ leaf(S1, s * x, y, s > 0 ? a : Math.PI - a, len, wid, ramp, fill, rib); }); seg(x, y, x + len * Math.cos(a), y + len * Math.sin(a), wid + 2); }
+
+    /* ear tufts */
+    pair(13, -35, -1.2, 15, 4.5, pal.sec, '#0B6B43');
+    /* wings: two layered leaves sweeping down each side of the body */
+    pair(17, -6, 1.3, 38, 10, pal.main, pal.mainFill);
+    pair(14, -2, 1.42, 29, 7, pal.sec, '#0B6B43');
+    /* body: one tall central leaf */
+    leaf(S1, 0, -8, Math.PI / 2, 54, 21, pal.sec, '#0B6B43', rib);
+    for (i = -8; i <= 40; i += 6) blobs.push([0, i, 15]);
+    /* chest feathers: stacked chevrons */
+    [0, 8, 16, 24, 32].forEach(function(y, k){
+      var c = [T('pink'), T('orange'), T('yellow'), T('orange'), T('pink')][k], w = 9 - k * 1.1;
+      top.add('stroke="' + c + '" stroke-width="1.7"', 'M' + fx(-w) + ' ' + fx(y) + 'L0 ' + fx(y + 5) + 'L' + fx(w) + ' ' + fx(y));
+    });
+
+    /* facial disc + big concentric eyes */
+    [1, -1].forEach(function(s){
+      var ex = s * 14, ey = -24;
+      top.add('fill="' + fab + '" stroke="' + T('pink') + '" stroke-width="2.1"', circ(ex, ey, 13));
+      top.add('stroke="' + T('orange') + '" stroke-width="1.8"', circ(ex, ey, 9.2));
+      top.add('stroke="' + T('cyan') + '" stroke-width="1.7"', circ(ex, ey, 5.6));
+      top.add('fill="' + T('yellow') + '" stroke="none"', circ(ex, ey, 2.4));
+      blobs.push([ex, ey, 15]);
+    });
+    /* beak */
+    top.add('fill="' + T('yellow') + '" stroke="' + T('orange') + '" stroke-width="1.4"', 'M0 -26L4.2 -17.5L0 -9L-4.2 -17.5Z');
+    blobs.push([0, -17, 7]);
+
+    /* perch with feet */
+    top.add('stroke="' + T('orange') + '" stroke-width="2.2"', 'M-36 49L36 49');
+    top.add('stroke="' + T('yellow') + '" stroke-width="1.4"', 'M-30 53L30 53');
+    seg(-36, 49, 36, 49, 5);
+    [1.15, 1.57, 2.0].forEach(function(a){
+      [1, -1].forEach(function(s){
+        var x = s * 9, tx = x + 6.5 * Math.cos(s > 0 ? a : Math.PI - a), ty = 41 + 8 * Math.sin(a);
+        toes.add('stroke="' + T('yellow') + '" stroke-width="1.9"', 'M' + fx(x) + ' 41L' + fx(tx) + ' ' + fx(ty));
+      });
+    });
+
+    var SC = .9;
+    function hit(px, py){ for (var j = 0; j < blobs.length; j++){ if (Math.hypot(px - blobs[j][0], py - blobs[j][1]) < blobs[j][2] + 3.5) return true; } return false; }
+    [20, 27, 34, 41, 47.5, 54].forEach(function(r0, ri){
+      var n = Math.round(r0 * TAU / 8.6);
+      for (var q = 0; q < n; q++){
+        var aa = (q + (ri % 2 ? .5 : 0)) * TAU / n;
+        if (hit(r0 * Math.cos(aa) / SC, r0 * Math.sin(aa) / SC)) continue;
+        tick(tk, tickCols[(q + ri) % 3], r0, aa, 2.6);
+      }
+    });
+
+    o += tk.out() + '<g transform="scale(' + SC + ')">' + emit(S1) + toes.out() + top.out() + '</g>';
+    return '<svg viewBox="-100 -100 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Owl in Shipibo kene style">' + o + '</svg>';
+  }
+
+  /* ── CATEGORY COLORS (each category has its own light) ── */
+  var CAT_COL = {
+    all:      {c:'#FFFFFF', rgb:'255,255,255'},
+    heart:    {c:'#F472B6', rgb:'244,114,182'},
+    strength: {c:'#FF9701', rgb:'255,151,1'},
+    dream:    {c:'#24C7FF', rgb:'36,199,255'},
+    cleanse:  {c:'#4ADE9A', rgb:'74,222,154'},
+    medicine: {c:'#E3C75A', rgb:'227,199,90'},
+    ceremony: {c:'#A274F1', rgb:'162,116,241'}
+  };
+  function colOf(p){ return CAT_COL[p.tags[0]] || CAT_COL.all; }
+
+  var lang = sessionStorage.getItem('kk-lang') || 'en';
+  var cat = 'all', current = -1, visible = [];
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  /* ── SCROLL REVEALS ── */
+  var RV = ('IntersectionObserver' in window) && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var io = RV ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: 0.12, rootMargin: '0px 0px -6% 0px'}) : null;
+  function reveal(root){
+    (root || document).querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      if (io) io.observe(el); else el.classList.add('in');
+    });
+  }
+
+  /* ── LIVING BACKGROUND: fireflies + swaying fronds ── */
+  function frondSVG(mirror){
+    var defs = '<defs><linearGradient id="fg' + (mirror ? 'r' : 'l') + '" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="rgba(36,120,170,.30)"/><stop offset="1" stop-color="rgba(70,200,150,.55)"/></linearGradient></defs>';
+    var body = '';
+    [[540, 1, -12], [480, 1, 8], [410, 1, 28]].forEach(function(f){
+      var len = f[0], cv = f[1], rot = f[2], N = 26, leaf = '';
+      var P1 = [cv * .15 * len, -.6 * len], P2 = [cv * .55 * len, -.9 * len];
+      for (var i = 3; i <= N; i++){
+        var t = i / N, u = 1 - t;
+        var x = 2 * u * t * P1[0] + t * t * P2[0], y = 2 * u * t * P1[1] + t * t * P2[1];
+        var dx = 2 * u * P1[0] + 2 * t * (P2[0] - P1[0]), dy = 2 * u * P1[1] + 2 * t * (P2[1] - P1[1]);
+        var ang = Math.atan2(dy, dx), L = len * .2 * Math.sin(Math.PI * Math.pow(t, .7)) + 6, w = L * .16;
+        [-1, 1].forEach(function(sd){
+          var a = ang + sd * 1.05, ex = x + L * Math.cos(a), ey = y + L * Math.sin(a), mx = (x + ex) / 2, my = (y + ey) / 2, nx = -Math.sin(a), ny = Math.cos(a);
+          leaf += 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'Q' + (mx + nx * w).toFixed(1) + ' ' + (my + ny * w).toFixed(1) + ' ' + ex.toFixed(1) + ' ' + ey.toFixed(1) +
+                  'Q' + (mx - nx * w).toFixed(1) + ' ' + (my - ny * w).toFixed(1) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + 'Z';
+        });
+      }
+      body += '<g transform="rotate(' + rot + ')"><path d="M0 0Q' + P1[0] + ' ' + P1[1] + ' ' + P2[0] + ' ' + P2[1] + '" fill="none" stroke="rgba(120,230,190,.35)" stroke-width="2.2"/><path d="' + leaf + '" fill="url(#fg' + (mirror ? 'r' : 'l') + ')"/></g>';
+    });
+    return '<svg class="frond ' + (mirror ? 'r' : 'l') + '" viewBox="-260 -560 520 580" aria-hidden="true">' + defs + '<g' + (mirror ? ' transform="scale(-1 1)"' : '') + '>' + body + '</g></svg>';
+  }
+  function buildForest(){
+    var f = document.getElementById('forest'); if (!f) return;
+    var n = window.innerWidth < 700 ? 12 : 26, h = '';
+    for (var i = 0; i < n; i++){
+      h += '<span class="ff" style="left:' + (Math.random() * 100).toFixed(1) + '%;top:' + (Math.random() * 100).toFixed(1) + '%;' +
+           '--dx:' + ((Math.random() - .5) * 160).toFixed(0) + 'px;--dy:' + (-(20 + Math.random() * 120)).toFixed(0) + 'px;' +
+           '--dur:' + (7 + Math.random() * 9).toFixed(1) + 's;--del:' + (-Math.random() * 14).toFixed(1) + 's;' +
+           '--ffc:' + (Math.random() < .65 ? '#FFB347' : '#7fe3ff') + '"></span>';
+    }
+    f.insertAdjacentHTML('beforeend', h + frondSVG(false) + frondSVG(true));
+  }
+
+  /* ── VINE DIVIDERS ── */
+  function buildDividers(){
+    document.querySelectorAll('.scroll-divider').forEach(function(el, n){
+      el.innerHTML = '<svg viewBox="0 0 600 52" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="vd' + n + '" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#A274F1" stop-opacity="0"/><stop offset=".5" stop-color="#FF9701"/><stop offset="1" stop-color="#24C7FF" stop-opacity="0"/></linearGradient></defs>' +
+        '<path class="vdiv-path" pathLength="1" d="M0 26C50 6 100 46 150 26S250 6 300 26S400 46 450 26S550 6 600 26" fill="none" stroke="url(#vd' + n + ')" stroke-width="1.6" stroke-linecap="round"/>' +
+        '<g fill="#4ADE9A" opacity=".55"><path d="M118 33q8-16 22-11q-6 14-22 11z"/><path d="M212 19q10-14 22-8q-8 13-22 8z"/><path d="M386 33q8-16 22-11q-6 14-22 11z"/><path d="M468 19q10-14 22-8q-8 13-22 8z"/></g>' +
+        '<path d="M300 14L312 26L300 38L288 26Z" fill="#0A1128" stroke="#FF9701" stroke-width="1.4"/><circle cx="300" cy="26" r="2.2" fill="#FF9701"/></svg>';
+    });
+  }
+
+  /* ── EXPLORER ── */
+  function renderChips(){
+    document.getElementById('chips').innerHTML = CATS.map(function(c){
+      var cc = CAT_COL[c.k];
+      return '<button class="chip' + (c.k === cat ? ' on' : '') + '" data-k="' + c.k + '" style="--c:' + cc.c + ';--rgb:' + cc.rgb + '">' + (c.k === 'all' ? '' : '<i class="dot"></i>') + c[lang].replace(/&/g,'&amp;') + '</button>';
+    }).join('');
+  }
+  function renderGrid(){
+    visible = PLANTS.filter(function(p){ return cat === 'all' || p.tags.indexOf(cat) >= 0; });
+    var g = document.getElementById('grid');
+    g.innerHTML = visible.length ? visible.map(function(p, n){
+      var cc = colOf(p);
+      return '<button class="plant reveal" data-i="' + p.i + '" style="--c:' + cc.c + ';--rgb:' + cc.rgb + ';--k:' + (n % 6) + ';--bd:' + (6 + p.i % 4) + 's">' +
+        '<span class="pglyph">' + kene(p.n) + '</span>' +
+        '<span class="pname">' + esc(p.n) + '</span>' +
+        '<span class="pkw">' + p[lang].kw.slice(0, 3).map(esc).join(' · ') + '</span>' +
+        '<span class="more">' + UI[lang].more + '</span></button>';
+    }).join('') : '<div class="empty">' + UI[lang].none + '</div>';
+    document.getElementById('count').textContent = UI[lang].results(visible.length);
+    reveal(g);
+  }
+  function teachHTML(p){
+    if (!p.t) return '';
+    var u = UI[lang];
+    return '<div class="m-teach"><div class="m-label">' + u.teach + '</div><ul>' +
+      p.t[lang].map(function(it){ return '<li>' + (it[0] ? '<b>' + esc(it[0]) + '</b> ' : '') + esc(it[1]) + '</li>'; }).join('') +
+      '</ul></div>';
+  }
+  var YT_ICON = '<svg viewBox="0 0 28 20" width="30" height="21" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0000"/><path d="M11 5.6v8.8L18.6 10z" fill="#fff"/></svg>';
+  function videoHTML(p){
+    if (!p.v) return '';
+    return '<a class="m-video" href="' + p.v + '" target="_blank" rel="noopener noreferrer"><span class="yt">' + YT_ICON + '</span><span class="yt-text">' + UI[lang].watch(esc(p.n)) + '</span></a>';
+  }
+  function renderModal(){
+    var p = PLANTS.filter(function(x){ return x.i === current; })[0]; if (!p) return;
+    var d = p[lang], u = UI[lang], cc = colOf(p), m = document.getElementById('modal');
+    m.style.setProperty('--c', cc.c); m.style.setProperty('--rgb', cc.rgb);
+    var cats = p.tags.map(function(t){ for (var i = 0; i < CATS.length; i++) if (CATS[i].k === t) return CATS[i][lang]; return t; }).join(' · ').replace(/&/g,'&amp;');
+    document.getElementById('mBody').innerHTML =
+      '<div class="m-glyph">' + kene(p.n) + '</div>' +
+      '<h3 id="mTitle">' + esc(p.n) + '</h3>' +
+      '<div class="m-cat">' + cats + '</div>' +
+      '<div class="kws">' + d.kw.map(function(k){ return '<span class="kw">' + esc(k) + '</span>'; }).join('') + '</div>' +
+      '<div class="m-label">' + u.props + '</div><p>' + esc(d.props) + '</p>' +
+      '<div class="m-label">' + u.prof + '</div><p>' + esc(d.prof) + '</p>' + videoHTML(p) + teachHTML(p);
+    var idx = visible.map(function(x){ return x.i; }).indexOf(current);
+    document.getElementById('mPrev').disabled = idx <= 0;
+    document.getElementById('mNext').disabled = idx < 0 || idx >= visible.length - 1;
+  }
+  function openModal(i){
+    current = i; renderModal();
+    document.getElementById('modalBg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('mClose').focus();
+  }
+  function closeModal(){
+    current = -1; document.getElementById('modalBg').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function moveModal(d){
+    var idx = visible.map(function(x){ return x.i; }).indexOf(current) + d;
+    if (idx >= 0 && idx < visible.length){ current = visible[idx].i; renderModal(); document.getElementById('modal').scrollTop = 0; }
+  }
+
+  /* ── DIETA VINE: grows down the page as you scroll ── */
+  var vlen = 0, vpts = [], vleaves = [];
+  function renderSteps(){
+    var host = document.getElementById('vineSteps');
+    host.innerHTML = STEPS.map(function(s, i){
+      return '<div class="vstep"><span class="vnode">' + (i + 1) + '</span><div class="vtext reveal"><h4>' + s[lang][0] + '</h4><p>' + s[lang][1] + '</p></div></div>';
+    }).join('');
+    reveal(host);
+    requestAnimationFrame(layoutVine);
+  }
+  function layoutVine(){
+    var box = document.getElementById('vine'); if (!box) return;
+    var bw = box.clientWidth, bh = box.clientHeight; if (!bw || !bh) return;
+    var svg = document.getElementById('vineSvg'), fg = document.getElementById('vineFg'), bg = document.getElementById('vineBg'), lg = document.getElementById('vineLeaves');
+    svg.setAttribute('viewBox', '0 0 ' + bw + ' ' + bh);
+    var br = box.getBoundingClientRect();
+    vpts = [].map.call(box.querySelectorAll('.vnode'), function(n){ var r = n.getBoundingClientRect(); return {x: r.left - br.left + r.width / 2, y: r.top - br.top + r.height / 2, el: n}; });
+    if (!vpts.length) return;
+    var pts = [{x: vpts[0].x, y: 0}].concat(vpts), last = vpts[vpts.length - 1];
+    if (bh - last.y > 40) pts.push({x: last.x, y: bh});
+    var amp = bw < 760 ? 9 : 30, d = 'M' + pts[0].x + ' ' + pts[0].y;
+    for (var i = 0; i < pts.length - 1; i++){
+      var a = pts[i], b = pts[i + 1], dy = b.y - a.y, s = i % 2 ? -1 : 1;
+      d += ' C' + (a.x + s * amp) + ' ' + (a.y + dy * .38) + ' ' + (b.x - s * amp) + ' ' + (b.y - dy * .38) + ' ' + b.x + ' ' + b.y;
+    }
+    fg.setAttribute('d', d); bg.setAttribute('d', d);
+    vlen = fg.getTotalLength(); fg.style.strokeDasharray = vlen;
+    lg.innerHTML = ''; vleaves = [];
+    var k = 0;
+    for (var L = 70; L < vlen - 40; L += 95, k++){
+      var p1 = fg.getPointAtLength(L), p2 = fg.getPointAtLength(L + 2);
+      var near = vpts.some(function(n){ return Math.abs(n.x - p1.x) < 40 && Math.abs(n.y - p1.y) < 44; });
+      if (near) continue;
+      var ang = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI + (k % 2 ? 58 : -58), sz = 15 + (k % 3) * 4;
+      var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('transform', 'translate(' + p1.x.toFixed(1) + ' ' + p1.y.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')');
+      var lf = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      lf.setAttribute('class', 'vleaf');
+      lf.setAttribute('d', 'M0 0Q' + sz * .5 + ' ' + (-sz * .45) + ' ' + sz + ' 0Q' + sz * .5 + ' ' + sz * .45 + ' 0 0Z');
+      g.appendChild(lf); lg.appendChild(g); vleaves.push({el: lf, pos: L});
+    }
+    updateVine();
+  }
+  function updateVine(){
+    var box = document.getElementById('vine'); if (!box || !vlen) return;
+    var bh = box.clientHeight, br = box.getBoundingClientRect();
+    var y = RV ? window.innerHeight * .62 - br.top : bh + 1;
+    var f = Math.max(0, Math.min(1, y / bh));
+    document.getElementById('vineFg').style.strokeDashoffset = vlen * (1 - f);
+    vpts.forEach(function(n){ n.el.classList.toggle('lit', n.y <= y); });
+    vleaves.forEach(function(l){ l.el.classList.toggle('on', l.pos <= f * vlen); });
+  }
+
+  function toggleMenu() {
+    var h = document.getElementById('hamburger');
+    var m = document.getElementById('mobileNav');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function setLang(l) {
+    lang = l;
+    sessionStorage.setItem('kk-lang', l);
+    document.querySelectorAll('.lb').forEach(function(b){ b.classList.remove('on'); });
+    var btn = document.querySelector('.lb[onclick="setLang(\'' + l + '\')"]');
+    if (btn) btn.classList.add('on');
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var txt = el.getAttribute('data-' + l);
+      if (txt) el.innerHTML = txt;
+    });
+    renderChips(); renderGrid(); renderSteps();
+    if (current > 0) renderModal();
+  }
+
+  document.getElementById('chips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return;
+    cat = b.getAttribute('data-k'); renderChips(); renderGrid();
+  });
+  document.getElementById('grid').addEventListener('click', function(e){
+    var b = e.target.closest('.plant'); if (b) openModal(parseInt(b.getAttribute('data-i'), 10));
+  });
+  document.getElementById('mClose').onclick = closeModal;
+  document.getElementById('mPrev').onclick = function(){ moveModal(-1); };
+  document.getElementById('mNext').onclick = function(){ moveModal(1); };
+  document.getElementById('modalBg').addEventListener('click', function(e){ if (e.target === this) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if (current < 0) return;
+    if (e.key === 'Escape') closeModal();
+    else if (e.key === 'ArrowLeft') moveModal(-1);
+    else if (e.key === 'ArrowRight') moveModal(1);
+  });
+  window.addEventListener('scroll', updateVine, {passive: true});
+  var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(layoutVine, 150); });
+
+  
+  /* ── HERO ANIMAL KENE: line-built, geometric emblems ──
+     Each animal is made only of linked diamonds (rhombus chains), stepped polygons and
+     fine stitching, inside a round frame with a diamond band. One thread colour plus one
+     small accent. Colours and weights live in the .kg-* CSS rules. Animals are drawn
+     symmetric or as bold emblems rather than cartoon faces. */
+  var animalKene = (function(){
+    var TAU = Math.PI * 2, PI = Math.PI, K = 0;
+    function f(n){ return Math.round(n * 10) / 10; }
+    function pt(p){ return f(p[0]) + ' ' + f(p[1]); }
+    function poly(pts, close){ return 'M' + pts.map(pt).join('L') + (close ? 'Z' : ''); }
+    function polar(r, a){ return [r * Math.cos(a), r * Math.sin(a)]; }
+    function dotD(x, y, r){ return 'M' + f(x - r) + ' ' + f(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + f(2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + f(-2 * r) + ' 0Z'; }
+    function circD(r){ return dotD(0, 0, r); }
+    function mirr(pts){ return pts.map(function(p){ return [-p[0], p[1]]; }); }
+    function sym(half){ return half.concat(mirr(half).reverse()); }
+    function rot(p, a){ return [p[0] * Math.cos(a) - p[1] * Math.sin(a), p[0] * Math.sin(a) + p[1] * Math.cos(a)]; }
+    function add(p, q){ return [p[0] + q[0], p[1] + q[1]]; }
+    function diamond(x, y, h, w){ return poly([[x, y - h], [x + (w || h), y], [x, y + h], [x - (w || h), y]], true); }
+
+    function path(d, cls){
+      var toks = cls.split(' '), anim = toks.indexOf('m') >= 0 || toks.indexOf('t') >= 0 || toks.indexOf('a') >= 0;
+      return '<path class="' + toks.map(function(c){ return 'kg-' + c; }).join(' ') + '" d="' + d + '"' +
+        (anim ? ' pathLength="1" style="--d:' + ((K++ % 24) * .07).toFixed(2) + 's"' : '') + '/>';
+    }
+    /* a chain of rhombus links along any curve: the basic kené "snake" */
+    function chainCurve(C, n, wf, t0, t1){
+      var d = '';
+      for (var i = 0; i < n; i++){
+        var ta = t0 + (t1 - t0) * i / n, tb = t0 + (t1 - t0) * (i + 1) / n, tm = (ta + tb) / 2;
+        var A = C(ta), B = C(tb), M = C(tm), dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy) || 1;
+        var nx = -dy / L, ny = dx / L, w = wf((tm - t0) / (t1 - t0));
+        d += poly([A, [M[0] + nx * w, M[1] + ny * w], B, [M[0] - nx * w, M[1] - ny * w]], true);
+      }
+      return d;
+    }
+    function chainLine(p0, p1, n, wf){
+      return chainCurve(function(t){ return [p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t]; }, n, wf, 0, 1);
+    }
+    /* the round frame: double ring, stitched edge, band of linked diamonds */
+    function frame(){
+      var s = '', i, a, n = 32, dm = '', dots = '', links = '', tk = '';
+      s += path(circD(94), 't') + path(circD(91), 'm');
+      for (i = 0; i < 96; i++){ a = i * TAU / 96; tk += 'M' + pt(polar(91, a)) + 'L' + pt(polar(86.5, a)); }
+      s += path(tk, 'st') + path(circD(84), 't') + path(circD(74), 't');
+      for (i = 0; i < n; i++){
+        a = i * TAU / n; var dt = 5.6 / 79;
+        dm += poly([polar(75, a), polar(79, a + dt), polar(83, a), polar(79, a - dt)], true);
+        links += 'M' + pt(polar(79, a + dt)) + 'L' + pt(polar(79, a + TAU / n - dt));
+        if (i % 2 === 0) dots += dotD(polar(79, a)[0], polar(79, a)[1], 1.25);
+      }
+      s += path(dm, 'm') + path(links, 't') + path(dots, 'af') + path(circD(70), 'st');
+      return s;
+    }
+
+    /* ───────── ANACONDA: a coiled body of linked diamonds (the source of kené) ───────── */
+    function anaconda(){
+      var s = '', a0 = -PI * .78, turns = 2.4, R0 = 54, R1 = 15, n = 70, i;
+      function C(t){ return polar(R0 - (R0 - R1) * t, a0 + t * turns * TAU); }
+      function wf(t){ return t < .1 ? 1.8 + t * 40 : (t > .82 ? Math.max(.8, 5.8 - (t - .82) * 28) : 5.8); }
+      s += path(chainCurve(C, n, wf, 0, 1), 'm');
+      var dots = '';
+      for (i = 4; i < n; i += 2){ var c = C((i + .5) / n); dots += dotD(c[0], c[1], 1.1); }
+      s += path(dots, 'af');
+      var p0 = C(0), q = C(.01), tx = q[0] - p0[0], ty = q[1] - p0[1], tl = Math.hypot(tx, ty);
+      var h = [-tx / tl, -ty / tl], nv = [-h[1], h[0]];
+      function L(u, v){ return [p0[0] + h[0] * u + nv[0] * v, p0[1] + h[1] * u + nv[1] * v]; }
+      function LL(list){ return list.map(function(p){ return L(p[0], p[1]); }); }
+      s += path(poly(LL([[-2, 4.6], [6, 8], [14, 6.2], [21, 2.6], [24, 0], [21, -2.6], [14, -6.2], [6, -8], [-2, -4.6]]), true), 'm bgf');
+      s += path(poly(LL([[4, 2.6], [12, 3.8], [18, 1.4]])) + poly(LL([[4, -2.6], [12, -3.8], [18, -1.4]])) + poly(LL([[2, 0], [20, 0]])), 't');
+      var e1 = L(11, 4.6), e2 = L(11, -4.6);
+      s += path(dotD(e1[0], e1[1], 1.5) + dotD(e2[0], e2[1], 1.5), 'af');
+      s += path(poly(LL([[24, 0], [29, 0]])) + poly(LL([[29, 0], [32, 2.6]])) + poly(LL([[29, 0], [32, -2.6]])), 'a');
+      s += path(diamond(0, 0, 7), 'm') + path(diamond(0, 0, 3.4), 't') + path(dotD(0, 0, 1.3), 'af');
+      return s;
+    }
+
+    /* ───────── JAGUAR: broad geometric face with rosettes ───────── */
+    function jaguar(){
+      var g = '';
+      [-1, 1].forEach(function(sg){ g += path(diamond(sg * 25, -33, 9), 'm') + path(diamond(sg * 25, -33, 4.4), 't'); });
+      var half = [[0, -30], [20, -30], [34, -18], [36, 2], [26, 22], [12, 33], [0, 35]];
+      g += path(poly(sym(half), true), 'm bgf');
+      g += path(poly(sym(half.map(function(p){ return [p[0] * .86, p[1] * .86]; })), true), 'st');
+      g += path(poly([[0, -27], [0, -17]]) + poly([[7, -27], [7, -20]]) + poly([[-7, -27], [-7, -20]]), 't');
+      [-1, 1].forEach(function(sg){
+        g += path(poly([[sg * 5, -6], [sg * 13, -10.5], [sg * 21, -6], [sg * 13, -1.5]], true), 'm');
+        g += path(diamond(sg * 13, -6, 2.4), 'af');
+        g += path(poly([[sg * 4, -14.5], [sg * 10, -16.5], [sg * 16, -16.5], [sg * 24, -12.5]]), 't');
+        [[28, -8], [29, 9], [21, 20], [21, -21]].forEach(function(r){
+          g += path(diamond(sg * r[0], r[1], 4.2), 'a') + path(dotD(sg * r[0], r[1], 1.1), 'mf');
+        });
+        g += path(poly([[sg * 36, 0], [sg * 44, 4], [sg * 36, 8], [sg * 44, 12], [sg * 36, 16], [sg * 43, 19.5]]), 'm');
+        g += path(dotD(sg * 9, 13, .9) + dotD(sg * 12.5, 17, .9) + dotD(sg * 7, 18, .9), 'mf');
+      });
+      g += path(poly([[0, -14], [0, 8]]), 't');
+      g += path(poly([[-5.5, 8], [5.5, 8], [0, 15]], true), 'm af');
+      g += path(poly([[0, 15], [0, 21]]) + poly([[-14, 22], [-9, 25], [0, 21], [9, 25], [14, 22]]), 'm');
+      return '<g transform="translate(0 3) scale(1.2)">' + g + '</g>';
+    }
+
+    /* ───────── HUMMINGBIRD: feathers as chains, a flower of diamonds ───────── */
+    function hummer(){
+      var g = '', S = [-4, -2], Tl = [18, 26], F = [-63, 13], i;
+      function ang(d){ return d * PI / 180; }
+      [[55, 30], [70, 34], [85, 30]].forEach(function(t){
+        var a = ang(t[0]), e = [Tl[0] + t[1] * Math.cos(a), Tl[1] + t[1] * Math.sin(a)];
+        g += path(chainLine(Tl, e, Math.round(t[1] / 7), function(u){ return 3.6 * (1 - u * .4); }), 'm');
+      });
+      [[-20, 40], [-40, 46], [-60, 48], [-80, 44], [-100, 36]].forEach(function(w){
+        var a = ang(w[0]), e = [S[0] + w[1] * Math.cos(a), S[1] + w[1] * Math.sin(a)];
+        g += path(chainLine(S, e, Math.round(w[1] / 8), function(u){ return 4.4 * (1 - u * .45); }), 'm');
+      });
+      for (i = 0; i < 8; i++){
+        var a2 = i * PI / 4 + PI / 8;
+        if (i % 2 === 0){
+          g += path(poly([[3, 0], [7.2, 3.6], [13, 0], [7.2, -3.6]].map(function(p){ return add(F, rot(p, a2)); }), true), 'm bgf');
+        }
+      }
+      for (i = 1; i < 8; i += 2){
+        var a3 = i * PI / 4 + PI / 8;
+        g += path(poly([[3, 0], [4.9, 3], [9, 0], [4.9, -3]].map(function(p){ return add(F, rot(p, a3)); }), true), 't');
+      }
+      g += path(dotD(F[0], F[1], 3.4), 'm bgf') + path(dotD(F[0], F[1], 1.3), 'af');
+      var B0 = [-21, -10], B1 = [15, 23], dots = '';
+      g += path(chainLine(B0, B1, 5, function(u){ return 2.2 + 7 * Math.sin(PI * Math.min(1, u * .9 + .05)); }), 'm bgf');
+      for (i = 0; i < 5; i++){ var u = (i + .5) / 5; dots += dotD(B0[0] + (B1[0] - B0[0]) * u, B0[1] + (B1[1] - B0[1]) * u, i < 2 ? 2.1 : 1.3); }
+      g += path(dots, 'af');
+      var H = [-27, -15];
+      g += path(diamond(H[0], H[1], 9.5), 'm bgf');
+      g += path(poly([[H[0] - 3, H[1] - 6], [H[0] + 1, H[1] - 10], [H[0] + 5, H[1] - 6]]), 'a');
+      g += path(dotD(H[0] - 1.5, H[1] - 1, 1.7), 'af') + path(dotD(H[0] - 1.5, H[1] - 1, 3.2), 't');
+      g += path(poly([[-34, -18], [-62, 9], [-34, -12]], true), 'm bgf') + path(poly([[-34, -15], [-58, 7]]), 't');
+      return '<g transform="translate(6 2) scale(.9)">' + g + '</g>';
+    }
+
+    /* ───────── BUTTERFLY: nested-outline wings with diamond eye-spots ───────── */
+    function butterfly(){
+      var g = '';
+      var up = [[3, -8], [16, -34], [38, -46], [52, -38], [50, -18], [30, -6], [3, 2]];
+      var lo = [[3, 4], [30, 0], [44, 12], [40, 32], [24, 40], [10, 30], [3, 16]];
+      function nest(pts, c, ks){
+        return ks.map(function(k){ return path(poly(pts.map(function(p){ return [c[0] + (p[0] - c[0]) * k, c[1] + (p[1] - c[1]) * k]; }), true), 't'); }).join('');
+      }
+      [-1, 1].forEach(function(sg){
+        var U = up.map(function(p){ return [sg * p[0], p[1]]; }), Lw = lo.map(function(p){ return [sg * p[0], p[1]]; });
+        g += path(poly(Lw, true), 'm bgf') + nest(Lw, [sg * 24, 18], [.72, .46]);
+        g += path(poly(U, true), 'm bgf') + nest(U, [sg * 32, -24], [.74, .5]);
+        g += path(diamond(sg * 32, -24, 7), 'a') + path(diamond(sg * 32, -24, 3), 'af');
+        g += path(diamond(sg * 24, 18, 6), 'a') + path(dotD(sg * 24, 18, 1.8), 'af');
+        g += path(dotD(sg * 44, -42, 1) + dotD(sg * 51, -31, 1) + dotD(sg * 49, -24, 1) + dotD(sg * 42, 6, 1) + dotD(sg * 43, 22, 1) + dotD(sg * 33, 36, 1), 'mf');
+        g += path(poly([[sg * 0, -31], [sg * 4, -39], [sg * 10, -43], [sg * 15, -41]]), 'm') + path(dotD(sg * 15, -41, 1.4), 'af');
+      });
+      g += path(chainLine([0, -22], [0, 32], 7, function(u){ return 1.8 + 1.6 * Math.sin(PI * u); }), 'm bgf');
+      g += path(diamond(0, -28, 4.6), 'm bgf');
+      return '<g transform="translate(0 2) scale(.9)">' + g + '</g>';
+    }
+
+    /* ───────── OWL: facing us on a perch, eyes as nested diamonds ───────── */
+    function owl(){
+      var g = '';
+      g += path(poly([[-34, 53], [34, 53]]), 'm') + path(poly([[-28, 57], [28, 57]]), 'st');
+      [-1, 1].forEach(function(sg){
+        g += path(chainLine([sg * 31, 6], [sg * 34, 42], 5, function(u){ return 3.6 * (1 - u * .4); }), 'm');
+        g += path(poly([[sg * 9, 51], [sg * 13, 56]]) + poly([[sg * 9, 51], [sg * 9, 57]]) + poly([[sg * 9, 51], [sg * 5, 56]]), 't');
+      });
+      g += path(poly(sym([[0, 4], [21, 4], [27, 18], [25, 36], [14, 49], [0, 51]]), true), 'm bgf');
+      [14, 22, 30, 38].forEach(function(y, k){ var w = 12 - k * 1.4; g += path(poly([[-w, y], [0, y + 6], [w, y]]), k % 2 ? 't' : 'a'); });
+      var head = [[0, -31], [9, -35], [18, -44], [22, -31], [28, -18], [26, -3], [16, 9], [0, 13]];
+      g += path(poly(sym(head), true), 'm bgf');
+      g += path(poly(sym(head.map(function(p){ return [p[0] * .86, (p[1] + 14) * .86 - 14]; })), true), 'st');
+      [-1, 1].forEach(function(sg){
+        g += path(diamond(sg * 13, -15, 11), 'm bgf') + path(diamond(sg * 13, -15, 7.2), 'a') + path(diamond(sg * 13, -15, 3.6), 'm') + path(dotD(sg * 13, -15, 1.5), 'af');
+        g += path(poly([[sg * 23, -2], [sg * 18, 3]]), 't');
+      });
+      g += path(poly([[-3.6, -4], [3.6, -4], [0, 6]], true), 'm af');
+      return '<g transform="translate(0 -4) scale(.9)">' + g + '</g>';
+    }
+
+    /* ───────── PINK RIVER DOLPHIN: a leaping arc of rhombus links over zigzag water ───────── */
+    function dolphin(){
+      var g = '', A = [-50, 6], Cp = [-14, -52], E = [42, 26], i;
+      function C(t){ var u = 1 - t; return [u * u * A[0] + 2 * u * t * Cp[0] + t * t * E[0], u * u * A[1] + 2 * u * t * Cp[1] + t * t * E[1]]; }
+      function Tg(t){ var u = 1 - t, x = 2 * u * (Cp[0] - A[0]) + 2 * t * (E[0] - Cp[0]), y = 2 * u * (Cp[1] - A[1]) + 2 * t * (E[1] - Cp[1]), l = Math.hypot(x, y); return [x / l, y / l]; }
+      function No(t){ var q = Tg(t); return [q[1], -q[0]]; }
+      function wf(u){ return u < .14 ? 1.6 + 14 * u : (u < .4 ? 3.6 + 6.4 * Math.sin((u - .14) / .26 * PI / 2) : 1.6 + 8.4 * Math.cos((u - .4) / .6 * PI / 2)); }
+      /* water */
+      [[40, 44, 'a'], [48, 38, 't'], [56, 28, 't']].forEach(function(r){
+        var d = 'M' + (-r[1]) + ' ' + r[0];
+        for (var x = -r[1]; x < r[1] - 5; x += 6) d += 'l3 -3l3 3';
+        g += path(d, r[2]);
+      });
+      function off(p, n, k){ return [p[0] + n[0] * k, p[1] + n[1] * k]; }
+      /* dorsal fin, pectoral fin, fluke (drawn first, body overlaps their bases) */
+      var n1 = No(.4), n2 = No(.55), nt = No(.47), tg = Tg(.47);
+      var tip = off(off(C(.47), nt, wf(.47) + 7), tg, -6);
+      g += path(poly([off(C(.4), n1, wf(.4) * .8), tip, off(C(.55), n2, wf(.55) * .8)], true), 'm bgf');
+      var np = No(.27), tp = Tg(.27), ptip = off(off(C(.27), np, -(wf(.27) + 8)), tp, 8);
+      g += path(poly([off(C(.22), No(.22), -wf(.22) * .7), ptip, off(C(.31), No(.31), -wf(.31) * .7)], true), 'm bgf');
+      var te = Tg(1), ta = Math.atan2(te[1], te[0]);
+      [-1, 1].forEach(function(s){
+        g += path(poly([[0, 0], [7, 4.2], [17, 0], [7, -4.2]].map(function(p){ return add(E, rot(p, ta + s * .75)); }), true), 'm bgf');
+      });
+      /* body */
+      g += path(chainCurve(C, 12, wf, 0, 1), 'm bgf');
+      var dots = '';
+      for (i = 3; i < 12; i += 2){ var c = C((i + .5) / 12); dots += dotD(c[0], c[1], 1.1); }
+      g += path(dots, 'af');
+      var ne = No(.17), ce = off(C(.17), ne, 2.4);
+      g += path(dotD(ce[0], ce[1], 1.5), 'af') + path(dotD(ce[0], ce[1], 3), 't');
+      g += path(diamond(-54, -12, 2.6) + diamond(50, 4, 2.6) + diamond(32, -20, 2), 'a');
+      return '<g transform="translate(-3 -7) scale(1.05)">' + g + '</g>';
+    }
+
+    var ANIMALS = {
+      anaconda:    {name: 'Anaconda',            fn: anaconda},
+      jaguar:      {name: 'Jaguar',              fn: jaguar},
+      hummingbird: {name: 'Hummingbird',         fn: hummer},
+      butterfly:   {name: 'Butterfly',           fn: butterfly},
+      owl:         {name: 'Owl',                 fn: owl}
+      /* dolphin() above is kept but unused: not yet strong enough to ship */
+    };
+    function build(kind){
+      K = 0;
+      var A = ANIMALS[kind];
+      return '<svg viewBox="-100 -100 200 200" role="img" aria-label="' + A.name + ' in Shipibo kene style">' + frame() + A.fn() + '</svg>';
+    }
+    build.keys = Object.keys(ANIMALS);
+    return build;
+  })();
+  var ANIMAL_KEYS = animalKene.keys;
+  function randomAnimal(){
+    var last = null, pick;
+    try { last = sessionStorage.getItem('kk-animal'); } catch (e) {}
+    do { pick = ANIMAL_KEYS[Math.floor(Math.random() * ANIMAL_KEYS.length)]; } while (pick === last && ANIMAL_KEYS.length > 1);
+    try { sessionStorage.setItem('kk-animal', pick); } catch (e) {}
+    return pick;
+  }
+
+  var heroKind = randomAnimal();
+  document.getElementById('heroGlyph').innerHTML = animalKene(heroKind);
+  buildForest();
+  buildDividers();
+  document.querySelectorAll('.scroll-subheading,.mp-card,.vision-video-wrap,.scroll-divider,.mp-note,.mp-cta,.explorer-tools').forEach(function(el){ el.classList.add('reveal'); });
+  setLang(lang);
+  reveal();
+  window.addEventListener('load', layoutVine);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutVine);
+  </script>
+</body>
+</html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Master Plants · Koman Keneya</title>
   <meta name="description" content="Explore the master plants Maestro Americo works with and learn how a dieta unfolds in the Shipibo tradition.">
