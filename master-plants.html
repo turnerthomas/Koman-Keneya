@@ -503,31 +503,55 @@
   .mobile-nav > :last-child { margin-bottom: auto; }
   @media (max-height: 700px) { .mobile-nav { gap: .8rem; } .mobile-nav a { font-size: 1.4rem; } }
 
-  /* ══════════ HERO GLYPH: line-built kené emblem (one thread colour + one accent) ══════════ */
-  .hero-glyph { width: 200px; height: 200px; filter: drop-shadow(0 0 12px rgba(255,151,1,.28)); }
+  /* ══════════ HERO GLYPH: the woven anaconda (one thread colour + one accent) ══════════ */
+  .hero-glyph { width: 220px; height: 220px; filter: drop-shadow(0 0 14px rgba(255,151,1,.3)); cursor: pointer; }
   .hero-glyph svg { width: 100%; height: 100%; display: block; overflow: visible; }
-  .hero-glyph path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .hero-glyph path, .hero-glyph circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .hero-glyph .kg-m  { stroke: var(--neon-orange); stroke-width: 1.7; }
   .hero-glyph .kg-t  { stroke: var(--neon-orange); stroke-width: 1; stroke-opacity: .6; }
   .hero-glyph .kg-a  { stroke: var(--neon-violet); stroke-width: 1.5; }
   .hero-glyph .kg-st { stroke: rgba(255,151,1,.38); stroke-width: 1.1; stroke-dasharray: 2.6 2.6; }
   .hero-glyph .kg-mf { fill: var(--neon-orange); stroke: none; }
   .hero-glyph .kg-af { fill: var(--neon-violet); stroke: none; }
-  .hero-glyph .kg-m.kg-af { stroke: var(--neon-orange); stroke: var(--neon-orange); }
   .hero-glyph .kg-bgf { fill: var(--bg-dark); }
-  /* the thread is "woven" in on load */
-  .hero-glyph .kg-m, .hero-glyph .kg-t, .hero-glyph .kg-a { stroke-linecap: butt; stroke-dasharray: 1; stroke-dashoffset: 1; animation: kgweave 2.2s cubic-bezier(.4,.1,.2,1) forwards; animation-delay: var(--d, 0s); }
-  .hero-glyph .kg-st, .hero-glyph .kg-mf, .hero-glyph .kg-af, .hero-glyph .kg-bgf { opacity: 0; animation: kgfade 1.4s ease 1.2s forwards; }
-  /* outlined + filled shapes: weave the outline, fade the fill in separately */
-  .hero-glyph .kg-m.kg-bgf, .hero-glyph .kg-m.kg-af { opacity: 1; fill-opacity: 0; animation: kgweave 2.2s cubic-bezier(.4,.1,.2,1) forwards, kgfill 1.4s ease 1.2s forwards; animation-delay: var(--d, 0s), 1.2s; }
-  @keyframes kgfill { to { fill-opacity: 1; } }
+
+  /* the thread is woven in: each outline draws itself */
+  .hero-glyph .kg-m, .hero-glyph .kg-t, .hero-glyph .kg-a { stroke-linecap: butt; stroke-dasharray: 1; stroke-dashoffset: 1; animation: kgweave 1.6s cubic-bezier(.4,.1,.2,1) forwards; animation-delay: var(--d, 0s); }
+  .hero-glyph .kg-st, .hero-glyph .kg-mf, .hero-glyph .kg-af, .hero-glyph .kg-bgf { opacity: 0; animation: kgfade 1.2s ease var(--d, 1.2s) forwards; }
+  /* outlined + filled shape (the head): weave the outline, fade the fill in after */
+  .hero-glyph .kg-m.kg-bgf { opacity: 1; fill-opacity: 0; animation: kgweave 1.2s cubic-bezier(.4,.1,.2,1) forwards, kgfill 1s ease forwards; animation-delay: var(--d, 0s), calc(var(--d, 0s) + 1s); }
+
+  /* each link of the body flares hot as the thread passes, then cools to its own colour;
+     later a shimmer runs along the body from tail to head, again and again */
+  .hero-glyph .kg-link { stroke: var(--lc, var(--neon-orange)); animation: kglink .8s ease-out forwards, kgshim 7s ease-in-out infinite; animation-delay: var(--d, 0s), var(--sd, 4s); }
+  .hero-glyph .kg-inner { animation-duration: .7s; }
+  .hero-glyph .kg-af.kg-dot { transform-box: fill-box; transform-origin: center; animation: kgpop .6s ease-out forwards; animation-delay: var(--d, 0s); }
+  .hero-glyph .kg-af.kg-heart { transform-box: fill-box; transform-origin: center; animation: kgfade 1s ease var(--d, 1s) forwards, kgbeat 3.2s ease-in-out infinite; animation-delay: var(--d, 1s), calc(var(--d, 1s) + 1.2s); }
+  .hero-glyph .kg-tongue { animation: kgweave .5s ease-out forwards, kgflick 7s ease-in-out infinite; animation-delay: var(--d, 0s), calc(var(--d, 0s) + 2s); }
+  .hero-glyph .kg-spin { transform-box: fill-box; transform-origin: center; animation: kgspin 140s linear infinite; }
+  .hero-glyph .kg-ring { stroke: var(--neon-violet); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0; transform-box: fill-box; transform-origin: center; animation: kgring 7s ease-out infinite; animation-delay: var(--rd, 4s); }
+
   @keyframes kgweave { to { stroke-dashoffset: 0; } }
   @keyframes kgfade { to { opacity: 1; } }
-  @media (max-width: 760px) { .hero-glyph { width: 160px; height: 160px; } }
+  @keyframes kgfill { to { fill-opacity: 1; } }
+  @keyframes kglink {
+    0%   { stroke-dashoffset: 1; stroke: #fff3d6; stroke-width: 2.8; }
+    55%  { stroke-dashoffset: 0; stroke: #ffe7b8; stroke-width: 2.5; }
+    100% { stroke-dashoffset: 0; stroke: var(--lc, #FF9701); stroke-width: 1.7; }
+  }
+  @keyframes kgshim { 0%, 91%, 100% { stroke: var(--lc, #FF9701); stroke-width: 1.7; } 95% { stroke: #fff3d6; stroke-width: 2.2; } }
+  @keyframes kgpop { 0% { opacity: 0; transform: scale(0); } 65% { opacity: 1; transform: scale(2); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes kgbeat { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.9); } }
+  @keyframes kgflick { 0%, 84%, 100% { stroke-dashoffset: 0; } 88% { stroke-dashoffset: 1; } 94% { stroke-dashoffset: 0; } }
+  @keyframes kgspin { to { transform: rotate(360deg); } }
+  @keyframes kgring { 0% { transform: scale(.7); opacity: 0; } 10% { opacity: .55; } 100% { transform: scale(6.3); opacity: 0; } }
+
+  @media (max-width: 760px) { .hero-glyph { width: 170px; height: 170px; } }
   @media (prefers-reduced-motion: reduce) {
+    .hero-glyph *, .hero-glyph *::before { animation: none !important; }
     .hero-glyph .kg-m, .hero-glyph .kg-t, .hero-glyph .kg-a { stroke-dashoffset: 0 !important; }
     .hero-glyph .kg-st, .hero-glyph .kg-mf, .hero-glyph .kg-af, .hero-glyph .kg-bgf { opacity: 1 !important; }
-    .hero-glyph .kg-m.kg-bgf, .hero-glyph .kg-m.kg-af { fill-opacity: 1 !important; }
+    .hero-glyph .kg-m.kg-bgf { fill-opacity: 1 !important; }
   }
 </style>
 </head>
@@ -1469,11 +1493,11 @@
   var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(layoutVine, 150); });
 
   
-  /* ── HERO ANIMAL KENE: line-built, geometric emblems ──
-     Each animal is made only of linked diamonds (rhombus chains), stepped polygons and
-     fine stitching, inside a round frame with a diamond band. One thread colour plus one
-     small accent. Colours and weights live in the .kg-* CSS rules. Animals are drawn
-     symmetric or as bold emblems rather than cartoon faces. */
+  /* ── HERO ANACONDA KENE ──
+     A coiled anaconda built from linked diamonds. It is woven in from the tail (the egg at the
+     centre) out to the head, link by link, then stays alive: a shimmer travels along the body,
+     the tongue flicks, the heart beats, and violet rings ripple outward like an icaro.
+     All colours, weights and animations live in the .kg-* CSS rules. Click the glyph to replay. */
   var animalKene = (function(){
     var TAU = Math.PI * 2, PI = Math.PI, K = 0;
     function f(n){ return Math.round(n * 10) / 10; }
@@ -1482,32 +1506,23 @@
     function polar(r, a){ return [r * Math.cos(a), r * Math.sin(a)]; }
     function dotD(x, y, r){ return 'M' + f(x - r) + ' ' + f(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + f(2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + f(-2 * r) + ' 0Z'; }
     function circD(r){ return dotD(0, 0, r); }
-    function mirr(pts){ return pts.map(function(p){ return [-p[0], p[1]]; }); }
-    function sym(half){ return half.concat(mirr(half).reverse()); }
-    function rot(p, a){ return [p[0] * Math.cos(a) - p[1] * Math.sin(a), p[0] * Math.sin(a) + p[1] * Math.cos(a)]; }
-    function add(p, q){ return [p[0] + q[0], p[1] + q[1]]; }
     function diamond(x, y, h, w){ return poly([[x, y - h], [x + (w || h), y], [x, y + h], [x - (w || h), y]], true); }
+    function lerp(a, b, t){ return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+    function hx(n){ n = Math.round(n); return (n < 16 ? '0' : '') + n.toString(16); }
+    function mix(c1, c2, t){ return '#' + [0, 1, 2].map(function(k){ return hx(c1[k] + (c2[k] - c1[k]) * t); }).join(''); }
 
-    function path(d, cls){
-      var toks = cls.split(' '), anim = toks.indexOf('m') >= 0 || toks.indexOf('t') >= 0 || toks.indexOf('a') >= 0;
+    /* o.d = start delay in seconds, o.s = extra inline style */
+    function path(d, cls, o){
+      o = o || {};
+      var toks = cls.split(' '), anim = toks.indexOf('m') >= 0 || toks.indexOf('t') >= 0 || toks.indexOf('a') >= 0, st = '';
+      if (o.d != null) st += '--d:' + o.d.toFixed(2) + 's;';
+      else if (anim) st += '--d:' + ((K++ % 18) * .06).toFixed(2) + 's;';
+      if (o.s) st += o.s;
       return '<path class="' + toks.map(function(c){ return 'kg-' + c; }).join(' ') + '" d="' + d + '"' +
-        (anim ? ' pathLength="1" style="--d:' + ((K++ % 24) * .07).toFixed(2) + 's"' : '') + '/>';
+        (anim ? ' pathLength="1"' : '') + (st ? ' style="' + st + '"' : '') + '/>';
     }
-    /* a chain of rhombus links along any curve: the basic kené "snake" */
-    function chainCurve(C, n, wf, t0, t1){
-      var d = '';
-      for (var i = 0; i < n; i++){
-        var ta = t0 + (t1 - t0) * i / n, tb = t0 + (t1 - t0) * (i + 1) / n, tm = (ta + tb) / 2;
-        var A = C(ta), B = C(tb), M = C(tm), dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy) || 1;
-        var nx = -dy / L, ny = dx / L, w = wf((tm - t0) / (t1 - t0));
-        d += poly([A, [M[0] + nx * w, M[1] + ny * w], B, [M[0] - nx * w, M[1] - ny * w]], true);
-      }
-      return d;
-    }
-    function chainLine(p0, p1, n, wf){
-      return chainCurve(function(t){ return [p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t]; }, n, wf, 0, 1);
-    }
-    /* the round frame: double ring, stitched edge, band of linked diamonds */
+
+    /* the round frame: double ring, stitched edge, a slowly turning band of linked diamonds */
     function frame(){
       var s = '', i, a, n = 32, dm = '', dots = '', links = '', tk = '';
       s += path(circD(94), 't') + path(circD(91), 'm');
@@ -1519,131 +1534,66 @@
         links += 'M' + pt(polar(79, a + dt)) + 'L' + pt(polar(79, a + TAU / n - dt));
         if (i % 2 === 0) dots += dotD(polar(79, a)[0], polar(79, a)[1], 1.25);
       }
-      s += path(dm, 'm') + path(links, 't') + path(dots, 'af') + path(circD(70), 'st');
+      s += '<g class="kg-spin">' + path(dm, 'm') + path(links, 't') + path(dots, 'af') + '</g>' + path(circD(70), 'st');
       return s;
     }
 
-    /* ───────── ANACONDA: a coiled body of linked diamonds (the source of kené) ───────── */
-    function anaconda(){
-      var s = '', a0 = -PI * .78, turns = 2.4, R0 = 54, R1 = 15, n = 70, i;
+    function build(){
+      K = 0;
+      var s = frame(), i, j, k;
+      var a0 = -PI * .78, turns = 2.4, R0 = 54, R1 = 15, n = 70;
       function C(t){ return polar(R0 - (R0 - R1) * t, a0 + t * turns * TAU); }
       function wf(t){ return t < .1 ? 1.8 + t * 40 : (t > .82 ? Math.max(.8, 5.8 - (t - .82) * 28) : 5.8); }
-      s += path(chainCurve(C, n, wf, 0, 1), 'm');
-      var dots = '';
-      for (i = 4; i < n; i += 2){ var c = C((i + .5) / n); dots += dotD(c[0], c[1], 1.1); }
-      s += path(dots, 'af');
+      var BODY0 = 1.0, STEP = .034, HEAD0 = BODY0 + n * STEP + .1;
+      var CO = [255, 151, 1], CG = [255, 186, 56];
+
+      /* icaro rings: faint violet ripples that leave the egg after the weave is done */
+      s += '<circle class="kg-ring" r="9" style="--rd:' + (HEAD0 + 1).toFixed(1) + 's"/>' +
+           '<circle class="kg-ring" r="9" style="--rd:' + (HEAD0 + 4.5).toFixed(1) + 's"/>';
+
+      /* stitched guide line that follows the coil, halfway between the turns */
+      var gd = '';
+      for (k = 0; k <= 87; k++){ var gt = .03 + k * .01; gd += (k ? 'L' : 'M') + pt(polar(R0 - (R0 - R1) * gt - 8.1, a0 + gt * turns * TAU)); }
+      s += path(gd, 'st', {d: BODY0 + 1.2});
+
+      /* the egg at the centre: where the thread begins */
+      s += path(diamond(0, 0, 7), 'm', {d: .5}) + path(diamond(0, 0, 3.4), 't', {d: .8}) + path(dotD(0, 0, 1.3), 'af heart', {d: 1.0});
+
+      /* the body, woven from the tail (t = 1) out to the head (t = 0), one link at a time */
+      for (j = 0; j < n; j++){
+        i = n - 1 - j;
+        var ta = i / n, tb = (i + 1) / n, tm = (ta + tb) / 2, A = C(ta), B = C(tb), M = C(tm);
+        var dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, w = wf(tm);
+        var P1 = [M[0] + nx * w, M[1] + ny * w], P2 = [M[0] - nx * w, M[1] - ny * w];
+        var dly = BODY0 + j * STEP, col = mix(CO, CG, 1 - tm);
+        s += path(poly([A, P1, B, P2], true), 'm link', {d: dly, s: '--lc:' + col + ';--sd:' + (dly + 3).toFixed(2) + 's;'});
+        if (i >= 4){
+          if (i % 2 === 0) s += path(dotD(M[0], M[1], 1.1), 'af dot', {d: dly + .35});
+          else s += path(poly([lerp(M, A, .5), lerp(M, P1, .5), lerp(M, B, .5), lerp(M, P2, .5)], true), 't inner', {d: dly + .2});
+        }
+      }
+
+      /* the head, face-on at the outer end of the coil */
       var p0 = C(0), q = C(.01), tx = q[0] - p0[0], ty = q[1] - p0[1], tl = Math.hypot(tx, ty);
       var h = [-tx / tl, -ty / tl], nv = [-h[1], h[0]];
-      function L(u, v){ return [p0[0] + h[0] * u + nv[0] * v, p0[1] + h[1] * u + nv[1] * v]; }
-      function LL(list){ return list.map(function(p){ return L(p[0], p[1]); }); }
-      s += path(poly(LL([[-2, 4.6], [6, 8], [14, 6.2], [21, 2.6], [24, 0], [21, -2.6], [14, -6.2], [6, -8], [-2, -4.6]]), true), 'm bgf');
-      s += path(poly(LL([[4, 2.6], [12, 3.8], [18, 1.4]])) + poly(LL([[4, -2.6], [12, -3.8], [18, -1.4]])) + poly(LL([[2, 0], [20, 0]])), 't');
-      var e1 = L(11, 4.6), e2 = L(11, -4.6);
-      s += path(dotD(e1[0], e1[1], 1.5) + dotD(e2[0], e2[1], 1.5), 'af');
-      s += path(poly(LL([[24, 0], [29, 0]])) + poly(LL([[29, 0], [32, 2.6]])) + poly(LL([[29, 0], [32, -2.6]])), 'a');
-      s += path(diamond(0, 0, 7), 'm') + path(diamond(0, 0, 3.4), 't') + path(dotD(0, 0, 1.3), 'af');
-      return s;
-    }
+      function Lc(u, v){ return [p0[0] + h[0] * u + nv[0] * v, p0[1] + h[1] * u + nv[1] * v]; }
+      function LL(list){ return list.map(function(p){ return Lc(p[0], p[1]); }); }
+      s += path(poly(LL([[-2, 4.6], [6, 8], [14, 6.2], [21, 2.6], [24, 0], [21, -2.6], [14, -6.2], [6, -8], [-2, -4.6]]), true), 'm bgf', {d: HEAD0});
+      s += path(poly(LL([[4, 2.6], [12, 3.8], [18, 1.4]])) + poly(LL([[4, -2.6], [12, -3.8], [18, -1.4]])) + poly(LL([[2, 0], [20, 0]])), 't', {d: HEAD0 + .5});
+      var e1 = Lc(11, 4.6), e2 = Lc(11, -4.6);
+      s += path(dotD(e1[0], e1[1], 1.6), 'af dot', {d: HEAD0 + 1.0}) + path(dotD(e2[0], e2[1], 1.6), 'af dot', {d: HEAD0 + 1.1});
+      s += path(poly(LL([[24, 0], [29, 0]])) + poly(LL([[29, 0], [32, 2.6]])) + poly(LL([[29, 0], [32, -2.6]])), 'a tongue', {d: HEAD0 + 1.3});
 
-    /* ───────── BUTTERFLY: nested-outline wings with diamond eye-spots ───────── */
-    function butterfly(){
-      var g = '';
-      var up = [[3, -8], [16, -34], [38, -46], [52, -38], [50, -18], [30, -6], [3, 2]];
-      var lo = [[3, 4], [30, 0], [44, 12], [40, 32], [24, 40], [10, 30], [3, 16]];
-      function nest(pts, c, ks){
-        return ks.map(function(k){ return path(poly(pts.map(function(p){ return [c[0] + (p[0] - c[0]) * k, c[1] + (p[1] - c[1]) * k]; }), true), 't'); }).join('');
-      }
-      [-1, 1].forEach(function(sg){
-        var U = up.map(function(p){ return [sg * p[0], p[1]]; }), Lw = lo.map(function(p){ return [sg * p[0], p[1]]; });
-        g += path(poly(Lw, true), 'm bgf') + nest(Lw, [sg * 24, 18], [.72, .46]);
-        g += path(poly(U, true), 'm bgf') + nest(U, [sg * 32, -24], [.74, .5]);
-        g += path(diamond(sg * 32, -24, 7), 'a') + path(diamond(sg * 32, -24, 3), 'af');
-        g += path(diamond(sg * 24, 18, 6), 'a') + path(dotD(sg * 24, 18, 1.8), 'af');
-        g += path(dotD(sg * 44, -42, 1) + dotD(sg * 51, -31, 1) + dotD(sg * 49, -24, 1) + dotD(sg * 42, 6, 1) + dotD(sg * 43, 22, 1) + dotD(sg * 33, 36, 1), 'mf');
-        g += path(poly([[sg * 0, -31], [sg * 4, -39], [sg * 10, -43], [sg * 15, -41]]), 'm') + path(dotD(sg * 15, -41, 1.4), 'af');
-      });
-      g += path(chainLine([0, -22], [0, 32], 7, function(u){ return 1.8 + 1.6 * Math.sin(PI * u); }), 'm bgf');
-      g += path(diamond(0, -28, 4.6), 'm bgf');
-      return '<g transform="translate(0 2) scale(.9)">' + g + '</g>';
+      return '<svg viewBox="-100 -100 200 200" role="img" aria-label="Anaconda in Shipibo kene style">' + s + '</svg>';
     }
-
-    /* ───────── TURTLE: shell seen from above, scutes as nested diamonds ───────── */
-    function turtle(){
-      var g = '';
-      var half = [[0, -32], [14, -30], [25, -20], [29, -4], [26, 14], [16, 28], [0, 33]];
-      /* flippers: chains of rhombus links */
-      [-1, 1].forEach(function(sg){
-        g += path(chainLine([sg * 22, -14], [sg * 52, -32], 4, function(u){ return 4.6 * (1 - u * .45); }), 'm');
-        g += path(chainLine([sg * 18, 22], [sg * 40, 36], 3, function(u){ return 3.8 * (1 - u * .4); }), 'm');
-      });
-      /* head and tail */
-      g += path(diamond(0, -40, 7.5), 'm bgf') + path(dotD(-2.8, -41, 1.1) + dotD(2.8, -41, 1.1), 'af');
-      g += path(poly([[-3.4, 32], [0, 41], [3.4, 32]]), 'm');
-      /* shell outline + segmented rim */
-      g += path(poly(sym(half), true), 'm bgf');
-      var inner = half.map(function(p){ return [p[0] * .78, p[1] * .78]; });
-      g += path(poly(sym(inner), true), 'a');
-      var rim = '';
-      for (var i = 1; i < half.length - 1; i++){
-        rim += poly([half[i], inner[i]]) + poly([[-half[i][0], half[i][1]], [-inner[i][0], inner[i][1]]]);
-      }
-      g += path(rim, 't');
-      /* scutes: central nested diamond, vertebral + pleural diamonds */
-      g += path(diamond(0, 0, 14), 'm') + path(diamond(0, 0, 9), 'a') + path(diamond(0, 0, 4.2), 'm') + path(dotD(0, 0, 1.4), 'af');
-      g += path(diamond(0, -19, 5.6), 'm') + path(diamond(0, 19, 5.6), 'm') + path(dotD(0, -19, 1.1) + dotD(0, 19, 1.1), 'mf');
-      [-1, 1].forEach(function(sg){
-        g += path(diamond(sg * 15, -9, 6.6), 'm') + path(diamond(sg * 15, 10, 6.6), 'm') + path(dotD(sg * 15, -9, 1.2) + dotD(sg * 15, 10, 1.2), 'af');
-        g += path(poly([[sg * 5, -7], [sg * 9, -9]]) + poly([[sg * 5, 7], [sg * 9, 10]]), 't');
-      });
-      return '<g transform="translate(0 3) scale(1.05)">' + g + '</g>';
-    }
-
-    /* ───────── OWL: facing us on a perch, eyes as nested diamonds ───────── */
-    function owl(){
-      var g = '';
-      g += path(poly([[-34, 53], [34, 53]]), 'm') + path(poly([[-28, 57], [28, 57]]), 'st');
-      [-1, 1].forEach(function(sg){
-        g += path(chainLine([sg * 31, 6], [sg * 34, 42], 5, function(u){ return 3.6 * (1 - u * .4); }), 'm');
-        g += path(poly([[sg * 9, 51], [sg * 13, 56]]) + poly([[sg * 9, 51], [sg * 9, 57]]) + poly([[sg * 9, 51], [sg * 5, 56]]), 't');
-      });
-      g += path(poly(sym([[0, 4], [21, 4], [27, 18], [25, 36], [14, 49], [0, 51]]), true), 'm bgf');
-      [14, 22, 30, 38].forEach(function(y, k){ var w = 12 - k * 1.4; g += path(poly([[-w, y], [0, y + 6], [w, y]]), k % 2 ? 't' : 'a'); });
-      var head = [[0, -31], [9, -35], [18, -44], [22, -31], [28, -18], [26, -3], [16, 9], [0, 13]];
-      g += path(poly(sym(head), true), 'm bgf');
-      g += path(poly(sym(head.map(function(p){ return [p[0] * .86, (p[1] + 14) * .86 - 14]; })), true), 'st');
-      [-1, 1].forEach(function(sg){
-        g += path(diamond(sg * 13, -15, 11), 'm bgf') + path(diamond(sg * 13, -15, 7.2), 'a') + path(diamond(sg * 13, -15, 3.6), 'm') + path(dotD(sg * 13, -15, 1.5), 'af');
-        g += path(poly([[sg * 23, -2], [sg * 18, 3]]), 't');
-      });
-      g += path(poly([[-3.6, -4], [3.6, -4], [0, 6]], true), 'm af');
-      return '<g transform="translate(0 -4) scale(.9)">' + g + '</g>';
-    }
-
-    var ANIMALS = {
-      anaconda:    {name: 'Anaconda',            fn: anaconda},
-      turtle:      {name: 'Turtle',              fn: turtle},
-      butterfly:   {name: 'Butterfly',           fn: butterfly},
-      owl:         {name: 'Owl',                 fn: owl}
-    };
-    function build(kind){
-      K = 0;
-      var A = ANIMALS[kind];
-      return '<svg viewBox="-100 -100 200 200" role="img" aria-label="' + A.name + ' in Shipibo kene style">' + frame() + A.fn() + '</svg>';
-    }
-    build.keys = Object.keys(ANIMALS);
     return build;
   })();
-  var ANIMAL_KEYS = animalKene.keys;
-  function randomAnimal(){
-    var last = null, pick;
-    try { last = sessionStorage.getItem('kk-animal'); } catch (e) {}
-    do { pick = ANIMAL_KEYS[Math.floor(Math.random() * ANIMAL_KEYS.length)]; } while (pick === last && ANIMAL_KEYS.length > 1);
-    try { sessionStorage.setItem('kk-animal', pick); } catch (e) {}
-    return pick;
-  }
 
-  var heroKind = randomAnimal();
-  document.getElementById('heroGlyph').innerHTML = animalKene(heroKind);
+  var heroEl = document.getElementById('heroGlyph');
+  function weaveHero(){ heroEl.innerHTML = animalKene(); }
+  weaveHero();
+  heroEl.addEventListener('click', weaveHero);  /* click the anaconda to watch it weave again */
+  heroEl.setAttribute('title', 'Click to weave again');
   buildForest();
   buildDividers();
   document.querySelectorAll('.scroll-subheading,.mp-card,.vision-video-wrap,.scroll-divider,.mp-note,.mp-cta,.explorer-tools').forEach(function(el){ el.classList.add('reveal'); });
